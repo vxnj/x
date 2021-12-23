@@ -120,7 +120,7 @@ function getWea(data) {
    document.getElementById("tblhr").innerHTML = tblhd + tblhr;   
    
    document.getElementById("sunbox" ).innerHTML = '<img src="svg/Clear.svg" alt="Sunrise" class="weaicon"/>' + " " + srise  + " - " + sset;
-   document.getElementById("moonbox").innerHTML = '<img src="svg/ClearNt.svg" alt="Moon" class="weaicon"/>' + " " + mrise  + " - " + mset;
+   document.getElementById("moonbox").innerHTML = getmoon(data.daily[0].moon_phase) + " " + mrise  + " - " + mset;
  }
 
 // window.setInterval('fdrk()', 4000); 	
@@ -155,6 +155,32 @@ function geticon(iconcd) {
   console.log(iconcd);
   return svg
 }
+
+function getmoon(phase) {
+  ph = parseInt(8 * (phase + 1/16))
+  switch(ph) {
+    case 0: mp = "Moon0New";break;
+    case 1: mp = "Moon1WxC";break;
+    case 2: mp = "Moon2WxQ";break;
+    case 3: mp = "Moon3WxG";break;
+    case 4: mp = "Moon4Full";break;
+    case 5: mp = "Moon5WnG";break;
+    case 6: mp = "Moon6WnQ";break;
+    case 7: mp = "Moon7WnC";break;
+    case 8: mp = "Moon0New";break;
+    default:mp = "Moon4Full";break;
+  }
+  moon = '<img src="svg/' + mp + '.svg" alt="Moon" class="weaicon"/>';
+  console.log(phase + ' ' + ph + ' ' + mp)
+  return moon;
+}
+
+// MOON PHASES
+// daily.moon_phase Moon phase. 0 and 1 are 'new moon', 
+// 0.25 is 'first quarter moon', 
+// 0.5 is 'full moon' and 0.75 is 'last quarter moon'. 
+// The periods in between are called 'waxing crescent', 'waxing gibous', 'waning gibous', and 'waning crescent', respectively. 
+
 
 </script>
 
