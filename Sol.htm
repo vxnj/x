@@ -3,15 +3,14 @@
 <head>
 
 <link rel="stylesheet" href="style.css" />
-<script src="funcs.js"></script>
-<script src="fDate.js"></script>
+<script src="js/funcs.js"></script>
+<script src="js/fDate.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-
 
 // a35e66501c88031db5054c862c6e5b15
 // da5f0d9ce3486ef93fd7ffb24235c9e3
@@ -66,10 +65,9 @@ function callwea() {
 tblhd= '<table class="table" id="mytbl"><thead><tr>'
       + '<th onclick="fdrk()">Time</th>'
       + '<th>Temp</th>'
-      + '<th>Humidity</th>'
+      + '<th>Hmd</th>'
       + '<th>Weather</th>'
     +'</tr></thead>';
-
 
 function getWea(data) {  
       dateVal = new Date(data.current.dt *1000);
@@ -79,7 +77,7 @@ function getWea(data) {
             + "  <td>" + dtnow + "</td>"
             + '  <td class="hl"><b>' + parseInt(.5 + data.current.temp) + "°</b></td>"
             + "  <td>" + data.current.humidity + "%" + "</td>"
-            + "  <td>" + data.current.weather[0].main + "</td>"
+            + "  <td>" + geticon(data.current.weather[0].icon) + data.current.weather[0].description   +"</td>"
            // + "  <td>" + '<img src="http://openweathermap.org/img/wn/' + data.current.weather[0].icon + '@2x.png" style="width:32px;height:32px;">' + "</td>"
             + "</tr>";
     
@@ -87,24 +85,23 @@ function getWea(data) {
     for (let i = 1; i < 8; i++) {
       var xd = new Date(data.hourly[i].dt*1000);
       dthr = date_format(xd, 'g a');
-      xicon = '<img src="http://openweathermap.org/img/wn/' + data.hourly[i].weather[0].icon + "@2x.png>";      
       tblhr += "<tr>" 
             + "  <td>" + dthr + "m</td>"
             + "  <td>" + parseInt(.5 + data.hourly[i].temp) + "°</td>"
             + "  <td>" + data.hourly[i].humidity + "%" + "</td>"
-            + "  <td>" + data.hourly[i].weather[0].main + "</td>"
-           // + "  <td>" + '<img src="http://openweathermap.org/img/wn/' + data.hourly[i].weather[0].icon + '@2x.png" style="width:32px;height:32px;">' + "</td>"
+            + "  <td>" + geticon(data.hourly[i].weather[0].icon) + data.hourly[i].weather[0].description + "</td>"
             + "</tr>";
       }
  
       for (let j = 1; j < 7; j++) {
       var xd = new Date(data.daily[j].dt*1000);
       dthr = date_format(xd, 'D');
+
       tblhr += "<tr class='dayrow'>" 
             + "  <td>" + dthr + "</td>"
             + "  <td>" + parseInt(.5 + data.daily[j].temp.max)+ "-" +parseInt(.5 + data.daily[j].temp.min) + "°</td>"
             + "  <td>" + data.daily[j].humidity + "%" + "</td>"
-            + "  <td>" + data.daily[j].weather[0].main + "</td>"
+            + "  <td>" + geticon(data.daily[j].weather[0].icon) + data.daily[j].weather[0].description + "</td>"
             + "</tr>";
       }
    tblhr += "</tbody></table>";
@@ -143,6 +140,22 @@ function chgzip() {
   callzip();
 }
 
+function geticon(iconcd) {
+  switch(iconcd) {
+    case '01d':                   ico="Clear";break;
+    case '01n':                   ico="ClearNt";break;
+    
+    case '02d': case '03d': case '04d': ico="Partly";break;
+    case '02n': case '03n': case '04n': ico="PartlyNt";break;
+    case '09d': case '10d': case '11d': case'50d': ico="Rain";break;
+    case '13d':                   ico="Snowy";break;
+    default:                      ico="?";
+  }
+  svg = '<img src="svg/' + ico + '.svg" alt="' + ico + '" class="weaicon"/>';
+  console.log(iconcd);
+  return svg
+}
+
 </script>
 
 <title>weather</title>
@@ -160,8 +173,8 @@ function chgzip() {
   </tr>
   </tbody>
 </table>
-
-<a href="https://vxnj.github.io/CatFacts/">main<a/>
+<br>
+<a href="https://vxnj.github.io/x/">main<a/>
 <a href="https://api.openweathermap.org/data/2.5/onecall?lat=40.8&lon=-73.97&units=imperial&exclude=minutely&appid=da5f0d9ce3486ef93fd7ffb24235c9e3"
 target="blank">json<a/>
 <a href="https://duckduckgo.com/?q=weather+upper+west+side%2C+Ny&t=ffsb&atb=v229-1&ia=weather" target="blank">ddg<a/>
