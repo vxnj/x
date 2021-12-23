@@ -148,11 +148,11 @@ function geticon(iconcd) {
     case '02d': case '03d': case '04d': ico="Partly";break;
     case '02n': case '03n': case '04n': ico="PartlyNt";break;
     case '09d': case '10d': case '11d': case'50d': ico="Rain";break;
-    case '13d':                   ico="Snowy";break;
+    case '13d': case '13n':       ico="Snowy";break;
     default:                      ico="?";
   }
   svg = '<img src="svg/' + ico + '.svg" alt="' + ico + '" class="weaicon"/>';
-  console.log(iconcd);
+  console.log(iconcd + ' ' + ico);
   return svg
 }
 
