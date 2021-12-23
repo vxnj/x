@@ -1,0 +1,52 @@
+
+
+<body>
+
+<input type="url" id="url" value="https://query1.finance.yahoo.com/v7/finance/quote?symbols=FB">
+<button id="get">GET</button>
+
+<div id="bottom">
+  <textarea id="output"></textarea>
+</div>
+
+<script>
+
+  // window.onload = 
+
+  function doCORSRequest(options, printResult) {
+   var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
+   var x = new XMLHttpRequest();
+    x.open(options.method, cors_api_url + options.url);
+    x.onload = x.onerror = function() {
+      printResult(
+        options.method + ' ' + options.url + '\n' +
+        x.status + ' ' + x.statusText + '\n\n' +
+        (x.responseText || '')
+      );
+    };
+    x.send(PushSubscriptionOptions.data);
+    return x.responseText
+  }
+
+  
+  // Bind event
+  (function() {
+    var urlField = document.getElementById('url');
+    var outputField = document.getElementById('output');
+    
+    document.getElementById('get').onclick =
+    function(e) {
+      doCORSRequest({
+        method: 'GET',
+        url: urlField.value
+      }, 
+      
+      function printResult(result) {
+        outputField.value = result;
+      });
+    };
+  })();
+  
+</script>
+</body>
+</html>

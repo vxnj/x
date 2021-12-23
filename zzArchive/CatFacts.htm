@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <link rel="stylesheet" href="../style.css" />
+  <script src="funcs.js"></script>
+
+
+<script>
+function show(){
+  alert('Welcome to W3Docs!');
+  result = prompt('fhed', '123');
+  alert(result);
+  var ans = validate(result);
+  document.getElementById("ans").innerHTML = ans;
+  
+}
+
+  function timeConverter(UNIX_timestamp){
+//    var a = new Date(UNIX_timestamp * 1000);
+    var a = new Date()
+    var months = ['01','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','10','11','12'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var sec = a.getSeconds();
+    var time = year + '-' + month + '-' + date + ' ' + hour + ':' + min + ':' + sec ;
+    // alert('Welcome to W3Docs!'); 
+    document.getElementById("timeout").innerHTML = time;
+  
+  }</script>
+
+<script>
+// Store XMLHttpRequest and the JSON file location in variables
+var xhr = new XMLHttpRequest();
+var url = "https://cat-fact.herokuapp.com/facts/random";
+
+// Called whenever the readyState attribute changes 
+xhr.onreadystatechange = function() { // Check if fetch request is done
+  if (xhr.readyState == 4 && xhr.status == 200) { 
+    var jsonData = JSON.parse(xhr.responseText);
+    newFact(jsonData);
+  }
+};
+
+// Do the HTTP call using the url variable we specified above
+function cats() {
+  xhr.open("GET", url, true);
+  xhr.send();
+}
+
+// Function that formats the string with HTML tags, then outputs the result
+function newFact(data) {
+    var output = data.text
+    document.getElementById("fact").innerHTML = output;
+}
+
+</script>
+
+
+<title>Cat Facts!! Two</title>
+</head>
+<body>
+
+<!-- The output appears here -->
+<button type="button" onclick="cats()">New Cat Fact!</button> 
+<br><br>
+<div id="fact"></div>
+
+<button type="button" onclick="timeConverter(1637449728)">New Time!</button> 
+<br><br>
+
+<button type="button" onclick="show()">Show</button> 
+<br><br>
+
+
+<br><br><br><br>
+<div id="timeout"></div>
+<div id="ans"></div>
+
+<a href="https://vxnj.github.io/CatFacts/CatFacts.htm">Cat Facts page<a/>
+<br>
+<a href="https://www.w3schools.com/">Visit W3Schools.com!</a> 
+  
+<div id="openweathermap-widget-1"></div>
+<script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script><script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 1,cityid: '5128581',appid: '3eaa5145be3fbca4b9a3f346b0f8a668',units: 'imperial',containerid: 'openweathermap-widget-1',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
+
+<a href="https://api.openweathermap.org/data/2.5/onecall?lat=40.7992&lon=-73.972&exclude=minutely&appid=3eaa5145be3fbca4b9a3f346b0f8a668"
+target="blank">open weather map<a/>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+:root {
+    --txt9:		#7a9fee;
+    --txtP:		rgb(134, 10, 134);
+    --txtD:		#4292fa;
+}
+
+body { background-color: black !important;
+    padding: 10px !important;
+    line-height: .9 !important;}
+
+div {color: var(--txt9) ; 
+    font-family: 'Segoe UI', Courier, monospace; 
+    font-size:large;}
+
+table {border-color: rgba(81, 107, 163, 0.562) !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--txt9) !important;
+        margin-top: 10px !important;
+    }
+
+/* td {margin: 0px; padding: 0px;} */
+
+img.weaicon { height: 32px !important; width: 32px !important; opacity: 70% !important;}
+
+.hl {color: rgb(55, 153, 107) !important;
+    }
+
+a    { color: rgba(113, 113, 207, 0.692) !important;}    
+
+.dark-mode {
+    background-color: rgb(219, 146, 191) !important;
+    color: var(--txtP) !important;
+    border-color: var(--txtP) !important;
+  }
+
+.dayrow {color: var(--txtD) !important;}
+
+.riseset {width: 100%;
+    border: none;
+    font-size:large;
+    margin-top: 0px !important;}

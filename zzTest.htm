@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+<title>Page Title</title>
+</head>
+
+<!-- a35e66501c88031db5054c862c6e5b15 -->
+<!-- da5f0d9ce3486ef93fd7ffb24235c9e3 -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</style>
+<script src="funcs.js"></script>
+
+
+<script>
+function init() {  
+  console.log("init");
+  xL = doCORS("https://query1.finance.yahoo.com/v7/finance/quote?symbols=FB,HSBC");
+  document.getElementById("appx").innerHTML = xL.quoteResponse.result[0].shortName + " " +xL.quoteResponse.result[0].regularMarketPrice  + " " + xL.quoteResponse.result[0].regularMarketTime;
+  document.getElementById("app2").innerHTML = xL.quoteResponse.result[1].shortName + " " +xL.quoteResponse.result[1].regularMarketPrice  + " " + xL.quoteResponse.result[1].regularMarketTime;
+}
+
+</script>
+
+
+
+<body>
+    <button id="get" onclick="init()">GET</button>
+    <div id="appx"></div>
+    <div id="app2"></div>
+
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener" target="_blank"><span class="blue-text">Financial Markets</span></a> by TradingView</div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+  {
+  "colorTheme": "dark",
+  "dateRange": "3M",
+  "showChart": true,
+  "locale": "en",
+  "largeChartUrl": "",
+  "isTransparent": false,
+  "showSymbolLogo": false,
+  "showFloatingTooltip": false,
+  "width": "400",
+  "height": "660",
+  "plotLineColorGrowing": "rgba(147, 196, 125, 1)",
+  "plotLineColorFalling": "rgba(204, 65, 37, 1)",
+  "gridLineColor": "rgba(109, 158, 235, 0.65)",
+  "scaleFontColor": "rgba(152, 152, 152, 1)",
+  "belowLineFillColorGrowing": "rgba(106, 168, 79, 0.33)",
+  "belowLineFillColorFalling": "rgba(224, 102, 102, 0.49)",
+  "belowLineFillColorGrowingBottom": "rgba(106, 168, 79, 0.08)",
+  "belowLineFillColorFallingBottom": "rgba(204, 0, 0, 0.1)",
+  "symbolActiveColor": "rgba(73, 133, 231, 0.25)",
+  "tabs": [
+    {
+      "title": "Indices",
+      "symbols": [
+        {
+          "s": "FOREXCOM:SPXUSD",
+          "d": "S&P 500"
+        },
+        {
+          "s": "FOREXCOM:NSXUSD",
+          "d": "US 100"
+        },
+        {
+          "s": "FOREXCOM:DJI",
+          "d": "Dow 30"
+        },
+        {
+          "s": "INDEX:NKY",
+          "d": "Nikkei 225"
+        },
+        {
+          "s": "INDEX:DEU40",
+          "d": "DAX Index"
+        },
+        {
+          "s": "FOREXCOM:UKXGBP",
+          "d": "UK 100"
+        }
+      ],
+      "originalTitle": "Indices"
+    },
+    {
+      "title": "Futures",
+      "symbols": [
+        {
+          "s": "CME_MINI:ES1!",
+          "d": "S&P 500"
+        },
+        {
+          "s": "CME:6E1!",
+          "d": "Euro"
+        },
+        {
+          "s": "COMEX:GC1!",
+          "d": "Gold"
+        },
+        {
+          "s": "NYMEX:CL1!",
+          "d": "Crude Oil"
+        },
+        {
+          "s": "NYMEX:NG1!",
+          "d": "Natural Gas"
+        },
+        {
+          "s": "CBOT:ZC1!",
+          "d": "Corn"
+        }
+      ],
+      "originalTitle": "Futures"
+    },
+    {
+      "title": "Bonds",
+      "symbols": [
+        {
+          "s": "CME:GE1!",
+          "d": "Eurodollar"
+        },
+        {
+          "s": "CBOT:ZB1!",
+          "d": "T-Bond"
+        },
+        {
+          "s": "CBOT:UB1!",
+          "d": "Ultra T-Bond"
+        },
+        {
+          "s": "EUREX:FGBL1!",
+          "d": "Euro Bund"
+        },
+        {
+          "s": "EUREX:FBTP1!",
+          "d": "Euro BTP"
+        },
+        {
+          "s": "EUREX:FGBM1!",
+          "d": "Euro BOBL"
+        }
+      ],
+      "originalTitle": "Bonds"
+    },
+    {
+      "title": "Forex",
+      "symbols": [
+        {
+          "s": "FX:EURUSD"
+        },
+        {
+          "s": "FX:GBPUSD"
+        },
+        {
+          "s": "FX:USDJPY"
+        },
+        {
+          "s": "FX:USDCHF"
+        },
+        {
+          "s": "FX:AUDUSD"
+        },
+        {
+          "s": "FX:USDCAD"
+        }
+      ],
+      "originalTitle": "Forex"
+    }
+  ]
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+  </body>
+</html>
+    
