@@ -3,9 +3,51 @@
     --txt9:		#7a9fee;
     --txtP:		rgb(134, 10, 134);
     --txtD:		#4292fa;
+
+
+    --live-def:     #7a9fee;
+    --live-day:     #4292fa;
+    --live-cur:     rgb(55, 153, 107);
+    --live-pop:     rgb(219, 219, 219);
+    --live-bkg:     black;
+
+    --dark-def:     #7a9fee;
+    --dark-day:     #4292fa;
+    --dark-cur:     rgb(55, 153, 107);
+    --dark-pop:     rgb(219, 219, 219);
+    --dark-bkg:     black;
+
+    --pink-def:     #9f3be2;
+    --pink-day:     #7f2db6;
+    --pink-cur:     rgb(240, 64, 216);
+    --pink-pop:     rgb(219, 219, 219);
+    --pink-bkg:     rgb(252, 199, 199);
+
+    --mint-def:     #419e34;
+    --mint-day:     #3a9749;
+    --mint-cur:     rgb(77, 255, 7);
+    --mint-pop:     rgb(219, 219, 219);
+    --mint-bkg:     rgb(214, 252, 199);
+
+    --bayj-def:     #645615;
+    --bayj-day:     #b1a573;
+    --bayj-cur:     rgb(182, 66, 12);
+    --bayj-pop:     rgb(219, 219, 219);
+    --bayj-bkg:     rgb(236, 218, 177);
+
 }
 
+.def { color: var(--live-def) !important; }
+.day { color: var(--live-day) !important; }
+.cur { color: var(--live-cur) !important; }
+.pop { color: var(--live-cur) !important; }
 
+
+.themedd { 
+    background-color: var(--live-bkg) !important;
+    color: var(--live-def) !important;  
+    border-color: rgba(255, 0, 0, 0) !important;  
+}
 
 .dark-mode {
     background-color: rgb(255, 214, 230) !important;
@@ -13,17 +55,17 @@
     border-color: var(--txtP) !important;
   }
 
-body { background-color: black !important;
+body { background-color: var(--live-bkg) !important;
     padding: 10px !important;
     line-height: .9 !important;}
 
-div {color: var(--txt9) ; 
+div {color: var(--live-def) ; 
     font-family: 'Segoe UI', Tahoma, Courier, monospace; 
     font-size:large;}
 
-table {border-color: rgba(81, 107, 163, 0.562) !important;
+table {border-color: var(--live-def) !important;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: var(--txt9) !important;
+        color: var(--live-def) !important;
         margin-top: 10px !important;
         /* white-space: nowrap; */
     }
@@ -42,10 +84,10 @@ td, th {
     width: 290px; height: 434px;
     top:15%;  
     left: calc((100% - 290px)/2);
-    border: 3px solid rgb(37, 62, 83);
+    border: 3px solid var(--live-day);
     /* background-repeat: no-repeat; */
     background-size:contain;
-    color: rgb(175, 175, 175); 
+    color: rgb(175, 175, 175) !important; 
     z-index:100; 
     position: fixed;
     display: none;
@@ -53,12 +95,11 @@ td, th {
     border-radius: 20px;
    }
 
-.hl {color: rgb(55, 153, 107) !important; }
+.hl {color: var(--live-cur) !important; }
 
 a    { color: rgba(113, 113, 207, 0.692) !important;}    
 
 
-.dayrow {color: var(--txtD) !important;}
 
 .riseset {width: 100%;
     border: none;

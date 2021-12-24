@@ -62,7 +62,7 @@ function callwea() {
 }
 
 tblhd= '<table class="table" id="mytbl"><thead><tr>'
-      + '<th>Time</th>'
+      + '<th onclick="fdrk()">Time</th>'
       + '<th>Temp</th>'
       + '<th>Hmd</th>'
       + '<th>Weather</th>'
@@ -96,7 +96,7 @@ function getWea(data) {
       var xd = new Date(data.daily[j].dt*1000);
       dthr = date_format(xd, 'D');
 
-      tblhr += "<tr class='day'>" 
+      tblhr += "<tr class='dayrow'>" 
             + "  <td>" + dthr + "</td>"
             + "  <td>" + parseInt(.5 + data.daily[j].temp.max)+ "-" +parseInt(.5 + data.daily[j].temp.min) + "°</td>"
             + "  <td>" + data.daily[j].humidity + "%" + "</td>"
@@ -123,6 +123,15 @@ function getWea(data) {
  }
 	
  window.onload = init;
+
+// function fdrk() {
+//   var element = document.body;
+//    element.classList.toggle("dark-mode");
+//    element = document.getElementById("mytbl");
+//    element.classList.toggle("dark-mode"); 
+//    element = document.getElementById("zipcd");
+//    element.classList.toggle("dark-mode"); 
+// }
 
 function chgzip() {
   paramzip = prompt('Zip Code', paramzip || "10025");
@@ -192,23 +201,14 @@ function getmoon(phase) {
 </head>
 <body>
 
+<select name="theme" id="themer" onchange="themer()">
+  <option value="dark">Dark</option>
+  <option value="pink">Pink</option>
+  <option value="mint">Mint</option>
+  <option value="bayj">Beige</option>
+</select>
 
-
-<table style="width:100%">
-  <tbody>
-  <tr>
-    <td><div id="zipcd" onclick="chgzip()"></div></td>
-    <td style="text-align: right"><select name="theme" id="themer" class="themedd" onchange="themer()">
-      <option value="dark">Dark</option>
-      <option value="pink">Pink</option>
-      <option value="mint">Mint</option>
-      <option value="bayj">Beige</option>
-    </select>
-  </td>
-  </tr>
-  </tbody>
-</table>
-
+<div id="zipcd" onclick="chgzip()"></div>
 <div id="tblhr"></div>
 
 <table class="riseset">

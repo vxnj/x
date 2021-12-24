@@ -1,45 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<link rel="stylesheet" href="style.css" />
+<script src="js/funcs.js"></script>
+<script src="js/fDate.js"></script>
 
-
-<style>
- .pop { 
-    background-image: url("img/NightSky.jpg");;
-    width: 80%; left: 10%; top:0%; height: 60%;
-    border: 3px solid rgb(136, 136, 194);
-    background-repeat: no-repeat;
-    background-size:contain;
-    color: white; 
-    z-index:100; 
-    position: fixed;
-    display: none;
-  }
-</style>
-
-<script>
-function showpop(secs, id) {
-    document.getElementById(id).style.display = "block"
-    document.getElementById(id).innerHTML="Username successful";
-    setTimeout(function(){
-                document.getElementById(id).style.display = "none";}, secs*1000 || 3000);      
-}
-</script>
-             
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  </head>
 
+
 <body>
-<div onclick="showpop(1, 'check')" class="container mt-3">
-  <h3>Toast Example</h3>
-</div>
-<div class="pop" id="check"></div>
-<div class="pop" id="pop-moon"></div>
-
-<div>World</div>
-
   
+</div>
+
+<!-- <input type="button" value="Dark"  id="btnDark" />
+<input type="button" value="Pink"  id="btnPink" />
+<input type="button" value="Mint"  id="btnMint" />
+<input type="button" value="Beige" id="btnBayj" /> -->
+
+<select name="theme" id="themer" onchange="themer()">
+  <option value="dark">Dark</option>
+  <option value="pink">Pink</option>
+  <option value="mint">Mint</option>
+  <option value="bayj">Beige</option>
+</select>
+
+<br><br>
+<br><div class="def" >def</div>
+<br><div class="day" >day</div> </div>
+<br><div class="cur" >cur</div>
+
+
+<script>
+
+//   const btnDark = document.getElementById("btnDark");
+//   const btnPink = document.getElementById("btnPink");
+//   const btnMint = document.getElementById("btnMint");
+//   const btnBayj = document.getElementById("btnBayj");
+  
+//   document.getElementById("btnDark").addEventListener('click',(e)=>{
+//     document.documentElement.style.setProperty('--live-def','var(--dark-def)');
+//     document.documentElement.style.setProperty('--live-day','var(--dark-day)');
+//     document.documentElement.style.setProperty('--live-cur','var(--dark-cur)');
+//     document.documentElement.style.setProperty('--live-bkg','var(--dark-bkg)');
+//   })
+  
+//   document.getElementById("btnPink").addEventListener('click',(e)=>{
+//     document.documentElement.style.setProperty('--live-def','var(--pink-def)');
+//     document.documentElement.style.setProperty('--live-day','var(--pink-day)');
+//     document.documentElement.style.setProperty('--live-cur','var(--pink-cur)');
+//     document.documentElement.style.setProperty('--live-bkg','var(--pink-bkg)');
+//  })
+  
+//  document.getElementById("btnMint").addEventListener('click',(e)=>{
+//     document.documentElement.style.setProperty('--live-def','var(--mint-def)');
+//     document.documentElement.style.setProperty('--live-day','var(--mint-day)');
+//     document.documentElement.style.setProperty('--live-cur','var(--mint-cur)');
+//     document.documentElement.style.setProperty('--live-bkg','var(--mint-bkg)');
+//   })
+
+//   document.getElementById("btnBayj").addEventListener('click',(e)=>{
+//     document.documentElement.style.setProperty('--live-def','var(--bayj-def)');
+//     document.documentElement.style.setProperty('--live-day','var(--bayj-day)');
+//     document.documentElement.style.setProperty('--live-cur','var(--bayj-cur)');
+//     document.documentElement.style.setProperty('--live-bkg','var(--bayj-bkg)');
+//   })
+
+  function themer () {
+    th = document.getElementById("themer").value;
+    console.log(th)
+    switch (th) {
+      case 'dark': val = ['var(--dark-def)','var(--dark-day)','var(--dark-cur)','var(--dark-bkg)']; break;
+      case "mint": val = ['var(--mint-def)','var(--mint-day)','var(--mint-cur)','var(--mint-bkg)']; break;
+      case "pink": val = ['var(--pink-def)','var(--pink-day)','var(--pink-cur)','var(--pink-bkg)']; break;
+      case "bayj": val = ['var(--bayj-def)','var(--bayj-day)','var(--bayj-cur)','var(--bayj-bkg)']; break;
+    }
+    document.documentElement.style.setProperty('--live-def',val[0]);
+    document.documentElement.style.setProperty('--live-day',val[1]);
+    document.documentElement.style.setProperty('--live-cur',val[2]);
+    document.documentElement.style.setProperty('--live-bkg',val[3]);  
+   
+   }
+</script>
+
 </body>
 </html>
