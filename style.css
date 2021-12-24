@@ -17,11 +17,11 @@
     --dark-pop:     rgb(219, 219, 219);
     --dark-bkg:     black;
 
-    --pink-def:     #9f3be2;
-    --pink-day:     #7f2db6;
-    --pink-cur:     rgb(240, 64, 216);
+    --pink-def:     #7f2fb4;
+    --pink-day:     #3e135a;
+    --pink-cur:     rgb(199, 51, 179);
     --pink-pop:     rgb(219, 219, 219);
-    --pink-bkg:     rgb(252, 199, 199);
+    --pink-bkg:     rgb(240, 210, 210);
 
     --mint-def:     #419e34;
     --mint-day:     #3a9749;
@@ -47,6 +47,7 @@
     background-color: var(--live-bkg) !important;
     color: var(--live-def) !important;  
     border-color: rgba(255, 0, 0, 0) !important;  
+    font-size: larger;
 }
 
 .dark-mode {
@@ -97,7 +98,7 @@ td, th {
 
 .hl {color: var(--live-cur) !important; }
 
-a    { color: rgba(113, 113, 207, 0.692) !important;}    
+a    { color: var(--live-def) !important;}    
 
 
 
