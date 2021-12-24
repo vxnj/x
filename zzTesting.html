@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<style>
+ .pop { 
+    background-image: url("img/NightSky.jpg");;
+    width: 80%; left: 10%; top:0%; height: 60%;
+    border: 3px solid rgb(136, 136, 194);
+    background-repeat: no-repeat;
+    background-size:contain;
+    color: white; 
+    z-index:100; 
+    position: fixed;
+    display: none;
+  }
+</style>
+
+<script>
+function showpop(secs, id) {
+    document.getElementById(id).style.display = "block"
+    document.getElementById(id).innerHTML="Username successful";
+    setTimeout(function(){
+                document.getElementById(id).style.display = "none";}, secs*1000 || 3000);      
+}
+</script>
+             
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+
+<body>
+<div onclick="showpop(1, 'check')" class="container mt-3">
+  <h3>Toast Example</h3>
+</div>
+<div class="pop" id="check"></div>
+<div class="pop" id="pop-moon"></div>
+
+<div>World</div>
+
+  
+</body>
+</html>

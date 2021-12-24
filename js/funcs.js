@@ -14,3 +14,8 @@ function doCORS(url) {
      x.send(PushSubscriptionOptions.data);
      return vresp;
    }
+
+function showpop(secs, id) {
+    document.getElementById(id).style.display = "block"
+    setTimeout(function(){document.getElementById(id).style.display = "none";}, secs*1000 || 3000);      
+}

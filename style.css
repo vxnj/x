@@ -29,8 +29,25 @@ td, th {
     margin: -11px 2px -6px 0 !important;
 }
 
-.hl {color: rgb(55, 153, 107) !important;
-    }
+.pop { 
+    background-image: url("img/NightSky.jpg");;
+    width: 290px; height: 434px;
+    top:15%;  
+    left: calc((100% - 290px)/2);
+    border: 0px solid rgb(136, 136, 194);
+    /* background-repeat: no-repeat; */
+    background-size:contain;
+    color: white; 
+    z-index:100; 
+    position: fixed;
+    display: none;
+    padding: 10px 0 0 30px;
+    border-radius: 20px;
+    background-blend-mode:darken;
+
+  }
+
+.hl {color: rgb(55, 153, 107) !important; }
 
 a    { color: rgba(113, 113, 207, 0.692) !important;}    
 

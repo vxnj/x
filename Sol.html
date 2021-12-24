@@ -12,10 +12,9 @@
 
 <script>
 
-// a35e66501c88031db5054c862c6e5b15
-// da5f0d9ce3486ef93fd7ffb24235c9e3
+// key = "da5f0d9ce3486ef93fd7ffb24235c9e3"
+key = "a35e66501c88031db5054c862c6e5b15"
 
-key = "da5f0d9ce3486ef93fd7ffb24235c9e3"
 var xhr = new XMLHttpRequest();
 var xhrz = new XMLHttpRequest();
 paramzip = "10025";
@@ -122,8 +121,7 @@ function getWea(data) {
    document.getElementById("sunbox" ).innerHTML = '<img src="svg/Clear.svg" alt="Sunrise" class="weaicon"/>' + " " + srise  + " - " + sset;
    document.getElementById("moonbox").innerHTML = getmoon(data.daily[0].moon_phase) + " " + mrise  + " - " + mset;
  }
-
-// window.setInterval('fdrk()', 4000); 	
+	
  window.onload = init;
 
 function fdrk() {
@@ -156,22 +154,25 @@ function geticon(iconcd) {
   return svg
 }
 
+
+const phases =     ["Moon0New", "Moon1WxC", "Moon2WxQ", "Moon3WxG", "Moon4Ful", "Moon5WnG", "Moon6WnQ", "Moon7WnC", "Moon0New"];
+const phasesDesc = ["New Moon", "Waxing Crescent", "Waxing Quarter", "Waxing Gibbous", "Full Moon!", "Waning Gibbous", "Waning Quarter", "Waning Crescent", "New Moon"];
+var moonInner = "";
+
 function getmoon(phase) {
   ph = parseInt(8 * (phase + 1/16))
-  switch(ph) {
-    case 0: mp = "Moon0New";break;
-    case 1: mp = "Moon1WxC";break;
-    case 2: mp = "Moon2WxQ";break;
-    case 3: mp = "Moon3WxG";break;
-    case 4: mp = "Moon4Full";break;
-    case 5: mp = "Moon5WnG";break;
-    case 6: mp = "Moon6WnQ";break;
-    case 7: mp = "Moon7WnC";break;
-    case 8: mp = "Moon0New";break;
-    default:mp = "Moon4Full";break;
+  // moon = '<img src="svg/' + phases[ph] + '.svg" alt="Moon" onclick="showpop(5,\'pop-moon\')" class="weaicon"/>';
+  moon = '<img src="svg/' + phases[ph] + '.svg" alt="Moon" class="weaicon"/>';
+
+  for (let k = 0; k < 8; k++) {
+    moonInner += '<br><img src="svg/' + phases[k] + '.svg" alt="Moon" class="weaicon"/><span id="phdesc' + k + '">    ' +  phasesDesc[k] + "</span><br><br>";
   }
-  moon = '<img src="svg/' + mp + '.svg" alt="Moon" class="weaicon"/>';
-  console.log(phase + ' ' + ph + ' ' + mp)
+  // console.log(moonInner);
+  document.getElementById("pop-moon").innerHTML = moonInner;
+  document.getElementById("phdesc" + ph).style.color = 'yellow';
+
+  //document.getElementById("moonbox").onclick = 'showpop(5,"pop-moon")';
+
   return moon;
 }
 
@@ -194,11 +195,14 @@ function getmoon(phase) {
   <tbody>
   <tr>
   <td id="sunbox" ></td>
-  <td id="moonbox"></td>
+  <td id="moonbox" onclick="showpop(5,'pop-moon')"></td>
   </tr>
   </tbody>
 </table>
 <br>
+
+<div class="pop" id="pop-moon"></div>
+
 <a href="https://vxnj.github.io/x/">main<a/>
 <a href="https://api.openweathermap.org/data/2.5/onecall?lat=40.8&lon=-73.97&units=imperial&exclude=minutely&appid=da5f0d9ce3486ef93fd7ffb24235c9e3"
 target="blank">json<a/>
