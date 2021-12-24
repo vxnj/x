@@ -30,7 +30,7 @@ td, th {
 }
 
 .pop { 
-    background-image: url("img/NightSky.jpg");;
+    background-image: url("img/NightSky.jpg");
     width: 290px; height: 434px;
     top:15%;  
     left: calc((100% - 290px)/2);
@@ -43,15 +43,14 @@ td, th {
     display: none;
     padding: 10px 0 0 30px;
     border-radius: 20px;
-
-  }
+   }
 
 .hl {color: rgb(55, 153, 107) !important; }
 
 a    { color: rgba(113, 113, 207, 0.692) !important;}    
 
 .dark-mode {
-    background-color: rgb(219, 146, 191) !important;
+    background-color: rgb(255, 214, 230) !important;
     color: var(--txtP) !important;
     border-color: var(--txtP) !important;
   }
