@@ -10,11 +10,11 @@ body { background-color: black !important;
     line-height: .9 !important;}
 
 div {color: var(--txt9) ; 
-    font-family: 'Segoe Condensed', Tahoma, Courier, monospace; 
+    font-family: 'Segoe UI', Tahoma, Courier, monospace; 
     font-size:large;}
 
 table {border-color: rgba(81, 107, 163, 0.562) !important;
-        font-family: 'Segoe Condensed', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         color: var(--txt9) !important;
         margin-top: 10px !important;
         /* white-space: nowrap; */

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+<title>Page Title</title>
+</head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</style>
+<script src="js/funcs.js"></script>
+
+<script>
+let x;
+function init() {  
+  console.log("init");
+  x = doCORS("https://query1.finance.yahoo.com/v7/finance/quote?symbols=FB,HSBC");
+  document.getElementById("appx").innerHTML = x.quoteResponse.result[0].shortName + " " +x.quoteResponse.result[0].regularMarketPrice  + " " + xL.quoteResponse.result[0].regularMarketTime;
+  document.getElementById("app2").innerHTML = x.quoteResponse.result[1].shortName + " " +x.quoteResponse.result[1].regularMarketPrice  + " " + xL.quoteResponse.result[1].regularMarketTime;
+}
+
+// window.onload = init();
+</script>
+
+<body>
+    <button id="get" onclick="init()">GET</button>
+    <div id="appx"></div>
+    <div id="app2"></div>
+</body>
+</html>
+    
