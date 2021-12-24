@@ -156,18 +156,15 @@ function geticon(iconcd) {
 
 
 const phases =     ["Moon0New", "Moon1WxC", "Moon2WxQ", "Moon3WxG", "Moon4Ful", "Moon5WnG", "Moon6WnQ", "Moon7WnC", "Moon0New"];
-const phasesDesc = ["New Moon", "Waxing Crescent", "Waxing Quarter", "Waxing Gibbous", "Full Moon!", "Waning Gibbous", "Waning Quarter", "Waning Crescent", "New Moon"];
+const phasesDesc = ["New Moon", "Waxing Crescent", "Waxing Quarter", "Waxing Gibbous", "Full Moon !!", "Waning Gibbous", "Waning Quarter", "Waning Crescent", "New Moon"];
 var moonInner = "";
 
 function getmoon(phase) {
   ph = parseInt(8 * (phase + 1/16))
-  // moon = '<img src="svg/' + phases[ph] + '.svg" alt="Moon" onclick="showpop(5,\'pop-moon\')" class="weaicon"/>';
   moon = '<img src="svg/' + phases[ph] + '.svg" alt="Moon" class="weaicon"/>';
-
   for (let k = 0; k < 8; k++) {
     moonInner += '<br><img src="svg/' + phases[k] + '.svg" alt="Moon" class="weaicon"/><span id="phdesc' + k + '">    ' +  phasesDesc[k] + "</span><br><br>";
   }
-  // console.log(moonInner);
   document.getElementById("pop-moon").innerHTML = moonInner;
   document.getElementById("phdesc" + ph).style.color = 'yellow';
 
@@ -193,13 +190,13 @@ function getmoon(phase) {
   <tbody>
   <tr>
   <td id="sunbox" ></td>
-  <td id="moonbox" onclick="showpop(5,'pop-moon')"></td>
+  <td id="moonbox" onclick="showpop(7,'pop-moon')"></td>
   </tr>
   </tbody>
 </table>
 <br>
 
-<div class="pop" id="pop-moon"></div>
+<div class="pop" id="pop-moon" onclick="document.getElementById('pop-moon').style.display = 'none';"></div>
 
 <a href="https://vxnj.github.io/x/">main<a/>
 <a href="https://api.openweathermap.org/data/2.5/onecall?lat=40.8&lon=-73.97&units=imperial&exclude=minutely&appid=da5f0d9ce3486ef93fd7ffb24235c9e3"
