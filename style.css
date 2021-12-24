@@ -42,10 +42,10 @@ td, th {
     width: 290px; height: 434px;
     top:15%;  
     left: calc((100% - 290px)/2);
-    border: 0px solid rgb(136, 136, 194);
+    border: 3px solid rgb(37, 62, 83);
     /* background-repeat: no-repeat; */
     background-size:contain;
-    color: white; 
+    color: rgb(175, 175, 175); 
     z-index:100; 
     position: fixed;
     display: none;

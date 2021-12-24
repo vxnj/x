@@ -163,11 +163,12 @@ function getmoon(phase) {
   ph = parseInt(8 * (phase + 1/16))
   moon = '<img src="svg/' + phases[ph] + '.svg" alt="Moon" class="weaicon"/>';
   for (let k = 0; k < 8; k++) {
-    moonInner += '<br><img src="svg/' + phases[k] + '.svg" alt="Moon" class="weaicon"/><span id="phdesc' + k + '">    ' +  phasesDesc[k] + "</span><br><br>";
-  }
-  document.getElementById("pop-moon").innerHTML = moonInner;
-  document.getElementById("phdesc" + ph).style.color = 'yellow';
+    moonInner += '<br><img src="svg/' + phases[k] + '.svg" alt="Moon" id="phimg' + k + '" style="filter:brightness(70%)" class="weaicon"/><span id="phdesc' + k + '">    ' +  phasesDesc[k] + "</span><br><br>";
 
+  } 
+  document.getElementById("pop-moon").innerHTML = moonInner;
+  document.getElementById("phdesc" + ph).style.color = 'rgb(0, 201, 201)';
+    document.getElementById("phimg" + ph).style.filter = "brightness(120%)"; 
   return moon;
 }
 
