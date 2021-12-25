@@ -8,6 +8,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/asap" type="text/css"/>
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/fira-sans" type="text/css"/> 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
@@ -114,9 +116,13 @@ function getWea(data) {
    
     if(data.hasOwnProperty('alerts')) { 
       document.getElementById("alerts").innerHTML = data.alerts[0].event; 
-      document.getElementById('alerts').style.display = 'block';
+      document.getElementById('alerts').style.display = 'inline-block';
       document.getElementById('alerts').href = "https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon;
       console.log("https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon);
+      alertwidth = document.getElementById('alerts').offsetWidth
+      document.getElementById('alerts').style.left = 'calc(50% - '+ alertwidth +'px /2)';
+      console.log('(calc(50% - '+ alertwidth +'px /2)')
+
     } else {
       alerts = ""
       document.getElementById('alerts').style.display = 'none';
@@ -161,7 +167,7 @@ function themer () {
     document.documentElement.style.setProperty('--live-day',val[1]);
     document.documentElement.style.setProperty('--live-cur',val[2]);
     document.documentElement.style.setProperty('--live-bkg',val[3]);  
-    document.querySelector(".pop").style.backgroundImage = val[4];
+    document.querySelector(".pop").style.backgroundImage =  val[4];
   }
 
 
@@ -211,8 +217,6 @@ function getmoon(phase) {
 </head>
 <body>
 
-
-
 <table style="width:100%">
   <tbody>
   <tr>
@@ -228,7 +232,7 @@ function getmoon(phase) {
   </tbody>
 </table>
 
-<div><a id="alerts" class="alerts" href="https://openweathermap.org/city/5128581"></a></div>
+<a id="alerts" class="alerts" href="https://openweathermap.org/city/5128581"></a>
 
 <div id="tblhr"></div>
 
