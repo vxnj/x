@@ -57,6 +57,7 @@ function getZip(dataz) {
 function callwea() {
   // url = "https://api.openweathermap.org/data/2.5/onecall?lat=40.8&lon=-73.97&units=imperial&exclude=minutely&appid=" + key;
   url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=minutely&appid=" + key;
+  document.getElementById('linkjson').href = url
   xhr.open("GET", url, true);
   xhr.send();
 }
@@ -224,8 +225,8 @@ function getmoon(phase) {
 
 <div class="pop" id="pop-moon" onclick="document.getElementById('pop-moon').style.display = 'none';"></div>
 
-<a href="https://vxnj.github.io/x/">main<a/>
-<a href="https://api.openweathermap.org/data/2.5/onecall?lat=40.8&lon=-73.97&units=imperial&exclude=minutely&appid=da5f0d9ce3486ef93fd7ffb24235c9e3"
+<!-- <a href="https://vxnj.github.io/x/">main<a/> -->
+<a id="linkjson" href="https://api.openweathermap.org/data/2.5/onecall?lat=40.8&lon=-73.97&units=imperial&exclude=minutely&appid=da5f0d9ce3486ef93fd7ffb24235c9e3"
 target="blank">json<a/>
 <a href="https://duckduckgo.com/?q=weather+upper+west+side%2C+Ny&t=ffsb&atb=v229-1&ia=weather" target="blank">ddg<a/>
 <a href="https://openweathermap.org/city/5128581">openweather<a/>
