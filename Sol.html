@@ -110,6 +110,16 @@ function getWea(data) {
       }
    tblhr += "</tbody></table>";
 
+   
+    if(data.hasOwnProperty('alerts')) { 
+      document.getElementById("alerts").innerHTML = data.alerts[0].event; 
+      document.getElementById('alerts').style.display = 'block';
+    } else {
+      alerts = ""
+      document.getElementById('alerts').style.display = 'none';
+    }
+
+
    dateVal = new Date((data.daily[0].sunrise+ shift) *1000);
    srise = date_format(dateVal, 'g:ia');
    dateVal = new Date((data.daily[0].sunset + shift) *1000);
@@ -214,6 +224,8 @@ function getmoon(phase) {
   </tr>
   </tbody>
 </table>
+
+<div id="alerts" class="alerts"></div>
 
 <div id="tblhr"></div>
 
