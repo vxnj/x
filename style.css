@@ -68,13 +68,14 @@ td, th {
 }
 
 .pop { 
+    background-color: var(--live-day);
     background-image: url("img/SkyDark.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 290px; height: 434px;
     top:15%;  
     left: calc((100% - 290px)/2);
     border: 3px solid var(--live-day);
-    background-size: cover;
-    background-repeat: no-repeat;
     color: rgb(204, 202, 202) !important; 
     /* color: var(--live-pop) !important;  */
     z-index:100; 
