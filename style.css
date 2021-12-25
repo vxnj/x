@@ -1,21 +1,16 @@
 
 :root {
-    --txt9:		#7a9fee;
-    --txtP:		rgb(134, 10, 134);
-    --txtD:		#4292fa;
-
-
     --live-def:     #7a9fee;
     --live-day:     #4292fa;
-    --live-cur:     rgb(55, 153, 107);
-    --live-pop:     rgb(219, 219, 219);
+    --live-cur:     rgb(0, 217, 255);
+    --live-pop:     rgb(236, 236, 236);
     --live-bkg:     black;
 
     --dark-def:     #7a9fee;
     --dark-day:     #4292fa;
-    --dark-cur:     rgb(55, 153, 107);
-    --dark-pop:     rgb(219, 219, 219);
-    --dark-bkg:     black;
+    --dark-cur:     rgb(0, 217, 255);
+    --dark-pop:     rgb(238, 236, 236);
+    --dark-bkg:     rgb(0, 0, 0);
 
     --pink-def:     #7f2fb4;
     --pink-day:     #3e135a;
@@ -24,24 +19,22 @@
     --pink-bkg:     rgb(240, 210, 210);
 
     --mint-def:     #419e34;
-    --mint-day:     #3a9749;
-    --mint-cur:     rgb(77, 255, 7);
-    --mint-pop:     rgb(219, 219, 219);
+    --mint-day:     #1e6129;
+    --mint-cur:     rgb(16, 223, 223);
+    --mint-pop:     rgb(234, 252, 231);
     --mint-bkg:     rgb(214, 252, 199);
 
-    --bayj-def:     #645615;
-    --bayj-day:     #b1a573;
+    --bayj-def:     #7c6a18;
+    --bayj-day:     #443a0f;
     --bayj-cur:     rgb(182, 66, 12);
-    --bayj-pop:     rgb(219, 219, 219);
+    --bayj-pop:     rgb(252, 239, 212);
     --bayj-bkg:     rgb(236, 218, 177);
 
 }
-
 .def { color: var(--live-def) !important; }
 .day { color: var(--live-day) !important; }
 .cur { color: var(--live-cur) !important; }
-/* .pop { color: var(--live-cur) !important; } */
-
+.pop { color: var(--live-cur) !important; }
 
 .themedd { 
     background-color: var(--live-bkg) !important;
@@ -49,12 +42,6 @@
     border-color: rgba(255, 0, 0, 0) !important;  
     font-size: larger;
 }
-
-.dark-mode {
-    background-color: rgb(255, 214, 230) !important;
-    color: var(--txtP) !important;
-    border-color: var(--txtP) !important;
-  }
 
 body { background-color: var(--live-bkg) !important;
     padding: 10px !important;
@@ -86,10 +73,10 @@ td, th {
     top:15%;  
     left: calc((100% - 290px)/2);
     border: 3px solid var(--live-day);
-
     background-size: cover;
     background-repeat: no-repeat;
     color: rgb(204, 202, 202) !important; 
+    /* color: var(--live-pop) !important;  */
     z-index:100; 
     position: fixed;
     display: none;
