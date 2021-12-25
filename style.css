@@ -85,8 +85,14 @@ td, th {
     border-radius: 20px;
    }
 
+
+
+.hl {color: var(--live-cur) !important; }
+
+a   { color: var(--live-def) !important;}    
+
 .alerts {
-    background-color: rgb(136, 17, 41);
+    background-color: rgb(104, 11, 29);
     color: rgb(235, 235, 235) !important;
     padding: 8px;
     border-radius: 20px;
@@ -96,12 +102,6 @@ td, th {
     margin-left: 20%;
     display: none;
 }
-
-.hl {color: var(--live-cur) !important; }
-
-a    { color: var(--live-def) !important;}    
-
-
 
 .riseset {width: 100%;
     border: none;

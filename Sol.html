@@ -49,6 +49,7 @@ function callzip() {
 
 function getZip(dataz) {
    document.getElementById("zipcd").innerHTML = dataz.name + " (" + dataz.zip + ")";
+   document.getElementById("linkddg").href = "https://duckduckgo.com/&ia=weather?q=weather+" + dataz.zip
    lat = dataz.lat
    lon = dataz.lon
    callwea();
@@ -246,7 +247,7 @@ function getmoon(phase) {
 <!-- <a href="https://vxnj.github.io/x/">main<a/> -->
 <a id="linkjson" href="https://api.openweathermap.org/data/2.5/onecall?lat=40.8&lon=-73.97&units=imperial&exclude=minutely&appid=da5f0d9ce3486ef93fd7ffb24235c9e3"
 target="blank">json<a/>
-<a href="https://duckduckgo.com/?q=weather+upper+west+side%2C+Ny&t=ffsb&atb=v229-1&ia=weather" target="blank">ddg<a/>
+<a id="linkddg" href="https://duckduckgo.com/?q=weather+upper+west+side%2C+Ny&t=ffsb&atb=v229-1&ia=weather" target="blank">ddg<a/>
 <a href="https://openweathermap.org/city/5128581">openweather<a/>
 
 </body>
