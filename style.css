@@ -31,6 +31,12 @@
     --bayj-bkg:     rgb(236, 218, 177);
 
 }
+
+@font-face {
+    font-family: "Avril";
+    src: url("fonts/AvrileSans-Condensed.ttf");
+  } 
+
 .def { color: var(--live-def) !important; }
 .day { color: var(--live-day) !important; }
 .cur { color: var(--live-cur) !important; }
@@ -48,11 +54,11 @@ body { background-color: var(--live-bkg) !important;
     line-height: .9 !important;}
 
 div {color: var(--live-def) ; 
-    font-family: 'Segoe UI', Tahoma, Courier, monospace; 
+    font-family: Avril, Segoe UI, Tahoma, Courier, monospace; 
     font-size:large;}
 
 table {border-color: var(--live-def) !important;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: Avril, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
         color: var(--live-def) !important;
         margin-top: 10px !important;
         /* white-space: nowrap; */
@@ -89,7 +95,8 @@ td, th {
 
 .hl {color: var(--live-cur) !important; }
 
-a   { color: var(--live-def) !important;}    
+a   { color: var(--live-def) !important;
+    font-family: Avril, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;}    
 
 .alerts {
     background-color: rgb(104, 11, 29);
