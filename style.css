@@ -86,9 +86,9 @@ td, th {
    }
 
 .alerts {
-    background-color: rgb(180, 19, 51);
-    color: rgb(224, 222, 108);
-    padding: 4px;
+    background-color: rgb(136, 17, 41);
+    color: rgb(235, 235, 235) !important;
+    padding: 8px;
     border-radius: 20px;
     text-align: center;
     font-weight: bold;

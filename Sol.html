@@ -114,6 +114,8 @@ function getWea(data) {
     if(data.hasOwnProperty('alerts')) { 
       document.getElementById("alerts").innerHTML = data.alerts[0].event; 
       document.getElementById('alerts').style.display = 'block';
+      document.getElementById('alerts').href = "https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon;
+      console.log("https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon);
     } else {
       alerts = ""
       document.getElementById('alerts').style.display = 'none';
@@ -225,7 +227,7 @@ function getmoon(phase) {
   </tbody>
 </table>
 
-<div id="alerts" class="alerts"></div>
+<div><a id="alerts" class="alerts" href="https://openweathermap.org/city/5128581"></a></div>
 
 <div id="tblhr"></div>
 
