@@ -134,17 +134,19 @@ function themer () {
     th = document.getElementById("themer").value;
     console.log(th)
     switch (th) {
-      case 'dark': val = ['var(--dark-def)','var(--dark-day)','var(--dark-cur)','var(--dark-bkg)']; break;
-      case "mint": val = ['var(--mint-def)','var(--mint-day)','var(--mint-cur)','var(--mint-bkg)']; break;
-      case "pink": val = ['var(--pink-def)','var(--pink-day)','var(--pink-cur)','var(--pink-bkg)']; break;
-      case "bayj": val = ['var(--bayj-def)','var(--bayj-day)','var(--bayj-cur)','var(--bayj-bkg)']; break;
+      case 'dark': val = ['var(--dark-def)','var(--dark-day)','var(--dark-cur)','var(--dark-bkg)','url("img/SkyDark.jpg")']; break;
+      case "mint": val = ['var(--mint-def)','var(--mint-day)','var(--mint-cur)','var(--mint-bkg)','url("img/SkyMint.jpg")']; break;
+      case "pink": val = ['var(--pink-def)','var(--pink-day)','var(--pink-cur)','var(--pink-bkg)','url("img/SkyPink.jpg")']; break;
+      case "bayj": val = ['var(--bayj-def)','var(--bayj-day)','var(--bayj-cur)','var(--bayj-bkg)','url("img/SkyBeige.jpg")']; break;
     }
     document.documentElement.style.setProperty('--live-def',val[0]);
     document.documentElement.style.setProperty('--live-day',val[1]);
     document.documentElement.style.setProperty('--live-cur',val[2]);
     document.documentElement.style.setProperty('--live-bkg',val[3]);  
+    document.querySelector(".pop").style.backgroundImage = val[4];
    
-}
+  }
+
 
 function geticon(iconcd) {
   switch(iconcd) {
@@ -176,7 +178,7 @@ function getmoon(phase) {
   } 
   document.getElementById("pop-moon").innerHTML = moonInner;
   document.getElementById("phdesc" + ph).style.color = 'var(--live-cur)';
-    document.getElementById("phimg" + ph).style.filter = "brightness(120%)"; 
+  document.getElementById("phimg" + ph).style.filter = "brightness(120%)"; 
   return moon;
 }
 

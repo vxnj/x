@@ -40,7 +40,7 @@
 .def { color: var(--live-def) !important; }
 .day { color: var(--live-day) !important; }
 .cur { color: var(--live-cur) !important; }
-.pop { color: var(--live-cur) !important; }
+/* .pop { color: var(--live-cur) !important; } */
 
 
 .themedd { 
@@ -81,14 +81,15 @@ td, th {
 }
 
 .pop { 
-    background-image: url("img/NightSky.jpg");
+    background-image: url("img/SkyDark.jpg");
     width: 290px; height: 434px;
     top:15%;  
     left: calc((100% - 290px)/2);
     border: 3px solid var(--live-day);
-    /* background-repeat: no-repeat; */
-    background-size:contain;
-    color: rgb(175, 175, 175) !important; 
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: rgb(204, 202, 202) !important; 
     z-index:100; 
     position: fixed;
     display: none;
