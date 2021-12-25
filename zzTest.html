@@ -10,23 +10,26 @@
 
 </style>
 <script src="js/funcs.js"></script>
+<script src="js/fDate.js"></script>
 
 <script>
-let x;
-function init() {  
-  console.log("init");
-  x = doCORS("https://query1.finance.yahoo.com/v7/finance/quote?symbols=FB,HSBC");
-  document.getElementById("appx").innerHTML = x.quoteResponse.result[0].shortName + " " +x.quoteResponse.result[0].regularMarketPrice  + " " + xL.quoteResponse.result[0].regularMarketTime;
-  document.getElementById("app2").innerHTML = x.quoteResponse.result[1].shortName + " " +x.quoteResponse.result[1].regularMarketPrice  + " " + xL.quoteResponse.result[1].regularMarketTime;
-}
-
-// window.onload = init();
+  function tm() {
+    tmc = new Date()
+    tmx = new Date(1640453787 * 1000)
+    document.getElementById("app1").innerHTML = 'Now ' + new Date(tmc);
+    document.getElementById("app2").innerHTML = 'Call  ' + new Date(tmx);
+    document.getElementById("app3").innerHTML = 'Now ' + date_format(new Date(),'Z');
+    document.getElementById("app4").innerHTML = 'Call ' + date_format(new Date(tmx),'Z');
+  }
+  window.onload = tm();
 </script>
 
 <body>
-    <button id="get" onclick="init()">GET</button>
-    <div id="appx"></div>
-    <div id="app2"></div>
+    <button id="get" onclick="tm()">GET</button>
+    <div id="app1">1</div>
+    <div id="app2">2</div>
+    <div id="app3">3</div>
+    <div id="app4">4</div>
 </body>
 </html>
     

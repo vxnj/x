@@ -94,5 +94,5 @@
   }).call(this);
   
   function date_format(dateVal, formatVal){
-      return dateVal.format(formatVal);
+    return dateVal.format(formatVal);
   }

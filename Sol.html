@@ -55,7 +55,6 @@ function getZip(dataz) {
 }
 
 function callwea() {
-  // url = "https://api.openweathermap.org/data/2.5/onecall?lat=40.8&lon=-73.97&units=imperial&exclude=minutely&appid=" + key;
   url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=minutely&appid=" + key;
   document.getElementById('linkjson').href = url
   xhr.open("GET", url, true);
@@ -70,7 +69,12 @@ tblhd= '<table class="table" id="mytbl"><thead><tr>'
     +'</tr></thead>';
 
 function getWea(data) {  
-      dateVal = new Date(data.current.dt *1000);
+  myOffset = date_format(new Date(),'Z');  
+  zpOffset  = data.timezone_offset;
+  shift = zpOffset - myOffset;
+  console.log(shift);
+
+  dateVal = new Date((data.current.dt + shift) *1000);
       dtnow = date_format(dateVal, 'g:i');
       tblhr = ""
       tblhr += "<tr>" 
@@ -83,7 +87,7 @@ function getWea(data) {
     
     let txt = "";
     for (let i = 1; i < 8; i++) {
-      var xd = new Date(data.hourly[i].dt*1000);
+      var xd = new Date((data.hourly[i].dt+ shift)*1000);
       dthr = date_format(xd, 'g a');
       tblhr += "<tr>" 
             + "  <td>" + dthr + "m</td>"
@@ -94,7 +98,7 @@ function getWea(data) {
       }
  
       for (let j = 1; j < 7; j++) {
-      var xd = new Date(data.daily[j].dt*1000);
+      var xd = new Date((data.daily[j].dt+ shift)*1000);
       dthr = date_format(xd, 'D');
 
       tblhr += "<tr class='day'>" 
@@ -106,14 +110,14 @@ function getWea(data) {
       }
    tblhr += "</tbody></table>";
 
-   dateVal = new Date(data.daily[0].sunrise *1000);
+   dateVal = new Date((data.daily[0].sunrise+ shift) *1000);
    srise = date_format(dateVal, 'g:ia');
-   dateVal = new Date(data.daily[0].sunset  *1000);
+   dateVal = new Date((data.daily[0].sunset + shift) *1000);
    sset =  date_format(dateVal, 'g:ia');
 
-   dateVal = new Date(data.daily[0].moonrise *1000);
+   dateVal = new Date((data.daily[0].moonrise+ shift) *1000);
    mrise =  date_format(dateVal, 'g:ia');
-   dateVal = new Date(data.daily[0].moonset  *1000);
+   dateVal = new Date((data.daily[0].moonset + shift) *1000);
    mset =  date_format(dateVal, 'g:ia');
    
    document.getElementById("tblhr").innerHTML = "";
