@@ -13,8 +13,8 @@
 
 <script>
 
-key = "da5f0d9ce3486ef93fd7ffb24235c9e3"
-// key = "a35e66501c88031db5054c862c6e5b15"
+// key = "da5f0d9ce3486ef93fd7ffb24235c9e3"
+key = "a35e66501c88031db5054c862c6e5b15"
 
 var xhr = new XMLHttpRequest();
 var xhrz = new XMLHttpRequest();
@@ -90,24 +90,30 @@ function getWea(data) {
     for (let i = 1; i < 8; i++) {
       var xd = new Date((data.hourly[i].dt+ shift)*1000);
       dthr = date_format(xd, 'g a');
+      wee = date_format(xd, 'H');
+      if (wee < 7 && wee > 0) {ix= i+7;} else {ix = i;}
+      var xd = new Date((data.hourly[ix].dt+ shift)*1000);
+      dthr = date_format(xd, 'g a');
+
       tblhr += "<tr>" 
             + "  <td>" + dthr + "m</td>"
-            + "  <td>" + parseInt(.5 + data.hourly[i].temp) + "°</td>"
-            + "  <td>" + data.hourly[i].humidity + "%" + "</td>"
-            + "  <td>" + geticon(data.hourly[i].weather[0].icon) + data.hourly[i].weather[0].description + "</td>"
+            + "  <td>" + parseInt(.5 + data.hourly[ix].temp) + "°</td>"
+            + "  <td>" + data.hourly[ix].humidity + "%" + "</td>"
+            + "  <td>" + geticon(data.hourly[ix].weather[0].icon) + data.hourly[ix].weather[0].description + "</td>"
             + "</tr>";
       }
  
       for (let j = 1; j < 7; j++) {
-      var xd = new Date((data.daily[j].dt+ shift)*1000);
-      dthr = date_format(xd, 'D');
+        xd = new Date((data.daily[j].dt+ shift)*1000);
+        dthr = date_format(xd, 'D');
 
-      tblhr += "<tr class='day'>" 
-            + "  <td>" + dthr + "</td>"
-            + "  <td>" + parseInt(.5 + data.daily[j].temp.max)+ "-" +parseInt(.5 + data.daily[j].temp.min) + "°</td>"
-            + "  <td>" + data.daily[j].humidity + "%" + "</td>"
-            + "  <td>" + geticon(data.daily[j].weather[0].icon) + data.daily[j].weather[0].description + "</td>"
-            + "</tr>";
+
+        tblhr += "<tr class='day'>" 
+              + "  <td>" + dthr + "</td>"
+              + "  <td>" + parseInt(.5 + data.daily[j].temp.max)+ "-" +parseInt(.5 + data.daily[j].temp.min) + "°</td>"
+              + "  <td>" + data.daily[j].humidity + "%" + "</td>"
+              + "  <td>" + geticon(data.daily[j].weather[0].icon) + data.daily[j].weather[0].description + "</td>"
+              + "</tr>";
       }
    tblhr += "</tbody></table>";
 
