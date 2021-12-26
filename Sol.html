@@ -141,7 +141,7 @@ function getWea(data) {
    document.getElementById("tblhr").innerHTML = tblhd + tblhr;   
    
    document.getElementById("sunbox" ).innerHTML = '<img src="svg/Clear.svg" alt="Sunrise" class="weaicon"/>' + " " + srise  + " - " + sset;
-   document.getElementById("moonbox").innerHTML = getmoon(data.daily[0].moon_phase) + " " + mrise  + " - " + mset;
+   document.getElementById("moonbox").innerHTML =  mrise  + " - " + mset + " " + getmoon(data.daily[0].moon_phase);
  }
 	
  window.onload = init;
@@ -245,7 +245,7 @@ function getmoon(phase) {
   <tbody>
   <tr>
   <td id="sunbox" ></td>
-  <td id="moonbox" onclick="showpop(7,'pop-moon')"></td>
+  <td id="moonbox" onclick="showpop(7,'pop-moon')" style="text-align: right"></td>
   </tr>
   </tbody>
 </table>

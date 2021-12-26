@@ -90,7 +90,7 @@ td, th {
     width: 290px; height: 434px;
     top:15%;  
     left: calc((100% - 290px)/2);
-    border: 3px solid var(--live-day);
+    border: 2px solid var(--live-def);
     color: rgb(204, 202, 202) !important; 
     /* color: var(--live-pop) !important;  */
     z-index:100; 
@@ -104,7 +104,7 @@ td, th {
 
 .hl {color: var(--live-cur) !important; }
 
-a   { color: var(--live-def) !important;
+a   { color: var(--live-bor) !important;
     font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;}    
 
 .alerts {
