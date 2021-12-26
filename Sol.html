@@ -78,6 +78,8 @@ function getWea(data) {
 
   dateVal = new Date((data.current.dt + shift) *1000);
       dtnow = date_format(dateVal, 'g:i');
+      hrnow = date_format(dateVal, 'H');
+      console.log(hrnow);
       tblhr = ""
       tblhr += "<tr>" 
             + "  <td>" + dtnow + "</td>"
@@ -91,7 +93,7 @@ function getWea(data) {
       var xd = new Date((data.hourly[i].dt+ shift)*1000);
       dthr = date_format(xd, 'g a');
       wee = date_format(xd, 'H');
-      if (wee < 7 && wee > 0) {ix= i+7;} else {ix = i;}
+      if (wee < 7 && wee > 0 && hrnow > 6) {ix= i+7;} else {ix = i;}
       var xd = new Date((data.hourly[ix].dt+ shift)*1000);
       dthr = date_format(xd, 'g a');
 
