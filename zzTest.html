@@ -8,9 +8,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-</style>
+
 <script src="js/funcs.js"></script>
 <script src="js/fDate.js"></script>
+<link rel="stylesheet" href="style.css" />
 
 <script>
   function tm() {
@@ -19,14 +20,21 @@
     document.getElementById("app1").innerHTML = 'Now ' + new Date(tmc);
     document.getElementById("app2").innerHTML = 'Call  ' + new Date(tmx);
     document.getElementById("app3").innerHTML = 'Now ' + date_format(new Date(),'Z');
-    document.getElementById("app4").innerHTML = 'Call ' + date_format(new Date(tmx),'Z');
+    
+    const col = getComputedStyle(document.documentElement).getPropertyValue('--live-def');
+    console.log(col);
+
+
   }
+
   window.onload = tm();
+
 </script>
 
 <body>
+  <p ></p>
     <button id="get" onclick="tm()">GET</button>
-    <div id="app1">1</div>
+    <div style="color:red !important" id="app1">1</div>
     <div id="app2">2</div>
     <div id="app3">3</div>
     <div id="app4">4</div>

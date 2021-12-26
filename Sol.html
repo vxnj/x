@@ -50,7 +50,7 @@ function callzip() {
 
 function getZip(dataz) {
    document.getElementById("zipcd").innerHTML = dataz.name + " (" + dataz.zip + ")";
-   document.getElementById("linkddg").href = "https://duckduckgo.com/&ia=weather?q=weather+" + dataz.zip
+   document.getElementById("linkddg").href = "https://duckduckgo.com/&ia=weather?q=weather+zip+" + dataz.zip
    lat = dataz.lat
    lon = dataz.lon
    callwea();
@@ -166,6 +166,13 @@ function themer () {
     document.documentElement.style.setProperty('--live-cur',val[2]);
     document.documentElement.style.setProperty('--live-bkg',val[3]);  
     document.querySelector(".pop").style.backgroundImage =  val[4];
+
+    document.querySelector(".table").style.borderColor =  getComputedStyle(document.documentElement).getPropertyValue('--live-def') + '50 !imporatant';
+
+    newcol = (getComputedStyle(document.documentElement).getPropertyValue('--live-def') + '50');
+    document.documentElement.style.setProperty('--live-bor',newcol);
+    document.getElementById("mytbl").style.borderColor = newcol
+  
   }
 
 
