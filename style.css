@@ -78,7 +78,7 @@ td, th {
 
 .pop { 
     background-color: var(--live-day);
-    background-image: url("img/SkyDark.jpg");
+    background-image: url("images/SkyDark.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     width: 290px; height: 434px;

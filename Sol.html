@@ -8,9 +8,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/asap" type="text/css"/>
-<link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/fira-sans" type="text/css"/>  -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script> -->
+
+<link rel="icon" type="image/x-icon" href="images/Sol.ico">
 
 <script>
 
@@ -85,7 +84,6 @@ function getWea(data) {
             + '  <td class="hl"><b>' + parseInt(.5 + data.current.temp) + "°</b></td>"
             + "  <td>" + data.current.humidity + "%" + "</td>"
             + "  <td>" + geticon(data.current.weather[0].icon) + data.current.weather[0].description   +"</td>"
-           // + "  <td>" + '<img src="http://openweathermap.org/img/wn/' + data.current.weather[0].icon + '@2x.png" style="width:32px;height:32px;">' + "</td>"
             + "</tr>";
     
     let txt = "";
@@ -158,10 +156,10 @@ function themer () {
     th = document.getElementById("themer").value;
     console.log(th)
     switch (th) {
-      case 'dark': val = ['var(--dark-def)','var(--dark-day)','var(--dark-cur)','var(--dark-bkg)','url("img/SkyDark.jpg")']; break;
-      case "mint": val = ['var(--mint-def)','var(--mint-day)','var(--mint-cur)','var(--mint-bkg)','url("img/SkyMint.jpg")']; break;
-      case "pink": val = ['var(--pink-def)','var(--pink-day)','var(--pink-cur)','var(--pink-bkg)','url("img/SkyPink.jpg")']; break;
-      case "bayj": val = ['var(--bayj-def)','var(--bayj-day)','var(--bayj-cur)','var(--bayj-bkg)','url("img/SkyBeige.jpg")']; break;
+      case 'dark': val = ['var(--dark-def)','var(--dark-day)','var(--dark-cur)','var(--dark-bkg)','url("images/SkyDark.jpg")']; break;
+      case "mint": val = ['var(--mint-def)','var(--mint-day)','var(--mint-cur)','var(--mint-bkg)','url("images/SkyMint.jpg")']; break;
+      case "pink": val = ['var(--pink-def)','var(--pink-day)','var(--pink-cur)','var(--pink-bkg)','url("images/SkyPink.jpg")']; break;
+      case "bayj": val = ['var(--bayj-def)','var(--bayj-day)','var(--bayj-cur)','var(--bayj-bkg)','url("images/SkyBeige.jpg")']; break;
     }
     document.documentElement.style.setProperty('--live-def',val[0]);
     document.documentElement.style.setProperty('--live-day',val[1]);
@@ -213,7 +211,7 @@ function getmoon(phase) {
 
 </script>
 
-<title>weather</title>
+<title>Sol</title>
 </head>
 <body>
 
