@@ -52,8 +52,7 @@
 }
 
 body { background-color: var(--live-bkg) !important;
-    padding: 10px !important;
-    line-height: .85 !important;}
+    padding: 10px !important; }
 
 div {color: var(--live-def) ; 
     font-family: fntMain, Segoe UI, Tahoma, Courier, monospace; 
@@ -64,11 +63,12 @@ table  { border-color: var(--live-bor) !important;
         color: var(--live-def) !important;
         margin-top: 10px !important;
         /* white-space: nowrap; */
+         
     }
 
 .table > :not(:first-child) {
-        border-top: 2px solid var(--live-bor) !important;}
-
+        border-top: 2px solid var(--live-bor) !important;
+        line-height: .85 !important; }
 
 td, th {
     padding-left: 0px !important;
@@ -79,10 +79,14 @@ td, th {
 
 }
 
+a   { color: var(--live-bor) !important;
+    font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;}  
+
 .weaicon { height: 26px !important; width: 26px !important; opacity: 70% !important;
     margin: -11px 2px -6px 0 !important;
 }
 
+[id="aqi"] { margin-left: 8px;}
 .numball {
     display: inline-block;
     color: var(--live-pop) !important;
@@ -94,7 +98,9 @@ td, th {
     font-size: 16px !important;
     vertical-align: center;
     text-decoration: none;
+    line-height: 14px;
 }
+
 
 .pop { 
     background-color: var(--live-day);
@@ -115,11 +121,7 @@ td, th {
    }
 
 
-
-.hl {color: var(--live-cur) !important; }
-
-a   { color: var(--live-bor) !important;
-    font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;}    
+.hl {color: var(--live-cur) !important; }  
 
 .alerts {
     background-color: rgb(104, 11, 29);

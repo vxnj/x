@@ -15,50 +15,45 @@
 
 <script>
 
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() { // Check if fetch request is done
+    if (xhr.readyState == 4 && xhr.status == 200) { 
+        jsonData = JSON.parse(xhr.responseText);
+        processQ(jsonData);
+    }
+}
+
 let  resp = 'a';
-  data = "";
-function tm() {
-  const xhr = new XMLHttpRequest();
-xhr.withCredentials = false;
-xhr.addEventListener("readystatechange", function () {
-	if (this.readyState === this.DONE) {
-		console.log(this.responseText);
-    resp = this.responseText
-    document.getElementById("app3").innerHTML = '3x ' + this.responseText
+data = "";
 
+function getQ() {
+  now = date_format(new Date(), 'U');
+  console.log(now);
+  prx = "https://api.allorigins.win/raw?url=";
+  url = "https://query1.finance.yahoo.com/v7/finance/quote?symbols=^ixic,^DJI,^SPX,aapl,hsbc,ibm,tsla,BTC-USD,ETH-USD" + ',X' + now
+  xhr.open("GET", prx + url, true);
+  xhr.send();
+}
 
-	}
-});
-//  xhr.open("GET", "https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=BTCUSD");
-//  xhr.setRequestHeader("x-rapidapi-host", "yh-finance.p.rapidapi.com");
-//  xhr.setRequestHeader("x-rapidapi-key", "b82347799fmsha23f8c4bf57860ap16128djsn29dc226ace18");
+function processQ(data) {
+  console.log('processQ start');
+  // console.log(data.quoteResponse.result.length);
+  for (q = 0, len =data.quoteResponse.result.length, vres = ""; q < len; q++) {
+    vres += data.quoteResponse.result[q].regularMarketTime+' '   +data.quoteResponse.result[q].symbol + ' ' +  data.quoteResponse.result[q].regularMarketPrice + '<br>'
+  }
+  document.getElementById("app1").innerHTML = vres ;
+  console.log(vres || 'dang');
 
-// xhr.open("GET", "https://query1.finance.yahoo.com/v7/finance/quote?symbols=qqq");
-xhr.open("GET", "https://api.allorigins.win/raw?url=https://query2.finance.yahoo.com/v10/finance/quoteSummary/HSBC?modules=assetProfile");
-//xhr.open("GET", "https://cors-anywhere.herokuapp.com/https://query2.finance.yahoo.com/v10/finance/quoteSummary/HSBC?modules=assetProfile");
-
-
-
-//hr.setRequestHeader("withCredentials", "true");
- //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-//xhr.setRequestHeader("Sec-Fetch-Mode", "no-cors");
-
-xhr.send(data);
-
-
-document.getElementById("app4").innerHTML = '4x' +resp ;
-
+  
 }
 
 </script>
 
 
-
-
 <body>
   <p ></p>
-    <button id="get" onclick="tm()">GET</button><br><br>
-    <div style="color:red !important" id="app1">1</div><br>
+    <button id="get" onclick="getQ()">GET</button><br><br>
+    <div style="color:rgb(20, 209, 67) !important" id="app1">1</div><br>
     <div id="app2">2</div><br>
     <div id="app3">3</div><br>
     <div id="app4" style="max-width: 100%;">4</div><br>
