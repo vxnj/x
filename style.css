@@ -110,10 +110,11 @@ a   { color: var(--live-bor) !important;
 .alerts {
     background-color: rgb(104, 11, 29);
     color: rgb(235, 235, 235) !important;
-    padding: 8px;
+    padding: 6px;
     border-radius: 7px;
     text-decoration: none;
     position: relative;
+    margin-top: 4px;
     font-weight: bold;
     display: none; 
 }

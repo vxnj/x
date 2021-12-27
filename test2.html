@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+<title>Page Title</title>
+</head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="js/funcs.js"></script>
+<script src="js/fDate.js"></script>
+<link rel="stylesheet" href="style.css" />
+
+<script>
+
+let  resp = 'a';
+  data = "";
+function tm() {
+  const xhr = new XMLHttpRequest();
+xhr.withCredentials = false;
+xhr.addEventListener("readystatechange", function () {
+	if (this.readyState === this.DONE) {
+		console.log(this.responseText);
+    resp = this.responseText
+    document.getElementById("app3").innerHTML = '3x ' + this.responseText
+
+
+	}
+});
+//  xhr.open("GET", "https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=BTCUSD");
+//  xhr.setRequestHeader("x-rapidapi-host", "yh-finance.p.rapidapi.com");
+//  xhr.setRequestHeader("x-rapidapi-key", "b82347799fmsha23f8c4bf57860ap16128djsn29dc226ace18");
+
+// xhr.open("GET", "https://query1.finance.yahoo.com/v7/finance/quote?symbols=qqq");
+xhr.open("GET", "https://api.allorigins.win/raw?url=https://query2.finance.yahoo.com/v10/finance/quoteSummary/HSBC?modules=assetProfile");
+//xhr.open("GET", "https://cors-anywhere.herokuapp.com/https://query2.finance.yahoo.com/v10/finance/quoteSummary/HSBC?modules=assetProfile");
+
+
+
+//hr.setRequestHeader("withCredentials", "true");
+ //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+//xhr.setRequestHeader("Sec-Fetch-Mode", "no-cors");
+
+xhr.send(data);
+
+
+document.getElementById("app4").innerHTML = '4x' +resp ;
+
+}
+
+</script>
+
+
+
+
+<body>
+  <p ></p>
+    <button id="get" onclick="tm()">GET</button><br><br>
+    <div style="color:red !important" id="app1">1</div><br>
+    <div id="app2">2</div><br>
+    <div id="app3">3</div><br>
+    <div id="app4" style="max-width: 100%;">4</div><br>
+</body>
+</html>
+    
