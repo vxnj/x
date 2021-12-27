@@ -16,11 +16,12 @@
 
 // key = "da5f0d9ce3486ef93fd7ffb24235c9e3"
 key = "a35e66501c88031db5054c862c6e5b15"
-
+//key = "439d4b804bc8187953eb36d2a8c26a02"
 setInterval(callwea, 15*60000);
 
 var xhr = new XMLHttpRequest();
 var xhrz = new XMLHttpRequest();
+var xhrq = new XMLHttpRequest();
 paramzip = "10025";
 var tblhr ="";
 
@@ -37,17 +38,27 @@ xhrz.onreadystatechange = function() { // Check if fetch request is done
         getZip(jsonZip);
     }
 }
+xhrq.onreadystatechange = function() { // Check if fetch request is done
+    if (xhrq.readyState == 4 && xhrq.status == 200) { 
+        jsonAqi = JSON.parse(xhrq.responseText);
+        getAqi(jsonAqi);
+    }
+}
 
 function init() {
     paramzip = gup("zip") || "10025";
     // document.getElementById("tblhr").innerHTML = tblhr;
-    callzip();
+    callzip(5);
 }
 
 function callzip() {
   url = "https://api.openweathermap.org/geo/1.0/zip?zip=" + paramzip + "&appid=" + key
   xhrz.open("GET", url, true);
   xhrz.send();
+
+  url = "https://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=" + paramzip + "&distance=25&API_KEY=DF2D21FE-7DCA-44E1-A761-C161AA742213"
+  xhrq.open("GET", url, true);
+  xhrq.send();
   }
 
 function getZip(dataz) {
@@ -58,6 +69,34 @@ function getZip(dataz) {
    callwea();
 }
 
+function getAqi(dataq) {
+   document.getElementById("aqi").innerHTML = "";
+   console.log(dataq);
+   let vaqi, len, text; 
+   for (q = 0, len = dataq.length, vaqi="", maxq = 0, maxn = 0; q < len; q++) {
+        vaqi += dataq[q].ParameterName + ' ' + dataq[q].AQI + ' ' + dataq[q].Category.Name + + dataq[q].Category.Number +'<br>';
+        if (dataq[q].Category.Number > maxq) { maxq = dataq[q].Category.Number; }
+        if (dataq[q].AQI > maxn) { maxn = dataq[q].AQI; }
+   
+  }
+
+  maxq = 1
+  console.log(vaqi);
+  switch (maxq) {
+    case 1: colq = "#00e400"; break;
+    case 2: colq = "#ffff00"; break;
+    case 3: colq = "#ff7e00"; break;
+    case 4: colq = "#ff0000"; break;
+    case 5: colq = "#8f3f97"; break;
+    case 6: colq = "#7e0023"; break;
+}
+
+  console.log('maxq ' + maxq);
+  document.getElementById("aqi").innerHTML = maxn ;
+  document.getElementById("aqi").style.backgroundColor=colq + 80;
+  document.getElementById("aqi").href= "https://www.airnow.gov/?zip=" + paramzip;
+  console.log("https://www.airnow.gov/?zip=" + paramzip);
+}
 function callwea() {
   url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=minutely&appid=" + key;
   document.getElementById('linkjson').href = url
@@ -246,7 +285,7 @@ function getmoon(phase) {
   </tbody>
 </table>
 
-<a id="alerts" class="alerts" href="https://openweathermap.org/city/5128581"></a>
+<a id="alerts" class="alerts" href="https://www.weather.gov/forecastmaps"></a>
 
 <div id="tblhr"></div>
 
@@ -254,6 +293,7 @@ function getmoon(phase) {
   <tbody>
   <tr>
   <td id="sunbox" ></td>
+  <td id="aqibox" ><a id="aqi" class="numball" href="https://www.airnow.gov/"></a></td>
   <td id="moonbox" onclick="showpop(7,'pop-moon')" style="text-align: right"></td>
   </tr>
   </tbody>
