@@ -107,7 +107,7 @@ function getAqi(dataq) {
         if (dataq[q].AQI > maxn) { maxn = dataq[q].AQI; }
         state = dataq[q].StateCode;
   }
-  document.getElementById("linkddg").href = "https://duckduckgo.com/&ia=weather?q=weather+" + city + ', ' + state + ' ' + paramzip + " US" ;
+  document.getElementById("linkddg").href = "https://duckduckgo.com/?q=weather+" + city + ', ' + state + ' ' + paramzip + " US&ia=weather";
   
   console.log(vaqi);
   switch (maxq) {
