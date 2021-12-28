@@ -59,9 +59,9 @@ function processQ(data) {
     
     console.log( col)
     for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
-      if (r>0){ clsJust = ' clsRt'} else {clsJust = ""};
-      trHtml += '<td class="' + clsSt + clsJust + '">' + row[r] + '</td>';
-      console.log('<td class="' + clsSt + clsJust + '">' + row[r] + '</td>');
+      if (r>0){ clsAdd = ' class="' + clsSt + ' clsRt"'} else {clsAdd = ""};
+      trHtml += '<td' + clsAdd + '>' + row[r] + '</td>';
+      console.log( '<td' + clsAdd + '>' + row[r] + '</td>');
     }
   
     tbHtml += '<tr ' + col + '>' + trHtml + '</tr>';
