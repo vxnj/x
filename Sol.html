@@ -13,21 +13,27 @@
 <link rel="icon" type="image/x-icon" href="images/Sol.ico">
 
 <script>
-
 // key = "da5f0d9ce3486ef93fd7ffb24235c9e3"
 key = "a35e66501c88031db5054c862c6e5b15"
 
+// Set reloading timer ======================================================
 mins = 60000
-setInterval(reloadit, 5*mins);
+myInt = setInterval(reloadit, 5*mins);
 let rel = 'on';
 stale = false;
 function xOn(){
   rel = 'on';
-  if (stale) { reloadit();}
+  if (stale) { 
+    reloadit();
+    clearInterval(myInt)
+    myInt = setInterval(reloadit, 15*mins);
+  }
 }
-
 window.addEventListener("blur",  function(){ rel = 'off';});
 window.addEventListener("focus", xOn);
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM is loaded");
+});
 
 function reloadit() {
   if (rel == 'on') {
@@ -39,9 +45,7 @@ function reloadit() {
     console.log('stale');
   }
 }
-
-
-
+// =====================================================
 
 var xhr = new XMLHttpRequest();
 var xhrz = new XMLHttpRequest();
