@@ -19,3 +19,8 @@ function showpop(secs, id) {
     document.getElementById(id).style.display = "block"
     setTimeout(function(){document.getElementById(id).style.display = "none";}, secs*1000 || 3000);      
 }
+
+function numStd(num, dec) {
+  ans = num.toFixed(dec || 2)
+  return ans.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}

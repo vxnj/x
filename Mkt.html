@@ -35,11 +35,10 @@ function getQ() {
   xhr.send();
 }
 
-
 function processQ(data) {
   let tdHtml = '';tbHtml = '';
 
-  thHtml = '<table class="tblX" id="mytbl"><thead onclick="getQ()"><tr>';
+  thHtml = '<table onclick="getQ()" class="tblX" id="mytbl"><thead><tr>';
   
   heads = [now,'Last','Chg','Chg%'] // ,'State','Type']
   for (h = 0, len = heads.length; h < len; h++ ) {
@@ -52,7 +51,8 @@ function processQ(data) {
   ticks =  data.quoteResponse.result.length
   for (q = 0, trHtml = ""; q < ticks; q++) {
     rq = data.quoteResponse.result[q];
-    row = [rq.shortName.substring(0, 20),rq.regularMarketPrice.toFixed(2),rq.regularMarketChange.toFixed(2),rq.regularMarketChangePercent.toFixed(2)+'%'] // ,rq.marketState,rq.quoteType.substring(0, 6)]
+    // row = [rq.shortName.substring(0, 20),rq.regularMarketPrice.toFixed(2),rq.regularMarketChange.toFixed(2),rq.regularMarketChangePercent.toFixed(2)+'%'] // ,rq.marketState,rq.quoteType.substring(0, 6)]
+    row = [rq.shortName.substring(0, 20),numStd(rq.regularMarketPrice),numStd(rq.regularMarketChange),numStd(rq.regularMarketChangePercent,1)+'%'] // ,rq.marketState,rq.quoteType.substring(0, 6)]
     for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
       if (r>0){ clsJust = ' class="clsRt"'} else {clsJust = ""};
       if (rq.regularMarketChangePercent > 0) {chgcol = "chggrn";} else {chgcol = "chgred"}
@@ -65,9 +65,9 @@ function processQ(data) {
   document.getElementById("app1").innerHTML = thHtml + tbHtml + '</table>';
   document.getElementById("app2").innerHTML = '<a href="' + url + '" target="blank">json<a/>';
   
-  
 }
-  getQ();
+
+getQ();
 
 </script>
 
