@@ -58,15 +58,15 @@ div {color: var(--live-def) ;
     font-family: fntMain, Segoe UI, Tahoma, Courier, monospace; 
     font-size:large;}
 
+
 table  { border-color: var(--live-bor) !important;
         font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
         color: var(--live-def) !important;
         margin-top: 5px !important;
         margin-bottom: 5px !important;
-
-        /* white-space: nowrap; */
-         
+        /* white-space: nowrap; */     
     }
+
 
 .table > :not(:first-child) {
     border-top: 2px solid var(--live-bor) !important;
@@ -80,6 +80,7 @@ td, th {
     border-color:  var(--live-bor) !important;
 
 }
+
 
 a   { color: var(--live-bor) !important;
     font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;}  
@@ -145,3 +146,27 @@ a   { color: var(--live-bor) !important;
     margin-top: 0px !important;
     margin-bottom: 0px !important;
 }
+
+
+
+.tblX  {border-collapse: collapse !important;
+    width: 100%;
+    text-align: left;
+    }
+        
+.tblX tr , .tblX td   { 
+border-width: 1px 0  !important; 
+border-style: solid !important;
+line-height: 22px !important;
+font-size: medium;
+border-collapse: collapse !important;
+padding: 2px !important;}
+.tblX th {line-height: 22px !important;
+border: 0px;
+background-color: hsla(251, 65%, 59%, 0.377);}
+
+/* tbody tr:nth-child(even){background-color: #322e55f1 !important;} */
+
+.chgred { background-color: hsla(0,   100%, 25%, 0.3) !important;}
+.chggrn { background-color: hsla(100, 100%, 25%, 0.3) !important;}
+.clsRt  { text-align: right }
