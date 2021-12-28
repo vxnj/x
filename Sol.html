@@ -90,7 +90,7 @@ function callzip() {
 
 function getZip(dataz) {
    document.getElementById("zipcd").innerHTML = dataz.name + " (" + dataz.zip + ")";
-   document.getElementById("linkddg").href = "https://duckduckgo.com/&ia=weather?q=weather+zip=" + dataz.zip
+   document.getElementById("linkddg").href = "https://duckduckgo.com/&ia=weather?q=weather+" + dataz.zip + " " + dataz.name 
    lat = dataz.lat
    lon = dataz.lon
    city = dataz.name
