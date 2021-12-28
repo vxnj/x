@@ -17,7 +17,30 @@
 // key = "da5f0d9ce3486ef93fd7ffb24235c9e3"
 key = "a35e66501c88031db5054c862c6e5b15"
 
-setInterval(callwea, 15*60000);
+mins = 60000
+setInterval(reloadit, 5*mins);
+let rel = 'on';
+stale = false;
+function xOn(){
+  rel = 'on';
+  if (stale) { reloadit();}
+}
+
+window.addEventListener("blur",  function(){ rel = 'off';});
+window.addEventListener("focus", xOn);
+
+function reloadit() {
+  if (rel == 'on') {
+    console.log('reload!! ' + date_format(new Date(), 'H:i:s'));
+    callwea();
+    stale = false;
+  } else {
+    stale = true;
+    console.log('stale');
+  }
+}
+
+
 
 
 var xhr = new XMLHttpRequest();

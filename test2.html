@@ -30,7 +30,7 @@ function getQ() {
   now = date_format(new Date(), 'U');
   console.log(now);
   prx = "https://api.allorigins.win/raw?url=";
-  url = "https://query1.finance.yahoo.com/v7/finance/quote?symbols=^ixic,^DJI,^SPX,aapl,hsbc,ibm,tsla,BTC-USD,ETH-USD" + ',X' + now
+  url = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=^ixic,^DJI,^GSPC,aapl,GOOG,FB,AMZN,hsbc,ibm,tsla,BTC-USD,ETH-USD,CL=F,GC=F,NQ=F,ES=F,YM=F,^TNX,QQQ,SPY,MKTX" + ',X' + now
   xhr.open("GET", prx + url, true);
   xhr.send();
 }
@@ -39,10 +39,29 @@ function processQ(data) {
   console.log('processQ start');
   // console.log(data.quoteResponse.result.length);
   for (q = 0, len =data.quoteResponse.result.length, vres = ""; q < len; q++) {
-    vres += data.quoteResponse.result[q].regularMarketTime+' '   +data.quoteResponse.result[q].symbol + ' ' +  data.quoteResponse.result[q].regularMarketPrice + '<br>'
+  
+
+    
+    dateVal = new Date((data.quoteResponse.result[q].regularMarketTime) *1000);
+    dateVal = date_format(dateVal, 'H:i');
+
+    vres += 
+      dateVal  +  ' ' + 
+      //data.quoteResponse.result[q].regularMarketTime+' '  +
+      data.quoteResponse.result[q].symbol + ' ' +  
+      data.quoteResponse.result[q].shortName + ' ' +  
+      
+      data.quoteResponse.result[q].marketState +  ' ' + 
+      data.quoteResponse.result[q].regularMarketPrice.toFixed(2) +  ' ' +
+      data.quoteResponse.result[q].regularMarketChange.toFixed(2) + ' ' +  
+      data.quoteResponse.result[q].regularMarketChangePercent.toFixed(1)  + '% ' +  
+      data.quoteResponse.result[q].quoteType + ' ' +  
+      data.quoteResponse.result[q].exchangeDataDelayedBy  + ' ' +  
+      '<br>';
+  
   }
   document.getElementById("app1").innerHTML = vres ;
-  console.log(vres || 'dang');
+
 
   
 }
@@ -53,11 +72,11 @@ function processQ(data) {
 <body>
   <p ></p>
     <button id="get" onclick="getQ()">GET</button><br><br>
-    <div style="color:rgb(20, 209, 67) !important" id="app1">1</div><br>
+    <div style="color:rgb(155, 201, 167) !important" id="app1">1</div><br>
     <div id="app2">2</div><br>
     <div id="app3">3</div><br>
     <div id="app4" style="max-width: 100%;">4</div><br>
-    <div id="aqii" class="numball">99</div><br>
+
     
 </body>
 </html>
