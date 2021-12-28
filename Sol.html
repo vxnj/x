@@ -90,7 +90,7 @@ function callzip() {
 
 function getZip(dataz) {
    document.getElementById("zipcd").innerHTML = dataz.name + " (" + dataz.zip + ")";
-   document.getElementById("linkddg").href = "https://duckduckgo.com/&ia=weather?q=weather+" + dataz.name + ' ' + dataz.zip + " US" 
+   document.getElementById("linkddg").href = "https://duckduckgo.com/&ia=weather?q=weather+" + dataz.name + ' ' + dataz.zip + " US";
    lat = dataz.lat
    lon = dataz.lon
    city = dataz.name
@@ -107,7 +107,7 @@ function getAqi(dataq) {
         if (dataq[q].AQI > maxn) { maxn = dataq[q].AQI; }
         state = dataq[q].StateCode;
   }
-
+  document.getElementById("linkddg").href = "https://duckduckgo.com/&ia=weather?q=weather+" + city + ', ' + state + ' ' + paramzip + " US" ;
   
   console.log(vaqi);
   switch (maxq) {
