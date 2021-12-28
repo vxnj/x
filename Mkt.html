@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+<title>Mkt</title>
+</head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="js/funcs.js"></script>
+<script src="js/fDate.js"></script>
+<link rel="stylesheet" href="style.css" />
+
+<script>
+
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() { // Check if fetch request is done
+    if (xhr.readyState == 4 && xhr.status == 200) { 
+        jsonData = JSON.parse(xhr.responseText);
+        processQ(jsonData);
+    }
+}
+
+let  resp = 'a';
+data = "";
+
+function getQ() {
+  now = date_format(new Date(), 'g:ia');
+  console.log(now);
+  prx = "https://api.allorigins.win/raw?url=";
+  url = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=^ixic,^DJI,^GSPC,aapl,GOOG,FB,AMZN,hsbc,tsla,BTC-USD,ETH-USD,CL=F,GC=F,NQ=F,ES=F,YM=F,^TNX,QQQ,SPY,MKTX" + ',X' + now
+  xhr.open("GET", prx + url, true);
+  xhr.send();
+}
+
+function processQ(data) {
+  let tdHtml = '';tbHtml = '';
+  console.log('processQ start');
+
+  thHtml = '<table class="tblX" id="mytbl"><thead><tr>';
+  heads = [now,'Name','Last','Chg','Chg%']
+  for (h = 0, len = heads.length; h < len; h++ ) {
+    thHtml += '<th>' + heads[h] + '</th>';
+  }
+  thHtml += '</tr></thead>';
+  console.log(thHtml);
+
+  ticks =  data.quoteResponse.result.length
+
+  for (q = 0, trHtml = ""; q < ticks; q++) {
+    rq = data.quoteResponse.result[q];
+    row = [rq.symbol,rq.shortName,rq.regularMarketPrice.toFixed(2),rq.regularMarketChange.toFixed(2),rq.regularMarketChangePercent.toFixed(2)+'%']
+    for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
+      trHtml += '<td>' + row[r] + '</td>';
+    }
+    tbHtml += '<tr>' + trHtml + '</tr>';
+    console.log(trHtml); 
+   
+  }
+
+  console.log(tbHtml);
+  document.getElementById("app1").innerHTML = thHtml + tbHtml + '</table>';
+  
+}
+
+</script>
+
+
+<body>
+  <p ></p>
+    <button id="get" onclick="getQ()">GET</button><br><br>
+    <div style="color:rgb(155, 201, 167) !important" id="app1">1</div><br>
+    <div id="app2">2</div><br>
+    <div id="app3">3</div><br>
+    <div id="app4" style="max-width: 100%;">4</div><br>
+
+    
+</body>
+</html>
+    
