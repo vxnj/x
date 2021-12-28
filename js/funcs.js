@@ -25,10 +25,24 @@ function numStd(num, dec) {
   return ans.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
+
 function chgCol(pct) {
-    if (pct === undefined) return ;
-    hslColor = pct > 0 ? '100,70%,20%' : '0,70%,20%';
-    hslOpacity = Math.min(Math.abs(pct/2.5)+.25, 1);
-    hslA = hslOpacity.toFixed(3);
-    return `style="background-color: hsla(${hslColor},${hslA})"`;
+  if (pct === undefined) return ;
+  hslColor = pct > 0 ? '100,70%,20%' : '0,70%,20%';
+  hslOpacity = Math.min(Math.abs(pct/2.5)+.25, 1);
+  hslA = hslOpacity.toFixed(3);
+  return `style="background-color: hsla(${hslColor},${hslA})"`;
+}
+
+function mktSt(st) {
+  switch (st) {
+    case "PRE": stCls = "stPre";break;
+    case "REGULAR": stCls = "stReg";break;
+    case "POST": stCls = "stPst";break;
+    case "POSTPOST": stCls = "stOff";break;
   }
+  return stCls;
+}
+
+
+  
