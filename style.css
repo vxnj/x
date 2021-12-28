@@ -73,8 +73,9 @@ table  { border-color: var(--live-bor) !important;
         line-height: .85 !important; }
 
 td, th {
-    padding-left: 0px !important;
-    padding-right: 2px !important;
+    /* padding-left: 0px !important;
+    padding-right: 2px !important; */
+    padding: 7px 2px 7px 0 !important;
     font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 300;
     border-color:  var(--live-bor) !important;
