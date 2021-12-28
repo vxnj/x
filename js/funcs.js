@@ -29,7 +29,7 @@ function numStd(num, dec) {
 function chgCol(pct) {
   if (pct === undefined) return ;
   hslColor = pct > 0 ? '100,70%,20%' : '0,70%,20%';
-  hslOpacity = Math.min(Math.abs(pct/2.5)+.25, 1);
+  hslOpacity = Math.min(Math.abs(pct/2.5)+.25, .6);
   hslA = hslOpacity.toFixed(3);
   return `style="background-color: hsla(${hslColor},${hslA})"`;
 }
