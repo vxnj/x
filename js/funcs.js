@@ -17,10 +17,18 @@ function doCORS(url) {
 
 function showpop(secs, id) {
     document.getElementById(id).style.display = "block"
-    setTimeout(function(){document.getElementById(id).style.display = "none";}, secs*1000 || 3000);      
+    setTimeout(function(){document.getElementById(id).style.display = "none";}, secs*1000 || 3000);
 }
 
 function numStd(num, dec) {
   ans = num.toFixed(dec || 2)
   return ans.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
+
+function chgCol(pct) {
+    if (pct === undefined) return ;
+    hslColor = pct > 0 ? '100,70%,20%' : '0,70%,20%';
+    hslOpacity = Math.min(Math.abs(pct/2.5)+.25, 1);
+    hslA = hslOpacity.toFixed(3);
+    return `style="background-color: hsla(${hslColor},${hslA})"`;
+  }

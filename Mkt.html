@@ -30,7 +30,7 @@ function getQ() {
   now = date_format(new Date(), 'g:i:sa');
   console.log(now);
   prx = "https://api.allorigins.win/raw?url=";
-  url = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=^ixic,^DJI,^GSPC,aapl,GOOG,FB,AMZN,hsbc,tsla,MKTX,BTC-USD,ETH-USD,CL=F,GC=F,NQ=F,ES=F,YM=F,^TNX,QQQ,SPY" + ',X' + now
+  url = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=^DJI,^ixic,^GSPC,aapl,GOOG,FB,AMZN,hsbc,tsla,MKTX,BTC-USD,ETH-USD,CL=F,GC=F,NQ=F,ES=F,YM=F,^TNX,QQQ,SPY" + ',X' + now
   xhr.open("GET", prx + url, true);
   xhr.send();
 }
@@ -40,7 +40,7 @@ function processQ(data) {
 
   thHtml = '<table onclick="getQ()" class="tblX" id="mytbl"><thead><tr>';
   
-  heads = [now,'Last','Chg','Chg%'] // ,'State','Type']
+  heads = [now,'Last','Chg','%'] // ,'State','Type']
   for (h = 0, len = heads.length; h < len; h++ ) {
     if (h>0){ clsJust = ' class="clsRt"'} else {clsJust = ""};
     console.log(clsJust);
@@ -51,14 +51,16 @@ function processQ(data) {
   ticks =  data.quoteResponse.result.length
   for (q = 0, trHtml = ""; q < ticks; q++) {
     rq = data.quoteResponse.result[q];
-    // row = [rq.shortName.substring(0, 20),rq.regularMarketPrice.toFixed(2),rq.regularMarketChange.toFixed(2),rq.regularMarketChangePercent.toFixed(2)+'%'] // ,rq.marketState,rq.quoteType.substring(0, 6)]
-    row = [rq.shortName.substring(0, 20),numStd(rq.regularMarketPrice),numStd(rq.regularMarketChange),numStd(rq.regularMarketChangePercent,1)+'%'] // ,rq.marketState,rq.quoteType.substring(0, 6)]
+    row = [rq.shortName.substring(0, 16),numStd(rq.regularMarketPrice,0),numStd(rq.regularMarketChange),numStd(rq.regularMarketChangePercent,1)+'%'] // ,rq.marketState,rq.quoteType.substring(0, 6)]
+    col = chgCol(rq.regularMarketChangePercent);
+    console.log( col)
     for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
       if (r>0){ clsJust = ' class="clsRt"'} else {clsJust = ""};
-      if (rq.regularMarketChangePercent > 0) {chgcol = "chggrn";} else {chgcol = "chgred"}
+     // if (rq.regularMarketChangePercent > 0) {chgcol = "chggrn";} else {chgcol = "chgred"}
       trHtml += '<td' + clsJust + '>' + row[r] + '</td>';
     }
-    tbHtml += '<tr class="' + chgcol + '">' + trHtml + '</tr>';
+    //tbHtml += '<tr class="' + chgcol + '">' + trHtml + '</tr>';
+    tbHtml += '<tr ' + col + '>' + trHtml + '</tr>';
 
   }
   
@@ -73,8 +75,7 @@ getQ();
 
 <body>
   <p ></p>
-    <!-- <button id="get" onclick="getQ()">GET</button><br><br> -->
-    <div style="color:rgb(55, 73, 155) !important" id="app1"></div><br>
+     <div id="app1"></div><br>
     <div id="app2"></div><br>
     <!-- <div id="app3">3</div><br>
     <div id="app4">4</div><br> -->
