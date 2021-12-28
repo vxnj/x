@@ -5,7 +5,6 @@
 <title>Page Title</title>
 </head>
 
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,42 +26,41 @@ let  resp = 'a';
 data = "";
 
 function getQ() {
-  now = date_format(new Date(), 'U');
+  now = date_format(new Date(), 'g:ia');
   console.log(now);
   prx = "https://api.allorigins.win/raw?url=";
-  url = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=^ixic,^DJI,^GSPC,aapl,GOOG,FB,AMZN,hsbc,ibm,tsla,BTC-USD,ETH-USD,CL=F,GC=F,NQ=F,ES=F,YM=F,^TNX,QQQ,SPY,MKTX" + ',X' + now
+  url = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=^ixic,^DJI,^GSPC,aapl,GOOG,FB,AMZN,hsbc,tsla,BTC-USD,ETH-USD,CL=F,GC=F,NQ=F,ES=F,YM=F,^TNX,QQQ,SPY,MKTX" + ',X' + now
   xhr.open("GET", prx + url, true);
   xhr.send();
 }
 
 function processQ(data) {
+  let tdHtml = '';tbHtml = '';
   console.log('processQ start');
-  // console.log(data.quoteResponse.result.length);
-  for (q = 0, len =data.quoteResponse.result.length, vres = ""; q < len; q++) {
-  
 
-    
-    dateVal = new Date((data.quoteResponse.result[q].regularMarketTime) *1000);
-    dateVal = date_format(dateVal, 'H:i');
-
-    vres += 
-      dateVal  +  ' ' + 
-      //data.quoteResponse.result[q].regularMarketTime+' '  +
-      data.quoteResponse.result[q].symbol + ' ' +  
-      data.quoteResponse.result[q].shortName + ' ' +  
-      
-      data.quoteResponse.result[q].marketState +  ' ' + 
-      data.quoteResponse.result[q].regularMarketPrice.toFixed(2) +  ' ' +
-      data.quoteResponse.result[q].regularMarketChange.toFixed(2) + ' ' +  
-      data.quoteResponse.result[q].regularMarketChangePercent.toFixed(1)  + '% ' +  
-      data.quoteResponse.result[q].quoteType + ' ' +  
-      data.quoteResponse.result[q].exchangeDataDelayedBy  + ' ' +  
-      '<br>';
-  
+  thHtml = '<table class="tblX" id="mytbl"><thead><tr>';
+  heads = [now,'Name','Last','Chg','Chg%']
+  for (h = 0, len = heads.length; h < len; h++ ) {
+    thHtml += '<th>' + heads[h] + '</th>';
   }
-  document.getElementById("app1").innerHTML = vres ;
+  thHtml += '</tr></thead>';
+  console.log(thHtml);
 
+  ticks =  data.quoteResponse.result.length
 
+  for (q = 0, trHtml = ""; q < ticks; q++) {
+    rq = data.quoteResponse.result[q];
+    row = [rq.symbol,rq.shortName,rq.regularMarketPrice.toFixed(2),rq.regularMarketChange.toFixed(2),rq.regularMarketChangePercent.toFixed(2)+'%']
+    for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
+      trHtml += '<td>' + row[r] + '</td>';
+    }
+    tbHtml += '<tr>' + trHtml + '</tr>';
+    console.log(trHtml); 
+   
+  }
+
+  console.log(tbHtml);
+  document.getElementById("app1").innerHTML = thHtml + tbHtml + '</table>';
   
 }
 

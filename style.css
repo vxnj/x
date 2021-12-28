@@ -107,7 +107,8 @@ a   { color: var(--live-bor) !important;
     background-image: url("images/SkyDark.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    width: 290px; height: 434px;
+    width: 290px; 
+    /* height: 434px; */
     top:15%;  
     left: calc((100% - 290px)/2);
     border: 2px solid var(--live-def);
@@ -116,8 +117,9 @@ a   { color: var(--live-bor) !important;
     z-index:100; 
     position: fixed;
     display: none;
-    padding: 10px 0 0 30px;
+    padding: 20px;
     border-radius: 20px;
+    line-height: 2.5;
    }
 
 

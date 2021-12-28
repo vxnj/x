@@ -31,9 +31,6 @@ function xOn(){
 }
 window.addEventListener("blur",  function(){ rel = 'off';});
 window.addEventListener("focus", xOn);
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM is loaded");
-});
 
 function reloadit() {
   if (rel == 'on') {
@@ -280,7 +277,7 @@ function getmoon(phase) {
   ph = parseInt(8 * (phase + 1/16))
   moon = '<img src="svg/' + phases[ph] + '.svg" alt="Moon" class="weaicon"/>';
   for (let k = 0; k < 8; k++) {
-    moonInner += '<br><img src="svg/' + phases[k] + '.svg" alt="Moon" id="phimg' + k + '" style="filter:brightness(70%)" class="weaicon"/><span id="phdesc' + k + '">    ' +  phasesDesc[k] + "</span><br><br>";
+    moonInner += '<img src="svg/' + phases[k] + '.svg" alt="Moon" id="phimg' + k + '" style="filter:brightness(70%)" class="weaicon"/><span id="phdesc' + k + '">    ' +  phasesDesc[k] + "</span><br>";
 
   } 
   document.getElementById("pop-moon").innerHTML = moonInner;
