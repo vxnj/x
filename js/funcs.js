@@ -17,7 +17,7 @@ function doCORS(url) {
 
 function showpop(secs, id) {
     document.getElementById(id).style.display = "block"
-    setTimeout(function(){document.getElementById(id).style.display = "none";}, secs*1000 || 3000);
+    if (secs>0) { setTimeout(function(){document.getElementById(id).style.display = "none";}, secs*1000 || 3000); }
 }
 
 function numStd(num, dec) {

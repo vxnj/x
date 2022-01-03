@@ -252,7 +252,6 @@ function themer () {
   
   }
 
-
 function geticon(iconcd) {
   switch(iconcd) {
     case '01d':                   ico="Clear";break;
@@ -267,7 +266,6 @@ function geticon(iconcd) {
   svg = '<img src="svg/' + ico + '.svg" alt="' + ico + '" class="weaicon"/>';
   return svg
 }
-
 
 const phases =     ["Moon0New", "Moon1WxC", "Moon2WxQ", "Moon3WxG", "Moon4Ful", "Moon5WnG", "Moon6WnQ", "Moon7WnC", "Moon0New"];
 const phasesDesc = ["New Moon", "Waxing Crescent", "Waxing Quarter", "Waxing Gibbous", "Full Moon !!", "Waning Gibbous", "Waning Quarter", "Waning Crescent", "New Moon"];
@@ -321,7 +319,7 @@ function getmoon(phase) {
   <tr>
   <td id="sunbox" ></td>
   <td id="aqibox" ><a id="aqi" class="numball" href="https://www.airnow.gov/"></a></td>
-  <td id="moonbox" onclick="showpop(7,'pop-moon')" style="text-align: right"></td>
+  <td id="moonbox" onclick="showpop(0,'pop-moon')" style="text-align: right"></td>
   </tr>
   </tbody>
 </table>
