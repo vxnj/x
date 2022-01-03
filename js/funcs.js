@@ -36,13 +36,12 @@ function chgCol(pct) {
 
 function mktSt(st) {
   switch (st) {
-    case "PRE": stCls = "stPre";break;
-    case "REGULAR": stCls = "stReg";break;
-    case "POST": stCls = "stPst";break;
-    case "POSTPOST": stCls = "stOff";break;
+    case "PRE":       stCls = "stPre";break;
+    case "REGULAR":   stCls = "stReg";break;
+    case "POST":      stCls = "stPst";break;
+    case "POSTPOST":  stCls = "stOff";break;
+    case "CLOSED":    stCls = "stOff";break;
+    default:          stCls = "stOff";break;
   }
   return stCls;
 }
-
-
-  
