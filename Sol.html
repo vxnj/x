@@ -269,9 +269,10 @@ function geticon(iconcd) {
 
 const phases =     ["Moon0New", "Moon1WxC", "Moon2WxQ", "Moon3WxG", "Moon4Ful", "Moon5WnG", "Moon6WnQ", "Moon7WnC", "Moon0New"];
 const phasesDesc = ["New Moon", "Waxing Crescent", "Waxing Quarter", "Waxing Gibbous", "Full Moon !!", "Waning Gibbous", "Waning Quarter", "Waning Crescent", "New Moon"];
-var moonInner = "";
+
 
 function getmoon(phase) {
+  var moonInner = "";  
   ph = parseInt(8 * (phase + 1/16))
   moon = '<img src="svg/' + phases[ph] + '.svg" alt="Moon" class="weaicon"/>';
   for (let k = 0; k < 8; k++) {

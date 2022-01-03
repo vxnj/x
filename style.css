@@ -136,8 +136,8 @@ a   { color: var(--live-bor) !important;
 .hl {color: var(--live-cur) !important; }  
 
 .alerts {
-    background-color: rgb(104, 11, 29);
-    color: rgb(235, 235, 235) !important;
+    background-color: rgba(114, 44, 58, 0.685);
+    color: rgb(204, 204, 204) !important;
     padding: 0px 10px;
     border-radius: 10px;
     text-decoration: none;
