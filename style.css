@@ -157,7 +157,8 @@ a   { color: var(--live-bor) !important;
 
 
 .tblX  {border-collapse: collapse !important;
-    width: 100%;
+    width: 100%; 
+    max-width: 400px !important;
     text-align: left;
     font-family:  fntNums, Segoe UI, Tahoma, Geneva, Verdana, sans-serif !important;
      }
