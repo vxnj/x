@@ -225,7 +225,7 @@ function getWea(data) {
 
 function chgzip() {
   paramzip = prompt('Zip Code', paramzip || "10025");
-  callzip();
+  if(paramzip || 'xx' != 'xx'){callzip();}
 }
 
 

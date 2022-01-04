@@ -46,7 +46,7 @@
   } 
 
 
-  .def { color: var(--live-def) !important; }
+.def { color: var(--live-def) !important; }
 .day { color: var(--live-day) !important; }
 .cur { color: var(--live-cur) !important; }
 .pop { color: var(--live-cur) !important; }
@@ -77,7 +77,9 @@ table  { border-color: var(--live-bor) !important;
 
 .table > :not(:first-child) {
     border-top: 2px solid var(--live-bor) !important;
-    line-height: .85 !important; }
+    line-height: .85 !important; 
+    max-width: 500px !important;
+}
 
 td, th {
     line-height: .85 !important; 
