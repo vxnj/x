@@ -219,6 +219,7 @@ function getWea(data) {
    
    document.getElementById("sunbox" ).innerHTML = '<img src="svg/Clear.svg" alt="Sunrise" class="weaicon"/>' + " " + srise  + " - " + sset;
    document.getElementById("moonbox").innerHTML =  mrise  + " - " + mset + " " + getmoon(data.daily[0].moon_phase);
+
  }
 	
  window.onload = init;
