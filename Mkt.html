@@ -57,7 +57,7 @@ function processQ(data) {
     clsSt = mktSt(rq.marketState)
     console.log ( rq.symbol + " "+  rq.marketState);
     
-    console.log( col)
+    // console.log(col)
     for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
       if (r>0){ clsAdd = ' class="' + clsSt + ' clsRt"'} else {clsAdd = ""};
       trHtml += '<td' + clsAdd + '>' + row[r] + '</td>';

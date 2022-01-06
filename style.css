@@ -166,13 +166,13 @@ a   { color: var(--live-bor) !important;
      }
         
 .tblX tr , .tblX td , .tblX th  { 
-border-width: 1px 0  !important; 
-border-style: solid !important;
-line-height: 20px !important;
-font-size: 15px;
-border-collapse: collapse !important;
-padding: 2px !important;
-font-family:  fntNums, Segoe UI, Tahoma, Geneva, Verdana, sans-serif !important;}
+    border-width: 1px 0  !important; 
+    border-style: solid !important;
+    line-height: 20px !important;
+    font-size: 15px;
+    border-collapse: collapse !important;
+    padding: 2px !important;
+    font-family:  fntNums, Segoe UI, Tahoma, Geneva, Verdana, sans-serif !important;}
 
 .tblX th {line-height: 22px !important;
     border: 0px !important;
