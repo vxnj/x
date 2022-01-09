@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+<title>Mkt</title>
+</head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="js/funcs.js"></script>
+<script src="js/fDate.js"></script>
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" type="image/x-icon" href="images/chart.ico?v1">
+
+
+<script>
+
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() { // Check if fetch request is done
+    if (xhr.readyState == 4 && xhr.status == 200) { 
+        jsonData = JSON.parse(xhr.responseText);
+        processQ(jsonData);
+    }
+}
+
+let  resp = 'a';
+data = "";
+
+function getQ() {
+  now = date_format(new Date(), 'g:i:sa');
+  console.log(now);
+  prx = "https://api.allorigins.win/raw?url=";
+  url = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=^DJI,^ixic,^GSPC,aapl,GOOG,FB,AMZN,hsbc,tsla,MKTX,QQQ,SPY,BTC-USD,ETH-USD,CL=F,GC=F,NQ=F,ES=F,YM=F,^TNX" + ',X' + now
+  xhr.open("GET", prx + url, true);
+  xhr.send();
+}
+
+function processQ(data) {
+  let tdHtml = '';tbHtml = '';
+
+  thHtml = '<table onclick="getQ()" class="tblX" id="mytbl"><thead><tr>';
+  
+  heads = [now,'Last','Chg','%'] // ,'State','Type']
+  for (h = 0, len = heads.length; h < len; h++ ) {
+    if (h>0){ clsJust = ' class="clsRt"'} else {clsJust = ""};
+    console.log(clsJust);
+    thHtml += '<th' + clsJust + '>' + heads[h] + '</th>';
+  }
+  thHtml += '</tr></thead>';
+
+  ticks =  data.quoteResponse.result.length
+  for (q = 0, trHtml = ""; q < ticks; q++) {
+    rq = data.quoteResponse.result[q];
+    row = [rq.shortName.substring(0, 16),numStd(rq.regularMarketPrice,0),numStd(rq.regularMarketChange),numStd(rq.regularMarketChangePercent,1)+'%'] // ,rq.marketState,rq.quoteType.substring(0, 6)]
+    col = chgCol(rq.regularMarketChangePercent);
+    
+    clsSt = mktSt(rq.marketState)
+    console.log ( rq.symbol + " "+  rq.marketState);
+    
+    // console.log(col)
+    for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
+      if (r>0){ clsAdd = ' class="' + clsSt + ' clsRt"'} else {clsAdd = ""};
+      trHtml += '<td' + clsAdd + '>' + row[r] + '</td>';
+      console.log( '<td' + clsAdd + '>' + row[r] + '</td>');
+    }
+  
+    tbHtml += '<tr ' + col + '>' + trHtml + '</tr>';
+
+  }
+  
+  document.getElementById("app1").innerHTML = thHtml + tbHtml + '</table>';
+  document.getElementById("app2").innerHTML = '<a href="' + url + '" target="blank">json<a/>';
+  
+}
+
+getQ();
+
+setInterval(getQ, 60000);
+
+</script>
+
+<body>
+  <p ></p>
+     <div id="app1"></div><br>
+    <div id="app2"></div><br>
+    <!-- <div id="app3">3</div><br>
+    <div id="app4">4</div><br> -->
+
+</body>
+</html>
+    
