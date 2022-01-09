@@ -1,7 +1,6 @@
-open weather
-        a35e66501c88031db5054c862c6e5b15
-        da5f0d9ce3486ef93fd7ffb24235c9e3 
-
+https://home.openweathermap.org/api_keys
+        da5f0d9ce3486ef93fd7ffb24235c9e3        main
+        3eaa5145be3fbca4b9a3f346b0f8a668        old t0921
 
 Air     DF2D21FE-7DCA-44E1-A761-C161AA742213
 
@@ -20,4 +19,3 @@ words api
         https://www.wordsapi.com/mashape/words/house/definitions?when=2022-01-08T14:35:35.281Z&encrypted=8cfdb188e722929bea9907beeb58bdbcaeb3280932f796b8
 
 https://www.wordsapi.com/mashape/words/house/definitions?when=2022-01-08T14:35:35.281Z&encrypted=8cfdb188e722929bea9907beeb58bdbcaeb3280932f796b8
-GET https://wordsapiv1.p.mashape.com/words/definitions?random=true?when=2022-01-08T14:35:35.281Z&encrypted=8cfdb188e722929bea9907beeb58bdbcaeb3280932f796b8
