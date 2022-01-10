@@ -11,73 +11,84 @@
 <script src="js/funcs.js"></script>
 <script src="js/fDate.js"></script>
 <link rel="stylesheet" href="style.css" />
+<link rel="icon" type="image/x-icon" href="images/SkyDark.jpg">
 
 <script>
 
-var xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function() { // Check if fetch request is done
-    if (xhr.readyState == 4 && xhr.status == 200) { 
-        jsonData = JSON.parse(xhr.responseText);
-        processQ(jsonData);
-    }
+var dataM;
+var dataG;var dataz;
+let wrd;
+
+
+function getM() {
+  key = "?key=c75da45d-5bc4-4b3b-a8cc-a5f99319e10a";
+  let response = fetch("https://www.dictionaryapi.com/api/v3/references/collegiate/json/" + wrd + key, {"method": "GET"})
+  .then(response => response.json())
+  .then(data => {
+    dataM = data;
+
+    document.getElementById("app1").innerHTML = 'MW: ' 
+      + '<a href="https://www.merriam-webster.com/dictionary/' +  wrd 
+      + ' "style="text-decoration: none;" target="_blank">' + dataM[0].meta.id  + " (" + dataM[0].fl + ")"  +'</a>';
+
+    document.getElementById("app2").innerHTML = dataM[0].shortdef[0];
+    })
 }
 
-let  resp = 'a';
-data = "";
+function getG() {
+  let response = fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + wrd , {"method": "GET"})
+  .then(response => response.json())
+  .then(data => {
+    dataG = data;
+
+    document.getElementById("app3").innerHTML = 'Gdict: ' 
+      + '<a href="https://www.google.com/search?hl=en&amp;q=define+' +  wrd 
+      + ' "style="text-decoration: none;" target="_blank">' + dataG[0].word   + " (" + dataG[0].meanings[0].partOfSpeech + ")"  + '</a>';
+    document.getElementById("app4").innerHTML = dataG[0].meanings[0].definitions[0].definition
+    })
+}
+
 
 function getQ() {
-  now = date_format(new Date(), 'g:ia');
-  console.log(now);
-  console.log(document.title);
+  // ninjas
+  let response = fetch("https://dictionary-by-api-ninjas.p.rapidapi.com/v1/dictionary?word=" + wrd , {
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-host": "dictionary-by-api-ninjas.p.rapidapi.com",
+      "x-rapidapi-key": "b82347799fmsha23f8c4bf57860ap16128djsn29dc226ace18"
+      }
+    })
 
-
-  prx = "https://api.allorigins.win/raw?url=";
-  url = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=^ixic,^DJI,^GSPC,aapl" + ',X' + now
-  xhr.open("GET", prx + url, true);
-  xhr.send();
+  .then(response => response.json())
+  .then(data => {
+    datax = data;
+    document.getElementById("app5").innerHTML = 'ninja api: ' + datax.word;
+    document.getElementById("app6").innerHTML = datax.definition;
+    })
 }
 
-function processQ(data) {
-  let tdHtml = '';tbHtml = '';
-  console.log('processQ start');
-
-  thHtml = '<table class="tblX" id="mytbl"><thead><tr>';
-  heads = [now,'Name','Last','Chg','Chg%']
-  for (h = 0, len = heads.length; h < len; h++ ) {
-    thHtml += '<th>' + heads[h] + '</th>';
-  }
-  thHtml += '</tr></thead>';
-  console.log(thHtml);
-
-  ticks =  data.quoteResponse.result.length
-
-  for (q = 0, trHtml = ""; q < ticks; q++) {
-    rq = data.quoteResponse.result[q];
-    row = [rq.symbol,rq.shortName,rq.regularMarketPrice.toFixed(2),rq.regularMarketChange.toFixed(2),rq.regularMarketChangePercent.toFixed(2)+'%']
-    for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
-      trHtml += '<td>' + row[r] + '</td>';
-    }
-    tbHtml += '<tr>' + trHtml + '</tr>';
-    console.log(trHtml); 
-   
-  }
-
-  console.log(tbHtml);
-  document.getElementById("app1").innerHTML = thHtml + tbHtml + '</table>';
-  
+function doFill() {
+  wrd = document.getElementById('word').value;
+  //datay = getQ();
+  dataM = getM();
+  dataG = getG();
 }
+
 
 </script>
 
-
 <body>
   <p ></p>
-    <button id="get" onclick="getQ()">GET</button><br><br>
-    <div style="color:rgb(155, 201, 167) !important" id="app1">1</div><br>
-    <div id="app2">2</div><br>
-    <div id="app3">3</div><br>
-    <div id="app4" style="max-width: 100%;">4</div><br>
- 
+  <input type="text" id="word" name="word"><br>
+  <button id="get" onclick="doFill()">GET</button><br><br>
+
+  <div id="app1">1</div><br>
+  <div id="app2">2</div><br><br><br>
+  <div id="app3">3</div><br>
+  <div id="app4">4</div><br><br><br>
+  <!-- <div id="app5">5</div><br>
+  <div id="app6">6</div><br><br><br>
+  -->
 </body>
 </html>
     
