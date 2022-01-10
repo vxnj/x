@@ -17,19 +17,19 @@
     --pink-day:     #3e135a;
     --pink-cur:     rgb(199, 51, 179);
     --pink-pop:     rgb(219, 219, 219);
-    --pink-bkg:     #FFCCE6;
+    --pink-bkg:     #d494b5;
 
     --mint-def:     #419e34;
     --mint-day:     #1e6129;
     --mint-cur:     rgb(16, 223, 223);
     --mint-pop:     rgb(234, 252, 231);
-    --mint-bkg:     rgb(214, 252, 199);
+    --mint-bkg:     rgb(160, 223, 135);
 
     --bayj-def:     #7c6a18;
     --bayj-day:     #443a0f;
     --bayj-cur:     rgb(182, 66, 12);
     --bayj-pop:     rgb(252, 239, 212);
-    --bayj-bkg:     rgb(236, 218, 177);
+    --bayj-bkg:     rgb(224, 194, 122);
 
 }
 
@@ -90,9 +90,11 @@ td, th {
 
 }
 
-
-a   { color: var(--live-bor) !important;
-    font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;}  
+a   { 
+    color: var(--live-def) !important;
+    font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    /* filter: brightness(.5); */
+}  
 
 .weaicon { height: 26px !important; width: 26px !important; opacity: 70% !important;
     margin: -11px 2px -6px 0 !important;

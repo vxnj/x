@@ -48,31 +48,53 @@ function getG() {
     })
 }
 
-
 function getQ() {
-  // ninjas
-  let response = fetch("https://dictionary-by-api-ninjas.p.rapidapi.com/v1/dictionary?word=" + wrd , {
-    "method": "GET",
-    "headers": {
-      "x-rapidapi-host": "dictionary-by-api-ninjas.p.rapidapi.com",
-      "x-rapidapi-key": "b82347799fmsha23f8c4bf57860ap16128djsn29dc226ace18"
-      }
-    })
+//   // ninjas
+//   let response = fetch("https://dictionary-by-api-ninjas.p.rapidapi.com/v1/dictionary?word=" + wrd , {
+//     "method": "GET",
+//     "headers": {
+//       "x-rapidapi-host": "dictionary-by-api-ninjas.p.rapidapi.com",
+//       "x-rapidapi-key": "b82347799fmsha23f8c4bf57860ap16128djsn29dc226ace18"
+//       }
+//     })
 
-  .then(response => response.json())
-  .then(data => {
-    datax = data;
-    document.getElementById("app5").innerHTML = 'ninja api: ' + datax.word;
-    document.getElementById("app6").innerHTML = datax.definition;
-    })
+//   .then(response => response.json())
+//   .then(data => {
+//     datax = data;
+//     document.getElementById("app5").innerHTML = 'ninja api: ' + datax.word;
+//     document.getElementById("app6").innerHTML = datax.definition;
+//     })
 }
+
+async function getT(lang) {
+    const res = await fetch("https://translate.argosopentech.com/translate", {
+    method: "POST",
+    body: JSON.stringify({
+      q: wrd,
+      source: "en",
+      target: lang
+    }),
+    headers: { "Content-Type": "application/json" }
+    });
+
+    console.log(lang , await res.json());
+  }
 
 function doFill() {
-  wrd = document.getElementById('word').value;
-  //datay = getQ();
+  wrd = document.getElementById('word').value;;
   dataM = getM();
   dataG = getG();
+  
+  getT('de');
+  getT('es');
+  getT('fr');
+  getT('ru');
+  getT('pt');
+  
 }
+
+
+
 
 
 </script>
@@ -89,6 +111,7 @@ function doFill() {
   <!-- <div id="app5">5</div><br>
   <div id="app6">6</div><br><br><br>
   -->
+
 </body>
 </html>
     
