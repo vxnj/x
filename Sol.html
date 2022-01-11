@@ -121,7 +121,7 @@ function getAqi(dataq) {
 
   console.log('maxq ' + maxq);
   document.getElementById("aqi").innerHTML = maxn ;
-  document.getElementById("aqi").style.backgroundColor=colq + 50;
+  document.getElementById("aqi").style.backgroundColor=colq + '80';
   document.getElementById("aqi").href= "https://www.airnow.gov/?city=" + city + "&state=" + state;
   console.log("https://www.airnow.gov/?zip=" + paramzip);
 }
@@ -321,7 +321,7 @@ function getmoon(phase) {
   <tr>
   <td id="sunbox" ></td>
   <td id="aqibox" ><a id="aqi" class="numball" href="https://www.airnow.gov/"></a></td>
-  <td id="moonbox" onclick="showpop(0,'pop-moon')" style="text-align: right"></td>
+  <td id="moonbox" onclick="showpop(0,'pop-moon')" style="text-align: right; cursor: hand"></td>
   </tr>
   </tbody>
 </table>

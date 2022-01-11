@@ -15,21 +15,21 @@
 
     --pink-def:     #7f2fb4;
     --pink-day:     #3e135a;
-    --pink-cur:     rgb(199, 51, 179);
+    --pink-cur:     rgb(196, 23, 173);
     --pink-pop:     rgb(219, 219, 219);
-    --pink-bkg:     #d494b5;
+    --pink-bkg:     #c2a3b3;
 
     --mint-def:     #419e34;
     --mint-day:     #1e6129;
-    --mint-cur:     rgb(16, 223, 223);
+    --mint-cur:     rgb(38, 68, 240);
     --mint-pop:     rgb(234, 252, 231);
-    --mint-bkg:     rgb(160, 223, 135);
+    --mint-bkg:     rgb(147, 184, 133);
 
     --bayj-def:     #7c6a18;
     --bayj-day:     #443a0f;
     --bayj-cur:     rgb(182, 66, 12);
     --bayj-pop:     rgb(252, 239, 212);
-    --bayj-bkg:     rgb(224, 194, 122);
+    --bayj-bkg:     rgb(190, 168, 115);
 
 }
 
