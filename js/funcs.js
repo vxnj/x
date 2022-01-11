@@ -16,8 +16,9 @@ function numStd(num, dec) {
 }
 
 
-function chgCol(pct) {
-  if (pct === undefined) return ;
+function chgCol(pct,off) {
+  if (pct === undefined) return;
+  if (off === 'stPre') {pct =  0}
   hslColor = pct > 0 ? '100,70%,20%' : '0,70%,20%';
   hslOpacity = Math.min(Math.abs(pct/4)+.05, 1);
   hslA = hslOpacity.toFixed(3);

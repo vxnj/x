@@ -31,7 +31,7 @@ function getQ() {
   now = date_format(new Date(), 'g:i:sa');
   console.log(now);
   prx = "https://api.allorigins.win/raw?url=";
-  url = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=^DJI,^ixic,^GSPC,aapl,GOOG,FB,AMZN,hsbc,tsla,MKTX,QQQ,SPY,BTC-USD,ETH-USD,CL=F,GC=F,NQ=F,ES=F,YM=F,^TNX" + ',X' + now
+  url = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=^DJI,^IXIC,^GSPC,aapl,GOOG,FB,AMZN,hsbc,tsla,MKTX,QQQ,SPY,BTC-USD,ETH-USD,CL=F,GC=F,NQ=F,ES=F,YM=F,^TNX" + ',X' + now
   xhr.open("GET", prx + url, true);
   xhr.send();
 }
@@ -53,12 +53,14 @@ function processQ(data) {
   for (q = 0, trHtml = ""; q < ticks; q++) {
     rq = data.quoteResponse.result[q];
     row = [rq.shortName.substring(0, 16),numStd(rq.regularMarketPrice,0),numStd(rq.regularMarketChange),numStd(rq.regularMarketChangePercent,1)+'%'] // ,rq.marketState,rq.quoteType.substring(0, 6)]
-    col = chgCol(rq.regularMarketChangePercent);
     
     clsSt = mktSt(rq.marketState)
+    col = chgCol(rq.regularMarketChangePercent,clsSt);
+
+
     console.log ( rq.symbol + " "+  rq.marketState);
+
     
-    // console.log(col)
     for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
       if (r>0){ clsAdd = ' class="' + clsSt + ' clsRt"'} else {clsAdd = ""};
       trHtml += '<td' + clsAdd + '>' + row[r] + '</td>';

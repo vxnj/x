@@ -33,7 +33,6 @@
 
 }
 
-
 @font-face {
     font-family: "fntMain";
     src: url("fonts/FiraSans-Book.otf");
@@ -103,7 +102,8 @@ a   {
 [id="aqi"] { margin-left: 8px;}
 .numball {
     display: inline-block;
-    color: var(--live-def) !important;
+    /* color: var(--live-cur) !important; */
+    color: white !important;
     border-radius: 50%;
     padding: 8px !important;    
     text-align: center;
@@ -184,9 +184,8 @@ a   {
 .clsRt { 
     text-align: right !important;
     font-size: 15px !important;
-    /* font-family:  fntNums, Segoe UI, Tahoma, Geneva, Verdana, sans-serif !important; */
-} 
+ } 
 
-.stPre { color: hsl(315, 30%, 70%); }
-.stPst { color: hsl(0, 0%, 36%); }
-.stOff { color: hsl(0, 0%, 41%); }
+.stPre { color: hsla(260, 80%, 60%, 0.8); }
+.stPst { color: hsla(260, 80%, 60%, 0.8); }
+.stPre { color: hsla(230, 20%, 60%, 0.8); }
