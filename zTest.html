@@ -11,12 +11,13 @@
 <script src="js/funcs.js"></script>
 <script src="js/fDate.js"></script>
 <link rel="stylesheet" href="style.css" />
-<link rel="icon" type="image/x-icon" href="images/SkyDark.jpg">
+<link rel="icon" type="image/x-icon" href="images/hal.svg">
 
 <script>
 
 var dataM;
-var dataG;var dataz;
+var dataG;
+var dataz;
 let wrd;
 
 
@@ -31,7 +32,9 @@ function getM() {
       + '<a href="https://www.merriam-webster.com/dictionary/' +  wrd 
       + ' "style="text-decoration: none;" target="_blank">' + dataM[0].meta.id  + " (" + dataM[0].fl + ")"  +'</a>';
 
-    document.getElementById("app2").innerHTML = dataM[0].shortdef[0];
+    document.getElementById("app2").innerHTML = dataM[0].shortdef[0]
+    // + "<br>"+ dataM[0].date + " - " + dataM[0].et[0][1];
+
     })
 }
 
@@ -41,7 +44,7 @@ function getG() {
   .then(data => {
     dataG = data;
 
-    document.getElementById("app3").innerHTML = 'Gdict: ' 
+    document.getElementById("app3").innerHTML = 'G: ' 
       + '<a href="https://www.google.com/search?hl=en&amp;q=define+' +  wrd 
       + ' "style="text-decoration: none;" target="_blank">' + dataG[0].word   + " (" + dataG[0].meanings[0].partOfSpeech + ")"  + '</a>';
     document.getElementById("app4").innerHTML = dataG[0].meanings[0].definitions[0].definition
@@ -49,21 +52,21 @@ function getG() {
 }
 
 function getQ() {
-//   // ninjas
-//   let response = fetch("https://dictionary-by-api-ninjas.p.rapidapi.com/v1/dictionary?word=" + wrd , {
-//     "method": "GET",
-//     "headers": {
-//       "x-rapidapi-host": "dictionary-by-api-ninjas.p.rapidapi.com",
-//       "x-rapidapi-key": "b82347799fmsha23f8c4bf57860ap16128djsn29dc226ace18"
-//       }
-//     })
+  // ninjas
+  let response = fetch("https://dictionary-by-api-ninjas.p.rapidapi.com/v1/dictionary?word=" + wrd , {
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-host": "dictionary-by-api-ninjas.p.rapidapi.com",
+      "x-rapidapi-key": "b82347799fmsha23f8c4bf57860ap16128djsn29dc226ace18"
+      }
+    })
 
-//   .then(response => response.json())
-//   .then(data => {
-//     datax = data;
-//     document.getElementById("app5").innerHTML = 'ninja api: ' + datax.word;
-//     document.getElementById("app6").innerHTML = datax.definition;
-//     })
+  .then(response => response.json())
+  .then(data => {
+    datax = data;
+    document.getElementById("app5").innerHTML = 'ninja api: ' + datax.word;
+    document.getElementById("app6").innerHTML = datax.definition;
+    })
 }
 
 async function getT(lang) {
@@ -81,39 +84,40 @@ async function getT(lang) {
   }
 
 function doFill() {
-  wrd = document.getElementById('word').value;;
+  wrd = document.getElementById('word').value;;  
   dataM = getM();
   dataG = getG();
-  
+
   getT('de');
   getT('es');
   getT('fr');
-  getT('ru');
-  getT('pt');
-  
+
 }
-
-
-
-
 
 </script>
 
+
 <body>
   <p ></p>
-  <input type="text" id="word" name="word"><br>
+  <input type="text" id="word" name="word" placeholder="enter word"><br>
   <button id="get" onclick="doFill()">GET</button><br><br>
 
   <div id="app1">1</div><br>
-  <div id="app2">2</div><br><br><br>
+  <div id="app2">2</div><br><br>
   <div id="app3">3</div><br>
-  <div id="app4">4</div><br><br><br>
+  <div id="app4">4</div><br><br>
   <!-- <div id="app5">5</div><br>
-  <div id="app6">6</div><br><br><br>
-  -->
+  <div id="app6">6</div><br><br><br> -->
+ 
+
+<script>
+  inputId = document.getElementById('word');
+  inputId.addEventListener('keyup', function onEvent(e) {
+      if (e.keyCode === 13) {
+        doFill();
+      }})
+
+</script>
 
 </body>
 </html>
-    
-
-}
