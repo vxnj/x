@@ -158,14 +158,14 @@ a   {
     margin-bottom: 0px !important;
 }
 
-
 .tblX  {border-collapse: collapse !important;
     width: 100%; 
     max-width: 500px !important;
+    min-width: 330px !important;
     text-align: left;
     font-family:  fntNums, Segoe UI, Tahoma, Geneva, Verdana, sans-serif !important;
      }
-        
+
 .tblX tr , .tblX td , .tblX th  { 
     border-width: 1px 0  !important; 
     border-style: solid !important;

@@ -39,7 +39,7 @@ function getQ() {
 function processQ(data) {
   let tdHtml = '';tbHtml = '';
 
-  thHtml = '<table onclick="getQ()" class="tblX" id="mytbl"><thead><tr>';
+  thHtml = '<table onclick="getQ()" class="tblX" id="mytbl"><thead><colgroup><col style="width:40%"/><col style="width:15%"/><col style="width:15%" /><col style="width:12%"/></colgroup><tr>';
   
   heads = [now,'Last','Chg','%'] // ,'State','Type']
   for (h = 0, len = heads.length; h < len; h++ ) {
@@ -52,7 +52,7 @@ function processQ(data) {
   ticks =  data.quoteResponse.result.length
   for (q = 0, trHtml = ""; q < ticks; q++) {
     rq = data.quoteResponse.result[q];
-    row = [rq.shortName.substring(0, 16),numStd(rq.regularMarketPrice,0),numStd(rq.regularMarketChange),numStd(rq.regularMarketChangePercent,1)+'%'] // ,rq.marketState,rq.quoteType.substring(0, 6)]
+    row = [rq.shortName.substring(0, 15),numStd(rq.regularMarketPrice,0),numStd(rq.regularMarketChange),numStd(rq.regularMarketChangePercent,1)+'%'] // ,rq.marketState,rq.quoteType.substring(0, 6)]
     
     clsSt = mktSt(rq.marketState)
     col = chgCol(rq.regularMarketChangePercent,clsSt);
