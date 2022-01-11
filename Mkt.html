@@ -31,7 +31,7 @@ function getQ() {
   now = date_format(new Date(), 'g:i:sa');
   console.log(now);
   prx = "https://api.allorigins.win/raw?url=";
-  url = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=^DJI,^IXIC,^GSPC,aapl,GOOG,FB,AMZN,hsbc,tsla,MKTX,QQQ,SPY,BTC-USD,ETH-USD,CL=F,GC=F,NQ=F,ES=F,YM=F,^TNX" + ',X' + now
+  url = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=^DJI,^IXIC,^GSPC,KRE,aapl,GOOG,FB,AMZN,HSBC,TSLA,QQQ,SPY,BTC-USD,ETH-USD,CL=F,GC=F,NQ=F,ES=F,YM=F,^TNX" + ',X' + now
   xhr.open("GET", prx + url, true);
   xhr.send();
 }
