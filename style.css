@@ -13,21 +13,21 @@
     --dark-pop:     rgb(238, 236, 236);
     --dark-bkg:     rgb(0, 0, 0);
 
-    --pink-def:     #7f2fb4;
-    --pink-day:     #3e135a;
-    --pink-cur:     rgb(196, 23, 173);
+    --pink-def:     #3e135a;
+    --pink-day:     #7f2fb4;
+    --pink-cur:     rgb(190, 8, 166);
     --pink-pop:     rgb(219, 219, 219);
     --pink-bkg:     #c2a3b3;
 
-    --mint-def:     #419e34;
-    --mint-day:     #1e6129;
-    --mint-cur:     rgb(38, 68, 240);
+    --mint-def:     #1e6129;
+    --mint-day:     #419e34;
+    --mint-cur:     rgb(0, 155, 194);
     --mint-pop:     rgb(234, 252, 231);
     --mint-bkg:     rgb(147, 184, 133);
 
-    --bayj-def:     #7c6a18;
-    --bayj-day:     #443a0f;
-    --bayj-cur:     rgb(182, 66, 12);
+    --bayj-def:     #443a0f;
+    --bayj-day:     #7c6a18;
+    --bayj-cur:     rgb(170, 27, 8);
     --bayj-pop:     rgb(252, 239, 212);
     --bayj-bkg:     rgb(190, 168, 115);
 
@@ -117,7 +117,7 @@ a   {
 
 
 .pop { 
-    background-color: var(--live-day);
+    background-color: black; 
     background-image: url("images/SkyDark.jpg");
     background-size: cover;
     background-repeat: no-repeat;
