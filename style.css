@@ -58,7 +58,7 @@
 }
 
 body { background-color: var(--live-bkg) !important;
-    padding: 10px !important; }
+    margin: 10px !important; }
 
 div {color: var(--live-def) ; 
     font-family: fntMain, Segoe UI, Tahoma, Courier, monospace; 
