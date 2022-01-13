@@ -44,7 +44,7 @@ function processQ(data) {
   heads = [now,'Last','Chg','%'] // ,'State','Type']
   for (h = 0, len = heads.length; h < len; h++ ) {
     if (h>0){ clsJust = ' class="clsRt"'} else {clsJust = ""};
-    console.log(clsJust);
+    // console.log(clsJust);
     thHtml += '<th' + clsJust + '>' + heads[h] + '</th>';
   }
   thHtml += '</tr></thead>';
@@ -52,19 +52,19 @@ function processQ(data) {
   ticks =  data.quoteResponse.result.length
   for (q = 0, trHtml = ""; q < ticks; q++) {
     rq = data.quoteResponse.result[q];
-    row = [rq.shortName.substring(0, 15),numStd(rq.regularMarketPrice,0),numStd(rq.regularMarketChange),numStd(rq.regularMarketChangePercent,1)+'%'] // ,rq.marketState,rq.quoteType.substring(0, 6)]
-    
-    clsSt = mktSt(rq.marketState)
-    col = chgCol(rq.regularMarketChangePercent,clsSt);
+  
+    if (rq.hasOwnProperty('preMarketPrice')) { preQ = 'pre'; dot = '<span id="stFlag" style="color:var(--colPre); font-size:xx-small; font-weight:bold;margin-left:5px;">PRE</span>'} else { preQ = 'regular'; dot=''}
+    row = [rq.shortName.substring(0, 15) + dot ,numStd(rq[preQ+'MarketPrice'],0),numStd(rq[preQ+'MarketChange']),numStd(rq[preQ+'MarketChangePercent'],1)+'%'] 
 
+    clsSt = mktSt(rq.marketState, preQ)
+    console.log(rq.marketState, preQ, clsSt, rq.quoteType, rq.symbol,row);   
 
-    console.log ( rq.symbol + " "+  rq.marketState);
-
+    col = chgCol(rq[preQ+'MarketChangePercent'],clsSt);
     
     for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
       if (r>0){ clsAdd = ' class="' + clsSt + ' clsRt"'} else {clsAdd = ""};
       trHtml += '<td' + clsAdd + '>' + row[r] + '</td>';
-      console.log( '<td' + clsAdd + '>' + row[r] + '</td>');
+      // console.log( '<td' + clsAdd + '>' + row[r] + '</td>');
     }
   
     tbHtml += '<tr ' + col + '>' + trHtml + '</tr>';

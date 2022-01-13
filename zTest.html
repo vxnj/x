@@ -83,6 +83,33 @@ async function getT(lang) {
     console.log(lang , await res.json());
   }
 
+
+
+let data;
+const api_url ="https://zenquotes.io/api/random?jj";
+
+async function getJ(url)
+{
+  prx = "https://api.allorigins.win/raw?url=";
+  now = date_format(new Date(), 'g:i:sa');
+  console.log(now);
+
+  // const response = await fetch(prx + url);
+  const response = await fetch(prx + url + '?' + now);
+  
+  data = await response.json();
+
+  console.log(data);
+  quote  = '"' + (data[0].q) + '"';
+  author = data[0].a;
+  search = 'https://en.wikipedia.org/wiki/?search=' + author.replace(" ", "%20");
+  console.log(quote + '\n\n—' + author + '\n\n' + search);
+  // copyToClipboard(quote + '\n\n—' + author + '\n\n' + search);
+
+}
+
+
+
 function doFill() {
   wrd = document.getElementById('word').value;;  
   dataM = getM();
@@ -93,6 +120,8 @@ function doFill() {
   getT('fr');
 
 }
+
+
 
 </script>
 
@@ -107,8 +136,9 @@ function doFill() {
   <div id="app3">3</div><br>
   <div id="app4">4</div><br><br>
   <!-- <div id="app5">5</div><br>
-  <div id="app6">6</div><br><br><br> -->
- 
+  <div id="app6"><blockquote>&ldquo;Repetition does not transform a lie into a truth.&rdquo; &mdash; <footer>Franklin D. Roosevelt</footer></div><br><br><br> -->
+  <button id="getj" onclick="getJ(api_url)">Joke</button><br><br>
+
 
 <script>
   inputId = document.getElementById('word');
