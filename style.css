@@ -32,7 +32,7 @@
     --bayj-bkg:     rgb(190, 168, 115);
 
     --colPre:       hsla(260, 80%, 60%, 0.8);
-
+    --colOff:       hsla(230, 20%, 60%, 0.8); 
 }
 
 @font-face {
@@ -189,5 +189,5 @@ a   {
  } 
 
 .stPre { color: var(--colPre); }
-.stPst { color: hsla(260, 80%, 60%, 0.8); }
-.stOff { color: hsla(230, 20%, 60%, 0.8); }
+.stPst { color: var(--colOff);}
+.stOff { color: var(--colOff); }
