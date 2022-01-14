@@ -27,7 +27,7 @@ xhr.onreadystatechange = function() { // Check if fetch request is done
 let  resp = 'a';
 data = "";
 
-function getQ() {
+async function getQ() {
   now = date_format(new Date(), 'g:i:sa');
   console.log(now);
   prx = "https://api.allorigins.win/raw?url=";

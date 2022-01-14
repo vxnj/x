@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+<title>Def</title>
+</head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="js/funcs.js"></script>
+<script src="js/fDate.js"></script>
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" type="image/x-icon" href="images/hal.svg">
+
+<script>
+
+let data;
+let dataOx;
+let wrd;
+let xlate;
+let res;
+
+async function getOx() {
+  wrd = document.getElementById('word').value; 
+  url = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + wrd;
+  response = fetch(url, {"method": "GET"})
+  .then(response => response.json())
+  .then(data => {
+    dataOx = data;
+    document.getElementById("oxWrd").innerHTML = 
+       '<a href="https://www.google.com/search?hl=en&amp;q=define+' +  wrd 
+      + ' "style="text-decoration: none;" target="_blank">' + dataOx[0].word   
+      + " (" + dataOx[0].meanings[0].partOfSpeech + ")"  + ' </a>'
+      + '<a style="color:blue !important" id="oxJsn" href="' + url +'" target="blank">json</a>';
+    document.getElementById("oxDef").innerHTML = dataOx[0].meanings[0].definitions[0].definition
+    })
+  
+}
+
+async function trans(to) {
+  const res = await fetch("https://translate.argosopentech.com/translate", {
+    method: "POST",
+    body: JSON.stringify({
+      q: wrd,
+      source: "en",
+      target: to
+    }),
+    headers: { "Content-Type": "application/json" }
+    });
+
+    xlate = await res.json();
+    console.log(to, xlate.translatedText);
+    document.getElementById(to + 'Xl').innerHTML = to + ': ' +xlate.translatedText;
+  }
+
+function doFill() {
+  dataOx = getOx();
+  trans('fr')
+  trans('de')
+  trans('es')
+  trans('it')   
+  trans('pt')   
+  trans('ja')   
+
+}
+
+</script>
+
+<body>
+  <br>
+  <input type="text" id="word" name="word" placeholder="define ...">
+  <button id="get" onclick="doFill()">GET</button>
+  
+
+<br><br>
+  <div id="oxWrd"></div>
+  <div id="oxDef"></div>
+  <div id="xlate"><br> 
+    <span id="esXl"></span><br>    
+    <span id="deXl"></span><br> 
+    <span id="frXl"></span><br>     
+    <span id="itXl"></span><br> 
+    <span id="ptXl"></span><br>     
+    <span id="jaXl"></span><br> 
+  </div>
+
+<script>
+  inputId = document.getElementById('word');
+  inputId.addEventListener('keyup', function onEvent(e) {
+      if (e.keyCode === 13) {
+        doFill();
+      }})
+
+</script>
+
+</body>
+</html>

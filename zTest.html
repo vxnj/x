@@ -86,7 +86,6 @@ async function getT(lang) {
 
 
 let data;
-const api_url ="https://zenquotes.io/api/random?jj";
 
 async function getJ(url)
 {
@@ -94,7 +93,6 @@ async function getJ(url)
   now = date_format(new Date(), 'g:i:sa');
   console.log(now);
 
-  // const response = await fetch(prx + url);
   const response = await fetch(prx + url + '?' + now);
   
   data = await response.json();
@@ -108,8 +106,6 @@ async function getJ(url)
 
 }
 
-
-
 function doFill() {
   wrd = document.getElementById('word').value;;  
   dataM = getM();
@@ -118,27 +114,25 @@ function doFill() {
   getT('de');
   getT('es');
   getT('fr');
-
 }
-
 
 
 </script>
 
 
 <body>
-  <p ></p>
-  <input type="text" id="word" name="word" placeholder="enter word"><br>
-  <button id="get" onclick="doFill()">GET</button><br><br>
-
-  <div id="app1">1</div><br>
-  <div id="app2">2</div><br><br>
-  <div id="app3">3</div><br>
-  <div id="app4">4</div><br><br>
-  <!-- <div id="app5">5</div><br>
-  <div id="app6"><blockquote>&ldquo;Repetition does not transform a lie into a truth.&rdquo; &mdash; <footer>Franklin D. Roosevelt</footer></div><br><br><br> -->
-  <button id="getj" onclick="getJ(api_url)">Joke</button><br><br>
-
+  <br>
+  <input type="text" id="word" name="word" placeholder="define ...">
+  <button id="get" onclick="doFill()">GET</button>
+  <a id="jsonMw" href="" >json</a>
+  <a id="jsonG" href="" >json</a>
+<br><br>
+  <div id="app1"></div><br>
+  <div id="app2"></div><br><br>
+  <div id="app3"></div><br>
+  <div id="app4"></div><br><br>
+  <div id="app5"></div><br>
+  
 
 <script>
   inputId = document.getElementById('word');
