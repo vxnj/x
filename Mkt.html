@@ -81,7 +81,6 @@ async function doUpd() {
     mShow = (rq.hasOwnProperty('preMarketPrice')) ? rq.marketState.toLowerCase :'regular';
     clsSt = mktSt(rq.marketState, mShow)
 
-
     pctFac = 1
     if (rq.marketState=='PRE') { 
       if(i<0) {qNote='PRE'} else {qNote=preFut; pctFac=0} }
