@@ -21,6 +21,10 @@ var dataz;
 let wrd;
 
 
+// var fi = MKT3.findIndex(obj => obj.symbol=="^GSPC");
+// console.log(fi)
+   //MKT3.forEach((p, i) => console.log(p, i === 0, p.name, p.symbol));
+
 function getM() {
   key = "?key=c75da45d-5bc4-4b3b-a8cc-a5f99319e10a";
   let response = fetch("https://www.dictionaryapi.com/api/v3/references/collegiate/json/" + wrd + key, {"method": "GET"})

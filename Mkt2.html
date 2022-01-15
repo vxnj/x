@@ -3,10 +3,9 @@
 <html>
 <head>
 <title>Mkt</title>
-</head>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
 <script src="js/funcs.js"></script>
 <script src="js/fDate.js"></script>
@@ -14,92 +13,122 @@
 <link rel="icon" type="image/x-icon" href="images/mkt.ico">
 
 <script>
+let  resp = 'a';let data = "";let rq; let indx;
 
-var xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function() { // Check if fetch request is done
-    if (xhr.readyState == 4 && xhr.status == 200) { 
-        jsonData = JSON.parse(xhr.responseText);
-        processQ(jsonData);
-    }
-}
+const DESCS = [
+  {'symbol':'^DJI',  'name':'Dow',    fut:'YM=F'},
+  {'symbol':'^IXIC', 'name':'Nasdaq', fut:'NQ=F'},
+  {'symbol':'^GSPC', 'name':'S&P 500',fut:'ES=F'},
+  {'symbol':'KRE',   'name':'RegBank'},
+  {'symbol':'AMZN',  'name':'Amazon' }
+]      
 
-let  resp = 'a';
-data = "";
 
-async function getQ() {
+vIxs = ['^DJI','^IXIC','^GSPC'];
+vFts = ['YM=F','NQ=F','ES=F'];
+vNms = ['Dow', 'Nasdaq', 'S&P 500'];
+vTix = 'KRE,AAPL,GOOG,FB,AMZN,HSBC,TSLA,QQQ,SPY,BTC-USD,ETH-USD,CL=F,GC=F,^TNX';
+
+async function fetchQ() {
+  vPrx = "https://api.allorigins.win/raw?url=";
+  vUri = 'https://query2.finance.yahoo.com/v7/finance/quote?symbols='
   now = date_format(new Date(), 'g:i:sa');
   console.log(now);
-  prx = "https://api.allorigins.win/raw?url=";
-
-  vFut = 'YM=F,NQ=F,ES=F,'
-  vIdx = '^DJI,^IXIC,^GSPC,'
-
-  url = `https://query2.finance.yahoo.com/v7/finance/quote?symbols=${vIdx},${vFut}KRE,AAPL,GOOG,FB,AMZN,HSBC,TSLA,QQQ,SPY,BTC-USD,ETH-USD,CL=F,GC=F,^TNX` + ',X' + now
-  xhr.open("GET", prx + url, true);
-  xhr.send();
+  vUrl = `${vPrx}${vUri}${vIxs},${vFts},${vTix}` + ',X' + now
+ 
+  response = await fetch(vUrl, {"method": "GET"})
+  .then(response => response.json())
+  .then(data => {resp = data;})
+  return resp
 }
 
-function processQ(data) {
-  let tdHtml = '';tbHtml = '';
-
-  thHtml = '<table onclick="getQ()" class="tblX" id="mytbl"><thead><colgroup><col style="width:40%"/><col style="width:15%"/><col style="width:15%" /><col style="width:12%"/></colgroup><tr>';
+async function doUpd() {
+  data = await fetchQ();
   
-  heads = [now,'Last','Chg','%'] // ,'State','Type']
+  var obj = data.quoteResponse.result
+  var indx = obj.findIndex(function(item, i){
+    return item.name === '^DJI'
+  });
+
+  //HEADER
+  let tdHtml = '';tbHtml = '';
+  thHtml = '<table onclick="doUpd()" class="tblX" id="mytbl"><thead><colgroup><col style="width:40%"/><col style="width:15%"/><col style="width:15%" /><col style="width:12%"/></colgroup><tr>';
+  heads = [now,'Last','Chg','%']
   for (h = 0, len = heads.length; h < len; h++ ) {
-    if (h>0){ clsJust = ' class="clsRt"'} else {clsJust = ""};
-    // console.log(clsJust);
+    clsJust = (h>0) ? ' class="clsRt"': "";
     thHtml += '<th' + clsJust + '>' + heads[h] + '</th>';
   }
   thHtml += '</tr></thead>';
 
-  ticks = data.quoteResponse.result.length
-  for (q = 0, trHtml = ""; q < ticks; q++) {
+
+  //ROWS
+  
+ 
+
+  qsCt = data.quoteResponse.result.length
+  for (q = 0, trHtml = ""; q < qsCt; q++) {
     rq = data.quoteResponse.result[q];
-  
-    desc = ''; subs = '';
-    if (rq.symbol=="^DJI" ) {desc = 'Dow';      subs = 'YM=F';  }
-    if (rq.symbol=="^IXIC") {desc = 'Nasdaq';   subs = '^TNX';  }
-    if (rq.symbol=="^GSPC") {desc = 'S&P 500';  subs = 'FS=F';  }
+    if (vFts.join().match(rq.symbol) !== null) { continue; }  //dont show index futures
 
-    if (rq.hasOwnProperty('preMarketPrice')) { preQ = 'pre'; dot = '<span id="stFlag" style="color:var(--colPre); font-size:xx-small; font-weight:bold;margin-left:5px;">PRE</span>'} else { preQ = 'regular'; dot=''}
     
-    row = [ (desc || rq.shortName.substring(0, 15)) + dot ,numStd(rq[preQ+'MarketPrice'],0),numStd(rq[preQ+'MarketChange']),numStd(rq[preQ+'MarketChangePercent'],1)+'%'] 
-    
-    clsSt = mktSt(rq.marketState, preQ)
-    console.log(rq.marketState, preQ, clsSt, rq.quoteType, rq.symbol, subs);   
 
-    if (rq.marketState=='PRE' && preQ=='regular') { pctFac = 0} else { pctFac = 1 } //turn off index shading pre-market
+    const ffut = DESCS.find(DESC => DESC.symbol == rq.symbol); 
+    f3 = (ffut==null) ? '--': ffut;
+    console.log(f3 || 'x');
 
-    col = chgCol(rq[preQ+'MarketChangePercent'] * pctFac,clsSt);
-    
-    for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
-      if (r>0){ clsAdd = ' class="' + clsSt + ' clsRt"'} else {clsAdd = ""};
-      trHtml += '<td' + clsAdd + '>' + row[r] + '</td>';
 
+
+    i = DESCS.findIndex(obj => obj.symbol==rq.symbol);
+    if (i!==-1) { 
+        desc= DESCS[i].name;
+        if (DESCS[i].fut == null) {i=-1} // unset if for descr only
+    } else { 
+        desc = rq.shortName.substring(0,15);
     }
-  
-    tbHtml += '<tr ' + col + '>' + trHtml + '</tr>';
 
+    mShow = (rq.hasOwnProperty('preMarketPrice')) ? rq.marketState.toLowerCase :'regular';
+    clsSt = mktSt(rq.marketState, mShow)
+
+    pctFac = 1
+    if (rq.marketState=='PRE') { 
+      if(i<0) {qNote='PRE'} else {qNote= DESCS[q].fut; pctFac=0} }
+    else {
+      qNote = (rq.marketState=='POST' && i<0) ? numStd(rq.postMarketChange,2,true): '';
+    }
+
+    col = chgCol(rq[mShow+'MarketChangePercent'] * pctFac,clsSt);
+    addSpan = '<span id="qNote' + rq.symbol + '" class="' +clsSt+ ' qNote">' + qNote  +'</span>' 
+
+    yUrl = 'https://finance.yahoo.com/quote/' + rq.symbol
+    desc = '<a href="' + yUrl  + '" target="blank">' + desc +'<a/>'
+
+    row = [desc + addSpan, numStd(rq[mShow+'MarketPrice'],2),numStd(rq[mShow+'MarketChange'],2,true),numStd(rq[mShow+'MarketChangePercent'],1,true)+'%'] 
+    
+    //console.log(row);
+    //console.log(clsSt, i, rq.marketState, mShow, desc, rq.symbol,qNote, );    
+
+    for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
+      clsStAdj = (i<0 || clsSt!='stPre') ? clsSt : 'stOff';
+      if (r > 0 ) { clsAdd = ' class="' + clsStAdj + ' clsRt"'} else {clsAdd = ""};
+      trHtml += '<td' + clsAdd + '>' + row[r] + '</td>';
+    }
+
+    tbHtml += '<tr ' + col + '>' + trHtml + '</tr>';
   }
-  
+
   document.getElementById("app1").innerHTML = thHtml + tbHtml + '</table>';
-  document.getElementById("app2").innerHTML = '<a href="' + url + '" target="blank">json<a/>';
-  
+  document.getElementById("app2").innerHTML = '<a href="' + vUrl + '" target="blank">json<a/>';
+
 }
 
-getQ();
-
-setInterval(getQ, 5 * 60000);
-
+doUpd();
+setInterval(doUpd, 5 * 60000);
 </script>
 
 <body>
   <p></p>
-     <div id="app1"></div><br>
-    <div id="app2"></div><br>
-    <!-- <div id="app3">3</div><br>
-    <div id="app4">4</div><br> -->
-
+  <div id="app1"></div><br>
+  <div id="app2"></div><br>
 </body>
 </html>
     

@@ -10,9 +10,10 @@ function showpop(secs, id) {
     if (secs>0) { setTimeout(function(){document.getElementById(id).style.display = "none";}, secs*1000 || 3000); }
 }
 
-function numStd(num, dec) {
+function numStd(num, dec, plus) {
   ans = num.toFixed(dec || 2)
-  return ans.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  sign = (plus && ans>0) ? '+':' ';
+  return sign + ans.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 
@@ -25,9 +26,8 @@ function chgCol(pct) {
 }
 
 function mktSt(st, pre) {
-
   switch (st) {
-    case "PRE":       if (pre == 'pre') {stCls = "stPre"} else {stCls = "stOff"};break;
+    case "PRE":       stCls = (pre == 'pre') ? "stPre" :"stOff";break;
     case "REGULAR":   stCls = "stReg";break;
     case "POST":      stCls = "stPst";break;
     case "POSTPOST":  stCls = "stOff";break;

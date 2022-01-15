@@ -160,13 +160,14 @@ a   {
     margin-bottom: 0px !important;
 }
 
-.tblX  {border-collapse: collapse !important;
+/* Mkt */
+.tblX {border-collapse: collapse !important;
     width: 100%; 
     max-width: 500px !important;
     min-width: 330px !important;
     text-align: left;
     font-family:  fntNums, Segoe UI, Tahoma, Geneva, Verdana, sans-serif !important;
-     }
+}
 
 .tblX tr , .tblX td , .tblX th  { 
     border-width: 1px 0  !important; 
@@ -175,12 +176,19 @@ a   {
     font-size: 15px;
     border-collapse: collapse !important;
     padding: 2px !important;
-    font-family:  fntNums, Segoe UI, Tahoma, Geneva, Verdana, sans-serif !important;}
+    font-family:  fntNums, Segoe UI, Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.tblX a {
+    font-family:  fntNums, Segoe UI, Tahoma, Geneva, Verdana, sans-serif !important;
+    text-decoration: none !important;
+}
+
 
 .tblX th {line-height: 22px !important;
     border: 0px !important;
     background-color: hsla(239, 63%, 25%, 0.555);
-   
+
 }
 
 .clsRt { 
@@ -191,3 +199,10 @@ a   {
 .stPre { color: var(--colPre); }
 .stPst { color: var(--colOff);}
 .stOff { color: var(--colOff); }
+
+.qNote {
+    font-size:smaller; 
+    font-weight:bold;
+    margin-left:5px;
+}
+ 
