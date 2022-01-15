@@ -200,9 +200,10 @@ a   {
 .stPst { color: var(--colOff);}
 .stOff { color: var(--colOff); }
 
-.qNote {
+.qNote,  .qNote:hover{
     font-size:smaller; 
     font-weight:bold;
     margin-left:5px;
+    cursor: -moz-grabbing;
 }
  

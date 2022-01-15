@@ -15,7 +15,12 @@ mw Key (Dictionary):
 mw Key (Spanish):
         217c5a53-bc4f-402b-a581-c96cde94e197
 
+
+
 words api
         https://www.wordsapi.com/mashape/words/house/definitions?when=2022-01-08T14:35:35.281Z&encrypted=8cfdb188e722929bea9907beeb58bdbcaeb3280932f796b8
 
 https://www.wordsapi.com/mashape/words/house/definitions?when=2022-01-08T14:35:35.281Z&encrypted=8cfdb188e722929bea9907beeb58bdbcaeb3280932f796b8
+
+wordnik
+        hmden8gwqycjnrsrqs999ld7n47dqhs9jn2wkho91p4y7ago3

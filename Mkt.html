@@ -12,7 +12,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
 
-
 <link rel="stylesheet" href="style.css" />
 <link rel="icon" type="image/x-icon" href="images/mkt.ico">
 
@@ -23,18 +22,17 @@ const DESCS = [
   {'symbol':'^DJI',  'name':'Dow',    fut:'YM=F'},
   {'symbol':'^IXIC', 'name':'Nasdaq', fut:'NQ=F'},
   {'symbol':'^GSPC', 'name':'S&P 500',fut:'ES=F'},
-  {'symbol':'KRE',   'name':'Reg Banking ETF'},
+  {'symbol':'KRE',   'name':'Regional Banks ETF'},
   {'symbol':'^TNX',  'name':'10yr Treasury' },
   {'symbol':'GC=F',  'name':'Gold Futures' },
   {'symbol':'CL=F',  'name':'Oil Futures' }
-]      
+]
 
 tixIndex= [];
 idx = DESCS.filter(obj => obj.fut != null);
 idx.forEach(element => tixIndex.push(element.symbol, element.fut));
-tix = ['KRE','AAPL','GOOG','FB','AMZN','HSBC','TSLA','QQQ','SPY','BTC-USD','ETH-USD','CL=F','GC=F','^TNX'];
+tix = ['^RUT','KRE','AAPL','GOOG','FB','AMZN','HSBC','TSLA','QQQ','SPY','BTC-USD','ETH-USD','CL=F','GC=F','^TNX'];
 tixAll = ([...new Set([...tixIndex ,...tix])]); 
-
 
 async function fetchQ() {
   vPrx = "https://api.allorigins.win/raw?url=";
@@ -42,11 +40,9 @@ async function fetchQ() {
   now = date_format(new Date(), 'g:i:sa');
   console.log(now);
   vUrl = `${vPrx}${vUri}${tixAll}` + ',X' + now
- 
   response = await fetch(vUrl, {"method": "GET"})
-  .then(response => response.json())
-  .then(data => {resp = data;})
-  return resp
+  .then(response => response.json()) //.then(data => {resp = data;})
+  return response
 }
 
 async function doUpd() {
@@ -81,9 +77,10 @@ async function doUpd() {
         preFut = numStd(f3.regularMarketChange,0,true);
       }
     }
-
+    
     mShow = (rq.hasOwnProperty('preMarketPrice')) ? rq.marketState.toLowerCase :'regular';
     clsSt = mktSt(rq.marketState, mShow)
+
 
     pctFac = 1
     if (rq.marketState=='PRE') { 
@@ -92,12 +89,10 @@ async function doUpd() {
       qNote = (rq.marketState=='POST' && i<0) ? numStd(rq.postMarketChange,2,true): '';
     }
 
-
     col = chgCol(rq[mShow+'MarketChangePercent'] * pctFac,clsSt);
     addSpan = ['<span id="qNote' + rq.symbol + '" class="' +clsSt+ ' qNote">' + qNote  +'</span>' +
-               '<span style="font-size:x-small" onClick="tixAll.splice(' + q + ',1)">ⓧ</span>'] ;
+               '<span style="font-size:x-small" onClick="tixAll.splice(' + q + ',1)"> ❌</span>'] ;
    
-
     yUrl = 'https://finance.yahoo.com/quote/' + rq.symbol
     desc = '<a href="' + yUrl  + '" target="blank">' + desc +'<a/>'
 
