@@ -35,6 +35,7 @@ idx.forEach(element => tixIndex.push(element.symbol, element.fut));
 tix = ['KRE','AAPL','GOOG','FB','AMZN','HSBC','TSLA','QQQ','SPY','BTC-USD','ETH-USD','CL=F','GC=F','^TNX'];
 tixAll = ([...new Set([...tixIndex ,...tix])]); 
 
+
 async function fetchQ() {
   vPrx = "https://api.allorigins.win/raw?url=";
   vUri = 'https://query2.finance.yahoo.com/v7/finance/quote?symbols='
@@ -91,8 +92,11 @@ async function doUpd() {
       qNote = (rq.marketState=='POST' && i<0) ? numStd(rq.postMarketChange,2,true): '';
     }
 
+
     col = chgCol(rq[mShow+'MarketChangePercent'] * pctFac,clsSt);
-    addSpan = '<span id="qNote' + rq.symbol + '" class="' +clsSt+ ' qNote">' + qNote  +'</span>' 
+    addSpan = ['<span id="qNote' + rq.symbol + '" class="' +clsSt+ ' qNote">' + qNote  +'</span>' +
+               '<span style="font-size:x-small" onClick="tixAll.splice(' + q + ',1)">ⓧ</span>'] ;
+   
 
     yUrl = 'https://finance.yahoo.com/quote/' + rq.symbol
     desc = '<a href="' + yUrl  + '" target="blank">' + desc +'<a/>'
