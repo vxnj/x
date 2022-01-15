@@ -11,7 +11,7 @@ function showpop(secs, id) {
 }
 
 function numStd(num, dec, plus) {
-  ans = num.toFixed(dec || 2)
+  ans = num.toFixed(dec || 0)
   sign = (plus && ans>0) ? '+':' ';
   return sign + ans.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
