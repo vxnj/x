@@ -89,8 +89,8 @@ async function doUpd() {
     }
 
     col = chgCol(rq[mShow+'MarketChangePercent'] * pctFac,clsSt);
-    addSpan = ['<span id="qNote' + rq.symbol + '" class="' +clsSt+ ' qNote">' + qNote  +'</span>' +
-               '<span style="font-size:x-small" onClick="tixAll.splice(' + q + ',1)"> ❌</span>'] ;
+    addSpan = '<span id="qNote' + rq.symbol + '" class="' +clsSt+ ' qNote">' + qNote  +'</span>' 
+        // +     '<span style="font-size:x-small" onClick="tixAll.splice(' + q + ',1)"> ❌</span>' ;
    
     yUrl = 'https://finance.yahoo.com/quote/' + rq.symbol
     desc = '<a href="' + yUrl  + '" target="blank">' + desc +'<a/>'

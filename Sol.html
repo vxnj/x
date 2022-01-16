@@ -221,10 +221,8 @@ function getWea(data) {
  }
 
  document.addEventListener("click", (e) => {
-     console.log(e);
      if(e.srcElement.id != 'pop-moon' && e.srcElement.id != 'moonbox') { 
          document.getElementById('pop-moon').style.display='none'};
-     
  })
 
  window.onload = init;
@@ -337,7 +335,6 @@ function getmoon(phase) {
   </tr>
   </tbody>
 </table>
-
 
 <div class="pop" id="pop-moon" onclick="document.getElementById('pop-moon').style.display = 'none';"></div>
 
