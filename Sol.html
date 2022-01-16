@@ -73,7 +73,6 @@ xhrq.onreadystatechange = function() { // Check if fetch request is done
 
 function init() {
     paramzip = gup("zip") || "10025";
-    // document.getElementById("tblhr").innerHTML = tblhr;
     callzip();
 }
 
@@ -220,7 +219,14 @@ function getWea(data) {
    document.getElementById("moonbox").innerHTML = moonpic.retFull + mrise  + " - " + mset + " " + moonpic.moon;
 
  }
-	
+
+ document.addEventListener("click", (e) => {
+     console.log(e);
+     if(e.srcElement.id != 'pop-moon' && e.srcElement.id != 'moonbox') { 
+         document.getElementById('pop-moon').style.display='none'};
+     
+ })
+
  window.onload = init;
 
 function chgzip() {
