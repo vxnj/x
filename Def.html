@@ -32,7 +32,7 @@ async function getOx() {
     dataOx = data;
     document.getElementById("oxWrd").innerHTML = 
        '<a href="https://www.google.com/search?hl=en&amp;q=define+' +  wrd 
-      + ' "style="text-decoration: none;" target="_blank">' + dataOx[0].word   
+      + ' "style="text-decoration: none;" target="blank">' + dataOx[0].word   
       + " (" + dataOx[0].meanings[0].partOfSpeech + ")"  + ' </a>'
       + '<a style="color:blue !important" id="oxJsn" href="' + url +'" target="blank">json</a>';
     document.getElementById("oxDef").innerHTML = dataOx[0].meanings[0].definitions[0].definition
