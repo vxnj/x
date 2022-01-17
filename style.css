@@ -160,6 +160,13 @@ a   {
     margin-bottom: 0px !important;
 }
 
+.precip {
+    font-size: small;
+    /* color:var(--live-cur); */
+    filter: hue-rotate(30deg);
+    margin-left: 3px;
+}
+
 
 
 /* Mkt */

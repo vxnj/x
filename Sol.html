@@ -165,22 +165,31 @@ function getWea(data) {
       var xd = new Date((data.hourly[ix].dt+ shift)*1000);
       dthr = date_format(xd, 'g a');
 
+      vPop = (data.hourly[ix].pop > .04) ? '<span class="precip"> ' 
+        + 100*numStd(data.hourly[ix].pop, 1) + '%</span>':'';
+      
+
+
       tblhr += "<tr>" 
             + "  <td>" + dthr + "m</td>"
             + "  <td>" + parseInt(.5 + data.hourly[ix].temp) + "°</td>"
             + "  <td>" + data.hourly[ix].humidity + "%" + "</td>"
-            + "  <td>" + geticon(data.hourly[ix].weather[0].icon) + data.hourly[ix].weather[0].description + "</td>"
+            + "  <td>" + geticon(data.hourly[ix].weather[0].icon) + data.hourly[ix].weather[0].description + vPop + "</td>"
             + "</tr>";
       }
  
       for (let j = 1; j < 7; j++) {
         xd = new Date((data.daily[j].dt+ shift)*1000);
         dthr = date_format(xd, 'D');
+
+        vPop = (data.daily[j].pop > .04) ? '<span class="precip"> ' 
+        + 100*numStd(data.daily[j].pop, 1) + '%</span>':'';
+  
         tblhr += "<tr class='day'>" 
               + "  <td>" + dthr + "</td>"
               + "  <td>" + parseInt(.5 + data.daily[j].temp.max)+ "-" +parseInt(.5 + data.daily[j].temp.min) + "°</td>"
               + "  <td>" + data.daily[j].humidity + "%" + "</td>"
-              + "  <td>" + geticon(data.daily[j].weather[0].icon) + data.daily[j].weather[0].description + "</td>"
+              + "  <td>" + geticon(data.daily[j].weather[0].icon) + data.daily[j].weather[0].description + vPop + "</td>"
               + "</tr>";
       }
    tblhr += "</tbody></table>";
