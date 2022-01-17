@@ -89,6 +89,7 @@ async function doUpd() {
     }
 
     col = chgCol(rq[mShow+'MarketChangePercent'] * pctFac,clsSt);
+    
     addSpan = '<span id="qNote' + rq.symbol + '" class="' +clsSt+ ' qNote">' + qNote  +'</span>' 
         // +     '<span style="font-size:x-small" onClick="tixAll.splice(' + q + ',1)"> ❌</span>' ;
    
@@ -97,9 +98,17 @@ async function doUpd() {
 
     row = [desc + addSpan, numStd(rq[mShow+'MarketPrice'],2),numStd(rq[mShow+'MarketChange'],2,true),numStd(rq[mShow+'MarketChangePercent'],1,true)+'%'] 
     
+   
+    clsHue = '';
     for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
-      clsStAdj = (i<0 || clsSt!='stPre') ? clsSt : 'stOff';
-      if (r > 0 ) { clsAdd = ' class="' + clsStAdj + ' clsRt"'} else {clsAdd = ""};
+      clsStAdj = (i<0 || clsSt!='stPre') ? clsSt : 'stOff'; // for highlighting only when showing pre
+
+        //hue rotate if state is not off for last two cols
+        if (r>1 && clsSt=='stReg') {
+            clsHue = (rq[mShow+'MarketChangePercent'] >= 0 ) ? ' upHue' : ' dnHue';
+        }
+
+      if (r > 0 ) { clsAdd = ' class="' + clsStAdj + clsHue + ' clsRt"'} else {clsAdd = ""};
       trHtml += '<td' + clsAdd + '>' + row[r] + '</td>';
     }
     tbHtml += '<tr ' + col + '>' + trHtml + '</tr>';

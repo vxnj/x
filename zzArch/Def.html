@@ -26,21 +26,16 @@ prx = "https://api.allorigins.win/get?callback=myFunc&url="
 async function getOx() {
   wrd = document.getElementById('word').value; 
   url = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + wrd;
-
-  url = 'https://api.wordnik.com/v4/word.json/' + wrd +'/definitions?limit=200&includeRelated=true&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=hmden8gwqycjnrsrqs999ld7n47dqhs9jn2wkho91p4y7ago3'
-
   response = fetch(url, {"method": "GET"})
   .then(response => response.json())
   .then(data => {
     dataOx = data;
-    console.log(dataOx)
     document.getElementById("oxWrd").innerHTML = 
-        '<a href="https://www.google.com/search?hl=en&amp;q=define+' +  wrd 
-       + ' "style="text-decoration: none;" target="blank">' + dataOx[0].word   
-       + " (" + dataOx[0].partOfSpeech + ")"  + ' </a>'
-       + '<a href="' + url +'" target="blank">json</a>';
-
-     document.getElementById("oxDef").innerHTML = dataOx[0].text
+       '<a href="https://www.google.com/search?hl=en&amp;q=define+' +  wrd 
+      + ' "style="text-decoration: none;" target="blank">' + dataOx[0].word   
+      + " (" + dataOx[0].meanings[0].partOfSpeech + ")"  + ' </a>'
+      + '<a style="color:blue !important" id="oxJsn" href="' + url +'" target="blank">json</a>';
+    document.getElementById("oxDef").innerHTML = dataOx[0].meanings[0].definitions[0].definition
     })
   
 }
@@ -49,7 +44,7 @@ async function trans(to) {
   const res = await fetch("https://translate.argosopentech.com/translate", {
     method: "POST",
     body: JSON.stringify({
-      q: wrd.toLowerCase(),
+      q: wrd,
       source: "en",
       target: to
     }),
@@ -85,7 +80,7 @@ async function trans(to) {
   inputId = document.getElementById('word');
   inputId.addEventListener('keyup', function onEvent(e) {
       if (e.keyCode === 13) {
-        getOx(); trans('de'); trans('es');
+        getOx();
       }})
 
 </script>
