@@ -208,12 +208,13 @@ a   {
  } 
 
 .stPre          { color: var(--colPre); }
+
 .stPst, .stOff  { filter: brightness(65%) }
 
-.dnHue { filter: brightness(75%) hue-rotate(30deg); }
-.upHue { filter: brightness(75%) hue-rotate(-115deg); }
+.dnHue { color : hsl(300, 10%, 50%); }
+.upHue { color:  hsl(120, 10%, 50%); }
 
-.qNote,  .qNote:hover{
+.qNote, .qNote:hover{
     font-size:smaller; 
     font-weight:bold;
     margin-left:5px;
