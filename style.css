@@ -101,6 +101,7 @@ a   {
     margin: -11px 2px -6px 0 !important;
 }
 
+
 [id="aqi"] { margin-left: 8px;}
 .numball {
     display: inline-block;
@@ -163,8 +164,11 @@ a   {
 .precip {
     font-size: small;
     /* color:var(--live-cur); */
-    filter: hue-rotate(30deg);
+    filter: hue-rotate(-15deg);
     margin-left: 3px;
+    /* opacity: .5; */
+    font-weight: 600;
+    /* filter: invert(50%); */
 }
 
 

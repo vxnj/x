@@ -148,11 +148,18 @@ function getWea(data) {
       dtnow = date_format(dateVal, 'g:i');
       hrnow = date_format(dateVal, 'H');
       tblhr = ""
+
+      vPop = (data.hourly[0].pop > .04) ? '<span class="precip"> ' 
+        + 100*numStd(data.hourly[0].pop, 1) + '%</span>':'';
+
+        vDesc = data.current.weather[0].description
+
       tblhr += "<tr>" 
             + "  <td>" + dtnow + "</td>"
             + '  <td class="hl"><b>' + parseInt(.5 + data.current.temp) + "°</b></td>"
             + "  <td>" + data.current.humidity + "%" + "</td>"
-            + "  <td>" + geticon(data.current.weather[0].icon) + data.current.weather[0].description   +"</td>"
+            + "  <td>" + geticon(data.current.weather[0].icon) + 
+                data.current.weather[0].description.replace("intensity ", "")  + vPop +"</td>"
             + "</tr>";
     
     let txt = "";
@@ -174,7 +181,7 @@ function getWea(data) {
             + "  <td>" + dthr + "m</td>"
             + "  <td>" + parseInt(.5 + data.hourly[ix].temp) + "°</td>"
             + "  <td>" + data.hourly[ix].humidity + "%" + "</td>"
-            + "  <td>" + geticon(data.hourly[ix].weather[0].icon) + data.hourly[ix].weather[0].description + vPop + "</td>"
+            + "  <td>" + geticon(data.hourly[ix].weather[0].icon) + data.hourly[ix].weather[0].description.replace("intensity ", "") + vPop + "</td>"
             + "</tr>";
       }
  
@@ -189,7 +196,7 @@ function getWea(data) {
               + "  <td>" + dthr + "</td>"
               + "  <td>" + parseInt(.5 + data.daily[j].temp.max)+ "-" +parseInt(.5 + data.daily[j].temp.min) + "°</td>"
               + "  <td>" + data.daily[j].humidity + "%" + "</td>"
-              + "  <td>" + geticon(data.daily[j].weather[0].icon) + data.daily[j].weather[0].description + vPop + "</td>"
+              + "  <td>" + geticon(data.daily[j].weather[0].icon) + data.daily[j].weather[0].description.replace("intensity ", "") + vPop + "</td>"
               + "</tr>";
       }
    tblhr += "</tbody></table>";
@@ -300,13 +307,13 @@ function getmoon(phase) {
         retFull= moonEmojis[mnnow]+ ' ';
     }
 
-    moon = '<img src="svg/' + phases[ph] + '.svg" alt="Moon" class="weaicon"/>';
+    moon = '<img src="svg/' + phases[ph] + '.svg" id="Moon" class="weaicon"/>';
     for (let k = 0; k < 8; k++) {
     moonInner += '<img src="svg/' + phases[k] + '.svg" alt="Moon" id="phimg' + k + '" style="filter:brightness(70%)" class="weaicon"/><span id="phdesc' + k + '">    ' +  phasesDesc[k] + "</span><br>";
    } 
    //moonInner += '<a id="linkPhExpl" href="https://c.tadst.com/gfx/600x337/moon-phases-explained.png" target="blank">?<a/>'
 
-   document.getElementById("pop-moon").innerHTML = moonInner;
+    document.getElementById("pop-moon").innerHTML = moonInner;
     document.getElementById("phdesc" + ph).style.color = 'var(--live-cur)';
     document.getElementById("phimg" + ph).style.filter = "brightness(120%)"; 
     return {retFull, moon};
@@ -340,7 +347,7 @@ function getmoon(phase) {
   <tr>
   <td id="sunbox" ></td>
   <td id="aqibox" ><a id="aqi" class="numball" href="https://www.airnow.gov/"></a></td>
-  <td id="moonbox" onclick="showpop(0,'pop-moon')" style="text-align: right; cursor: hand"></td>
+  <td id="moonbox" onclick="showpop(0,'pop-moon')" style="text-align: right; cursor: pointer"></td>
   </tr>
   </tbody>
 </table>
