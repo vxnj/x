@@ -86,12 +86,12 @@ async function doUpd() {
     // handle fut notes
     pctFac = 1
     if (rq.marketState=='PRE') { 
-      if(i<0) {qNote='PRE'} else {qNote=preFut; pctFac=0} }
+      if(i<0) {qNote='PRE'} else {qNote=preFut; pctFac=0} } // other 'PRE' : index pre$chg
     else {
-      qNote = (rq.marketState=='POST' && i<0) ? numStd(rq.postMarketChange,2,true): '';
+      qNote = (rq.marketState=='POST' && i<0) ? numStd(rq.postMarketChange,2,true): ''; // post$chg
     }
 
-    col = chgCol(rq[mShow+'MarketChangePercent'] * pctFac,clsSt);
+    col = chgCol(rq[mShow+'MarketChangePercent'] * pctFac,clsSt); // bg chg% color
     
     addSpan = '<span id="qNote' + rq.symbol + '" class="' +clsSt+ ' qNote">' + qNote  +'</span>' 
         // +     '<span style="font-size:x-small" onClick="tixAll.splice(' + q + ',1)"> ❌</span>' ;
@@ -104,15 +104,10 @@ async function doUpd() {
 
     clsHue = '';
     for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
-      clsStAdj = (i<0 || clsSt!='stPre') ? clsSt : 'stOff'; // for highlighting only when showing pre
-
-        //hue rotate if state is not off for last two cols
-        if (r>1 && clsSt=='stReg') {
-            clsHue = (rq[mShow+'MarketChangePercent'] >= 0 ) ? ' upHue' : ' dnHue';
-        }
-
-      if (r > 0 ) { clsAdd = ' class="' + clsStAdj + clsHue + ' clsRt"'} else {clsAdd = ""};
-      trHtml += '<td' + clsAdd + '>' + row[r] + '</td>';
+        clsStAdj = (i<0 || clsSt!='stPre') ? clsSt : 'stOff'; // for highlighting only when showing pre
+        if (r>1 && clsSt=='stReg') {clsHue = (rq[mShow+'MarketChangePercent'] >= 0 ) ? ' upHue' : ' dnHue'; }//chg in grn red if mkt regular
+        if (r > 0 ) { clsAdd = ' class="' + clsStAdj + clsHue + ' clsRt"'} else {clsAdd = ""}; // add classes
+        trHtml += '<td' + clsAdd + '>' + row[r] + '</td>'; 
     }
     tbHtml += '<tr ' + col + '>' + trHtml + '</tr>';
   }
