@@ -1,52 +1,36 @@
+
 <?php
 $servername = "sql5.freemysqlhosting.net";
 $database = "sql5466078";
 $username = "sql5466078";
 $password = "G3bSlhDS8P";
-// // Create connection
-// $conn = mysqli_connect($servername, $username, $password, $database);
-// // Check connection
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
-// echo "Connected successfully";
-// mysqli_close($conn);
-// ?>
 
-// <?php
-// $servername = "localhost";
-// $username = "username";
-// $password = "password";
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 
-// try {
-//   $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
-//   // set the PDO error mode to exception
-//   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//   echo "Connected successfully";
-// } catch(PDOException $e) {
-//   echo "Connection failed: " . $e->getMessage();
-// }
-// $conn = null; 
-// ?> 
+// $sql = "INSERT INTO MyGuests (firstname, lastname, email)
+// VALUES ('John', 'Doe', 'john@example.com')";
 
-// <?php
-// $servername = "sql5.freemysqlhosting.net";
-// $database = "sql5466078";
-// $username = "sql5466078";
-// $password = "G3bSlhDS8P";
+// $sql = "INSERT INTO myList (who, what, done) 
+//     VALUES ('x', 'insertx', 9)";
 
-// try {
-//   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-//   // set the PDO error mode to exception
-//   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//   $sql = "INSERT INTO MyGuests (firstname, lastname, email)
-//   VALUES ('John', 'Doe', 'john@example.com')";
-//   // use exec() because no results are returned
-//   $conn->exec($sql);
-//   echo "New record created successfully";
-// } catch(PDOException $e) {
-//   echo $sql . "<br>" . $e->getMessage();
-// }
+//$sql = "DELETE FROM myList WHERE what = 'pizza'";
 
-// $conn = null;
-?> 
+$sql = "SELECT who, what, done FROM myList WHERE who != 'g'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "done: " . $row["done"] . "    - Name: " . $row["who"]. "    what:" . $row["what"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
+
+
+?>  

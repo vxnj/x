@@ -11,11 +11,11 @@ function showpop(secs, id) {
 }
 
 function numStd(num, dec, plus) {
+    num = (num) ? num : 0
   ans = num.toFixed(dec || 0)
   sign = (plus && ans>0) ? '+':' ';
   return sign + ans.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
-
 
 function chgCol(pct) {
   if (pct === undefined) return;

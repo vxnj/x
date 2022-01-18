@@ -19,9 +19,10 @@
 let resp;let data = "";let rq; let indx;
 
 const DESCS = [
-  {'symbol':'^DJI',  'name':'Dow',    fut:'YM=F'},
-  {'symbol':'^IXIC', 'name':'Nasdaq', fut:'NQ=F'},
-  {'symbol':'^GSPC', 'name':'S&P 500',fut:'ES=F'},
+  {'symbol':'^DJI',  'name':'Dow',    fut:'YM=F' },
+  {'symbol':'^IXIC', 'name':'Nasdaq', fut:'NQ=F' },
+  {'symbol':'^GSPC', 'name':'S&P 500',fut:'ES=F' },
+  {'symbol':'^RUT',  'name':'Russell',fut:'RTY=F'},
   {'symbol':'KRE',   'name':'Regional Banks ETF'},
   {'symbol':'^TNX',  'name':'10yr Treasury' },
   {'symbol':'GC=F',  'name':'Gold Futures' },
@@ -42,12 +43,13 @@ async function fetchQ() {
   vUrl = `${vPrx}${vUri}${tixAll}` + ',X' + now
   response = await fetch(vUrl, {"method": "GET"})
   .then(response => response.json()) //.then(data => {resp = data;})
-  return response
+  return response 
+
 }
 
 async function doUpd() {
   data = await fetchQ();
-  
+
   //HEADER
   let tdHtml = '';tbHtml = '';
   thHtml = '<table onclick="doUpd()" class="tblX" id="mytbl"><thead><colgroup><col style="width:40%"/><col style="width:15%"/><col style="width:15%" /><col style="width:12%"/></colgroup><tr>';
@@ -62,8 +64,8 @@ async function doUpd() {
   qsCt = data.quoteResponse.result.length
   for (q = 0, trHtml = ""; q < qsCt; q++) {
     rq = data.quoteResponse.result[q];
-    if (DESCS.some(x => x.fut == rq.symbol)) { continue; } //no row for fut's
-   
+    if (DESCS.some(x => x.fut == rq.symbol)) { continue; } 
+      
     i = DESCS.findIndex(obj => obj.symbol==rq.symbol);   
     if (i<0) { //not special
       desc = rq.shortName.substring(0,18);  
@@ -74,13 +76,14 @@ async function doUpd() {
       else { //find fut
         const descr = data.quoteResponse.result.find(obj => obj.symbol == DESCS[i].fut); 
         f3 = (descr==null) ? '--': descr;
-        preFut = numStd(f3.regularMarketChange,0,true);
+        preFut = numStd(f3.regularMarketChange,0 ,true);
       }
     }
     
-    mShow = (rq.hasOwnProperty('preMarketPrice')) ? rq.marketState.toLowerCase :'regular';
+    mShow = (rq.hasOwnProperty('preMarketPrice')) ? rq.marketState.toLowerCase() :'regular';
     clsSt = mktSt(rq.marketState, mShow)
 
+    // handle fut notes
     pctFac = 1
     if (rq.marketState=='PRE') { 
       if(i<0) {qNote='PRE'} else {qNote=preFut; pctFac=0} }
@@ -97,8 +100,8 @@ async function doUpd() {
     desc = '<a href="' + yUrl  + '" target="blank">' + desc +'<a/>'
 
     row = [desc + addSpan, numStd(rq[mShow+'MarketPrice'],2),numStd(rq[mShow+'MarketChange'],2,true),numStd(rq[mShow+'MarketChangePercent'],1,true)+'%'] 
-    
-   
+ console.log(mShow, row);   
+
     clsHue = '';
     for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
       clsStAdj = (i<0 || clsSt!='stPre') ? clsSt : 'stOff'; // for highlighting only when showing pre
