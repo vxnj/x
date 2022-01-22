@@ -104,7 +104,6 @@ a   {
 [id="aqi"] { margin-left: 8px;}
 .numball {
     display: inline-block;
-    /* color: var(--live-cur) !important; */
     color: white !important;
     border-radius: 50%;
     padding: 8px !important;    
