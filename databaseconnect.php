@@ -1,6 +1,8 @@
 
 <?php
 
+
+
 $servername = "212.1.208.51";
 $database = "u571834012_test";
 $username = "u571834012_vaxier";
@@ -14,7 +16,7 @@ if ($conn->connect_error) {
 }
 
 $sql = "INSERT INTO listo (item, done) 
-    VALUES (" . date("d") . ", 'n')";
+    VALUES (now(), 'n')";
 
 $result = $conn->query($sql);
 
