@@ -253,10 +253,10 @@ function themer () {
     th = document.getElementById("themer").value;
     console.log(th)
     switch (th) {
-      case 'dark': val = ['var(--dark-def)','var(--dark-day)','var(--dark-cur)','var(--dark-bkg)','url("images/SkyDark.jpg")']; break;
-      case "mint": val = ['var(--mint-def)','var(--mint-day)','var(--mint-cur)','var(--mint-bkg)','url("images/SkyMint.jpg")']; break;
-      case "pink": val = ['var(--pink-def)','var(--pink-day)','var(--pink-cur)','var(--pink-bkg)','url("images/SkyPink.jpg")']; break;
-      case "bayj": val = ['var(--bayj-def)','var(--bayj-day)','var(--bayj-cur)','var(--bayj-bkg)','url("images/SkyBeige.jpg")']; break;
+      case 'dark': val = ['var(--dark-def)','var(--dark-day)','var(--dark-cur)','var(--dark-bkg)','url("images/weather/SkyDark.jpg")']; break;
+      case "mint": val = ['var(--mint-def)','var(--mint-day)','var(--mint-cur)','var(--mint-bkg)','url("images/weather/SkyMint.jpg")']; break;
+      case "pink": val = ['var(--pink-def)','var(--pink-day)','var(--pink-cur)','var(--pink-bkg)','url("images/weather/SkyPink.jpg")']; break;
+      case "bayj": val = ['var(--bayj-def)','var(--bayj-day)','var(--bayj-cur)','var(--bayj-bkg)','url("images/weather/SkyBeige.jpg")']; break;
     }
     document.documentElement.style.setProperty('--live-def',val[0]);
     document.documentElement.style.setProperty('--live-day',val[1]);
