@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+<title>Def</title>
+</head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="js/funcs.js"></script>
+<script src="js/fDate.js"></script>
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" type="image/x-icon" href="images/def.svg">
+
+<script>
+
+let data;
+let dataOx;
+let wrd;
+let xlate;
+let res;
+
+prx = "https://api.allorigins.win/raw?url=";
+prx = "https://api.allorigins.win/get?callback=myFunc&url="
+
+async function getOx() {
+    wrd = document.getElementById('word').value; 
+    url = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + wrd;
+
+    url = 'https://api.wordnik.com/v4/word.json/' + wrd +'/definitions?limit=200&includeRelated=true&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=hmden8gwqycjnrsrqs999ld7n47dqhs9jn2wkho91p4y7ago3'
+
+    response = fetch(url, {"method": "GET"})
+    .then(response => response.json())
+    .then(data => {
+    dataOx = data;
+    console.log(dataOx)
+    document.getElementById("oxWrd").innerHTML = 
+        '<a href="https://www.google.com/search?hl=en&amp;q=define+' +  wrd 
+        + ' "style="text-decoration: none;" target="blank">' + dataOx[1].word   
+        + " (" + dataOx[1].partOfSpeech + ")"  + ' </a>'
+        + '<a href="' + url +'" target="blank">json</a>';
+        document.getElementById("oxDef").innerHTML =  dataOx[1].text
+    }
+)}
+
+async function trans(to) {
+  const res = await fetch("https://translate.argosopentech.com/translate", {
+    method: "POST",
+    body: JSON.stringify({
+      q: wrd.toLowerCase(),
+      source: "en",
+      target: to
+    }),
+    headers: { "Content-Type": "application/json" }
+    });
+
+    xlate = await res.json();
+    console.log(to, xlate.translatedText);
+    document.getElementById(to + 'Xl').innerHTML = to + ': ' +xlate.translatedText;
+  }
+
+</script>
+
+<body>
+  <br>
+  <input type="text" id="word" name="word" placeholder="define ...">
+  <button id="get" onclick="getOx()">GET</button>
+  
+<br><br>
+  <div id="oxWrd"></div>
+  <div id="oxDef"></div>
+  <div id="xlate"><br> 
+    <span id="deXl"></span><br>    
+    <span id="esXl"></span><br>    
+    <span id="ptXl"></span><br>  
+    <span id="itXl"></span><br> 
+    <span id="frXl"></span><br>
+    <span id="jaXl"></span><br> 
+  </div>
+
+  
+<script>
+  inputId = document.getElementById('word');
+  inputId.addEventListener('keyup', function onEvent(e) {
+      if (e.keyCode === 13) {
+        getOx(); trans('de'); trans('es');
+      }})
+
+</script>
+</body>
+</html>

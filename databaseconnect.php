@@ -1,21 +1,10 @@
 
 <?php
-// $servername = "sql5.freemysqlhosting.net";
-// $database = "sql5466078";
-// $username = "sql5466078";
-// $password = "G3bSlhDS8P";
 
 $servername = "212.1.208.51";
 $database = "u571834012_test";
 $username = "u571834012_vaxier";
 $password = "W234hopp=";
-
-
-// $servername = "sql113.epizy.com";
-// $database = "epiz_30364343_test";
-// $username = "epiz_30364343";
-// $password = "deBr4YQkA2rZpny";
-
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
@@ -25,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 $sql = "INSERT INTO listo (item, done) 
-    VALUES ('currenttime()', 'n')";
+    VALUES (" . date("d") . ", 'n')";
 
 $result = $conn->query($sql);
 
