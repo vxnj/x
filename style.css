@@ -209,10 +209,12 @@ a   {
 
 .stPre          { color: var(--colPre); }
 
-.stPst, .stOff  { filter: brightness(65%) }
+
 
 .dnHue { color : hsl(300, 10%, 50%); }
 .upHue { color:  hsl(120, 10%, 50%); }
+
+.stPst, .stOff { color:  hsla(221, 77%, 71%, 60%) }
 
 .qNote, .qNote:hover{
     font-size:smaller; 
