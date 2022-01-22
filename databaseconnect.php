@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 }
 
 $sql = "INSERT INTO listo (item, done) 
-    VALUES (now(), 'y')";
+    VALUES (now(), 'p')";
 
 $result = $conn->query($sql);
 
