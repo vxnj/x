@@ -5,8 +5,6 @@
 <html>
 <head>
 <title>Listo!</title>
-
-
 </head>
 
 <script src="js/funcs.js"></script>
@@ -14,20 +12,14 @@
 <link rel="stylesheet" href="style.css" />
 
 <body>
-<style>
-    input[type=submit] { display:none;}
-</style>
-
 </body>
 
 <?php
 // Create connection & check
-
-$trash = '<img src="images/trash.svg"/>';
-   
 require_once('../resources/config.php');
 $conn = new mysqli( $servername, $username, $password, $database); 
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
+
 
 // display records
 $sql = "SELECT * FROM listo ORDER BY updated DESC limit 0,30";
@@ -35,15 +27,17 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     echo "<table class='tblX'>
         <tr>
-            <td>Item</td>
-            <td>Actions</td>
             <td>Updated</td>
-            <td>ID</td>            
-        </tr>
+            <td>ID</td>
+            <td>Item</td>
+            <td>Del</td>
         <tr>
+        <tr>
+            <td> </td>
+            <td> </td>
             <td>";           
 ?>     
-
+        
         <form action="/db/recAdd.php" method="post">
             <input type="text"   name="item" id="item" placeholder="add item ...">
             <input type="submit" name="subm" id="subm" value=""/>
@@ -57,11 +51,11 @@ if ($result->num_rows > 0) {
  
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo '<tr><td>' . $row['item'] . '</td>';
-        echo '<td><a href="db/recDel.php?id='  . $row['id'] . '"><img alt="Del" src="/images/delete.svg" height="18px"</a></td>';
+        echo '<tr><td>' . $row['updated'] . '</td>';
         echo     '<td>' . $row['id']      . '</td>';
-        echo     '<td>' . $row['updated']    . '</td>';
-    
+        echo     '<td>' . $row['item']    . '</td>';
+        echo '<td><a href="db/recDel.php?id='  . $row['id'] . '">x</a></td>';
+
         echo '</tr>';
     }
     //echo "<br><br>" . $_SERVER['HTTP_USER_AGENT'];
