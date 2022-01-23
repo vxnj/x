@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <html>
 <head>
 <title>Listo!</title>
-
-
 </head>
 
 <script src="js/funcs.js"></script>
@@ -21,10 +18,10 @@
 </body>
 
 <?php
-// Create connection & check
 
-$trash = '<img src="images/trash.svg"/>';
-   
+$trash = '<img src="../images/trash.svg"/>';
+
+// Create connection & check  
 require_once('../../resources/config.php');
 $conn = new mysqli( $servername, $username, $password, $database); 
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
@@ -44,7 +41,7 @@ if ($result->num_rows > 0) {
             <td>";           
 ?>     
 
-        <form action="/db/recAdd.php" method="post">
+        <form action="db/recAdd.php" method="post">
             <input type="text"   name="item" id="item" placeholder="add item ...">
             <input type="submit" name="subm" id="subm" value=""/>
         </form>
@@ -58,7 +55,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
         echo '<tr><td>' . $row['item'] . '</td>';
-        echo '<td><a href="db/recDel.php?id='  . $row['id'] . '"><img alt="Del" src="/images/delete.svg" height="18px"</a></td>';
+        echo '<td><a href="db/recDel.php?id='  . $row['id'] . '"><img alt="Del" src="images/delete.svg" height="18px"</a></td>';
         echo     '<td>' . $row['id']      . '</td>';
         echo     '<td>' . $row['updated']    . '</td>';
     
@@ -66,32 +63,8 @@ if ($result->num_rows > 0) {
     }
     //echo "<br><br>" . $_SERVER['HTTP_USER_AGENT'];
 } else {
-    echo "0 results";
-    
-}
-
-function addRec() {
-    // echo $_POST['item'] . "<br><br><hr>";
-    $item = $_POST['item'];
-    // Create connection & check
-    require('../../resources/config.php');
-
-    $conn = new mysqli( $servername, $username, $password, $database); 
-    if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
-
-    if ($item != '') {
-        $sql = "INSERT INTO listo (item, done) VALUES ('" . $item . "', 'p')";
-        $result = $conn->query($sql);
-    }
-    $conn->close();
-}
-
-if(array_key_exists('add',$_POST)){
-    // echo 'pressed add<br><br>';
-    // echo $_POST['item'] . "<br><br>";
-    addRec();
+    echo "0 results";  
 }
 
 ?>
-
 </html>
