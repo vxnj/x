@@ -9,18 +9,14 @@
 
 <?php
 // Create connection & check
-$item=$_POST['item'];
-echo $item;
-
 require_once('../../../resources/config.php');
 $conn = new mysqli( $servername, $username, $password, $database); 
+$id=$_GET['id'];
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
 
-if ($item != '') {
-     $sql = "INSERT INTO listo (item, fin) VALUES ('" . $item . "', 0)";
-     $result = $conn->query($sql);
-}
-
+echo ($id);
+$sql = "UPDATE `listo` SET `fin`=0 WHERE id='$id'";
+$result = $conn->query($sql);
 $conn->close();
 
 header('location:../test.php');
