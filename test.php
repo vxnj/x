@@ -62,7 +62,7 @@ if ($result->num_rows > 0) {
         $svg = $row['fin']==0 ? 'lstfin' : 'lstundo';
         $act = $row['fin']==0 ? 'Fin'    : 'Undo';
         $a1  = '<a href="db/rec' . $act . '.php?id='  . $row['id'] . '"><img alt="' . $svg . '" src="images/' . $svg . '.svg" height="24px"</a>';
-        $a2  = $row['fin']==0 ? '' : '<a href="db/recDel.php?id=' . $row['id'] . '"><img alt="Del" src="images/lstDel.svg" height="24px"</a>';
+        $a2  = $row['fin']==0 ? '' : '<a href="db/recDel.php?id=' . $row['id'] . '"><img alt="Del" src="images/lstdel.svg" height="24px"</a>';
 
        
 
