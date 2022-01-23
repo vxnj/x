@@ -34,8 +34,7 @@ if ($result->num_rows > 0) {
         <tr>
             <td>Item</td>
             <td>Actions</td>
-            <td>Updated</td>
-            <td>ID</td>            
+            <td>Upd</td>         
         </tr>
         <tr>
             <td>";           
@@ -54,11 +53,13 @@ if ($result->num_rows > 0) {
  
     // output data of each row
     while($row = $result->fetch_assoc()) {
+
+        $mmdd = date_format(date_create($row['updated']),"m/d");
+        echo $mmdd;
+
         echo '<tr><td>' . $row['item'] . '</td>';
-        echo '<td><a href="db/recDel.php?id='  . $row['id'] . '"><img alt="Del" src="images/delete.svg" height="18px"</a></td>';
-        echo     '<td>' . $row['id']      . '</td>';
-        echo     '<td>' . $row['updated']    . '</td>';
-    
+        echo    '<td><a href="db/recDel.php?id='  . $row['id'] . '"><img alt="Del" src="images/delete.svg" height="20px"</a></td>';
+        echo    '<td>' . $mmdd . '</td>';
         echo '</tr>';
     }
     //echo "<br><br>" . $_SERVER['HTTP_USER_AGENT'];
