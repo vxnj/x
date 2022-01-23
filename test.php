@@ -25,7 +25,7 @@
 
 $trash = '<img src="images/trash.svg"/>';
    
-require_once('../resources/config.php');
+require_once('../../resources/config.php');
 $conn = new mysqli( $servername, $username, $password, $database); 
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
 
@@ -74,7 +74,7 @@ function addRec() {
     // echo $_POST['item'] . "<br><br><hr>";
     $item = $_POST['item'];
     // Create connection & check
-    require('../resources/config.php');
+    require('../../resources/config.php');
 
     $conn = new mysqli( $servername, $username, $password, $database); 
     if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}

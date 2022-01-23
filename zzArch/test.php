@@ -24,7 +24,7 @@ echo $_SERVER['HTTP_USER_AGENT'] . "<br><br><br>";
 function addRec() {
     $item = $_POST['item'];
     // Create connection & check
-    require_once('../resources/config.php');
+    require_once('../../resources/config.php');
     $conn = new mysqli( $servername, $username, $password, $database); 
     if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
 
