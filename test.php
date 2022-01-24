@@ -15,13 +15,13 @@
     input[type=submit] { display:none; }
 
     #item {
-        background:   hsla(0, 0%, 50%, 0.35);
+        background:  black;
         color: #fff;
         padding: 4px;
         border: 0;
         margin: 0;
         height: 24px;
-        width: 94%;
+        width: 92%;
         max-width: 490px !important;
         font-size: 18px;
         font-family: 'Open Sans'; 
@@ -33,7 +33,7 @@
     }
 
     #head {
-        background-color: #2c2c2c;
+        background-color: #52579aa1;
         width: 100%;
         height: 30px;
         position: fixed;
