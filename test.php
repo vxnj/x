@@ -26,9 +26,8 @@
     }
 
     #item {
-        background: black; */
+        background: black !important; */
         color: #fff;
-        /* margin-right: -6px !important; */
         border: 0;
         margin: 0;
         height: 24px;
