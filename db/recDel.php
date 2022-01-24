@@ -15,7 +15,8 @@ $id=$_GET['id'];
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
 
 echo ($id);
-$sql = "DELETE FROM listo WHERE id='$id'";
+// $sql = "DELETE FROM listo WHERE id='$id'";
+$sql = "UPDATE `listo` SET `removed`='Y' WHERE id='$id'";
 $result = $conn->query($sql);
 $conn->close();
 

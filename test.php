@@ -13,6 +13,28 @@
 <body>
 <style>
     input[type=submit] { display:none;}
+    #item {
+        background:   hsla(0, 0%, 50%, 0.35);
+        color: #fff;
+        padding: 4px;
+        border: 0;
+        margin: -2px;
+        height: 24px;
+        width: 100%;
+        font-size: 18px;
+        font-family: 'Open Sans'; 
+    }
+    
+    #action {
+        float: right;
+        margin-left: 5px;
+    }
+
+    .tblX tr, .tblX td, .tblX th { 
+        line-height: 32px !important;
+        font-size:   18px !important;
+        vertical-align: center !important;
+    }
 </style>
 
 </body>
@@ -33,11 +55,7 @@ $sql = "SELECT * FROM listoSort limit 0,30";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     echo "<table class='tblX'>
-        <tr>
-            <td>Item</td>
-            <td>Actions</td>
-            <td>Upd</td>         
-        </tr>
+
         <tr>
             <td>";           
 ?>     
@@ -49,26 +67,20 @@ if ($result->num_rows > 0) {
 
 <?php 
 
-    echo "
-    
-    </td><td></td>";
+    echo "</td><td></td>";
  
     // output data of each row
     while($row = $result->fetch_assoc()) {
-
-        $mmdd = date_format(date_create($row['updated']),"m/d");
+        // $mmdd = date_format(date_create($row['updated']),"m/d");
     
-  
         $svg = $row['fin']==0 ? 'lstfin' : 'lstundo';
         $act = $row['fin']==0 ? 'Fin'    : 'Undo';
-        $a1  = '<a href="db/rec' . $act . '.php?id='  . $row['id'] . '"><img alt="' . $svg . '" src="images/' . $svg . '.svg" height="24px"</a>';
-        $a2  = $row['fin']==0 ? '' : '<a href="db/recDel.php?id=' . $row['id'] . '"><img alt="Del" src="images/lstdel.svg" height="24px"</a>';
-
-       
+        $a1  = '<a href="db/rec' . $act . '.php?id='  . $row['id'] . '"><img alt="' . $svg . '" id="action" src="images/' . $svg . '.svg" height="28px"</a>';
+        $a2  = $row['fin']==0 ? '' : '<a href="db/recDel.php?id=' . $row['id'] . '"><img alt="Del" src="images/lstdel.svg" id="action" height="28px"</a>';
 
         echo '<tr><td>' . $row['item'] . '</td>';
         echo    '<td>' . $a1 . $a2 . '</td>';
-        echo    '<td>' . $mmdd . '</td>';
+        // echo    '<td>' . $mmdd . '</td>';
         echo '</tr>';
     }
     //echo "<br><br>" . $_SERVER['HTTP_USER_AGENT'];
