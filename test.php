@@ -15,10 +15,8 @@
     input[type=submit] { display:none; }
 
     #head {
-        /* background-color: #52579aa1; */
         width: 100%;
-        height: 30px;
-        /* position: fixed; */
+        height: 35px;
         padding: 0px;
         top: 0;
         left: 0;
@@ -30,7 +28,7 @@
         color: #fff;
         border: 0;
         margin: 0;
-        height: 24px;
+        height: 35px;
         width: 100%;
         /* max-width: 490px !important; */
         font-size: 18px;
@@ -56,8 +54,8 @@
     }
 
     #itemdone {
-        text-decoration: line-through #6aba46d4 2px;
-        tex
+        text-decoration: line-through #6aba46ba 2px;
+        color: #6aba46;
     }
 </style>
 
