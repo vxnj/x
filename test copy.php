@@ -12,17 +12,15 @@
 
 <body>
 <style>
-    input[type=submit] { display:none; }
-
-    #item {
+    input[type=submit] { display:none;}
+    #item, #headrow {
         background:   hsla(0, 0%, 50%, 0.35);
         color: #fff;
         padding: 4px;
         border: 0;
-        margin: 0;
+        margin: -2px;
         height: 24px;
-        width: 94%;
-        max-width: 490px !important;
+        width: 100%;
         font-size: 18px;
         font-family: 'Open Sans'; 
     }
@@ -32,30 +30,15 @@
         margin-left: 5px;
     }
 
-    #head {
-        background-color: #2c2c2c;
-        width: 100%;
-        height: 30px;
-        position: fixed;
-        padding: 10px;
-        top: 0;
-        left: 0;
-        z-index: 5;
-    }
-    .tblx, .tblX tr, .tblX td, .tblX th { 
+    .tblX tr, .tblX td, .tblX th { 
         line-height: 32px !important;
         font-size:   18px !important;
         vertical-align: center !important;
     }
-
-    #itemlist { 
-        top: 39px;
-        position: relative;
-    }
 </style>
 
 <header>
-    <form id="head" action="db/recAdd.php" method="post">
+    <form action="db/recAdd.php" method="post">
                 <input type="text"   name="item" id="item" placeholder="add item ...">
                 <input type="submit" name="subm" id="subm" value=""/>
             </form>
@@ -64,6 +47,7 @@
 </body>
 
 <?php
+
 
 // Create connection & check  
 require_once('../../resources/config.php');
@@ -77,10 +61,25 @@ $sql = "SELECT * FROM listoSort limit 0,30";
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-    echo "<table id='itemlist' class='tblX'>";
+    echo "<table class='tblX'>
+
+        // <tr id='headrow'>
+        //     <td>";           
+// ?>     
+<!-- 
+//         <form action="db/recAdd.php" method="post">
+//             <input type="text"   name="item" id="item" placeholder="add item ...">
+//             <input type="submit" name="subm" id="subm" value=""/>
+//         </form> -->
+
+<?php 
+
+    echo "</td><td></td>";
+ 
     // output data of each row
     while($row = $result->fetch_assoc()) {
-
+        // $mmdd = date_format(date_create($row['updated']),"m/d");
+    
         $svg = $row['fin']==0 ? 'lstfin' : 'lstundo';
         $act = $row['fin']==0 ? 'Fin'    : 'Undo';
         $a1  = '<a href="db/rec' . $act . '.php?id='  . $row['id'] . '"><img alt="' . $svg . '" id="action" src="images/' . $svg . '.svg" height="28px"</a>';
