@@ -26,7 +26,7 @@
     }
 
     #item {
-        background: #49494969;
+        background: black; */
         color: #fff;
         /* margin-right: -6px !important; */
         border: 0;
