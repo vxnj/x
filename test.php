@@ -14,17 +14,29 @@
 <style>
     input[type=submit] { display:none; }
 
+    #head {
+        /* background-color: #52579aa1; */
+        width: 100%;
+        height: 30px;
+        /* position: fixed; */
+        padding: 0px;
+        top: 0;
+        left: 0;
+        z-index: 5;
+    }
+
     #item {
-        background:  black;
+        background: #49494969;
         color: #fff;
-        padding: 4px;
+        /* margin-right: -6px !important; */
         border: 0;
         margin: 0;
         height: 24px;
-        width: 92%;
-        max-width: 490px !important;
+        width: 100%;
+        /* max-width: 490px !important; */
         font-size: 18px;
         font-family: 'Open Sans'; 
+        padding: 0;
     }
     
     #action {
@@ -32,16 +44,7 @@
         margin-left: 5px;
     }
 
-    #head {
-        background-color: #52579aa1;
-        width: 100%;
-        height: 30px;
-        position: fixed;
-        padding: 10px;
-        top: 0;
-        left: 0;
-        z-index: 5;
-    }
+    
     .tblx, .tblX tr, .tblX td, .tblX th { 
         line-height: 32px !important;
         font-size:   18px !important;
@@ -49,7 +52,7 @@
     }
 
     #itemlist { 
-        top: 39px;
+        /* top: 39px; */
         position: relative;
     }
 </style>
