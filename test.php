@@ -88,7 +88,7 @@ if ($result->num_rows > 0) {
             $act1 = 'recUpd';   $act2 = 'recFin'; 
         } else {
             $svg1 = 'lstdel';  $svg2 = 'lstundo'; 
-            $act1 = 'recdel';  $act2 = 'recUndo'; 
+            $act1 = 'recDel';  $act2 = 'recUndo'; 
 
         }
 
