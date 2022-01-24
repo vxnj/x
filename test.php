@@ -54,6 +54,11 @@
         /* top: 39px; */
         position: relative;
     }
+
+    #itemdone {
+        text-decoration: line-through #6aba46d4 2px;
+        tex
+    }
 </style>
 
 <header>
@@ -81,15 +86,17 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     echo "<table id='itemlist' class='tblX'>";
     // output data of each row
+    
     while($row = $result->fetch_assoc()) {
 
         if ($row['fin']==0) {
             $svg1 = 'lstpen';   $svg2 = 'lstfin';             
-            $act1 = 'recUpd';   $act2 = 'recFin'; 
+            $act1 = 'recUpd';   $act2 = 'recFin';
+            $done = 'id="itemopen"'; 
         } else {
             $svg1 = 'lstdel';  $svg2 = 'lstundo'; 
             $act1 = 'recDel';  $act2 = 'recUndo'; 
-
+            $done = 'id="itemdone"';
         }
 
         $a1  = '<a href="db/' . $act1 . '.php?id='  . $row['id'] . '"><img alt="' . $svg1 . '" id="action" src="images/' . $svg1 . '.svg" height="28px"</a>';
@@ -97,8 +104,8 @@ if ($result->num_rows > 0) {
         $a2  = '<a href="db/' . $act2 . '.php?id='  . $row['id'] . '"><img alt="' . $svg2 . '" id="action" src="images/' . $svg2 . '.svg" height="28px"</a>';
 
 
-        echo '<tr><td>' . $row['item'] . '</td>';
-        echo    '<td>' . $a2 . $a1 . '</td>';
+        echo '<tr><td ' . $done .'>' . $row['item'] . '</td>';
+        echo     '<td>' . $a2 . $a1  . '</td>';
         // echo    '<td>' . $mmdd . '</td>';
         echo '</tr>';
     }
