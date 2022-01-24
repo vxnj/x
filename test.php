@@ -35,7 +35,7 @@
         /* max-width: 490px !important; */
         font-size: 18px;
         font-family: 'Open Sans'; 
-        padding: 0;
+        padding: 0 0 0 2px;
     }
     
     #action {
@@ -83,13 +83,22 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
 
-        $svg = $row['fin']==0 ? 'lstfin' : 'lstundo';
-        $act = $row['fin']==0 ? 'Fin'    : 'Undo';
-        $a1  = '<a href="db/rec' . $act . '.php?id='  . $row['id'] . '"><img alt="' . $svg . '" id="action" src="images/' . $svg . '.svg" height="28px"</a>';
-        $a2  = $row['fin']==0 ? '' : '<a href="db/recDel.php?id=' . $row['id'] . '"><img alt="Del" src="images/lstdel.svg" id="action" height="28px"</a>';
+        if ($row['fin']==0) {
+            $svg1 = 'lstpen';   $svg2 = 'lstfin';             
+            $act1 = 'recUpd';   $act2 = 'recFin'; 
+        } else {
+            $svg1 = 'lstdel';  $svg2 = 'lstundo'; 
+            $act1 = 'recdel';  $act2 = 'recUndo'; 
+
+        }
+
+        $a1  = '<a href="db/' . $act1 . '.php?id='  . $row['id'] . '"><img alt="' . $svg1 . '" id="action" src="images/' . $svg1 . '.svg" height="28px"</a>';
+
+        $a2  = '<a href="db/' . $act2 . '.php?id='  . $row['id'] . '"><img alt="' . $svg2 . '" id="action" src="images/' . $svg2 . '.svg" height="28px"</a>';
+
 
         echo '<tr><td>' . $row['item'] . '</td>';
-        echo    '<td>' . $a1 . $a2 . '</td>';
+        echo    '<td>' . $a2 . $a1 . '</td>';
         // echo    '<td>' . $mmdd . '</td>';
         echo '</tr>';
     }
