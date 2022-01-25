@@ -31,11 +31,9 @@
         margin: 0;
         height: 35px;
         width: 100%;
-        /* max-width: 490px !important; */
         font-size: 18px;
         font-family: 'Open Sans'; 
         padding: 0 0 0 2px;
-        overflow: hidden;
     }
     
     #action {
@@ -48,13 +46,16 @@
     .tblx, .tblX tr, .tblX td, .tblX th { 
         line-height: 32px !important;
         font-size:   18px !important;
-        vertical-align: center !important;
+        vertical-align: middle !important;
+        white-space: nowrap;
+        overflow: clip;
+        text-overflow: ellipsis;
     }
 
     #itemlist { 
-        /* top: 39px; */
         position: relative;
-    }
+        table-layout: fixed;  
+     }
 
     #itemdone {
         text-decoration: line-through #6aba46ba 2px;
@@ -82,7 +83,10 @@ $sql = "SELECT * FROM listoSort limit 0,30";
 
 $result = $conn->query($sql);
 echo '<table id="itemlist" class="tblX">
-
+        <colgroup>
+            <col white-space="nowrap" />
+            <col width="70px"v />
+        </colgroup>
 ';
 
 ;
@@ -109,9 +113,9 @@ if ($result->num_rows > 0) {
     }
     
 } else {
-    echo "0 results";  
+    echo "0 results"; 
+     
 }
-
 ?>
 
 </body>
