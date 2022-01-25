@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="images/lst.svg">
 <html>
 <head>
 <title>Listo!</title>
@@ -12,17 +13,30 @@
 
 <body>
 <style>
-    input[type=submit] { display:none;}
-    #item, #headrow {
-        background:   hsla(0, 0%, 50%, 0.35);
-        color: #fff;
-        padding: 4px;
-        border: 0;
-        margin: -2px;
-        height: 24px;
+
+    * {font-family: Fira-Sans !important; }
+    input[type=submit] { display:none; }
+
+    #head {
         width: 100%;
+        height: 35px;
+        padding: 0px;
+        top: 0;
+        left: 0;
+        z-index: 5;
+    }
+
+    #item {
+        background: black !important; */
+        color: #fff;
+        border: 0;
+        margin: 0;
+        height: 35px;
+        width: 100%;
+        /* max-width: 490px !important; */
         font-size: 18px;
         font-family: 'Open Sans'; 
+        padding: 0 0 0 2px;
     }
     
     #action {
@@ -30,15 +44,26 @@
         margin-left: 5px;
     }
 
-    .tblX tr, .tblX td, .tblX th { 
+    
+    .tblx, .tblX tr, .tblX td, .tblX th { 
         line-height: 32px !important;
         font-size:   18px !important;
         vertical-align: center !important;
     }
+
+    #itemlist { 
+        /* top: 39px; */
+        position: relative;
+    }
+
+    #itemdone {
+        text-decoration: line-through #6aba46ba 2px;
+        color: #6aba46;
+    }
 </style>
 
 <header>
-    <form action="db/recAdd.php" method="post">
+    <form id="head" action="db/recAdd.php" method="post">
                 <input type="text"   name="item" id="item" placeholder="add item ...">
                 <input type="submit" name="subm" id="subm" value=""/>
             </form>
@@ -48,49 +73,47 @@
 
 <?php
 
-
 // Create connection & check  
 require_once('../../resources/config.php');
 $conn = new mysqli( $servername, $username, $password, $database); 
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
 
 // display records
-// $sql = "SELECT * FROM listo ORDER BY updated DESC limit 0,30";
 
 $sql = "SELECT * FROM listoSort limit 0,30";
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-    echo "<table class='tblX'>
-
-        // <tr id='headrow'>
-        //     <td>";           
-// ?>     
-<!-- 
-//         <form action="db/recAdd.php" method="post">
-//             <input type="text"   name="item" id="item" placeholder="add item ...">
-//             <input type="submit" name="subm" id="subm" value=""/>
-//         </form> -->
-
-<?php 
-
-    echo "</td><td></td>";
- 
+    echo "<table id='itemlist' class='tblX'>";
     // output data of each row
-    while($row = $result->fetch_assoc()) {
-        // $mmdd = date_format(date_create($row['updated']),"m/d");
     
-        $svg = $row['fin']==0 ? 'lstfin' : 'lstundo';
-        $act = $row['fin']==0 ? 'Fin'    : 'Undo';
-        $a1  = '<a href="db/rec' . $act . '.php?id='  . $row['id'] . '"><img alt="' . $svg . '" id="action" src="images/' . $svg . '.svg" height="28px"</a>';
-        $a2  = $row['fin']==0 ? '' : '<a href="db/recDel.php?id=' . $row['id'] . '"><img alt="Del" src="images/lstdel.svg" id="action" height="28px"</a>';
+    while($row = $result->fetch_assoc()) {
 
-        echo '<tr><td>' . $row['item'] . '</td>';
-        echo    '<td>' . $a1 . $a2 . '</td>';
+
+
+        if ($row['fin']==0) {
+            $svg1 = 'lstpen';   $svg2 = 'lstfin';             
+            $act1 = 'recUpd';   $act2 = 'recFin';
+            $acn1 = 'upd';   $acn2 = 'fin';
+            $done = 'id="itemopen"'; 
+        } else {
+            $svg1 = 'lstdel';  $svg2 = 'lstundo'; 
+            $act1 = 'recDel';  $act2 = 'recUndo'; 
+            $acn1 = 'del';   $acn2 = 'und';            
+            $done = 'id="itemdone"';
+        }
+
+        $a1  = '<a href="db/' . $act1 . '.php?id='  . $row['id'] . '"><img alt="' . $svg1 . '" id="action" src="images/' . $svg1 . '.svg" height="28px"</a>';
+
+        $a2  = '<a href="db/' . $act2 . '.php?id='  . $row['id'] . '"><img alt="' . $svg2 . '" id="action" src="images/' . $svg2 . '.svg" height="28px"</a>';
+
+
+        echo '<tr><td ' . $done .'>' . $row['item'] . '</td>';
+        echo     '<td>' . $a2 . $a1  . '</td>';
         // echo    '<td>' . $mmdd . '</td>';
         echo '</tr>';
     }
-    //echo "<br><br>" . $_SERVER['HTTP_USER_AGENT'];
+    
 } else {
     echo "0 results";  
 }
