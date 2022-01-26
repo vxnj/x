@@ -65,7 +65,7 @@
 
 <header>
     <form id="head" action="db/listoAction.php?actn=add" method="get">
-                <input type="text"   id="item" name="item" placeholder="add item ...">
+                <input type="text"   id="item" name="item" placeholder="add item ..." autofocus>
                 <input type="submit" id="subm" name="actn" value="add"/>
             </form>
 </header>
@@ -114,7 +114,7 @@ if ($result->num_rows > 0) {
     
 } else {
     echo "0 results"; 
-     
+
 }
 ?>
 
