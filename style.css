@@ -219,7 +219,7 @@ a   {
 .dnHue { color : hsl(300, 10%, 50%); }
 .upHue { color:  hsl(120, 10%, 50%); }
 
-.stPst, .stOff { color:  hsla(221, 77%, 71%, 60%) }
+.stPst, .stOff { color:  hsla(221, 77%, 71%, 60%) !important; }
 
 .qNote, .qNote:hover{
     font-size:smaller; 
