@@ -1,0 +1,12 @@
+
+.stPre          { color: var(--colPre); }
+.stPst, .stOff  { color:  hsla(221, 77%, 71%, 0.6) !important; }
+
+.dnHue { color : hsl(300, 10%, 50%); }
+.upHue { color:  hsl(120, 10%, 50%); }
+
+.qNote, .qNote:hover{
+    font-size:smaller; 
+    font-weight:bold;
+    margin-left:5px;
+}

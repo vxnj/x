@@ -10,57 +10,7 @@
 <script src="js/funcs.js"></script>
 <script src="js/fDate.js"></script>
 <link rel="stylesheet" href="style.css" />
-
-<style>
-    #subm { display:none; }
-
-    #head {
-        width: 100%;
-        height: 35px;
-        padding: 0px;
-        top: 0;
-        left: 0;
-        z-index: 5;
-    }
-
-    #item {
-        background: black !important; */
-        color: #fff;
-        border: 0;
-        margin: 0;
-        height: 35px;
-        width: 100%;
-        font-size: 18px;
-        font-family: 'Open Sans'; 
-        padding: 0 0 0 2px;
-    }
-    
-    #action {
-        float: right;
-        margin-left: 5px;
-        height: 28px;
-        width: 28px;
-    }
-
-    .tblx, .tblX tr, .tblX td, .tblX th { 
-        line-height: 32px !important;
-        font-size:   18px !important;
-        vertical-align: middle !important;
-        white-space: nowrap;
-        overflow: clip;
-        text-overflow: ellipsis;
-    }
-
-    #itemlist { 
-        position: relative;
-        table-layout: fixed;  
-     }
-
-    #itemdone {
-        text-decoration: line-through #6aba46ba 2px;
-        color: #6aba46;
-    }
-</style>
+<link rel="stylesheet" href="css/lst.css" />
 
 <header>
     <form id="head" action="db/listoAction.php?actn=add" method="get">
@@ -73,7 +23,6 @@
 <?php
 
 // Create connection & check  
-
 
 require_once('../resources/config.php');
 $conn = new mysqli( $servername, $username, $password, $database); 

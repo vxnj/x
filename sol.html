@@ -311,8 +311,7 @@ function getmoon(phase) {
     for (let k = 0; k < 8; k++) {
     moonInner += '<img src="images/weather/' + phases[k] + '.svg" alt="Moon" id="phimg' + k + '" style="filter:brightness(70%)" class="weaicon"/><span id="phdesc' + k + '">    ' +  phasesDesc[k] + "</span><br>";
    } 
-   //moonInner += '<a id="linkPhExpl" href="https://c.tadst.com/gfx/600x337/moon-phases-explained.png" target="blank">?<a/>'
-
+   
     document.getElementById("pop-moon").innerHTML = moonInner;
     document.getElementById("phdesc" + ph).style.color = 'var(--live-cur)';
     document.getElementById("phimg" + ph).style.filter = "brightness(120%)"; 
@@ -354,12 +353,10 @@ function getmoon(phase) {
 
 <div class="pop" id="pop-moon" onclick="document.getElementById('pop-moon').style.display = 'none';"></div>
 
-<!-- <a href="https://vxnj.github.io/x/">main<a/> -->
 <a id="linkjson" href="https://api.openweathermap.org/data/2.5/onecall?lat=40.8&lon=-73.97&units=imperial&exclude=minutely&appid=da5f0d9ce3486ef93fd7ffb24235c9e3"
 target="blank">json<a/>
 <a id="linkddg" href="https://duckduckgo.com/?q=weather+upper+west+side%2C+Ny&t=ffsb&atb=v229-1&ia=weather" target="blank">ddg<a/>
     
-<!-- <a href="https://openweathermap.org/city/5128581">openweather<a/> -->
 
 </body>
 </html>

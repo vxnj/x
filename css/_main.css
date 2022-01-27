@@ -35,17 +35,29 @@
   
 }
 
+body { background-color: var(--live-bkg) !important;
+    margin: 10px !important; }
+
+div {color: var(--live-def) ; 
+    font-family: fntMain, Segoe UI, Tahoma, Courier, monospace; 
+    font-size:large;}
+
+table  { border-color: var(--live-bor) !important;
+        font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--live-def) !important;
+        margin-top: 5px !important;
+        margin-bottom: 5px !important;   
+    }
+
 @font-face {
     font-family: "fntMain";
-    src: url("fonts/FiraSans-Book.otf");
+    src: url("../fonts/FiraSans-Book.otf");
   } 
 
-
-  @font-face {
+@font-face {
     font-family: "fntNums";
-    src: url("fonts/NotoSans-Regular.ttf");    
+    src: url("../fonts/NotoSans-Regular.ttf");    
   } 
-
 
 .def { color: var(--live-def) !important; }
 .day { color: var(--live-day) !important; }
@@ -58,22 +70,6 @@
     border-color: rgba(255, 0, 0, 0) !important;  
     font-size: 18px;
 }
-
-body { background-color: var(--live-bkg) !important;
-    margin: 10px !important; }
-
-div {color: var(--live-def) ; 
-    font-family: fntMain, Segoe UI, Tahoma, Courier, monospace; 
-    font-size:large;}
-
-
-table  { border-color: var(--live-bor) !important;
-        font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
-        color: var(--live-def) !important;
-        margin-top: 5px !important;
-        margin-bottom: 5px !important;
-        /* white-space: nowrap; */     
-    }
 
 
 .table > :not(:first-child) {
@@ -88,18 +84,13 @@ td, th {
     font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 300;
     border-color:  var(--live-bor) !important;
+
 }
 
 a   { 
     color: var(--live-def) !important;
     font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
-    /* filter: brightness(.5); */
 }  
-
-#item { 
-    color: #fff;
-    background: #c6c6c661;
-}
 
 
 .weaicon { height: 26px !important; width: 26px !important; opacity: 70% !important;
@@ -211,4 +202,3 @@ a   {
     text-align: right !important;
     font-size: 15px !important;
  } 
-
