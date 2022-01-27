@@ -10,6 +10,7 @@ function showpop(secs, id) {
     if (secs>0) { setTimeout(function(){document.getElementById(id).style.display = "none";}, secs*1000 || 3000); }
 }
 
+
 function numStd(num, dec, plus) {
     num = (num) ? num : 0
   ans = num.toFixed(dec || 0)
@@ -24,6 +25,8 @@ function chgCol(pct) {
   hslA = hslOpacity.toFixed(3);
   return `style="background-color: hsla(${hslColor},${hslA})"`;
 }
+
+
 
 function mktSt(st, pre) {
   switch (st) {
