@@ -20,16 +20,17 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
 
 switch ($actn) {
     case 'add':  if($item>'') {$sql = "INSERT INTO listo (item, fin) VALUES ('" . $item . "', 0)";}  break;
-    case 'upd':  $sql = "UPDATE `listo` SET `item`='" . $item . "' WHERE id='$id'";   break;
-    case 'fin':  $sql = "UPDATE `listo` SET `fin`=now()            WHERE id='$id'";   break;
-    case 'und':  $sql = "UPDATE `listo` SET `fin`=0                WHERE id='$id'";   break;
-    case 'del':  $sql = "UPDATE `listo` SET `removed`='Y'          WHERE id='$id'";   break;
+    case 'upd':  $sql = "UPDATE `listo` SET `item`='" . $item . "' WHERE id=?";   break;
+    case 'fin':  $sql = "UPDATE `listo` SET `fin`=now()            WHERE id=?";   break;
+    case 'und':  $sql = "UPDATE `listo` SET `fin`=0                WHERE id=?";   break;
+    case 'del':  $sql = "UPDATE `listo` SET `removed`='Y'          WHERE id=?";   break;
     default:     $sql = ''; break;
 }
 
-$result = $conn->query($sql);
-
-$conn->close();
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $id);
+$stmt->execute();
+$result = $stmt->get_result();
 
 header('location:../test.php'); //return
 ?>

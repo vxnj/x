@@ -85,7 +85,7 @@ $result = $conn->query($sql);
 echo '<table id="itemlist" class="tblX">
         <colgroup>
             <col white-space="nowrap" />
-            <col width="70px"v />
+            <col width="70px" />
         </colgroup>
 ';
 
