@@ -9,7 +9,7 @@
 
 <script src="js/funcs.js"></script>
 <script src="js/fDate.js"></script>
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="css/_main.css" />
 <link rel="stylesheet" href="css/lst.css" />
 
 <header>

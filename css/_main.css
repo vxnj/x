@@ -86,86 +86,14 @@ td, th {
     border-color:  var(--live-bor) !important;
 
 }
+ 
 
 a   { 
     color: var(--live-def) !important;
     font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
-}  
-
-
-.weaicon { height: 26px !important; width: 26px !important; opacity: 70% !important;
-    margin: -11px 2px -6px 0 !important;
-}
-
-
-[id="aqi"] { margin-left: 8px;}
-.numball {
-    display: inline-block;
-    color: white !important;
-    border-radius: 50%;
-    padding: 8px !important;    
-    text-align: center;
-    min-width: 32px;
-    height: 30px;
-    font-size: 16px !important;
-    vertical-align: center;
-    text-decoration: none;
-    line-height: 14px;
-}
-
-
-.pop { 
-    background-color: black; 
-    background-image: url("images/weather/SkyDark.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 290px; 
-    /* height: 434px; */
-    top:15%;  
-    left: calc((100% - 290px)/2);
-    border: 2px solid var(--live-def);
-    color: rgb(204, 202, 202) !important; 
-    /* color: var(--live-pop) !important;  */
-    z-index:100; 
-    position: fixed;
-    display: none;
-    padding: 20px 20px 20px 50px;
-    border-radius: 20px;
-    line-height: 2.5;
-   }
-
+} 
 
 .hl {color: var(--live-cur) !important; }  
-
-.alerts {
-    background-color: rgba(114, 44, 58, 0.685);
-    color: rgb(204, 204, 204) !important;
-    padding: 0px 10px;
-    border-radius: 10px;
-    text-decoration: none;
-    position: relative;
-    margin-top: 0px;
-    font-weight: bold;
-    display: none; 
-}
-
-.riseset {width: 100%;
-    border: none;
-    font-size:large;
-    margin-top: 0px !important;
-    margin-bottom: 0px !important;
-}
-
-.precip {
-    font-size: small;
-    /* color:var(--live-cur); */
-    filter: hue-rotate(-15deg);
-    margin-left: 3px;
-    /* opacity: .5; */
-    font-weight: 600;
-    /* filter: invert(50%); */
-}
-
 
 
 /* Mkt */
@@ -197,8 +125,3 @@ a   {
     border: 0px !important;
     background-color: hsla(239, 63%, 25%, 0.555);
 }
-
-.clsRt { 
-    text-align: right !important;
-    font-size: 15px !important;
- } 
