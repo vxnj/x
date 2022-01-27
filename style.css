@@ -219,12 +219,11 @@ a   {
 .dnHue { color : hsl(300, 10%, 50%); }
 .upHue { color:  hsl(120, 10%, 50%); }
 
-.stPst, .stOff { color:  hsla(221, 77%, 71%, 60%) !important; }
+.stPst, .stOff { color:  #7ca0ee99 !important; }
 
 .qNote, .qNote:hover{
     font-size:smaller; 
     font-weight:bold;
     margin-left:5px;
-    /* cursor: -moz-grabbing; */
 }
  
