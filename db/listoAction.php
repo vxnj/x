@@ -4,6 +4,12 @@
 <html>
 <head>
 <title>Listo!</title>
+
+<style>
+    html {  background: black;
+            color: white;}
+</style>
+
 </head>
 
 <?php
@@ -20,6 +26,8 @@ $conn = new mysqli( $servername, $username, $password, $database);
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
  
 $id = str_replace('?id=', '', $id);
+
+echo $id;
 
 switch ($actn) {
     case 'add':  $sql = "INSERT INTO listo (item, fin) VALUES ( ? , 0 )";  break;
@@ -38,7 +46,7 @@ else                    { $stmt->bind_param('i',  $id); }
 $stmt->execute();
 $result = $stmt->get_result();
 
-header('location:../lst.php'); //return
+//header('location:../lst.php'); //return
 ?>
 
 </html>

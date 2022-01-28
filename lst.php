@@ -16,7 +16,7 @@
     <header>
         <form id="head" action="db/listoAction.php?actn=add" method="get">
                     <input type="text"   id="item" name="item" placeholder="add item ..." autofocus>
-                    <input type="submit" id="subm" name="actn" value="add"/>
+                    <input type="submit" id="subm" name="actn" value="add">
                 </form>
     </header>
 
@@ -56,10 +56,21 @@ if ($result->num_rows > 0) {
             $a2 =  '<a href="db/listoAction.php?id=' . $row['id'] . '&actn=del">' . $svgdel ;
             $done= 'class="itemdone"';
         }
+        // echo '<tr>  <td ' . $done .'>
+        //                 <input type="text" name="item" value ="' . $row['item'] . '">
+        //             </td>';
+        
+        echo $row['id'];
+            echo '<tr>  <td ' . $done . '>
+                    <form action="db/listoAction.php?actn=upd" method="get"> 
+                        <input type="text" id="item" name="item" value="' . $row["item"] . '" ' . $done . '>
+                        <input type="text" id="id"   name="id"   value="' . $row['id']  . '">
+                        <input type="submit">
+                            
+                    </form>
+                </td>';
 
-        // echo '<tr><td ' . $done .'>' . $row['item'] . '</td>';
-        echo '<tr><td ' . $done .'><input type="text" name="item" value ="' . $row['item'] . '"></td>';
-
+        
         echo     '<td>' . $a1 . $a2 . '</td>';
         echo '</tr>';
     }
@@ -76,7 +87,7 @@ if ($result->num_rows > 0) {
     let items = document.getElementsByClassName("itemopen");
     for (let i = 0; i < items.length; i++) {
         items[i].addEventListener('focusout', doEdit );
-        items[i].addEventListener('touchleave', doEdit );
+        items[i].addEventListener('touchend', doEdit );
     }
 
     function doEdit(e) { 
