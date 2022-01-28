@@ -76,7 +76,7 @@ if ($result->num_rows > 0) {
     let items = document.getElementsByClassName("itemopen");
     for (let i = 0; i < items.length; i++) {
         items[i].addEventListener('focusout', doEdit );
-        items[i].addEventListener('blur', doEdit );
+        items[i].addEventListener('touchleave', doEdit );
     }
 
     function doEdit(e) { 
