@@ -75,8 +75,7 @@ if ($result->num_rows > 0) {
     let loc; let id;
     let items = document.getElementsByClassName("itemopen");
     for (let i = 0; i < items.length; i++) {
-      items[i].addEventListener("focusout", doEdit);
-      items[i].addEventListener("onBlur", doEdit);
+      items[i].addEventListener("onblur", doEdit);
       //items[i].addEventListener("keyup", doEdit); // for on enter key
     }
     function doEdit(e) { 
@@ -92,8 +91,6 @@ if ($result->num_rows > 0) {
         
     }
 </script>
-
-
 
 </body>
 </html>
