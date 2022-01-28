@@ -58,7 +58,7 @@ if ($result->num_rows > 0) {
         }
 
         // echo '<tr><td ' . $done .'>' . $row['item'] . '</td>';
-        echo '<tr><td ' . $done .'><input class"" type="text" name="item" value ="' . $row['item'] . '"></td>';
+        echo '<tr><td ' . $done .'><input type="text" name="item" value ="' . $row['item'] . '"></td>';
 
         echo     '<td>' . $a1 . $a2 . '</td>';
         echo '</tr>';
@@ -75,13 +75,15 @@ if ($result->num_rows > 0) {
     let loc; let id;
     let items = document.getElementsByClassName("itemopen");
     for (let i = 0; i < items.length; i++) {
-      items[i].addEventListener("onblur", doEdit);
-      //items[i].addEventListener("keyup", doEdit); // for on enter key
+        items[i].addEventListener('focusout', doEdit );
     }
+
     function doEdit(e) { 
+        console.log(e);
         id =      e.originalTarget.parentElement.id; 
         newVal =  e.originalTarget.value;
         change = (e.originalTarget.value !== e.originalTarget.defaultValue)
+        console.log(change)
         if(change) {
             console.log(id, newVal);
             console.log(e);
