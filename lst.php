@@ -75,9 +75,15 @@ if ($result->num_rows > 0) {
     let items = document.getElementsByClassName("itemopen");
     for (let i = 0; i < items.length; i++) {
         items[i].addEventListener('focusout', doEdit );
-        items[i].addEventListener('touchend', doEdit );
+        items[i].addEventListener('keypress', doEditK );
     }
 
+    function doEditK(e) {
+        if (e.key === 'Enter') {
+            doEdit(e);
+        }
+    };
+        
     function doEdit(e) { 
         console.log(e);
         id =      e.originalTarget.parentElement.id; 
