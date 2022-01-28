@@ -56,21 +56,9 @@ if ($result->num_rows > 0) {
             $a2 =  '<a href="db/listoAction.php?id=' . $row['id'] . '&actn=del">' . $svgdel ;
             $done= 'class="itemdone"';
         }
-        // echo '<tr>  <td ' . $done .'>
-        //                 <input type="text" name="item" value ="' . $row['item'] . '">
-        //             </td>';
-        
-        echo $row['id'];
-            echo '<tr>  <td ' . $done . '>
-                    <form action="db/listoAction.php?actn=upd" method="get"> 
-                        <input type="text" id="item" name="item" value="' . $row["item"] . '" ' . $done . '>
-                        <input type="text" id="id"   name="id"   value="' . $row['id']  . '">
-                        <input type="submit">
-                            
-                    </form>
-                </td>';
-
-        
+        echo '<tr>  <td ' . $done .'>
+                        <input type="text" name="item" value ="' . $row['item'] . '">
+                    </td>';
         echo     '<td>' . $a1 . $a2 . '</td>';
         echo '</tr>';
     }

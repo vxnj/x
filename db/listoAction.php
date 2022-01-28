@@ -46,7 +46,7 @@ else                    { $stmt->bind_param('i',  $id); }
 $stmt->execute();
 $result = $stmt->get_result();
 
-//header('location:../lst.php'); //return
+header('location:../lst.php'); //return
 ?>
 
 </html>
