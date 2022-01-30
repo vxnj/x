@@ -16,7 +16,7 @@
 <body>
 
 <header>
-    <input type="text" id="itemNew" placeholder="add item ..." autofocus>
+    <input type="text" id="itemNew" placeholder="add item ..." autofocus>    
 </header>
 
 <?php
@@ -48,13 +48,15 @@ echo $data;
         id =   e.currentTarget.parentElement.id;
         actn = e.currentTarget.attributes.name.value.substring(3, 10);
         data = `{ id: ${id}, actn: ${actn} }` 
-        
+        let x;
         $.ajax({ 
                 type: "POST",
                 url: "db/lst2f.php",
-                data: "actn=" + actn +"&id=" + id 
-            });
-    }
+                data: "actn=" + actn +"&id=" + id,
+                success: function(result) { location.reload(); }
+       }); //ajax
+      
+    } //doBtn
 
     function doEditK(e) { 
         console.log(e.code);
@@ -79,23 +81,13 @@ echo $data;
             type: "POST",
             url: "db/lst2f.php",
             data: "actn=add&id=&item=" + e.target.value + "",
-        })
+            success: function(result) { location.reload(); }
+        }) //ajax
         e.target.value = '';
+   
     }
 
 
-
-
-    function refr() {
-        $.ajax({ 
-            type: "GET",
-            url: "db/lst2f2.php",
-            success: (function(output) { console.log(output);}) // success
-
-        }) //ajax
-    } //refr
-
-window.onload = refr();
 </script>
 
 <div id="tablehere"></div>
