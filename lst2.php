@@ -21,6 +21,11 @@
 
 <?php include 'db/lst2f2.php';?>
 
+
+
+
+
+
 <script>
     //add
     document.getElementById("itemNew").addEventListener('keypress', addnew)
