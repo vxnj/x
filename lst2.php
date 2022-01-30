@@ -77,7 +77,6 @@ while($row = $result->fetch_assoc()) {
         id =   e.currentTarget.parentElement.id;
         actn = e.currentTarget.attributes.name.value.substring(3, 10);
         data = `{ id: ${id}, actn: ${actn} }` 
-        console.log(data);
         
         $.ajax({ 
                 type: "POST",
@@ -88,7 +87,12 @@ while($row = $result->fetch_assoc()) {
     }
 
 
-    function doEditK(e) { if (e.key === 'Enter') {doEdit(e);} };
+    function doEditK(e) { 
+        console.log(e.code);
+        if (e.code == 'Period' || e.code == 'Enter') {doEdit(e);} 
+    };
+
+
     function doEdit(e) { 
         id =      e.originalTarget.parentElement.id; 
         newVal =  e.originalTarget.value;
