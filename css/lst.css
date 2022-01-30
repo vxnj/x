@@ -1,61 +1,52 @@
 
-#subm { display:none; }
+[name^='svg'] {
+    float: right;
+    margin-left: 5px;
+    height: 32px;
+    width: 32px;
+    padding: 0;
+} 
 
-#head {
-    width: 100%;
-    height: 35px;
-    padding: 0px;
-    top: 0;
-    left: 0;
-    z-index: 5;
-}
 
-#item {        
+#itemNew {  
     background: black !important; 
-    color: #fff;
+    color: #fff !important;
     border: 0;
     margin: 0;
-    height: 35px;
+    height: 32px;
     width: 100%;
     font-size: 18px;
     font-family: 'Open Sans'; 
     padding: 0 0 0 2px;       
     max-width: 500px !important;
     min-width: 330px !important;
-    width: 100%;
-
 }
 
-.action {
-    float: right;
-    margin-left: 5px;
-    height: 28px;
-    width: 28px;
-}
-
-.tblX, .tblX tr, .tblX td, .tblX th { 
+#itemlist td { 
     line-height: 32px !important;
     font-size:   18px !important;
     vertical-align: middle !important;
     white-space: nowrap;
-    overflow: clip;
-    text-overflow: ellipsis;
+
 }
 
-#itemlist { 
-    position: relative;
-    table-layout: fixed;  
-    }
-    
-.itemdone input, .itemopen input {
+input{
     background: transparent;
     color: unset;
     font-size: unset;
     border: unset;
     width: calc(100% - 5px);
+    overflow: clip;
+    text-overflow: ellipsis;
 }
   
 .itemdone input {
     text-decoration: line-through #6aba46ba 2px;
     color: #6aba46;
 }
+
+
+/* #itemlist { 
+    position: relative;
+    table-layout: fixed; 
+    } */
