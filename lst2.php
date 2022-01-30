@@ -8,8 +8,8 @@
     <link rel="icon" type="image/x-icon" href="images/lst.svg">  
     <script src="js/funcs.js"></script>
     <script src="js/fDate.js"></script>
-    <link rel="stylesheet" href="css/_main.css" />
-    <link rel="stylesheet" href="css/lst.css" />
+    <link rel="stylesheet" href="/css/_main.css" />
+    <link rel="stylesheet" href="/css/lst.css" />
     <title>Listo!</title>
 </head>
 
