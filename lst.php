@@ -19,7 +19,6 @@
     <input type="text" id="itemNew" placeholder="add item ..." autofocus>    
 </header>
 
-
 <?php 
 require '../resources/config.php';
 $conn = new mysqli( $servername, $username, $password, $database); 

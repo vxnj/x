@@ -315,7 +315,8 @@ function getmoon(phase) {
     for (let k = 0; k < 8; k++) {
     moonInner += '<img src="images/weather/' + phases[k] + '.svg" alt="Moon" id="phimg' + k + '" style="filter:brightness(70%)" class="weaicon"/><span id="phdesc' + k + '">    ' +  phasesDesc[k] + "</span><br>";
    } 
-   
+    
+    ph = (ph=8) ? 0 : ph ;
     document.getElementById("pop-moon").innerHTML = moonInner;
     document.getElementById("phdesc" + ph).style.color = 'var(--live-cur)';
     document.getElementById("phimg" + ph).style.filter = "brightness(120%)"; 
