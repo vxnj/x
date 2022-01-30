@@ -19,12 +19,7 @@
     <input type="text" id="itemNew" placeholder="add item ..." autofocus>    
 </header>
 
-<?php
-ob_start();
-require ('db/lst2f2.php');    
-$data = ob_get_clean();
-echo $data;
-?>
+<?php include 'db/lst2f2.php';?>
 
 <script>
     //add
