@@ -14,7 +14,7 @@
 <!-- <meta http-equiv="refresh" content="5" > -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<link rel="icon" type="image/x-icon" href="images/sol.ico">
+<link rel="icon" type="image/x-icon" href="img/sol.ico">
 
 <script>
 key = "da5f0d9ce3486ef93fd7ffb24235c9e3"
@@ -77,7 +77,7 @@ xhrq.onreadystatechange = function() { // Check if fetch request is done
 
 function init() {
     paramzip = gup("zip") || "10025";
-    document.querySelector(".pop").style.backgroundImage = 'url("/images/weather/SkyDark.jpg")';
+    document.querySelector(".pop").style.backgroundImage = 'url("/img/weather/SkyDark.jpg")';
     callzip();
 }
 
@@ -234,7 +234,7 @@ function getWea(data) {
    document.getElementById("tblhr").innerHTML = "";
    document.getElementById("tblhr").innerHTML = tblhd + tblhr;   
    
-   document.getElementById("sunbox" ).innerHTML = '<img src="images/weather/Clear.svg" alt="Sunrise" class="weaicon"/>' + " " + srise  + " - " + sset;
+   document.getElementById("sunbox" ).innerHTML = '<img src="img/weather/Clear.svg" alt="Sunrise" class="weaicon"/>' + " " + srise  + " - " + sset;
    
    moonpic = getmoon(data.daily[0].moon_phase)
    document.getElementById("moonbox").innerHTML = moonpic.retFull + mrise  + " - " + mset + " " + moonpic.moon;
@@ -258,10 +258,10 @@ function themer () {
     th = document.getElementById("themer").value;
     console.log(th)
     switch (th) {
-      case 'dark': val = ['var(--dark-def)','var(--dark-day)','var(--dark-cur)','var(--dark-bkg)','url("images/weather/SkyDark.jpg")']; break;
-      case "mint": val = ['var(--mint-def)','var(--mint-day)','var(--mint-cur)','var(--mint-bkg)','url("images/weather/SkyMint.jpg")']; break;
-      case "pink": val = ['var(--pink-def)','var(--pink-day)','var(--pink-cur)','var(--pink-bkg)','url("images/weather/SkyPink.jpg")']; break;
-      case "bayj": val = ['var(--bayj-def)','var(--bayj-day)','var(--bayj-cur)','var(--bayj-bkg)','url("images/weather/SkyBeige.jpg")']; break;
+      case 'dark': val = ['var(--dark-def)','var(--dark-day)','var(--dark-cur)','var(--dark-bkg)','url("img/weather/SkyDark.jpg")']; break;
+      case "mint": val = ['var(--mint-def)','var(--mint-day)','var(--mint-cur)','var(--mint-bkg)','url("img/weather/SkyMint.jpg")']; break;
+      case "pink": val = ['var(--pink-def)','var(--pink-day)','var(--pink-cur)','var(--pink-bkg)','url("img/weather/SkyPink.jpg")']; break;
+      case "bayj": val = ['var(--bayj-def)','var(--bayj-day)','var(--bayj-cur)','var(--bayj-bkg)','url("img/weather/SkyBeige.jpg")']; break;
     }
     document.documentElement.style.setProperty('--live-def',val[0]);
     document.documentElement.style.setProperty('--live-day',val[1]);
@@ -288,7 +288,7 @@ function geticon(iconcd) {
         case '13d': case '13n':       ico="Snowy";break;
         default:                      ico="?";
     }
-    svg = '<img src="images/weather/' + ico + '.svg" alt="' + ico + '" class="weaicon"/>';
+    svg = '<img src="img/weather/' + ico + '.svg" alt="' + ico + '" class="weaicon"/>';
     return svg
 }
 
@@ -312,9 +312,9 @@ function getmoon(phase) {
         retFull= moonEmojis[mnnow]+ ' ';
     }
 
-    moon = '<img src="images/weather/' + phases[ph] + '.svg" id="Moon" class="weaicon"/>';
+    moon = '<img src="img/weather/' + phases[ph] + '.svg" id="Moon" class="weaicon"/>';
     for (let k = 0; k < 8; k++) {
-    moonInner += '<img src="images/weather/' + phases[k] + '.svg" alt="Moon" id="phimg' + k + '" style="filter:brightness(70%)" class="weaicon"/><span id="phdesc' + k + '">    ' +  phasesDesc[k] + "</span><br>";
+    moonInner += '<img src="img/weather/' + phases[k] + '.svg" alt="Moon" id="phimg' + k + '" style="filter:brightness(70%)" class="weaicon"/><span id="phdesc' + k + '">    ' +  phasesDesc[k] + "</span><br>";
    } 
     
     ph = (ph=8) ? 0 : ph ;

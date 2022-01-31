@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-    <link rel="icon" type="image/x-icon" href="images/lst.svg">  
+    <link rel="icon" type="image/x-icon" href="img/lst.svg">  
     <!-- <script src="js/funcs.js"></script> -->
     <!-- <script src="js/fDate.js"></script> -->
     <link rel="stylesheet" href="/css/_main.css" />

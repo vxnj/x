@@ -22,7 +22,7 @@
 
 .pop { 
     background-color: black; 
-    background-image: url("images/weather/SkyDark.jpg");
+    background-image: url("img/weather/SkyDark.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     width: 290px; 
