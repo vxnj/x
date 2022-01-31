@@ -1,10 +1,12 @@
-Who's Listoning? with Avatars, choosable?
+    Who's Listoning? with Avatars, choosable?
 
-crosslinks
+✓  server side include 
 
-Form Validate
-htaccess - redircct error pages
-touch event to save edits
-Send success message back 
-PDO connections
-sticky header
+    site nav
+
+    Form Validate
+    htaccess - redircct error pages
+    touch event to save edits
+    Send success message back 
+    PDO connections
+    sticky header

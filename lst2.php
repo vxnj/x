@@ -6,8 +6,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <link rel="icon" type="image/x-icon" href="images/lst.svg">  
-    <script src="js/funcs.js"></script>
-    <script src="js/fDate.js"></script>
+    <!-- <script src="js/funcs.js"></script> -->
+    <!-- <script src="js/fDate.js"></script> -->
     <link rel="stylesheet" href="/css/_main.css" />
     <link rel="stylesheet" href="/css/lst.css" />
     <title>Listo!</title>
@@ -19,7 +19,7 @@
     <input type="text" id="itemNew" placeholder="add item ..." autofocus>    
 </header>
 
-<?php include ('db/lst2f2.php'); ?>
+<?php include ('db/lstRef.php'); ?>
 
 <script>
     //add
@@ -81,10 +81,7 @@
    
     }
 
-
 </script>
-
-<div id="tablehere"></div>
 
 </body>
 </html>
