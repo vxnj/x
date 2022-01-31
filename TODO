@@ -1,13 +1,30 @@
    
 ✓  server side include 
 
-    store keys
+    manage api keys
     site nav
-    Who's Listoning? save imgs to db?
-
+    gitignore
     Form Validate
     htaccess - redircct error pages
     touch event to save edits
     Send success message back 
     PDO connections
     sticky header
+
+---------------
+LST
+    details page
+    sub-items table, like for shopping list 
+    Who's Listoning? upload imgs to server/db?
+---------------
+SOL
+
+---------------
+MKT
+
+---------------
+DEF
+    synonyms
+    translate latin, morse code
+
+

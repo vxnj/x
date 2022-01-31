@@ -42,7 +42,7 @@
         console.log(e.currentTarget);
         id =   e.currentTarget.parentElement.id;
         actn = e.currentTarget.attributes.name.value.substring(3, 10);
-        data = `{ id: ${id}, actn: ${actn} }` 
+        //data = `{ id: ${id}, actn: ${actn} }` 
         let x;
         $.ajax({ 
                 type: "POST",
