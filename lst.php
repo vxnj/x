@@ -37,6 +37,7 @@
         items[i].addEventListener('click', doBtn );
     }
 
+
     function doBtn(e) { 
         console.log(e.currentTarget);
         id =   e.currentTarget.parentElement.id;
