@@ -76,7 +76,11 @@
             type: "POST",
             url: "db/lstAct.php",
             data: "actn=add&id=&item=" + e.target.value + "",
-            success: function(result) { location.reload(); }
+            success: function(result) { location.reload(); },
+            error: function (xhr, ajaxOptions, thrownError) {
+                //alert(xhr.responseText);
+                alert("Error: "+thrownError);
+    },
         }) //ajax
         e.target.value = '';
    
