@@ -22,6 +22,7 @@
 <?php include ('db/lstRef.php'); ?>
 
 <script>
+
     //add
     document.getElementById("itemNew").addEventListener('keypress', addnew)
 
@@ -42,19 +43,22 @@
         console.log(e.currentTarget);
         id =   e.currentTarget.parentElement.id;
         actn = e.currentTarget.attributes.name.value.substring(3, 10);
-        //data = `{ id: ${id}, actn: ${actn} }` 
+ 
         let x;
-        $.ajax({ 
+        vx = $.ajax({ 
                 type: "POST",
                 url: "db/lstAct.php",
                 data: "actn=" + actn +"&id=" + id,
-                success: function(result) { location.reload(); }
+                success: function(output, status, xhr) {
+                    console.log(xhr.status);
+                    location.reload(); }
        }); //ajax
-      
+
+
     } //doBtn
 
     function doEditK(e) { 
-        console.log(e.code);
+        //console.log(e.code);
         if (e.code == 'Period' || e.code == 'Enter') {doEdit(e);} 
     };
     function doEdit(e) { 
@@ -76,11 +80,13 @@
             type: "POST",
             url: "db/lstAct.php",
             data: "actn=add&id=&item=" + e.target.value + "",
-            success: function(result) { location.reload(); },
-            error: function (xhr, ajaxOptions, thrownError) {
-                //alert(xhr.responseText);
-                alert("Error: "+thrownError);
-    },
+
+            success: function(output, status, xhr) {
+                    console.log(xhr.status);
+                    location.reload(); } ,
+
+            error: function (xhr, status, thrownError) {
+                console.log(xhr.status);}
         }) //ajax
         e.target.value = '';
    
