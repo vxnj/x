@@ -48,3 +48,17 @@ input{
     position: relative;
     table-layout: fixed; 
     } */
+
+cats  {
+    background: rgb(122, 37, 37) !important; 
+    color: #fff !important;
+    border: 0;
+    margin: 0;
+    height: 32px;
+    width: 100%;
+    font-size: 18px;
+    font-family: 'Open Sans'; 
+    padding: 0 0 0 2px;       
+    max-width: 500px !important;
+    min-width: 330px !important;
+}

@@ -1,3 +1,6 @@
+
+
+
 // Get Url Parameter
 function gup (name) {
     name = RegExp ('[?&]' + name.replace (/([[\]])/, '\\$1') + '=([^&#]*)');
@@ -40,4 +43,14 @@ function mktSt(st, pre) {
   return stCls;
 }
 
+
+
+
+function getKey(site) {
+    $.getJSON("../k.json", function(json) {
+        vx = (json[site].key);
+        console.log(vx);
+        return vx;
+    })
+}
 

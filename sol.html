@@ -19,8 +19,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 
-let key;
-$.getJSON("k.json", function(json) {console.log(json.sol.key); key = json.sol.key;})
+//let key;
+//$.getJSON("k.json", function(json) {console.log(json.sol.key); key = json.sol.key;})
+//key = getKey('sol');
 key = "da5f0d9ce3486ef93fd7ffb24235c9e3"
 
 // Set reload timings ======================================================
@@ -41,17 +42,17 @@ window.addEventListener("focus", xOn);
 
 function reloadit() {
   if (rel == 'on') {
-    console.log('reload!! ' + date_format(new Date(), 'H:i:s'));
+    //console.log('reload!! ' + date_format(new Date(), 'H:i:s'));
     callwea();
     stale = false;
   } else {
     stale = true;
-    console.log('stale');
+    //console.log('stale');
   }
 }
 // =====================================================
 
-var xhr = new XMLHttpRequest();
+var xhr =  new XMLHttpRequest();
 var xhrz = new XMLHttpRequest();
 var xhrq = new XMLHttpRequest();
 paramzip = "10025";
@@ -106,17 +107,18 @@ function getZip(dataz) {
 
 function getAqi(dataq) {
    document.getElementById("aqi").innerHTML = "";
-   console.log(dataq);
+   //console.log(dataq);
    let vaqi, len, text; 
    for (q = 0, len = dataq.length, vaqi="", maxq = 0, maxn = 0; q < len; q++) {
         vaqi += dataq[q].ParameterName + ' ' + dataq[q].AQI + ' ' + dataq[q].Category.Name + + dataq[q].Category.Number +'<br>';
         if (dataq[q].Category.Number > maxq) { maxq = dataq[q].Category.Number; }
         if (dataq[q].AQI > maxn) { maxn = dataq[q].AQI; }
-        state = dataq[q].StateCode;
+        state = dataq[q].StateCode
   }
   document.getElementById("linkddg").href = "https://duckduckgo.com/?q=Weather+" + city + ', ' + state + ' ' + paramzip + " US&ia=weather";
   
-  console.log(vaqi);
+ colq= '#7e0023';
+  //console.log(vaqi);
   switch (maxq) {
     case 1: colq = "#00e400"; break;
     case 2: colq = "#ffff00"; break;
@@ -126,11 +128,11 @@ function getAqi(dataq) {
     case 6: colq = "#7e0023"; break;
 }
 
-  console.log('maxq ' + maxq);
+  //console.log('maxq ' + maxq);
   document.getElementById("aqi").innerHTML = maxn ;
   document.getElementById("aqi").style.backgroundColor=colq + '60';
   document.getElementById("aqi").href= "https://www.airnow.gov/?city=" + city + "&state=" + state;
-  console.log("https://www.airnow.gov/?zip=" + paramzip);
+  //console.log("https://www.airnow.gov/?zip=" + paramzip);
 }
 function callwea() {
   url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=minutely&appid=" + key;
@@ -153,7 +155,7 @@ function getWea(data) {
       zpOffset  = data.timezone_offset;
       shift = zpOffset - myOffset;
       dateVal = new Date((data.current.dt + shift) *1000);
-      console.log(date_format(dateVal, 'H:i'));
+      //console.log(date_format(dateVal, 'H:i'));
       dtnow = date_format(dateVal, 'g:i');
       hrnow = date_format(dateVal, 'H');
       tblhr = ""
@@ -217,7 +219,7 @@ function getWea(data) {
       document.getElementById('alerts').href = "https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon;
       alertwidth = document.getElementById('alerts').offsetWidth
       document.getElementById('alerts').style.left = 'calc(50% - '+ alertwidth +'px /2)';
-      console.log('(calc(50% - '+ alertwidth +'px /2)')
+      //console.log('(calc(50% - '+ alertwidth +'px /2)')
 
     } else {
       alerts = ""
@@ -259,7 +261,7 @@ function chgzip() {
 
 function themer () {
     th = document.getElementById("themer").value;
-    console.log(th)
+    //console.log(th)
     switch (th) {
       case 'dark': val = ['var(--dark-def)','var(--dark-day)','var(--dark-cur)','var(--dark-bkg)','url("img/weather/SkyDark.jpg")']; break;
       case "mint": val = ['var(--mint-def)','var(--mint-day)','var(--mint-cur)','var(--mint-bkg)','url("img/weather/SkyMint.jpg")']; break;
@@ -305,22 +307,24 @@ const moonEmojis = ['0', '🐺','❄️', '🪱', '🌸', '🌻','🍓', '🦌',
 
 urlMoon = 'https://www.timeanddate.com/astronomy/moon/' +  moonNames[mnnow].toLowerCase() + '.html';
 lnkMoon = '<a href="' + urlMoon + '" style="text-decoration: none; color: var(--live-cur) !important;" target="blank"> ' + moonEmojis[mnnow] + ' ' + moonNames[mnnow] + ' Moon :)</a>';
+let moonInner;
+
+let ph;
 
 function getmoon(phase) {
-    var moonInner = '';  retFull = ''
-    ph = parseInt(8 * (phase + 1/16))
-
+    var moonInner = '';  retFull = '';
+    ph = parseInt(8 * (phase + 1/16));
     if (phases[ph]=='Moon4Ful') {
         phasesDesc.splice(ph, 1, lnkMoon);
         retFull= moonEmojis[mnnow]+ ' ';
     }
-
+ 
     moon = '<img src="img/weather/' + phases[ph] + '.svg" id="Moon" class="weaicon"/>';
     for (let k = 0; k < 8; k++) {
     moonInner += '<img src="img/weather/' + phases[k] + '.svg" alt="Moon" id="phimg' + k + '" style="filter:brightness(70%)" class="weaicon"/><span id="phdesc' + k + '">    ' +  phasesDesc[k] + "</span><br>";
    } 
-    
-    ph = (ph=8) ? 0 : ph ;
+
+    if (ph==8) { ph = 0 }
     document.getElementById("pop-moon").innerHTML = moonInner;
     document.getElementById("phdesc" + ph).style.color = 'var(--live-cur)';
     document.getElementById("phimg" + ph).style.filter = "brightness(120%)"; 
