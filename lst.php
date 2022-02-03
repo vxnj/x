@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
     <link rel="icon" type="image/x-icon" href="img/lst.svg">  
     <!-- <script src="js/funcs.js"></script> -->
     <!-- <script src="js/fDate.js"></script> -->
@@ -37,31 +36,31 @@
     for (let i = 0; i < items.length; i++) {
         items[i].addEventListener('click', doBtn );
     }
-
-
+    
+    
+    let vx= 'as';
     function doBtn(e) { 
-        console.log(e.currentTarget);
+        //console.log(e.currentTarget);
         id =   e.currentTarget.parentElement.id;
         actn = e.currentTarget.attributes.name.value.substring(3, 10);
- 
-        let x;
-        vx = $.ajax({ 
-                type: "POST",
+        
+        $.ajax({ 
+                method: "POST",
                 url: "db/lstAct.php",
                 data: "actn=" + actn +"&id=" + id,
+                statusCode: {404: function() {alert( "page not found" );}} , 
                 success: function(output, status, xhr) {
-                    console.log(xhr.status);
-                    location.reload(); }
+                    console.log(xhr);
+                    vx = xhr;
+                    location.reload(); 
+                }
        }); //ajax
 
 
     } //doBtn
 
-    function doEditK(e) { 
-        //console.log(e.code);
-        if (e.code == 'Period' || e.code == 'Enter') {doEdit(e);} 
-    };
-    function doEdit(e) { 
+    function doEditK(e) { if (e.code == 'Period' || e.code == 'Enter') {doEdit(e);} };
+    function doEdit(e)  { 
         id =      e.originalTarget.parentElement.id; 
         newVal =  e.originalTarget.value;
         change = (e.originalTarget.value !== e.originalTarget.defaultValue)

@@ -35,5 +35,5 @@ if ($actn != 'qry') {
     echo json_encode($result_array);
 }
 
-
+    return 'asdf';
 ?>

@@ -16,8 +16,11 @@
 
 <link rel="icon" type="image/x-icon" href="img/sol.ico">
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 
+let key;
+$.getJSON("k.json", function(json) {console.log(json.sol.key); key = json.sol.key;})
 key = "da5f0d9ce3486ef93fd7ffb24235c9e3"
 
 // Set reload timings ======================================================
