@@ -10,37 +10,36 @@
     <link rel="stylesheet" href="/css/_main.css" />
     <link rel="stylesheet" href="/css/lst.css" />
     <title>Listo!</title>
+
 </head>
 
 <body>
+
 <header>
     <div id='catGroup'></div>
-
     <input type="text" id="itemNew" placeholder="add item ..." autofocus>    
 
 </header>
 
-<?php include ('db/lstRef.php'); ?>
+<?php 
+    include 'db/lstRef.php'; 
+    include "zzExamples/zzModal.html" 
+?>
+
 
 <script>
-    
-    // let text = "";
-    // const cats = ["All", "Food", "Rx", "MH2"];
-    // cats.forEach(myFunction);
-    // function myFunction(item, index) {
-    //     text += `<span class="cats" id="cat${item}">${item}</span>`; 
-    //     console.log(text);
-    //     document.getElementById("catGroup").innerHTML = text;
-    // }
+    document.title = 'LISTO 2!'
+    //console.log (window.innerWidth);
 
     //add
     document.getElementById("itemNew").addEventListener('keypress', addnew);
-
+    
     //update
     let items = document.getElementsByClassName("itemopen");
     for (let i = 0; i < items.length; i++) {
-        items[i].addEventListener('focusout', doEdit );
+                items[i].addEventListener('focusout', doEdit );
                 items[i].addEventListener('keydown',  doEditK );
+
     }
 
     items = document.querySelectorAll("[name^=svg");
@@ -52,8 +51,10 @@
     function doBtn(e) { 
         id =   e.currentTarget.parentElement.id;
         actn = e.currentTarget.attributes.name.value.substring(3, 10);
-        
-        $.ajax({ 
+        if (actn == 'det'){ 
+            modal.style.display = "block";
+
+            $.ajax({ 
                 method: "POST",
                 url: "db/lstAct.php",
                 data: "actn=" + actn +"&id=" + id,
@@ -63,7 +64,23 @@
                     vx = xhr;
                     location.reload(); 
                 }
-       }); //ajax
+            }); //ajax
+
+
+        } else {
+            $.ajax({ 
+                method: "POST",
+                url: "db/lstAct.php",
+                data: "actn=" + actn +"&id=" + id,
+                statusCode: {404: function() {alert( "page not found" );}} , 
+                success: function(output, status, xhr) {
+                    console.log(xhr);
+                    vx = xhr;
+                    location.reload(); 
+                }
+            }); //ajax
+        } //if
+       
 
 
     } //doBtn

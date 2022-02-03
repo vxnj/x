@@ -7,10 +7,6 @@ $pwd='';
 
 require '../../resources/config.php';
 
-// echo $host .'<br>';
-// echo $user .'<br>';
-// echo $pwd  .'<br>';
-
 $servername = $host;
 $username = $user;
 $password = $pwd;
