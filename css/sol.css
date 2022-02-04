@@ -70,7 +70,6 @@
     font-weight: 600;
 }
 
-
 .alrt {
     display: none;
     font-size: 16px;
@@ -80,9 +79,14 @@
     padding: 10px;
     background-image: var(--live-bkg); 
     overflow:auto;
+    color:rgb(207, 193, 193) !important;
 }
 
 .alrt hr {
     margin:3px 0 2px 0; 
-    
+    color:rgb(207, 193, 193);   
+}
+
+.alrt a {
+    xcolor:rgb(207, 193, 193) !important;  
 }

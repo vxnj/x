@@ -221,7 +221,7 @@ function getWea(data) {
             alert.style.display = 'inline-block';
             alert.style.cursor = 'pointer';
             document.getElementById("WeaHd").style.display = 'none';
-            vhref = "<a style='color: rgb(204, 202, 202) !important' href = 'https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon + "'>NOAA</a>" ;
+            vhref = "<a href = 'https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon + "'>NOAA</a>" ;
             
             adesc = data.alerts[0].description
             adesc = adesc.replace(/\*/g, "<hr>")
