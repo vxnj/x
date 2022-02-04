@@ -148,7 +148,7 @@ tblhd= '<table class="table" id="mytbl"><thead><tr>'
       + '<th>Time</th>'
       + '<th>Temp</th>'
       + '<th>Hmd</th>'
-      + '<th><span id="WeaHd">Weather</span><a id="alert2" class="alerts"></a></th>'
+      + '<th><span id="WeaHd">Weather</span><span id="alert3" class="alerts" onclick="popAlert()">+</span><a id="alert2" class="alerts"></a></th>'
     +'</tr></thead>';
   
 
@@ -215,20 +215,27 @@ function getWea(data) {
 
    function doAlert(){
         if(data.hasOwnProperty('alerts')) {
-            alert = document.getElementById("alert2");
+            alert = document.getElementById("alert3");
             alert.innerHTML = data.alerts[0].event; 
             console.log (data.alerts[0].event + data.alerts[0].description);
-            alert.style.display = 'inline-block';
-            alert.addEventListener('click', popAlert)
+
+                        alert.style.display = 'inline-block';
             document.getElementById("WeaHd").style.display = 'none';
-            alert.href = "https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon;
+            
+            console.log( "<a href = 'https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon + '">NOAA</a>') ;
+            vhref = "<a href = 'https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon + "'>NOAA</a>" ;
+            console.log (vhref);
+            document.getElementById("pop-alrt").innerHTML = data.alerts[0].event + '<br><br>' + data.alerts[0].description + '<br><br>' + vhref ;
+
+
+            alert.style.cursor = 'pointer';
+
         } else {
             alerts = ""
             document.getElementById('alerts').style.display = 'none';
     }
    }
    
-
    dateVal = new Date((data.daily[0].sunrise+ shift) *1000);
    srise = date_format(dateVal, 'g:ia');
    dateVal = new Date((data.daily[0].sunset + shift) *1000);
@@ -264,11 +271,9 @@ function getWea(data) {
 
 let pop;
 function popAlert() {
-    pop = document.getElementById('pop-moon')
-    pop.style.display = 'block';
-    console.log('asdg');  
+    pop = document.getElementById('pop-alrt')
+    pop.style.display = 'block'; 
 }
-
 
 function themer () {
     th = document.getElementById("themer").value;
@@ -376,11 +381,11 @@ function getmoon(phase) {
 </table>
 
 <div class="pop" id="pop-moon" onclick="document.getElementById('pop-moon').style.display = 'none';"></div>
+<div class="pop alrt" id="pop-alrt" onclick="document.getElementById('pop-alrt').style.display = 'none';"></div>
 
 <a id="linkjson" href="https://api.openweathermap.org/data/2.5/onecall?lat=40.8&lon=-73.97&units=imperial&exclude=minutely&appid=da5f0d9ce3486ef93fd7ffb24235c9e3"
 target="blank">json<a/>
 <a id="linkddg" href="https://duckduckgo.com/?q=weather+upper+west+side%2C+Ny&t=ffsb&atb=v229-1&ia=weather" target="blank">ddg<a/>
     
-
 </body>
 </html>
