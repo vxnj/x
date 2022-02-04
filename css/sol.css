@@ -78,7 +78,7 @@
     width: 80%;
     left: 10%;
     padding: 10px;
-    max-height: 75%;
+    max-height: 70%;
     background-image: var(--live-bkg); 
     overflow:auto;
     color:rgb(207, 193, 193) !important;
