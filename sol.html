@@ -148,9 +148,10 @@ tblhd= '<table class="table" id="mytbl"><thead><tr>'
       + '<th>Time</th>'
       + '<th>Temp</th>'
       + '<th>Hmd</th>'
-      + '<th><span id="WeaHd">Weather</span><a id="alert2" class="alerts" href="https://www.weather.gov/forecastmaps"></a></th>'
+      + '<th><span id="WeaHd">Weather</span><a id="alert2" class="alerts"></a></th>'
     +'</tr></thead>';
-    
+  
+
 mnnow = date_format(new Date, 'n');   //months 1-12
 
 function getWea(data) {  
@@ -158,7 +159,6 @@ function getWea(data) {
       zpOffset  = data.timezone_offset;
       shift = zpOffset - myOffset;
       dateVal = new Date((data.current.dt + shift) *1000);
-      //console.log(date_format(dateVal, 'H:i'));
       dtnow = date_format(dateVal, 'g:i');
       hrnow = date_format(dateVal, 'H');
       tblhr = ""
@@ -189,8 +189,6 @@ function getWea(data) {
       vPop = (data.hourly[ix].pop > .04) ? '<span class="precip"> ' 
         + 100*numStd(data.hourly[ix].pop, 1) + '%</span>':'';
       
-
-
       tblhr += "<tr>" 
             + "  <td>" + dthr + "m</td>"
             + "  <td>" + parseInt(.5 + data.hourly[ix].temp) + "°</td>"
@@ -217,16 +215,16 @@ function getWea(data) {
 
    function doAlert(){
         if(data.hasOwnProperty('alerts')) {
-        alert = document.getElementById("alert2");
-        alert.innerHTML = data.alerts[0].event; 
-        console.log (data.alerts[0].event + data.alerts[0].description);
-        alert.style.display = 'inline-block';
-        //alert.addEventListener('click','sayAlert()')
-        document.getElementById("WeaHd").style.display = 'none';
-        alert.href = "https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon;
-    } else {
-        alerts = ""
-        document.getElementById('alerts').style.display = 'none';
+            alert = document.getElementById("alert2");
+            alert.innerHTML = data.alerts[0].event; 
+            console.log (data.alerts[0].event + data.alerts[0].description);
+            alert.style.display = 'inline-block';
+            alert.addEventListener('click', popAlert)
+            document.getElementById("WeaHd").style.display = 'none';
+            alert.href = "https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon;
+        } else {
+            alerts = ""
+            document.getElementById('alerts').style.display = 'none';
     }
    }
    
@@ -264,10 +262,12 @@ function getWea(data) {
   if(paramzip || 'xx' != 'xx'){callzip();}
 }
 
-function sayAlert() {
-  alert('asd');
+let pop;
+function popAlert() {
+    pop = document.getElementById('pop-moon')
+    pop.style.display = 'block';
+    console.log('asdg');  
 }
-
 
 
 function themer () {
@@ -361,7 +361,7 @@ function getmoon(phase) {
   </tbody>
 </table>
 
-<a id="alerts" class="alerts" href="https://www.weather.gov/forecastmaps"></a>
+<!-- <a id="alerts" class="alerts" href="https://www.weather.gov/forecastmaps"></a> -->
 
 <div id="tblhr"></div>
 
