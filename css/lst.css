@@ -62,3 +62,11 @@ cats  {
     max-width: 500px !important;
     min-width: 330px !important;
 }
+
+.userhead {
+    width: 100px;
+    height: 100px;
+    background: rgb(45, 59, 119);
+    padding: 10px;
+    border-radius: 50%;
+}

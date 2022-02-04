@@ -2,3 +2,14 @@
 zzArch/
 TODO
 k.json
+crud/.DS_Store
+crud/database.sql
+crud/db-config.php
+crud/index.php
+crud/LICENSE
+crud/login.php
+crud/logout.php
+crud/page-1.php
+crud/page-2.php
+crud/README.md
+crud/register.php

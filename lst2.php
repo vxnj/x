@@ -54,19 +54,6 @@
         if (actn == 'det'){ 
             modal.style.display = "block";
 
-            $.ajax({ 
-                method: "POST",
-                url: "db/lstAct.php",
-                data: "actn=" + actn +"&id=" + id,
-                statusCode: {404: function() {alert( "page not found" );}} , 
-                success: function(output, status, xhr) {
-                    console.log(xhr);
-                    vx = xhr;
-                    location.reload(); 
-                }
-            }); //ajax
-
-
         } else {
             $.ajax({ 
                 method: "POST",
@@ -81,8 +68,6 @@
             }); //ajax
         } //if
        
-
-
     } //doBtn
 
     function doEditK(e) { if (e.code == 'Period' || e.code == 'Enter') {doEdit(e);} };
