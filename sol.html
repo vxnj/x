@@ -224,7 +224,7 @@ function getWea(data) {
             vhref = "<a style='color: rgb(204, 202, 202) !important' href = 'https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon + "'>NOAA</a>" ;
             
             adesc = data.alerts[0].description
-            adesc = adesc.replace(/\*/g, "<hr style='margin:2px; overflow:auto'>")
+            adesc = adesc.replace(/\*/g, "<hr style='margin:3px 0 2px 0; overflow:auto'>")
             
             document.getElementById("pop-alrt").innerHTML = data.alerts[0].event + '<br><br>' + adesc + '<br><br>' + vhref ;
 
