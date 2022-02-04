@@ -217,18 +217,15 @@ function getWea(data) {
         if(data.hasOwnProperty('alerts')) {
             alert = document.getElementById("alert3");
             alert.innerHTML = data.alerts[0].event; 
-            console.log (data.alerts[0].event + data.alerts[0].description);
-
-                        alert.style.display = 'inline-block';
-            document.getElementById("WeaHd").style.display = 'none';
-            
-            console.log( "<a href = 'https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon + '">NOAA</a>') ;
-            vhref = "<a href = 'https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon + "'>NOAA</a>" ;
-            console.log (vhref);
-            document.getElementById("pop-alrt").innerHTML = data.alerts[0].event + '<br><br>' + data.alerts[0].description + '<br><br>' + vhref ;
-
-
+            alert.style.display = 'inline-block';
             alert.style.cursor = 'pointer';
+            document.getElementById("WeaHd").style.display = 'none';
+            vhref = "<a style='color: rgb(204, 202, 202) !important' href = 'https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon + "'>NOAA</a>" ;
+            
+            adesc = data.alerts[0].description
+            adesc = adesc.replace(/\*/g, "<hr style='margin:2px; overflow:auto'>")
+            
+            document.getElementById("pop-alrt").innerHTML = data.alerts[0].event + '<br><br>' + adesc + '<br><br>' + vhref ;
 
         } else {
             alerts = ""
@@ -257,14 +254,15 @@ function getWea(data) {
 
  }
 
- document.addEventListener("click", (e) => {
-     if(e.srcElement.id != 'pop-moon' && e.srcElement.id != 'moonbox') { 
-         document.getElementById('pop-moon').style.display='none'};
- })
+document.addEventListener("click", (e) => {
+    if(e.srcElement.id != 'pop-moon' && e.srcElement.id != 'moonbox') { 
+        document.getElementById('pop-moon').style.display='none'
+    };
+})
 
- window.onload = init;
+window.onload = init;
 
- function chgzip() {
+function chgzip() {
   paramzip = prompt('Zip Code', paramzip || "10025");
   if(paramzip || 'xx' != 'xx'){callzip();}
 }
@@ -277,7 +275,6 @@ function popAlert() {
 
 function themer () {
     th = document.getElementById("themer").value;
-    //console.log(th)
     switch (th) {
       case 'dark': val = ['var(--dark-def)','var(--dark-day)','var(--dark-cur)','var(--dark-bkg)','url("img/weather/SkyDark.jpg")']; break;
       case "mint": val = ['var(--mint-def)','var(--mint-day)','var(--mint-cur)','var(--mint-bkg)','url("img/weather/SkyMint.jpg")']; break;
@@ -289,6 +286,7 @@ function themer () {
     document.documentElement.style.setProperty('--live-cur',val[2]);
     document.documentElement.style.setProperty('--live-bkg',val[3]);  
     document.querySelector(".pop").style.backgroundImage =  val[4];
+    document.querySelector(".alrt").style.backgroundImage = val[4];
 
     document.querySelector(".table").style.borderColor =  getComputedStyle(document.documentElement).getPropertyValue('--live-def') + '50 !imporatant';
 

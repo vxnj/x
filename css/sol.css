@@ -78,4 +78,5 @@
     width: 80%;
     left: 10%;
     padding: 10px;
+    background-image: var(--live-bkg);
 }
