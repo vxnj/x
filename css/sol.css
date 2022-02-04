@@ -42,14 +42,16 @@
 
 .alerts {
     background-color: rgba(114, 44, 58, 0.685);
-    color: rgb(204, 204, 204) !important;
-    padding: 0px 10px;
+    color: rgb(211, 204, 204) !important;
+    padding: 4px 10px;
     border-radius: 10px;
     text-decoration: none;
     position: relative;
-    margin-top: 0px;
+    margin-bottom: -2px;
+    margin-top: -2px;
     font-weight: bold;
     display: none; 
+    font-size: 16px !important;
 }
 
 .riseset {width: 100%;

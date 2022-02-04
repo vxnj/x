@@ -23,8 +23,17 @@
 
 <?php 
     include 'db/lstRef.php'; 
-    include "zzExamples/zzModal.html" 
+    include "zzExamples/zzModal.html";
+    include "lstHeads.html" 
+    
 ?>
+
+<script>
+    let heads = document.getElementsByClassName("userhead");
+    for (let i = 0; i < heads.length; i++) {
+        heads[i].addEventListener('click', function(e){alert(heads[i].id)});
+    }
+</script>
 
 
 <script>

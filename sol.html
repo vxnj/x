@@ -96,6 +96,9 @@ function callzip() {
   xhrq.send();
   }
 
+let lat;
+let lon;
+
 function getZip(dataz) {
    document.getElementById("zipcd").innerHTML = dataz.name + " (" + dataz.zip + ")";
    document.getElementById("linkddg").href =  "https://duckduckgo.com/?q=Weather+" + city + ', ' + state + ' ' + paramzip + " US&ia=weather";
@@ -145,7 +148,7 @@ tblhd= '<table class="table" id="mytbl"><thead><tr>'
       + '<th>Time</th>'
       + '<th>Temp</th>'
       + '<th>Hmd</th>'
-      + '<th>Weather</th>'
+      + '<th><span id="WeaHd">Weather</span><a id="alert2" class="alerts" href="https://www.weather.gov/forecastmaps"></a></th>'
     +'</tr></thead>';
     
 mnnow = date_format(new Date, 'n');   //months 1-12
@@ -212,19 +215,21 @@ function getWea(data) {
       }
    tblhr += "</tbody></table>";
 
-   
-    if(data.hasOwnProperty('alerts')) { 
-      document.getElementById("alerts").innerHTML = data.alerts[0].event; 
-      document.getElementById('alerts').style.display = 'inline-block';
-      document.getElementById('alerts').href = "https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon;
-      alertwidth = document.getElementById('alerts').offsetWidth
-      document.getElementById('alerts').style.left = 'calc(50% - '+ alertwidth +'px /2)';
-      //console.log('(calc(50% - '+ alertwidth +'px /2)')
-
+   function doAlert(){
+        if(data.hasOwnProperty('alerts')) {
+        alert = document.getElementById("alert2");
+        alert.innerHTML = data.alerts[0].event; 
+        console.log (data.alerts[0].event + data.alerts[0].description);
+        alert.style.display = 'inline-block';
+        //alert.addEventListener('click','sayAlert()')
+        document.getElementById("WeaHd").style.display = 'none';
+        alert.href = "https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon;
     } else {
-      alerts = ""
-      document.getElementById('alerts').style.display = 'none';
+        alerts = ""
+        document.getElementById('alerts').style.display = 'none';
     }
+   }
+   
 
    dateVal = new Date((data.daily[0].sunrise+ shift) *1000);
    srise = date_format(dateVal, 'g:ia');
@@ -238,7 +243,8 @@ function getWea(data) {
    
    document.getElementById("tblhr").innerHTML = "";
    document.getElementById("tblhr").innerHTML = tblhd + tblhr;   
-   
+   doAlert();
+
    document.getElementById("sunbox" ).innerHTML = '<img src="img/weather/Clear.svg" alt="Sunrise" class="weaicon"/>' + " " + srise  + " - " + sset;
    
    moonpic = getmoon(data.daily[0].moon_phase)
@@ -253,10 +259,15 @@ function getWea(data) {
 
  window.onload = init;
 
-function chgzip() {
+ function chgzip() {
   paramzip = prompt('Zip Code', paramzip || "10025");
   if(paramzip || 'xx' != 'xx'){callzip();}
 }
+
+function sayAlert() {
+  alert('asd');
+}
+
 
 
 function themer () {
