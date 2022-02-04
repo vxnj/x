@@ -74,10 +74,11 @@
     display: none;
     font-size: 16px;
     line-height: unset;
+    top: 10%;
     width: 80%;
     left: 10%;
     padding: 10px;
-    max-height: 90%;
+    max-height: 75%;
     background-image: var(--live-bkg); 
     overflow:auto;
     color:rgb(207, 193, 193) !important;
