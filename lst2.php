@@ -16,27 +16,24 @@
 <body>
 
 <header>
-    <div id='catGroup'></div>
-    <input type="text" id="itemNew" placeholder="add item ..." autofocus>    
-    <div id="resultx"></div>
-</header>
+    <div class="myWidth">
+        <img id="currentUser" onclick="pickUser()"></img>
+        <input type="text" id="itemNew" placeholder="add item ..." autofocus>    
+    </div></header>
 
 <?php 
     include 'db/lstRef.php'; 
     include "zzExamples/zzModal.html";
     include "lstHeads.html" 
-    
 ?>
-
-
-
 <script>
     document.title = 'LISTO 2!'
     //console.log (window.innerWidth);
 
     //add
     document.getElementById("itemNew").addEventListener('keypress', addnew);
-    document.getElementById("resultx").innerHTML = localStorage.getItem("userx");
+
+    window.onload =getUser;
 
     //update
     let items = document.getElementsByClassName("itemopen");
@@ -105,19 +102,28 @@
    
     }
 
-    function setUser(nm) {
-        console.log(nm);
-        localStorage.setItem("userx", nm);
-        document.getElementById("resultx").innerHTML = localStorage.getItem("userx");
-        }       
+    function pickUser() {
+        document.getElementById('pickUser').style.display = 'flex';
+    }
+
+    function getUser() {
+        usrGet = localStorage.getItem("userx") || 'vx';
+        document.getElementById("currentUser").src = `img/usrPics/${usrGet}.png`;
+        document.getElementById('pickUser').style.display = 'none'; 
+      }
+
+    let f;
+    function setUser(e) {
+        f = e;
+        usr = f.target.id;
+        localStorage.setItem("userx", usr);
+        getUser();  
+    }       
 
     let heads = document.getElementsByClassName("userhead");
     for (let i = 0; i < heads.length; i++) {
-        heads[i].addEventListener('click', function(e){setUser(heads[i].id)
-        })
+        heads[i].addEventListener('click', setUser)
     }
-
-
 </script>
 
 </body>

@@ -9,15 +9,9 @@
 #itemNew {  
     background: black !important; 
     color: #fff !important;
-    border: 0;
-    margin: 0;
     height: 32px;
-    width: 100%;
-    font-size: 18px;
-    font-family: 'Open Sans'; 
-    padding: 0 0 0 2px;       
-    max-width: 500px !important;
-    min-width: 330px !important;
+    float: right;
+    width: calc(100% - 50px);     
 }
 
 #itemlist td { 
@@ -25,7 +19,6 @@
     font-size:   18px !important;
     vertical-align: middle !important;
     white-space: nowrap;
-
 }
 
 input{
@@ -43,31 +36,26 @@ input{
     color: #6aba46;
 }
 
-
-/* #itemlist { 
-    position: relative;
-    table-layout: fixed; 
-    } */
-
-cats  {
-    background: rgb(122, 37, 37) !important; 
-    color: #fff !important;
-    border: 0;
-    margin: 0;
-    height: 32px;
-    width: 100%;
-    font-size: 18px;
-    font-family: 'Open Sans'; 
-    padding: 0 0 0 2px;       
-    max-width: 500px !important;
-    min-width: 330px !important;
+.userhead {
+    width:  100px;
+    height: 100px;
+    background: rgb(53, 67, 129);
+    padding: 5px;
+    border-radius: 20%;
+    margin: 10px !important;
 }
 
-.userhead {
-    width: 24px;
-    height: 24px;
-    background: rgb(45, 59, 119);
-    padding: 2px;
-    border-radius: 50%;
-    margin: 10px !important;
+#currentUser {
+    margin-right: 10px;
+    width: 32px;
+}
+
+#pickUser {
+    display:none;
+    justify-content: center;
+}
+
+.myWidth {
+    max-width:  500px;
+    min-width:  330px;
 }
