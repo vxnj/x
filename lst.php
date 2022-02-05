@@ -23,9 +23,6 @@
     include "lstHeads.html" 
 ?>
 <script>
-    document.title = 'LISTO 2!'
-    //console.log (window.innerWidth);
-
     //add
     document.getElementById("itemNew").addEventListener('keypress', addnew);
     window.onload = getUser;

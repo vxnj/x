@@ -58,10 +58,11 @@ input{
 #currentUser {
     margin-right: 10px;
     width: 32px;
+    position: absolute;
 }
 
 #userSettings {
-    display:none;
+    display: none ;
     justify-content: center;
     position: absolute;
     width: 100%;

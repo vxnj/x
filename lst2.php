@@ -24,7 +24,6 @@
 ?>
 <script>
     document.title = 'LISTO 2!'
-    //console.log (window.innerWidth);
 
     //add
     document.getElementById("itemNew").addEventListener('keypress', addnew);
@@ -42,7 +41,7 @@
         items[i].addEventListener('click', doBtn );
     }
     
-    let vx= 'as';
+    let vx= 'init';
     function doBtn(e) { 
         id =   e.currentTarget.parentElement.id;
         actn = e.currentTarget.attributes.name.value.substring(3, 10);
@@ -95,9 +94,6 @@
         e.target.value = '';
    
     }
-
-    
-
 
     function userSettings() {
         pick = document.getElementById('userSettings');
