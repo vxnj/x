@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="icon" type="image/x-icon" href="img/lst.svg">  
     <!-- <script src="js/funcs.js"></script> -->
     <!-- <script src="js/fDate.js"></script> -->
@@ -102,14 +104,21 @@
    
     }
 
+
     function pickUser() {
-        document.getElementById('pickUser').style.display = 'flex';
+        pick = document.getElementById('pickUser');
+        pick.style.display = (pick.style.display =='none') ? 'flex' : 'none';
+
     }
 
     function getUser() {
-        usrGet = localStorage.getItem("userx") || 'vx';
+        usrGet = localStorage.getItem("userx") || 'head-vx';
         document.getElementById("currentUser").src = `img/usrPics/${usrGet}.png`;
         document.getElementById('pickUser').style.display = 'none'; 
+        newCol = `var(--${usrGet})`;
+        console.log (newCol);
+        document.documentElement.style.setProperty('--head0',newCol);
+
       }
 
     let f;

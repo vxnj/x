@@ -11,7 +11,10 @@
     color: #fff !important;
     height: 32px;
     float: right;
-    width: calc(100% - 50px);     
+    width: calc(100% - 50px);
+}
+#itemNew:focus {  
+    outline: var(--head0) solid 2px; 
 }
 
 #itemlist td { 
@@ -19,6 +22,7 @@
     font-size:   18px !important;
     vertical-align: middle !important;
     white-space: nowrap;
+    color: var(--colC);
 }
 
 input{
@@ -43,6 +47,12 @@ input{
     padding: 5px;
     border-radius: 20%;
     margin: 10px !important;
+    border: 3px rgb(108, 96, 180);
+    border-bottom-style: solid;
+}
+
+.userhead:hover {
+    background: rgb(70, 81, 129);
 }
 
 #currentUser {
@@ -53,6 +63,9 @@ input{
 #pickUser {
     display:none;
     justify-content: center;
+    position: absolute;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.75);
 }
 
 .myWidth {
