@@ -47,7 +47,7 @@ input{
     padding: 5px;
     border-radius: 20%;
     margin: 10px !important;
-    border: 3px rgb(108, 96, 180);
+    border: 3px rgb(101, 100, 105);
     border-bottom-style: solid;
 }
 
@@ -60,11 +60,12 @@ input{
     width: 32px;
 }
 
-#pickUser {
+#userSettings {
     display:none;
     justify-content: center;
     position: absolute;
     width: 100%;
+    height: 90%;
     background: rgba(0, 0, 0, 0.75);
 }
 

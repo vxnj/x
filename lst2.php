@@ -3,23 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <link rel="icon" type="image/x-icon" href="img/lst.svg">  
-    <!-- <script src="js/funcs.js"></script> -->
-    <!-- <script src="js/fDate.js"></script> -->
     <link rel="stylesheet" href="/css/_main.css" />
     <link rel="stylesheet" href="/css/lst.css" />
     <title>Listo!</title>
-
 </head>
 
 <body>
-
 <header>
     <div class="myWidth">
-        <img id="currentUser" onclick="pickUser()"></img>
+        <img id="currentUser" onclick="userSettings()"></img>
         <input type="text" id="itemNew" placeholder="add item ..." autofocus>    
     </div></header>
 
@@ -34,8 +28,7 @@
 
     //add
     document.getElementById("itemNew").addEventListener('keypress', addnew);
-
-    window.onload =getUser;
+    window.onload = getUser;
 
     //update
     let items = document.getElementsByClassName("itemopen");
@@ -91,8 +84,7 @@
         $.ajax({ 
             type: "POST",
             url: "db/lstAct.php",
-            data: "actn=add&id=&item=" + e.target.value + "",
-
+            data: `actn=add&id=&item=${e.target.value}&usr=${usr}` ,
             success: function(output, status, xhr) {
                     console.log(xhr.status);
                     location.reload(); } ,
@@ -104,21 +96,25 @@
    
     }
 
+    
 
-    function pickUser() {
-        pick = document.getElementById('pickUser');
+
+    function userSettings() {
+        pick = document.getElementById('userSettings');
         pick.style.display = (pick.style.display =='none') ? 'flex' : 'none';
-
+        if (pick.style.display == 'none') {pick.focus();}
     }
 
+    let usr; let usrGet;
     function getUser() {
-        usrGet = localStorage.getItem("userx") || 'head-vx';
+        usr =    localStorage.getItem("userx") || 'vx';
+        usrGet = `head-${usr}`;
         document.getElementById("currentUser").src = `img/usrPics/${usrGet}.png`;
-        document.getElementById('pickUser').style.display = 'none'; 
+        document.getElementById('userSettings').style.display = 'none'; 
         newCol = `var(--${usrGet})`;
         console.log (newCol);
         document.documentElement.style.setProperty('--head0',newCol);
-
+        document.getElementById("itemNew").focus();
       }
 
     let f;
