@@ -18,7 +18,7 @@
 <header>
     <div id='catGroup'></div>
     <input type="text" id="itemNew" placeholder="add item ..." autofocus>    
-
+    <div id="resultx"></div>
 </header>
 
 <?php 
@@ -28,12 +28,6 @@
     
 ?>
 
-<script>
-    let heads = document.getElementsByClassName("userhead");
-    for (let i = 0; i < heads.length; i++) {
-        heads[i].addEventListener('click', function(e){alert(heads[i].id)});
-    }
-</script>
 
 
 <script>
@@ -42,13 +36,13 @@
 
     //add
     document.getElementById("itemNew").addEventListener('keypress', addnew);
-    
+    document.getElementById("resultx").innerHTML = localStorage.getItem("userx");
+
     //update
     let items = document.getElementsByClassName("itemopen");
     for (let i = 0; i < items.length; i++) {
                 items[i].addEventListener('focusout', doEdit );
                 items[i].addEventListener('keydown',  doEditK );
-
     }
 
     items = document.querySelectorAll("[name^=svg");
@@ -110,6 +104,19 @@
         e.target.value = '';
    
     }
+
+    function setUser(nm) {
+        console.log(nm);
+        localStorage.setItem("userx", nm);
+        document.getElementById("resultx").innerHTML = localStorage.getItem("userx");
+        }       
+
+    let heads = document.getElementsByClassName("userhead");
+    for (let i = 0; i < heads.length; i++) {
+        heads[i].addEventListener('click', function(e){setUser(heads[i].id)
+        })
+    }
+
 
 </script>
 
