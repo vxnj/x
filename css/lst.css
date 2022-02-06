@@ -1,6 +1,6 @@
 
 :root{
-    --lst-fsize:   14px;
+    --lst-fsize:   15px;
     --lst-fname:   'Open-Sans';
     --lst-fcolr:   rgb(104, 116, 141);
 }
@@ -31,24 +31,23 @@
     font-size: var(--lst-fsize) !important;
 }
 
-
 #itemlist td { 
     line-height: 32px !important;
     font-size:   var(--lst-fsize) !important;
     vertical-align: middle !important;
     white-space: nowrap;
     color: var(--lst-fcolr);
-    font-weight: 100;
+    font-weight: 200;
 }
 
-.itemmine {
+.itemmine:not(.itemdone){
     color: var(--head0);
     font-weight: 600;
 }
 
 input{
     background: transparent; 
-    color: unset;
+    /* color: unset; */
     font-size: unset;
     border: unset;
     width: calc(100% - 120px);
@@ -58,8 +57,6 @@ input{
   
 .itemdone input {
     text-decoration: line-through var(--lst-fcolr) 1px;
-    font-weight: 100;
-    color: var(--lst-fcolr);
 }
 
 .userhead:hover { background:rgb(87, 110, 212) ; }.userhead {
