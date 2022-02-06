@@ -1,8 +1,8 @@
 
 :root{
-    --lst-fsize:   16px;
-    --lst-fname:    'Open-Sans';
-    --lst-fcolr:    rgb(104, 116, 141);
+    --lst-fsize:   14px;
+    --lst-fname:   'Open-Sans';
+    --lst-fcolr:   rgb(104, 116, 141);
 }
 
 .myWidth {
@@ -13,7 +13,7 @@
 [name^='svg']:hover { opacity: 1;}
 [name^='svg'] {
     float: right;
-    margin-left: 5px;
+    margin: 0 -5px 0 10px;
     height: 32px;
     width: 32px;
     padding: 0;
@@ -57,10 +57,12 @@ input{
 }
   
 .itemdone input {
-    text-decoration: line-through #6bba46 2px;
+    text-decoration: line-through var(--lst-fcolr) 1px;
+    font-weight: 100;
+    color: var(--lst-fcolr);
 }
 
-.userhead {
+.userhead:hover { background:rgb(87, 110, 212) ; }.userhead {
     width:  90px;
     height: 90px;
     background: rgb(53, 67, 129);
@@ -69,20 +71,19 @@ input{
     margin: 10px !important;
     border: 3px rgb(101, 100, 105);
     border-bottom-style: solid;
-}
-.userhead:hover {
-    filter: brightness(120%);
+    cursor: pointer;
 }
 
 .ownerhead {
     opacity: 0.6;
     width: 20px;
-    margin: 2px 10px -7px 0px;
+    margin: 2px 10px -5px 0px;
 }
 
 #currentUser {
     width: 36px;
-    margin: -10px 0 -10px -5px;
+    margin: -3px 0 -12px -5px;
+    cursor: pointer;
 }
 
 #userSettings {

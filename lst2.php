@@ -16,7 +16,7 @@
         <img id="currentUser" onclick="userSettings()"></img>
         <span width="100%">
             <input  id="itemNew" type="text"placeholder="add item ..." autofocus>
-            <button id="btnMine" onclick="setShowOthers()">Mine</button>
+            <button id="btnMine" onclick="setShowOthers()"></button>
         </span>   
     </div>
 </header>
@@ -136,7 +136,8 @@ let datax = [];
 function loadTbl(datax) {
     rowsHtml='';
     showOthers =  localStorage.getItem("lsShowOthers") || 'false';
-    document.getElementById("btnMine").innerHTML = (showOthers=='true') ? 'All' : 'One';
+    document.getElementById("btnMine").innerHTML = (showOthers=='true') ? 'All' : 'Me';
+    
     datax.forEach(el => { 
         isFin = (el.fin<'2') ? ['itemopen', svgfin , svgdet, ''] : ['itemdone', svgund , svgdel, ' disabled'] ;
         isDis = (el.fin>'1' || (usr != el.usr)) ? [true,' disabled'] : [false,''];
