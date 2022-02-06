@@ -83,7 +83,7 @@ function addnew(e) {
 
 function userSettings() {
     pick = document.getElementById('userSettings');
-    pick.style.display = (pick.style.display =='none') ? 'flex' : 'none';
+    pick.style.display = (pick.style.display =='none') ? 'block' : 'none';
     if (pick.style.display == 'none') {pick.focus();}
 }
 
