@@ -10,7 +10,7 @@
     min-width:  330px;
 }
 
-[name^='svg']:hover { opacity: 1;}
+[name^='svg']:hover:not(.btnDisabled) { opacity: 1;}
 [name^='svg'] {
     float: right;
     margin: 0 -5px 0 10px;
@@ -20,6 +20,12 @@
     cursor: pointer;
     opacity: .75;
 } 
+
+.btnDisabled {
+    filter:     grayscale(100%);
+    opacity:    .65;
+    cursor:     unset;
+}
 
 #itemNew:focus, #itemlist input:focus { outline: var(--head0) solid 1px; }
 #itemNew {  

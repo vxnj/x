@@ -122,7 +122,7 @@ function setShowOthers() {
 }
 
 //------------------------
-//  Refresh
+//  Refresh table
 
 // let data = [];
 svgfin = '<svg name="svgfin"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 36 36" xml:space="preserve">  <g transform="matrix(1 0 0 1 18 18)" id="JT9cCN1KaDrU2tfbZ6gpJ" > <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(40,97,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke" transform=" translate(-16, -16)" d="M 16 0 C 7.199999999999999 0 0 7.2 0 16 C 0 24.8 7.2 32 16 32 C 24.8 32 32 24.8 32 16 C 32 7.199999999999999 24.8 0 16 0 z M 14.2 23.4 L 5.799999999999999 15.2 L 8.599999999999998 12.399999999999999 L 13.999999999999998 17.799999999999997 L 24 7.9999999999999964 L 26.8 10.799999999999997 z" stroke-linecap="round" /> </g> </svg>';
@@ -164,16 +164,10 @@ function loadTbl(datax) {
     items = document.querySelectorAll("[name^=svg");
     for (let i = 0; i < items.length; i++) {
         isMine = items[i].parentElement.classList.contains('itemmine');
-        console.log(isMine)
-        console.log(items[i])
         if (isMine) {
             items[i].addEventListener('click', doBtn); 
         }else{
-            items[i].style.filter= 'grayscale(100%)';
-            items[i].style.opacity = .65
-            items[i].style.cursor = 'unset'
-       
-            
+            items[i].classList.add("btnDisabled");
         }
     }
 
@@ -188,6 +182,7 @@ function doAjax(myCallback) {
     $.ajax({ 
         method: "POST",
         url: "db/lstTry.php",
+        data: `&usr=${usr}`,
         success: function(output, status, xhr) {
             data = JSON.parse(output)
             myCallback(JSON.parse(output));
