@@ -21,7 +21,7 @@
     opacity: .75;
 } 
 
-#itemNew:focus { outline: var(--head0) solid 2px; }
+#itemNew:focus, #itemlist input:focus { outline: var(--head0) solid 1px; }
 #itemNew {  
     background: black !important; 
     color: #fff !important;

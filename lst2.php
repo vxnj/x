@@ -99,7 +99,7 @@ function userSettings() {
 
 let usr; let showOthers;
 function getUser() {
-    usr =           localStorage.getItem("lsUser") || 'vx';
+    usr = localStorage.getItem("lsUser") || 'vx';
     document.getElementById("currentUser").src = `img/usrPics/head-${usr}.png`;
     document.getElementById('userSettings').style.display = 'none'; 
     newCol = `var(--head-${usr})`;
@@ -140,8 +140,8 @@ function loadTbl(datax) {
     
     datax.forEach(el => { 
         isFin = (el.fin<'2') ? ['itemopen', svgfin , svgdet, ''] : ['itemdone', svgund , svgdel, ' disabled'] ;
-        isDis = (el.fin>'1' || (usr != el.usr)) ? [true,' disabled'] : [false,''];
-        isOwn = (usr == el.usr) ? ' itemmine' : ''; 
+        isDis = (el.fin>'1' || (usr != el.usr)) ? [true,' disabled="disabled"'] : [false,''];
+        isOwn = (usr == el.usr) ? 'itemmine' : ''; 
 
         owner = `img/usrPics/head-${el.usr}.png`;
         if (showOthers=='true' || usr==el.usr) {
@@ -150,8 +150,8 @@ function loadTbl(datax) {
                     <td>
                         <img class="ownerhead" src="${owner}"></img>
                         <input type="text" id="${el.id}" class="${isFin[0]} ${isOwn} " value="${el.item}" ${isDis[1]}>
-                        <span id="${el.id}" ${isDis[1]}>${isFin[1]}</span>
-                        <span id="${el.id}" ${isDis[1]}>${isFin[2]}</span>
+                        <span id="${el.id}" class="${isOwn}">${isFin[1]}</span>
+                        <span id="${el.id}" class="${isOwn}">${isFin[2]}</span>
                     </td>
                 
                 </tr>`;
@@ -160,9 +160,20 @@ function loadTbl(datax) {
 
     document.getElementById("tblHolder").innerHTML = tblBeg + rowsHtml + '</table>';  
 
+
     items = document.querySelectorAll("[name^=svg");
     for (let i = 0; i < items.length; i++) {
-        items[i].addEventListener('click', doBtn); 
+        isMine = items[i].parentElement.classList.contains('itemmine');
+        console.log(isMine)
+        console.log(items[i])
+        if (isMine) {
+            items[i].addEventListener('click', doBtn); 
+        }else{
+            items[i].style.filter= 'grayscale(100%)';
+            items[i].style.opacity = .75
+       
+            
+        }
     }
 
     items = document.getElementsByClassName("itemopen"); 
