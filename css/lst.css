@@ -14,7 +14,6 @@
 
 body { 
     background-color: black; 
-    /* margin:15px 10px 0 10px; */
 }
 
 
@@ -22,8 +21,8 @@ body {
 #itemNew { color: #fff !important; }
 .item {
     background: transparent;
-    font-family: var(--lst-fname);
-    font-size:   var(--lst-fsize) !important;
+    font-family: 'Open Sans';
+    font-size:   var(--lst-fsize);
     border: none;
     overflow: clip;
     text-overflow: ellipsis;
@@ -91,7 +90,7 @@ body {
     border: none;
     background: rgb(38, 66, 159);
     color: rgb(197, 197, 197);
-    font-family: var(--lst-fname);
+    font-family: 'Open Sans';
     font-weight: 600;
     cursor: pointer;
     border-radius: 20%;
