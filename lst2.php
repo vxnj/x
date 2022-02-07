@@ -151,10 +151,9 @@ function loadTbl(datax) {
             rowsHtml += 
                 `<tr class="${isFin[0]}">
                     <td>
-                        <span class="column-left">
-                            <img class="ownerhead" src="${owner}"></img></span>
+                        <span class="column-left"><img class="ownerhead" src="${owner}"></img></span>
                         <input type="text" id="${el.id}" class="item ${isFin[0]} ${isOwn}" value="${el.item}" ${isDis[1]}>
-                        <span id="${el.id}" class="${isOwn}">${isFin[1]}${isFin[2]}</span>
+                        <span id="${el.id}" class="column-right ${isOwn}">${isFin[1]}${isFin[2]}</span>
                     </td>
                 
                 </tr>`;

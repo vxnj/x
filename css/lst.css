@@ -15,7 +15,7 @@
 
 @font-face {
     font-family: "fntMain";
-    src: url("../fonts/OpenSans-Regular.ttf");
+    src: url("../fonts/NotoSans-Regular.ttf");
   } 
 
 body { 
@@ -122,7 +122,6 @@ input.itemdone {
     border: 3px rgb(101, 100, 105);
     border-bottom-style: solid;
 }
-
 
 #userSettings {
     display: none ;
