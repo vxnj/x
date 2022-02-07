@@ -1,6 +1,6 @@
 
 :root{
-    --lst-fsize:   16px;
+    --lst-fsize:   15px;
     --lst-fname:   'Open-Sans';
     --lst-col-reg:   rgb(147, 175, 235);
     --lst-col-dim:   rgb(104, 116, 141);
@@ -21,7 +21,7 @@ body {
 #itemNew { color: #fff !important; }
 .item {
     background: transparent;
-    font-family: 'Open Sans';
+    font-family: fntMain;
     font-size:   var(--lst-fsize);
     border: none;
     overflow: clip;
@@ -90,7 +90,7 @@ body {
     border: none;
     background: rgb(38, 66, 159);
     color: rgb(197, 197, 197);
-    font-family: 'Open Sans';
+    font-family: fntMain;
     font-weight: 600;
     cursor: pointer;
     border-radius: 20%;
