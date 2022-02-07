@@ -1,10 +1,11 @@
 
 :root{
-    --lst-fsize:   16px;
-    --lst-fname:   'Open-Sans';
-    --lst-col-reg:   rgb(147, 175, 235);
-    --lst-col-dim:   rgb(104, 116, 141);
-    --lst-col-bor:   #7a9fee50;
+    --lst-fsize:   18px;
+    --lst-fname:   fntMain;
+    --lst-col-reg:    rgb(147, 175, 235);
+    --lst-col-dim1:   rgb(129, 129, 129);
+    --lst-col-dim2:   rgb(77, 77, 77);
+    --lst-col-bor:    #7a9fee50;
 
     --head0:        #bb80b8;
     --head-vx:      #bb80b8;
@@ -12,38 +13,30 @@
     --head-ce:      #f2ac67;
 }
 
+@font-face {
+    font-family: "fntMain";
+    src: url("../fonts/OpenSans-Regular.ttf");
+  } 
+
 body { 
     background-color: black; 
+    margin: 10px;
 }
 
-
-#itemNew:focus { background: rgb(58, 58, 58) !important; }
-#itemNew { color: #fff !important; }
-.item {
-    background: transparent;
-    font-family: 'Open-Sans';
-    font-size:   var(--lst-fsize);
-    border: none;
-    overflow: clip;
-    text-overflow: ellipsis;
-    font-weight: 600;
-    width: calc(100% - 130px);
-    position: absolute;
-    left: 45px;
-    height: 24px;
-    margin-top: 3px;
-}
-.item:focus { outline: var(--head0) solid 1px; }
-
-.itemmine:not(.itemdone){
-    color: var(--head0);
-    font-weight: 600;
+.myWidth{
+    width:      100%;
+    max-width:  550px;
+    min-width:  350px;
 }
 
-.itemdone {
-    color:           var(--lst-col-dim);
-    text-decoration: var(--lst-col-dim) line-through 1px;
-    font-weight: 300;
+.column-left {
+    width: 40px;
+    display: inline-block;
+}
+
+#mast, #mast input{ 
+    height: 40px;
+    vertical-align: top;   
 }
 
 #itemlist {width: calc(100%-80px);}
@@ -53,16 +46,40 @@ body {
     border-color: var(--lst-col-bor);  
     border-collapse: collapse; 
     width: 100%;
+    height: 40px
+}
 
+#itemNew:focus { background: rgb(25, 25, 25) !important; }
+#itemNew, .item:focus { color: #fff !important; }
+.item {
+    background: transparent;
+    font-family: var(--lst-fname);
+    font-size:   var(--lst-fsize);
+    border: none;
+    overflow: clip;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    width: calc(100% - 110px);
+    vertical-align: middle;    
+    /* height: 24px; */
+}
+.item:focus { outline: var(--head0) solid 1px; }
+
+.itemmine:not(.itemdone){
+    color: var(--head0);
+}
+
+input.itemdone {
+    color:           var(--lst-col-dim2);
+    text-decoration: var(--lst-col-dim2) line-through 1px;
+    font-weight: 400;
 }
 
 [name^='svg']:hover:not(.btnDisabled) { opacity: 1;}
 [name^='svg'] {
     float: right;
-    margin: 0 -5px 0 10px;
     height: 32px;
     width: 32px;
-    /* padding: 0; */
     cursor: pointer;
     opacity: .75;
 } 
@@ -74,15 +91,12 @@ body {
 
 #currentUser {
     width: 34px;
-    /* margin: -3px 0 -12px -5px; */
     cursor: pointer;
 }
 
 .ownerhead {
     opacity: 0.6;
     width: 20px;
-    margin: 2px 10px -5px 0px;
-    margin-top: 6px;
 }
 
 .btn:hover{background: rgb(79, 101, 173);; color:white;}
@@ -90,7 +104,7 @@ body {
     border: none;
     background: rgb(38, 66, 159);
     color: rgb(197, 197, 197);
-    font-family: 'Open-Sans';
+    font-family: fntMain;
     font-weight: 600;
     cursor: pointer;
     border-radius: 20%;
@@ -100,17 +114,15 @@ body {
     height: 28px;
     width: 40px;
     float: right;
-    margin-top: 2px;
 }
 
 .userhead {
     width:  90px;
     height: 90px;
-    padding: 5px;
-    margin: 10px !important;
     border: 3px rgb(101, 100, 105);
     border-bottom-style: solid;
 }
+
 
 #userSettings {
     display: none ;
@@ -119,13 +131,13 @@ body {
     width: 100%;
     height: 90%;
     background: rgba(0, 0, 0, 0.8);
-    padding-top: 40px;
     top: 0; left: 0;
 }
 
 .userOption {
-    margin: 10px;
     font-size: var(--lst-fsize);
     color: var(--lst-col-reg);
 }
 
+:not(body) {margin: 0 !important;
+        padding:0 !important;}

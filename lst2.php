@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" type="image/x-icon" href="img/lst.svg">  
-    <link rel="stylesheet" href="/css/lst.css" />
+    <link rel="stylesheet" href="/css/lst.css"/>
     <title>Listo!</title>
 </head>
 
 <body>
 
 <header>
-    <div id="mast">
-        <img id="currentUser" onclick="userSettings()"></img>
-        <span width="100%">
+    <div id="mast" class="myWidth">
+        <span class="column-left">
+            <img id="currentUser" onclick="userSettings()"></img>
+        </span>
+        <span>
             <input  id="itemNew" class="item" type="text"placeholder="add item ..." autofocus>
             <button id="btnMine" class="btn"  onclick="setShowOthers()"></button>
         </span>   
     </div>
 </header>
 
-<div id="tblHolder"></div>
+<div id="tblHolder" class= myWidth ></div>
 
 <?php
     include "zzExamples/zzModal.html";
@@ -149,7 +151,9 @@ function loadTbl(datax) {
             rowsHtml += 
                 `<tr class="${isFin[0]}">
                     <td>
-                        <img class="ownerhead" src="${owner}"></img><input type="text" id="${el.id}" class="item ${isFin[0]} ${isOwn}" value="${el.item}" ${isDis[1]}>
+                        <span class="column-left">
+                            <img class="ownerhead" src="${owner}"></img></span>
+                        <input type="text" id="${el.id}" class="item ${isFin[0]} ${isOwn}" value="${el.item}" ${isDis[1]}>
                         <span id="${el.id}" class="${isOwn}">${isFin[1]}${isFin[2]}</span>
                     </td>
                 
