@@ -49,8 +49,11 @@ body {
     height: 38px
 }
 
+#itemNew { margin-bottom: 25px; }
 #itemNew:focus { background: rgb(25, 25, 25) ; }
-#itemNew, .item:focus { color: #fff; }
+#itemNew, .item:focus { color: #fff !important; }
+.item:focus { outline: var(--head0) solid 1px;}
+
 .item {
     background: transparent;
     font-family: var(--lst-fname), Vivaldi  !important;
@@ -63,11 +66,10 @@ body {
     vertical-align: middle;    
 }
 
-.item:focus { outline: var(--head0) solid 1px; }
 .itemmine:not(.itemdone){ color: var(--head0); }
 
 input.itemdone {
-    color:           var(--lst-col-dim2);
+    color: var(--lst-col-dim2);
     text-decoration: var(--lst-col-dim2) line-through 1px;
     font-weight: 400;
 }
