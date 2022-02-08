@@ -31,7 +31,8 @@ body {
 
 header {
     position: fixed;
-    background: var(--head9) !important;
+    /* background: var(--head9) !important; */
+    background: rgb(59, 59, 59) !important;
     z-index:  10;
     width: 100%;
 }
