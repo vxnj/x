@@ -1,6 +1,6 @@
 
 :root{
-    --lst-fsize:    16px;
+    --lst-fsize:    18px;
     --lst-fname:    fntMain;
     --lst-col-reg:  rgb(147, 175, 235);
     --lst-col-dim1: rgb(173, 173, 173);
@@ -36,6 +36,12 @@ header {
     width: 100%;
 }
 
+#mast, #mast xinput{ 
+    height: 40px;
+    margin: 10px 0 0 10px;
+    width: calc(100% - 30px); 
+}
+
 .myWidth{
     width:      100%;
     max-width:  550px;
@@ -43,7 +49,7 @@ header {
 }
 
 #tblHolder {
-    top: 45px;
+    top: 50px;
     position: absolute;
     padding: 0 10px;
     height: 80%;
@@ -57,11 +63,6 @@ header {
     display: inline-block;
 }
 
-#mast, #mast xinput{ 
-    height: 40px;
-    margin: 5px 0 0 10px;
-    width: calc(100% - 30px); 
-}
 
 #itemlist {width: calc(100% - 80px ) ;}
 #itemlist, #itemlist td { 
