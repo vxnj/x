@@ -54,10 +54,8 @@ function doBtn(e) {
     
 } //doBtn
 
-function doEditK(e) {if (e.code == 'Enter') {;doEdit(e);} };
-function doEdit(e)  { 
-    document.getElementById("itemNew").focus();
-    
+function doEditK(e) {if (e.code == 'Enter') { doEdit(e);} };
+function doEdit(e)  {     
     id =      e.originalTarget.id; 
     newVal =  e.originalTarget.value;
     change = (e.originalTarget.value !== e.originalTarget.defaultValue)
@@ -105,7 +103,8 @@ function getUser() {
     document.getElementById('userSettings').style.display = 'none'; 
     newCol = `var(--head-${usr})`;
     document.documentElement.style.setProperty('--head0',newCol);
-    document.getElementById("itemNew").focus();
+    document.getElementById("itemNew")
+    
     doAjax(loadTbl);
 }
 

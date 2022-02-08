@@ -54,7 +54,7 @@ function doBtn(e) {
     
 } //doBtn
 
-function doEditK(e) {if (e.code == 'Enter') {;doEdit(e);} };
+function doEditK(e) {if (e.code == 'Enter') { doEdit(e);} };
 function doEdit(e)  {     
     id =      e.originalTarget.id; 
     newVal =  e.originalTarget.value;
