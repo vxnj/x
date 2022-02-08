@@ -3,6 +3,7 @@
     margin: -11px 2px -6px 0 !important;
 }
 
+#zipcd, #themer { cursor: pointer;}
 
 [id="aqi"] { margin-left: 8px;}
 .numball {
@@ -14,7 +15,7 @@
     min-width: 32px;
     height: 30px;
     font-size: 16px !important;
-    vertical-align: center;
+    vertical-align: middle;
     text-decoration: none;
     line-height: 14px;
 }
@@ -90,6 +91,6 @@
     color:rgb(207, 193, 193);   
 }
 
-.alrt a {
-    xcolor:rgb(207, 193, 193) !important;  
-}
+/* .alrt a {
+    color:rgb(207, 193, 193) !important;  
+} */

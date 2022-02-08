@@ -12,11 +12,8 @@
     --head-cf:      hsla(214, 51%, 71%);
     --head-ce:      hsla( 30, 84%, 68%);
 
-    --head9:        rgb(22, 21, 22);
-    --head-vx9:      hsla(303, 30%, 15%);
-    --head-cf9:      hsla(214, 51%, 25%);
-    --head-ce9:      hsla( 30, 84%, 10%);
-
+    --header-bg:    rgb(40, 40, 40);
+    --header-ht:    50px;
 }
 
 @font-face {
@@ -31,8 +28,7 @@ body {
 
 header {
     position: fixed;
-    /* background: var(--head9) !important; */
-    background: rgb(20, 20, 20) !important;
+    background: var(--header-bg) !important;
     z-index:  10;
     width: 100%;
 }

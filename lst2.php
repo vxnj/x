@@ -102,11 +102,9 @@ function getUser() {
     document.getElementById("currentUser").src = `img/usrPics/head-${usr}.png`;
     document.getElementById('userSettings').style.display = 'none'; 
     newCol = `var(--head-${usr})`;
-    newCo9 = `var(--head-${usr}9)`;
-    console.log(newCo9);
     document.documentElement.style.setProperty('--head0',newCol);
-    document.documentElement.style.setProperty('--head9',newCo9);
-    document.getElementById("itemNew").focus();
+    document.getElementById("itemNew")
+    
     doAjax(loadTbl);
 }
 
