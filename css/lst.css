@@ -1,11 +1,11 @@
 
 :root{
-    --lst-fsize:   18px;
-    --lst-fname:   fntMain;
-    --lst-col-reg:    rgb(147, 175, 235);
-    --lst-col-dim1:   rgb(129, 129, 129);
-    --lst-col-dim2:   rgb(77, 77, 77);
-    --lst-col-bor:    #7a9fee50;
+    --lst-fsize:    16px;
+    --lst-fname:    fntMain;
+    --lst-col-reg:  rgb(147, 175, 235);
+    --lst-col-dim1: rgb(173, 173, 173);
+    --lst-col-dim2: rgb(77, 77, 77);
+    --lst-col-bor:  #7a9fee50;
 
     --head0:        #bb80b8;
     --head-vx:      #bb80b8;
@@ -14,7 +14,7 @@
 }
 
 @font-face {
-    font-family: "fntMain";
+    font-family: fntMain;
     src: url("../fonts/NotoSans-Regular.ttf");
   } 
 
@@ -34,7 +34,7 @@ body {
     display: inline-block;
 }
 
-#mast, #mast input{ 
+#mast, #mast xinput{ 
     height: 40px;
     vertical-align: top;   
 }
@@ -46,28 +46,25 @@ body {
     border-color: var(--lst-col-bor);  
     border-collapse: collapse; 
     width: 100%;
-    height: 40px
+    height: 38px
 }
 
-#itemNew:focus { background: rgb(25, 25, 25) !important; }
-#itemNew, .item:focus { color: #fff !important; }
+#itemNew:focus { background: rgb(25, 25, 25) ; }
+#itemNew, .item:focus { color: #fff; }
 .item {
     background: transparent;
-    font-family: var(--lst-fname);
+    font-family: var(--lst-fname), Vivaldi  !important;
     font-size:   var(--lst-fsize);
     border: none;
     overflow: clip;
     text-overflow: ellipsis;
     font-weight: 500;
-    width: calc(100% - 110px);
+    width: calc(100% - 130px);
     vertical-align: middle;    
-    /* height: 24px; */
 }
-.item:focus { outline: var(--head0) solid 1px; }
 
-.itemmine:not(.itemdone){
-    color: var(--head0);
-}
+.item:focus { outline: var(--head0) solid 1px; }
+.itemmine:not(.itemdone){ color: var(--head0); }
 
 input.itemdone {
     color:           var(--lst-col-dim2);
@@ -83,6 +80,7 @@ input.itemdone {
     cursor: pointer;
     opacity: .75;
 } 
+
 .btnDisabled {
     filter:     grayscale(100%);
     opacity:    .65;
@@ -90,7 +88,7 @@ input.itemdone {
 }
 
 #currentUser {
-    width: 34px;
+    width: 35px;
     cursor: pointer;
 }
 
@@ -99,12 +97,13 @@ input.itemdone {
     width: 20px;
 }
 
+
 .btn:hover{background: rgb(79, 101, 173);; color:white;}
 .btn{
     border: none;
     background: rgb(38, 66, 159);
     color: rgb(197, 197, 197);
-    font-family: fntMain;
+    font-family: fntMain !important;
     font-weight: 600;
     cursor: pointer;
     border-radius: 20%;
@@ -115,6 +114,8 @@ input.itemdone {
     width: 40px;
     float: right;
 }
+
+
 
 .userhead {
     width:  90px;
@@ -138,5 +139,8 @@ input.itemdone {
     color: var(--lst-col-reg);
 }
 
-:not(body) {margin: 0 !important;
-        padding:0 !important;}
+
+
+/* for testing */
+/* :not(body) {margin: 0 !important;
+        padding:0 !important;} */
