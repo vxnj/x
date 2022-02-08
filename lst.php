@@ -38,7 +38,6 @@ document.getElementById("itemNew").addEventListener('keypress', addnew);
 function doBtn(e) { 
     id =   e.currentTarget.parentElement.id;
     actn = e.currentTarget.attributes.name.value.substring(3, 10);
-    
     if (actn == 'det'){ 
         modal.style.display = "block";
     } else {
@@ -55,8 +54,10 @@ function doBtn(e) {
     
 } //doBtn
 
-function doEditK(e) { if (e.code == 'Period' || e.code == 'Enter') {doEdit(e);} };
+function doEditK(e) {if (e.code == 'Enter') {;doEdit(e);} };
 function doEdit(e)  { 
+    document.getElementById("itemNew").focus();
+    
     id =      e.originalTarget.id; 
     newVal =  e.originalTarget.value;
     change = (e.originalTarget.value !== e.originalTarget.defaultValue)
@@ -78,9 +79,7 @@ function addnew(e) {
         success: function(output, status, xhr) {
             console.log(xhr.status);
             doAjax(loadTbl); } ,
-
-        error: function (xhr, status, thrownError) {
-            console.log(xhr.status);}
+        error: function (xhr, status, thrownError) {console.log(xhr.status);}
     }) //ajax
     e.target.value = '';
 }
@@ -151,10 +150,9 @@ function loadTbl(datax) {
             rowsHtml += 
                 `<tr class="${isFin[0]}">
                     <td>
-                        <span class="column-left">
-                            <img class="ownerhead" src="${owner}"></img></span>
+                        <span class="column-left"><img class="ownerhead" src="${owner}"></img></span>
                         <input type="text" id="${el.id}" class="item ${isFin[0]} ${isOwn}" value="${el.item}" ${isDis[1]}>
-                        <span id="${el.id}" class="${isOwn}">${isFin[1]}${isFin[2]}</span>
+                        <span id="${el.id}" class="column-right ${isOwn}">${isFin[1]}${isFin[2]}</span>
                     </td>
                 
                 </tr>`;
@@ -162,7 +160,6 @@ function loadTbl(datax) {
     }) //foreach    
 
     document.getElementById("tblHolder").innerHTML = tblBeg + rowsHtml + '</table>';  
-
 
     items = document.querySelectorAll("[name^=svg");
     for (let i = 0; i < items.length; i++) {
@@ -180,7 +177,8 @@ function loadTbl(datax) {
         items[i].addEventListener('keydown',  doEditK );
     }
 } //loadTbl
- 
+
+
 function doAjax(myCallback) {
     $.ajax({ 
         method: "POST",

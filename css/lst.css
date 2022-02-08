@@ -39,7 +39,7 @@ body {
     vertical-align: top;   
 }
 
-#itemlist {width: calc(100%-80px);}
+#itemlist {width: calc(100% - 80px ) ;}
 #itemlist, #itemlist td { 
     border-width: 1px 0 1px 0; 
     border-style: solid;
