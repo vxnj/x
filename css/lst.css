@@ -7,10 +7,16 @@
     --lst-col-dim2: rgb(77, 77, 77);
     --lst-col-bor:  #7a9fee50;
 
-    --head0:        #bb80b8;
-    --head-vx:      #bb80b8;
-    --head-cf:      #8fb0db;
-    --head-ce:      #f2ac67;
+    --head0:        hsla(303, 30%, 62%);
+    --head-vx:      hsla(303, 30%, 62%);
+    --head-cf:      hsla(214, 51%, 71%);
+    --head-ce:      hsla( 30, 84%, 68%);
+
+    --head9:        rgb(22, 21, 22);
+    --head-vx9:      hsla(303, 30%, 15%);
+    --head-cf9:      hsla(214, 51%, 25%);
+    --head-ce9:      hsla( 30, 84%, 10%);
+
 }
 
 @font-face {
@@ -20,13 +26,30 @@
 
 body { 
     background-color: black; 
-    margin: 10px;
+    margin: 0;
+}
+
+header {
+    position: fixed;
+    background: var(--head9) !important;
+    z-index:  10;
+    width: 100%;
 }
 
 .myWidth{
     width:      100%;
     max-width:  550px;
     min-width:  350px;
+}
+
+#tblHolder {
+    top: 45px;
+    position: absolute;
+    padding: 0 10px;
+    height: 80%;
+    width: calc(100% - 20px);
+    overflow: auto;
+    
 }
 
 .column-left {
@@ -36,7 +59,8 @@ body {
 
 #mast, #mast xinput{ 
     height: 40px;
-    vertical-align: top;   
+    margin: 5px 0 0 10px;
+    width: calc(100% - 30px); 
 }
 
 #itemlist {width: calc(100% - 80px ) ;}
@@ -52,8 +76,9 @@ body {
 #itemNew { margin-bottom: 25px; }
 #itemNew:focus { background: rgb(25, 25, 25) ; }
 #itemNew, .item:focus { color: #fff !important; }
-.item:focus { outline: var(--head0) solid 1px;}
 
+
+.item:focus { outline: var(--head0) solid 1px;}
 .item {
     background: transparent;
     font-family: var(--lst-fname), Vivaldi  !important;
@@ -134,6 +159,7 @@ input.itemdone {
     height: 90%;
     background: rgba(0, 0, 0, 0.8);
     top: 0; left: 0;
+    z-index: 100;
 }
 
 .userOption {
