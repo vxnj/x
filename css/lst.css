@@ -30,7 +30,13 @@ header {
     position: fixed;
     background: var(--header-bg) !important;
     z-index:  10;
-    width: 100%;
+
+}
+
+.myWidth, header {
+    width:      100%;
+    max-width:  550px;
+    min-width:  350px;
 }
 
 #mast, #mast xinput{ 
@@ -39,11 +45,6 @@ header {
     width: calc(100% - 30px); 
 }
 
-.myWidth{
-    width:      100%;
-    max-width:  550px;
-    min-width:  350px;
-}
 
 #tblHolder {
     top: 50px;
