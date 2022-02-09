@@ -12,7 +12,7 @@
     --head-ce:      hsla( 30, 84%, 68%);
 
     --header-bg:    rgb(40, 40, 40);
-    --header-ht:    40px;
+    --header-ht:    45px;
 
     --bar-left:     50px;    
     --bar-right:    80px;
@@ -25,19 +25,22 @@
 
 body { background-color: black; }
 
-header, #itemsOpenE, #itemsDoneX, #itemList {
+/* layout ----------------------*/
+header, footer, #itemsOpenE, #itemsDoneX, #itemList {
     width:      100%;
     max-width:  550px !important;
     min-width:  350px;
-
 }
-
-header {
-    position: fixed;
+header, footer {
+    position: absolute;
     padding:    5px;
     background: var(--header-bg) !important;
     z-index: 10;
+    height: var(--header-ht);
 }
+footer { bottom: 0; }
+/* layout ----------------------*/
+
 
 #currentUser {
     width: 35px;
@@ -52,16 +55,15 @@ header {
 }
 
 #itemList {
-    top: 45px;
+    top: var(--header-ht);
     position: relative;
-    height: 80%;
+    height: calc(100% - 2 * var(--header-ht));
     overflow: auto;
+    border: 1px solid red;
 }
 
-/* #itemNew        {outline: var(--lst-col-reg); color:white !important} */
 
 #itemNew:focus  { background: rgb(25, 25, 25) ;}
-/* .item:focus     { outline: var(--head0) solid 1px; color:white !important} */
 .item:focus     { background: rgb(25, 25, 25) ; color:rgb(196, 196, 196) !important}
 .item {
     outline: none;

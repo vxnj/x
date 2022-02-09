@@ -12,16 +12,22 @@
 
 <body>
 
-<header>
-    <img    id="currentUser" onclick="userSettings()"></img>
-    <input  id="itemNew" class="item" type="text"placeholder="add item ..." autofocus>
-    <button id="btnMine" class="btn"  onclick="setShowOthers()"></button>
-</header>
+    <header>
+        <img    id="currentUser" onclick="userSettings()"></img>
+        <input  id="itemNew" class="item" type="text"placeholder="add item ..." autofocus>
+        <button id="btnMine" class="btn"  onclick="setShowOthers()"></button>
+    </header>
 
-<div id="itemList">
-    <ul id="itemsOpen"></ul>
-    <ul id="itemsDone"></ul>
-</div>
+    <div id="itemList">
+        <ul id="itemsOpen"></ul>
+        <ul id="itemsDone"></ul>
+    </div>
+
+    <footer>
+        the footer
+    </footer>
+
+</body>
 
 <?php
     // include "zzExamples/zzModal.html";
@@ -53,10 +59,10 @@ function doBtn(e) {
 } //doBtn
 
 f='';
-function doEditK(e) {if (e.code == 'Enter') { doEdit(e);} };
+function doEditK(e) { if (e.code == 'Enter') { doEdit(e);} };
 function doEdit(e)  {  
     f=e;
-    console.log(f);
+    // console.log(f);
     id =      e.target.id; 
     newVal =  e.target.value;
     change = (e.target.value !== e.target.defaultValue)
@@ -192,5 +198,5 @@ function doAjax(myCallback) {
 
 </script>
 
-</body>
+<!-- </body> -->
 </html>
