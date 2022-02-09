@@ -2,7 +2,7 @@
     --lst-fsize:    16px;
     --lst-fname:    fntMain;
     --lst-col-reg:  rgb(147, 175, 235);
-    --lst-col-dim1: rgb(173, 173, 173);
+    --lst-col-dim1: rgb(145, 145, 145);
     --lst-col-dim2: rgb(77, 77, 77);
     --lst-col-bor:  rgb(40, 40, 40);
 
@@ -58,18 +58,20 @@ header {
     overflow: auto;
 }
 
-#itemNew:focus  { background: rgb(25, 25, 25) ; color:white !important;}
-.item:focus     { outline: var(--head0) solid 1px;}
+#itemNew        {outline: var(--lst-col-reg); color:white !important}
+
+#itemNew:focus  { background: rgb(25, 25, 25) ;}
+.item:focus     { outline: var(--head0) solid 1px; color:white !important}
 .item {
     position: absolute;
     font-family: fntMain; 
     font-size:   var(--lst-fsize);
+    width: calc(100% - var(--bar-left) - var(--bar-right));
     left: var(--bar-left);
     right: var(--bar-right);
     padding: 2px;
     margin-top: 4px;
-    color: var(--lst-col-reg); 
-    width: calc(100% - var(--bar-left) - var(--bar-right));
+    color: var(--lst-col-dim2); 
     background: transparent;
     border: none;
     overflow: clip;
@@ -113,16 +115,13 @@ header {
 }
 
 li { 
-    width: 100%;
+    /* width: 100%; */
     border-bottom: solid 1px var(--lst-col-bor);
     height: 35px;
     padding: 0 5px;
 }
 
-#itemsDone {
-    border-top: solid 6px var(--header-bg);
-
-}
+#itemsDone {border-top: solid 6px var(--header-bg);}
 #itemsDone::before {
     content: '';
     width: calc(100% - 10px) !important;
@@ -131,7 +130,6 @@ li {
     margin-top: -4px;
     background: #000000;
     position: absolute;
-
 }
 
 .itemmine:not(.itemdone){ color: var(--head0); }
