@@ -4,7 +4,7 @@
     --lst-col-reg:  rgb(147, 175, 235);
     --lst-col-dim1: rgb(173, 173, 173);
     --lst-col-dim2: rgb(77, 77, 77);
-    --lst-col-bor:  #7a9fee50;
+    --lst-col-bor:  rgb(40, 40, 40);
 
     --head0:        hsla(303, 30%, 62%);
     --head-vx:      hsla(303, 30%, 62%);
@@ -97,6 +97,7 @@ header {
 .ownerhead {
     opacity: 0.6;
     width: 20px;
+    margin-top: 8px;
 }
 
 [name^='svg']:hover:not(.btnDisabled) { opacity: 1;}
@@ -121,12 +122,12 @@ li {
 }
 #itemsDone::before {
     content: '';
-    width: 150px;
+    width: calc(100% - 10px);
+    left: 5px;
     height: 2px;
     margin-top: -4px;
     background: #000000;
     position: absolute;
-    left: var(--bar-left);
 
 }
 
