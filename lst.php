@@ -52,13 +52,14 @@ function doBtn(e) {
     
 } //doBtn
 
+f='';
 function doEditK(e) {if (e.code == 'Enter') { doEdit(e);} };
 function doEdit(e)  {  
-    console.log ('asdf');
-    alert(e.originalTarget.id, e.originalTarget.defaultValue);
-    id =      e.originalTarget.id; 
-    newVal =  e.originalTarget.value;
-    change = (e.originalTarget.value !== e.originalTarget.defaultValue)
+    f=e;
+    console.log(f);
+    id =      e.target.id; 
+    newVal =  e.target.value;
+    change = (e.target.value !== e.target.defaultValue)
     if(change) {
         $.ajax({  
             type: "POST",
