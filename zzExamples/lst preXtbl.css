@@ -59,7 +59,7 @@ header {
     left: var(--bar-left);
     right: var(--bar-right);
     padding: 2px;
-    margin-top: 4px;
+    margin-top: 3px;
     color: var(--lst-col-reg); 
     width: calc(100% - var(--bar-left) - var(--bar-right));
     background: transparent;
@@ -87,9 +87,11 @@ header {
     cursor:  unset !important;
 }
 
-#itemList {
-    top: 45px;
-    position: relative;
+#tblHolder {
+    position: absolute;
+    height:var(--header-ht);
+    top: calc(var(--header-ht) + 5px);
+    padding: 0 5px;
     height: 80%;
     overflow: auto;
 }
@@ -108,38 +110,18 @@ header {
     opacity: .75;
 }
 
-li { 
+#itemlist, tr { 
     width: 100%;
     border-bottom: solid 1px var(--lst-col-bor);
-    height: 35px;
-    padding: 0 5px;
-}
-
-#itemsDone {
-    border-top: solid 6px var(--header-bg);
-
-}
-#itemsDone::before {
-    content: '';
-    width: 150px;
-    height: 2px;
-    margin-top: -4px;
-    background: #000000;
-    position: absolute;
-    left: var(--bar-left);
-
 }
 
 .itemmine:not(.itemdone){ color: var(--head0); }
-.itemdone {
+
+input.itemdone {
     color: var(--lst-col-dim2);
     text-decoration: var(--lst-col-dim2) line-through 1px;
     font-weight: 400;
 }
-
-
-
-
 
 
 

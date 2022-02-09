@@ -18,10 +18,8 @@
     <button id="btnMine" class="btn"  onclick="setShowOthers()"></button>
 </header>
 
-<div id="itemList">
-    <ul id="itemsOpen"></ul>
-    <ul id="itemsDone"></ul>
-</div>
+
+<div id="tblHolder"></div>
 
 <?php
     // include "zzExamples/zzModal.html";
@@ -133,28 +131,30 @@ tblBeg = '<table id="itemlist">' +'';
 let datax = [];
 
 function loadTbl(datax) {
-    ulOpen=''; ulDone='';
-    showOthers = localStorage.getItem("lsShowOthers") || 'false';
+    rowsHtml='';
+    showOthers =  localStorage.getItem("lsShowOthers") || 'false';
     document.getElementById("btnMine").innerHTML = (showOthers=='true') ? 'All' : 'Me';
     
     datax.forEach(el => { 
         isFin = (el.fin<'2') ? ['itemopen', svgfin , svgdet, ''] : ['itemdone', svgund , svgdel, ' disabled'] ;
         isDis = (el.fin>'1' || (usr != el.usr)) ? [true,' disabled="disabled"'] : [false,''];
         isOwn = (usr == el.usr) ? 'itemmine' : ''; 
-        owner = `img/usrPics/head-${el.usr}.png`;
 
+        owner = `img/usrPics/head-${el.usr}.png`;
         if (showOthers=='true' || usr==el.usr) {
-            newRow = `<li class="${isFin[0]}">
-                        <img    class="ownerhead" src="${owner}"></img>
+            rowsHtml += 
+                `<tr class="${isFin[0]}">
+                    <td>
+                        <span class="column-left"><img class="ownerhead" src="${owner}"></img></span>
                         <input type="text" id="${el.id}" class="item ${isFin[0]} ${isOwn}" value="${el.item}" ${isDis[1]}>
                         <span id="${el.id}" class="column-right ${isOwn}">${isFin[1]}${isFin[2]}</span>
-                      </li>`
-            if (el.fin<'2') { ulOpen += newRow }
-            if (el.fin>'2') { ulDone += newRow }  
+                    </td>
+                
+                </tr>`;
         } //if
     }) //foreach    
-    document.getElementById("itemsOpen").innerHTML = ulOpen;  
-    document.getElementById("itemsDone").innerHTML = ulDone;  
+
+    document.getElementById("tblHolder").innerHTML = tblBeg + rowsHtml + '</table>';  
 
     items = document.querySelectorAll("[name^=svg");
     for (let i = 0; i < items.length; i++) {
