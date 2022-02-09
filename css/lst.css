@@ -58,11 +58,13 @@ header {
     overflow: auto;
 }
 
-#itemNew        {outline: var(--lst-col-reg); color:white !important}
+/* #itemNew        {outline: var(--lst-col-reg); color:white !important} */
 
 #itemNew:focus  { background: rgb(25, 25, 25) ;}
-.item:focus     { outline: var(--head0) solid 1px; color:white !important}
+/* .item:focus     { outline: var(--head0) solid 1px; color:white !important} */
+.item:focus     { background: rgb(25, 25, 25) ; color:rgb(196, 196, 196) !important}
 .item {
+    outline: none;
     position: absolute;
     font-family: fntMain; 
     font-size:   var(--lst-fsize);
@@ -71,7 +73,7 @@ header {
     right: var(--bar-right);
     padding: 2px;
     margin-top: 4px;
-    color: var(--lst-col-dim2); 
+    color: var(--lst-col-dim1); 
     background: transparent;
     border: none;
     overflow: clip;
