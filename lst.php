@@ -55,7 +55,7 @@ function doBtn(e) {
 function doEditK(e) {if (e.code == 'Enter') { doEdit(e);} };
 function doEdit(e)  {  
     console.log ('asdf');
-    alert('asdf');
+    alert(e.originalTarget.id, e.originalTarget.defaultValue);
     id =      e.originalTarget.id; 
     newVal =  e.originalTarget.value;
     change = (e.originalTarget.value !== e.originalTarget.defaultValue)
