@@ -53,7 +53,8 @@ function doBtn(e) {
 } //doBtn
 
 function doEditK(e) {if (e.code == 'Enter') { doEdit(e);} };
-function doEdit(e)  {     
+function doEdit(e)  {  
+       
     id =      e.originalTarget.id; 
     newVal =  e.originalTarget.value;
     change = (e.originalTarget.value !== e.originalTarget.defaultValue)
