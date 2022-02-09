@@ -25,15 +25,16 @@
 
 body { background-color: black; }
 
-header, #tblHolder {
+header, #itemsOpenE, #itemsDoneX, #itemList {
     width:      100%;
-    max-width:  550px;
+    max-width:  550px !important;
     min-width:  350px;
-    padding:    5px;
+
 }
 
 header {
     position: fixed;
+    padding:    5px;
     background: var(--header-bg) !important;
     z-index: 10;
 }
@@ -50,7 +51,14 @@ header {
     float:  right;
 }
 
-#itemNew:focus  { background: rgb(25, 25, 25) ;}
+#itemList {
+    top: 45px;
+    position: relative;
+    height: 80%;
+    overflow: auto;
+}
+
+#itemNew:focus  { background: rgb(25, 25, 25) ; color:white !important;}
 .item:focus     { outline: var(--head0) solid 1px;}
 .item {
     position: absolute;
@@ -87,12 +95,7 @@ header {
     cursor:  unset !important;
 }
 
-#itemList {
-    top: 45px;
-    position: relative;
-    height: 80%;
-    overflow: auto;
-}
+
 
 .ownerhead {
     opacity: 0.6;
@@ -122,7 +125,7 @@ li {
 }
 #itemsDone::before {
     content: '';
-    width: calc(100% - 10px);
+    width: calc(100% - 10px) !important;
     left: 5px;
     height: 2px;
     margin-top: -4px;
@@ -137,8 +140,6 @@ li {
     text-decoration: var(--lst-col-dim2) line-through 1px;
     font-weight: 400;
 }
-
-
 
 
 
