@@ -54,7 +54,7 @@ function doBtn(e) {
 
 function doEditK(e) {if (e.code == 'Enter') { doEdit(e);} };
 function doEdit(e)  {  
-       
+    console.log ('asdf');
     id =      e.originalTarget.id; 
     newVal =  e.originalTarget.value;
     change = (e.originalTarget.value !== e.originalTarget.defaultValue)
@@ -69,7 +69,8 @@ function doEdit(e)  {
 
 function addnew(e) {
     if (e.key != 'Enter' || e.target.value == '') { return; }
-    $.ajax({ 
+  
+    $.ajax({     
         type: "POST",
         url: "db/lstAct.php",
         data: `actn=add&id=&item=${e.target.value}&usr=${usr}` ,
