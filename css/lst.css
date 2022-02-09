@@ -60,7 +60,6 @@ footer { bottom: 0; }
     position: relative;
     height: calc(100% - 2 * var(--header-ht));
     overflow: auto;
-    border: 1px solid red;
 }
 
 
