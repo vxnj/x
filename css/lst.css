@@ -1,6 +1,5 @@
-
 :root{
-    --lst-fsize:    18px;
+    --lst-fsize:    16px;
     --lst-fname:    fntMain;
     --lst-col-reg:  rgb(147, 175, 235);
     --lst-col-dim1: rgb(173, 173, 173);
@@ -13,7 +12,10 @@
     --head-ce:      hsla( 30, 84%, 68%);
 
     --header-bg:    rgb(40, 40, 40);
-    --header-ht:    50px;
+    --header-ht:    40px;
+
+    --bar-left:     50px;    
+    --bar-right:    80px;
 }
 
 @font-face {
@@ -21,81 +23,83 @@
     src: url("../fonts/NotoSans-Regular.ttf");
   } 
 
-body { 
-    background-color: black; 
-    margin: 0;
+body { background-color: black; }
+
+header, #tblHolder {
+    width:      100%;
+    max-width:  550px;
+    min-width:  350px;
+    padding:    5px;
 }
+
 
 header {
     position: fixed;
     background: var(--header-bg) !important;
-    z-index:  10;
-
+    z-index: 10;
 }
 
-.myWidth, header {
-    width:      100%;
-    max-width:  550px;
-    min-width:  350px;
+#currentUser {
+    width: 35px;
+    cursor: pointer;
+    float: left;
 }
 
-#mast, #mast xinput{ 
-    height: 40px;
-    margin: 10px 0 0 10px;
-    width: calc(100% - 30px); 
+#btnMine {
+    height: 35px;
+    width:  35px;
+    float:  right;
 }
 
-
-#tblHolder {
-    top: 50px;
-    position: absolute;
-    padding: 0 10px;
-    height: 80%;
-    width: calc(100% - 20px);
-    overflow: auto;
-    
-}
-
-.column-left {
-    width: 40px;
-    display: inline-block;
-}
-
-
-#itemlist {width: calc(100% - 80px ) ;}
-#itemlist, #itemlist td { 
-    border-width: 1px 0 1px 0; 
-    border-style: solid;
-    border-color: var(--lst-col-bor);  
-    border-collapse: collapse; 
-    width: 100%;
-    height: 38px
-}
-
-#itemNew { margin-bottom: 25px; }
-#itemNew:focus { background: rgb(25, 25, 25) ; }
-#itemNew, .item:focus { color: #fff !important; }
-
-
-.item:focus { outline: var(--head0) solid 1px;}
+#itemNew:focus  { background: rgb(25, 25, 25) ;}
+.item:focus     { outline: var(--head0) solid 1px;}
 .item {
-    background: transparent;
-    font-family: var(--lst-fname), Vivaldi  !important;
+    position: absolute;
+    font-family: fntMain; 
     font-size:   var(--lst-fsize);
+    left: var(--bar-left);
+    right: var(--bar-right);
+    padding: 2px;
+    margin-top: 3px;
+    color: var(--lst-col-reg); 
+    width: calc(100% - var(--bar-left) - var(--bar-right));
+    background: transparent;
     border: none;
     overflow: clip;
     text-overflow: ellipsis;
     font-weight: 500;
-    width: calc(100% - 130px);
-    vertical-align: middle;    
+    vertical-align: middle;
 }
 
-.itemmine:not(.itemdone){ color: var(--head0); }
+.btn:hover{background: rgb(79, 101, 173);; color:white;}
+.btn{
+    border: none;
+    background: rgb(38, 66, 159);
+    color: rgb(197, 197, 197);
+    font-family: fntMain;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 20%;
+}
 
-input.itemdone {
-    color: var(--lst-col-dim2);
-    text-decoration: var(--lst-col-dim2) line-through 1px;
-    font-weight: 400;
+.btnDisabled {
+    filter:  grayscale(100%);
+    opacity: .4 !important;
+    cursor:  unset !important;
+}
+
+#tblHolder {
+    position: absolute;
+    height:var(--header-ht);
+    top: calc(var(--header-ht) + 5px);
+    padding: 0 5px;
+    height: 80%;
+    overflow: auto;
+}
+
+.ownerhead {
+    opacity: 0.6;
+    width: 20px;
 }
 
 [name^='svg']:hover:not(.btnDisabled) { opacity: 1;}
@@ -105,40 +109,19 @@ input.itemdone {
     width: 32px;
     cursor: pointer;
     opacity: .75;
-} 
-
-.btnDisabled {
-    filter:     grayscale(100%);
-    opacity:    .65;
-    cursor:     unset;
 }
 
-#currentUser {
-    width: 35px;
-    cursor: pointer;
+#itemlist, tr { 
+    width: 100%;
+    border-bottom: solid 1px var(--lst-col-bor);
 }
 
-.ownerhead {
-    opacity: 0.6;
-    width: 20px;
-}
+.itemmine:not(.itemdone){ color: var(--head0); }
 
-
-.btn:hover{background: rgb(79, 101, 173);; color:white;}
-.btn{
-    border: none;
-    background: rgb(38, 66, 159);
-    color: rgb(197, 197, 197);
-    font-family: fntMain !important;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 20%;
-}
-
-#btnMine {
-    height: 28px;
-    width: 40px;
-    float: right;
+input.itemdone {
+    color: var(--lst-col-dim2);
+    text-decoration: var(--lst-col-dim2) line-through 1px;
+    font-weight: 400;
 }
 
 
@@ -156,7 +139,7 @@ input.itemdone {
     position: fixed;
     width: 100%;
     height: 90%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     top: 0; left: 0;
     z-index: 100;
 }
@@ -164,10 +147,9 @@ input.itemdone {
 .userOption {
     font-size: var(--lst-fsize);
     color: var(--lst-col-reg);
-}
+} 
 
 
-
-/* for testing */
-/* :not(body) {margin: 0 !important;
+/* for testing 
+ :not(body) {margin: 0 !important;
         padding:0 !important;} */

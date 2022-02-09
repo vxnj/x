@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" type="image/x-icon" href="img/lst.svg">  
-    <link rel="stylesheet" href="/css/reset.css"/>
+    <link rel="stylesheet" href="/css/_reset.css"/>
     <link rel="stylesheet" href="/css/lst.css"/>
     <title>Listo!</title>
 </head>
@@ -13,21 +13,16 @@
 <body>
 
 <header>
-    <div id="mast" class="myWidth">
-        <span class="column-left">
-            <img id="currentUser" onclick="userSettings()"></img>
-        </span>
-        <span>
-            <input  id="itemNew" class="item" type="text"placeholder="add item ..." autofocus>
-            <button id="btnMine" class="btn"  onclick="setShowOthers()"></button>
-        </span>   
-    </div>
+    <img    id="currentUser" onclick="userSettings()"></img>
+    <input  id="itemNew" class="item" type="text"placeholder="add item ..." autofocus>
+    <button id="btnMine" class="btn"  onclick="setShowOthers()"></button>
 </header>
 
-<div id="tblHolder" class= myWidth ></div>
+
+<div id="tblHolder"></div>
 
 <?php
-    include "zzExamples/zzModal.html";
+    // include "zzExamples/zzModal.html";
     include "lstHeads.html" 
 ?>
 

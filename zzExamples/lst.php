@@ -12,7 +12,7 @@
 <body>
 
 <header>
-    <div id="mast" class="myWidth">
+    <div id="mast">
         <span class="column-left">
             <img id="currentUser" onclick="userSettings()"></img>
         </span>
@@ -23,7 +23,7 @@
     </div>
 </header>
 
-<div id="tblHolder" class= myWidth ></div>
+<div id="tblHolder"></div>
 
 <?php
     include "zzExamples/zzModal.html";
