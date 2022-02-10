@@ -36,8 +36,10 @@
 <script>
 window.onload = getUser;
 
+let colSet;
+
 let catBtns ='';
-cats = [
+const cats = [
   { text: 'All', value: 'All'},
   { text: 'Food', value: 'Food',  selected: true},
   { text: 'Rx', value: 'Rx'},
@@ -45,17 +47,31 @@ cats = [
   { text: 'Thrift', value: 'Thrift'}
 ]
 
+
 cats.forEach(cat =>
-    catBtns += `<button id="cat-${cat.text}" value="${cat.value}" class="btn" onclick="">${cat.value}</button>`
+    catBtns += `<button id="cat-${cat.text}" value="${cat.value}" class="btn catBtns" onclick="catCl(this)"
+        >${cat.value}</button>`
 );
 
 document.getElementById("cats").innerHTML = catBtns;
 
 
-console.log(catBtns);
+function catCl(x){
+    document.querySelectorAll('.catBtns').forEach( function(button) {
+        if (x.value == button.value) {
+            button.classList.add('btnSelected');
+        } else {
+            button.classList.remove('btnSelected');
+        }
+    })
+        
+}
+    
+
 
 
 getUser;
+
 
 
 document.getElementById("itemNew").addEventListener('keypress', addnew);

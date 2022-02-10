@@ -16,6 +16,10 @@
 
     --bar-left:     50px;    
     --bar-right:    80px;
+
+    --btn-col:      hsl(226, 61%, 40%);
+    --btn-hov:      hsl(226, 40%, 50%);
+
 }
 
 @font-face {
@@ -82,10 +86,10 @@ footer { bottom: 0; }
 }
 
 
-.btn:hover{background: rgb(79, 101, 173);; color:white;}
+.btn:hover{background: var(--btn-hov); color:white;}
 .btn{
     border: none;
-    background: rgb(38, 66, 159);
+    background: var(--btn-col);
     color: rgb(197, 197, 197);
     font-family: fntMain;
     font-weight: 600;
@@ -96,6 +100,13 @@ footer { bottom: 0; }
     padding: 0 10px;
     margin: 0 3px;
 }
+
+.btnSelected {
+    background:  var(--btn-hov);
+    color: white;
+    /* cursor:  unset !important; */
+}
+
 
 .btnDisabled {
     filter:  grayscale(100%);
