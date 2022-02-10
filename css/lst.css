@@ -1,9 +1,9 @@
 :root{
     --lst-fsize:    16px;
     --lst-fname:    fntMain;
-    --lst-col-dim0: rgb(211, 211, 211);
-    --lst-col-dim1: rgb(145, 145, 145);
-    --lst-col-dim2: rgb(77, 77, 77);
+    --lst-col-dim0: rgb(180, 180, 180);
+    --lst-col-dim1: rgb(117, 117, 117);
+    --lst-col-dim2: rgb(80, 80, 80);
     --lst-col-bor:  rgb(40, 40, 40);
 
     --head0:        hsla(303, 30%, 62%);
