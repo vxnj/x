@@ -17,8 +17,9 @@
     --bar-left:     50px;    
     --bar-right:    80px;
 
-    --btn-col:      hsl(226, 61%, 40%);
-    --btn-hov:      hsl(226, 40%, 50%);
+    --btn-sel:      hsl(226, 100%, 32%);
+    --btn-col:      hsl(226, 50%, 40%);
+    --btn-hov:      hsl(226, 75%, 32%);
 
 }
 
@@ -102,7 +103,7 @@ footer { bottom: 0; }
 }
 
 .btnSelected {
-    background:  var(--btn-hov);
+    background:  var(--btn-sel);
     color: white;
     /* cursor:  unset !important; */
 }

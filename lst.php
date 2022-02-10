@@ -36,9 +36,7 @@
 <script>
 window.onload = getUser;
 
-let colSet;
 
-let catBtns ='';
 const cats = [
   { text: 'All', value: 'All'},
   { text: 'Food', value: 'Food',  selected: true},
@@ -47,16 +45,19 @@ const cats = [
   { text: 'Thrift', value: 'Thrift'}
 ]
 
-
+//init cat btns
+catBtns = '';
 cats.forEach(cat =>
     catBtns += `<button id="cat-${cat.text}" value="${cat.value}" class="btn catBtns" onclick="catCl(this)"
         >${cat.value}</button>`
 );
 
 document.getElementById("cats").innerHTML = catBtns;
+document.getElementById("cat-All").classList.add('btnSelected');
 
-
+catSel = 'All';
 function catCl(x){
+    catSel = x.value;
     document.querySelectorAll('.catBtns').forEach( function(button) {
         if (x.value == button.value) {
             button.classList.add('btnSelected');
@@ -64,7 +65,7 @@ function catCl(x){
             button.classList.remove('btnSelected');
         }
     })
-        
+    loadTbl();  
 }
     
 
@@ -210,17 +211,6 @@ function getIdx ( arr, fld, val) {
 }
 
 
-
-function loadTbl2() {
-    console.log(data);
-    console.log(usr);
-    console.log(showOthers);
-    
-
-
-}
-
-
 function loadTbl() {
     ulOpen=''; ulDone='';
     showOthers = localStorage.getItem("lsShowOthers") || 'false';
@@ -232,7 +222,13 @@ function loadTbl() {
         isOwn = (usr == el.usr) ? 'itemmine' : ''; 
         owner = `img/usrPics/head-${el.usr}.png`;
 
-        if (showOthers=='true' || usr==el.usr) {
+        // console.log(el)
+        noShow =    (showOthers=='false' && usr!=el.usr) ;
+        noShow2 =   (catSel!='All' && el.category!=catSel)
+
+
+        // if (showOthers=='true' || usr==el.usr) {
+        if (!noShow && !noShow2) {
             newRow = `<li class="${isFin[0]}">
                         <img    class="ownerhead" src="${owner}"></img>
                         <input type="text" id="${el.id}" class="item ${isFin[0]} ${isOwn}" value="${el.item}" ${isDis[1]}>
