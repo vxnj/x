@@ -23,8 +23,7 @@
     </div>
 
     <footer>
-        
-        <div id="cats">Categories go here</div>
+        <div id="cats"><button id="testme"  onclick="loadTbl2()" style="display:inline-block">Test</button></div>
     </footer>
 
 </body>
@@ -37,6 +36,28 @@
 <script>
 window.onload = getUser;
 
+let catBtns ='';
+cats = [
+  { text: 'All', value: 'All'},
+  { text: 'Food', value: 'Food',  selected: true},
+  { text: 'Rx', value: 'Rx'},
+  { text: 'Notes', value: 'Notes'},
+  { text: 'Thrift', value: 'Thrift'}
+]
+
+cats.forEach(cat =>
+    catBtns += `<button id="cat-${cat.text}" value="${cat.value}" class="btn" onclick="">${cat.value}</button>`
+);
+
+document.getElementById("cats").innerHTML = catBtns;
+
+
+console.log(catBtns);
+
+
+getUser;
+
+
 document.getElementById("itemNew").addEventListener('keypress', addnew);
 
 let id;
@@ -46,10 +67,8 @@ function doBtn(e) {
     if (actn == 'det'){ 
 
         x = getIdx ( data, 'id', id);
-        // console.log (data[x])
 
-        //console.log(id);
-        //make array
+        //make array to load-save vals
         document.getElementById("det-id").value =   data[x].id ;
         document.getElementById("det-usr").value =  data[x].usr ;
         document.getElementById("det-item").value = data[x].item ;
@@ -134,6 +153,7 @@ function userSettings() {
 let usr; let showOthers;
 function getUser() {
     usr = localStorage.getItem("lsUser") || 'vx';
+    usr = localStorage.getItem("lsUser") || 'vx';
     document.getElementById("currentUser").src = `img/usrPics/head-${usr}.png`;
     document.getElementById('userSettings').style.display = 'none'; 
     newCol = `var(--head-${usr})`;
@@ -153,7 +173,8 @@ function setShowOthers() {
     newval = (localStorage.getItem("lsShowOthers") == 'true') ? 'false' : 'true' ;
     localStorage.setItem("lsShowOthers", newval); 
     showOthers = localStorage.getItem("lsShowOthers")
-    doAjax(loadTbl); 
+    //doAjax(loadTbl); 
+    loadTbl();
 }
 
 //------------------------
@@ -171,6 +192,18 @@ function getIdx ( arr, fld, val) {
     var index = data.findIndex(p => p[fld] == val);
     return index;
 }
+
+
+
+function loadTbl2() {
+    console.log(data);
+    console.log(usr);
+    console.log(showOthers);
+    
+
+
+}
+
 
 function loadTbl() {
     ulOpen=''; ulDone='';

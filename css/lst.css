@@ -24,13 +24,6 @@
   } 
 
 
-/* @keyframes morph {
-    0% { color: red; }
-    33% { background-color: #2a4e2a; }
-    66% { background-color: blue; }
-    100% { background-color: white; }
-} */
-
 /* layout ----------------------*/
 body { background-color: black; }
 
@@ -56,11 +49,6 @@ footer { bottom: 0; }
     float: left;
 }
 
-#btnMine {
-    height: 35px;
-    width:  35px;
-    float:  right;
-}
 
 #itemList {
     top: var(--header-ht);
@@ -73,7 +61,7 @@ footer { bottom: 0; }
 #itemNew  { 
     color: var(--lst-col-dim0);
     background: black ;}
-/* .item:focus     { background: rgb(25, 25, 25) ; color:rgb(196, 196, 196) !important} */
+
 .item {
     outline: none;
     position: absolute;
@@ -93,6 +81,7 @@ footer { bottom: 0; }
     vertical-align: middle;
 }
 
+
 .btn:hover{background: rgb(79, 101, 173);; color:white;}
 .btn{
     border: none;
@@ -102,12 +91,24 @@ footer { bottom: 0; }
     font-weight: 600;
     cursor: pointer;
     border-radius: 20%;
+    height: 35px;
+    min-width: 40px;
+    padding: 0 10px;
+    margin: 0 3px;
 }
 
 .btnDisabled {
     filter:  grayscale(100%);
     opacity: .4 !important;
     cursor:  unset !important;
+}
+
+
+#btnMine {
+    height: 35px;
+    width:  35px;
+    float:  right;
+    margin-right: 0;
 }
 
 .ownerhead {
