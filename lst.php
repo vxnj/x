@@ -77,11 +77,14 @@ function doEdit(e)  {
 
         document.getElementById(id).animate([
             // keyframes
-            { background: '#2a4e2a50' },
-            { background: 'black' }
+            { color: '#22bd2a8c' },
+            { color: '#22bd2a8c' },
+            // { background: '#2a4e2a' },
+            // { background: 'black' },
+            { color: 'var(--lst-col-dim0)' }
             ], {
             // timing options
-            duration: 300,
+            duration: 400,
             easing: 'ease-in',
             iterations: 1
             })
