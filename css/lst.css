@@ -1,7 +1,7 @@
 :root{
     --lst-fsize:    16px;
     --lst-fname:    fntMain;
-    --lst-col-reg:  rgb(147, 175, 235);
+    --lst-col-dim0: rgb(211, 211, 211);
     --lst-col-dim1: rgb(145, 145, 145);
     --lst-col-dim2: rgb(77, 77, 77);
     --lst-col-bor:  rgb(40, 40, 40);
@@ -23,10 +23,18 @@
     src: url("../fonts/NotoSans-Regular.ttf");
   } 
 
-body { background-color: black; }
+
+/* @keyframes morph {
+    0% { color: red; }
+    33% { background-color: #2a4e2a; }
+    66% { background-color: blue; }
+    100% { background-color: white; }
+} */
 
 /* layout ----------------------*/
-header, footer, #itemsOpenE, #itemsDoneX, #itemList {
+body { background-color: black; }
+
+header, footer, #itemList {
     width:      100%;
     max-width:  550px !important;
     min-width:  350px;
@@ -40,7 +48,6 @@ header, footer {
 }
 footer { bottom: 0; }
 /* layout ----------------------*/
-
 
 
 #currentUser {
@@ -63,8 +70,10 @@ footer { bottom: 0; }
 }
 
 
-#itemNew:focus  { background: rgb(25, 25, 25) ;}
-.item:focus     { background: rgb(25, 25, 25) ; color:rgb(196, 196, 196) !important}
+#itemNew  { 
+    color: var(--lst-col-dim0);
+    background: black ;}
+/* .item:focus     { background: rgb(25, 25, 25) ; color:rgb(196, 196, 196) !important} */
 .item {
     outline: none;
     position: absolute;
@@ -101,8 +110,6 @@ footer { bottom: 0; }
     cursor:  unset !important;
 }
 
-
-
 .ownerhead {
     opacity: 0.6;
     width: 20px;
@@ -119,7 +126,6 @@ footer { bottom: 0; }
 }
 
 li { 
-    /* width: 100%; */
     border-bottom: solid 1px var(--lst-col-bor);
     height: 35px;
     padding: 0 5px;
@@ -136,7 +142,7 @@ li {
     position: absolute;
 }
 
-.itemmine:not(.itemdone){ color: var(--head0); }
+.itemmine:not(.itemdone){ color: var(--lst-col-dim0); }
 .itemdone {
     color: var(--lst-col-dim2);
     text-decoration: var(--lst-col-dim2) line-through 1px;
@@ -167,7 +173,7 @@ li {
 
 .userOption {
     font-size: var(--lst-fsize);
-    color: var(--lst-col-reg);
+    color: var(--lst-col-dim0);
 } 
 
 

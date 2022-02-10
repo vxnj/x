@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <header>
         <img    id="currentUser" onclick="userSettings()"></img>
         <input  id="itemNew" class="item" type="text"placeholder="add item ..." autofocus>
@@ -62,6 +61,8 @@ f='';
 function doEditK(e) { if (e.code == 'Enter') { doEdit(e);} };
 function doEdit(e)  {  
     f=e;
+    
+
     // console.log(f);
     id =      e.target.id; 
     newVal =  e.target.value;
@@ -72,8 +73,26 @@ function doEdit(e)  {
             url: "db/lstAct.php",
             data: `actn=upd&id=${id}&item=${newVal}`
         });
-    }
-}
+
+
+        document.getElementById(id).animate([
+            // keyframes
+            { background: '#2a4e2a50' },
+            { background: 'black' }
+            ], {
+            // timing options
+            duration: 300,
+            easing: 'ease-in',
+            iterations: 1
+            })
+
+
+    } //if
+
+
+
+} //doEdit
+
 
 function addnew(e) {
     if (e.key != 'Enter' || e.target.value == '') { return; }
@@ -129,6 +148,7 @@ function setShowOthers() {
     doAjax(loadTbl); 
 }
 
+
 //------------------------
 //  Refresh table
 
@@ -181,6 +201,9 @@ function loadTbl(datax) {
         items[i].addEventListener('keydown',  doEditK );
     }
 } //loadTbl
+
+
+;
 
 
 function doAjax(myCallback) {
