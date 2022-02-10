@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="img/hal.svg">  
+    <!-- <link rel="stylesheet" href="/css/_reset.css"/>
+    <link rel="stylesheet" href="/css/lst.css"/> -->
+    <title>TESTING</title>
+</head>
+
+
+<script>
+
+var data =
+[
+  {
+    "id": "584",
+    "item": "Hojroj refill",
+    "fin": "0000-00-00 00:00:00",
+    "updated": "2022-02-10 12:22:17",
+    "category": null,
+    "usr": "vx",
+    "srtFin": "0"
+  },
+  {
+    "id": "583",
+    "item": "rx B12",
+    "fin": "0000-00-00 00:00:00",
+    "updated": "2022-02-10 11:35:05",
+    "category": null,
+    "usr": "vx",
+    "srtFin": "0"
+  },
+  {
+    "id": "582",
+    "item": "kitty litter",
+    "fin": "0000-00-00 00:00:00",
+    "updated": "2022-02-10 10:56:42",
+    "category": null,
+    "usr": "vx",
+    "srtFin": "0"
+  },
+  {
+    "id": "580",
+    "item": "rx toothpaste",
+    "fin": "0000-00-00 00:00:00",
+    "updated": "2022-02-10 11:35:07",
+    "category": "groc",
+    "usr": "vx",
+    "srtFin": "0"
+  },
+  {
+    "id": "574",
+    "item": "Call dad",
+    "fin": "0000-00-00 00:00:00",
+    "updated": "2022-02-10 01:40:04",
+    "category": null,
+    "usr": "vx",
+    "srtFin": "0"
+  },
+  {
+    "id": "513",
+    "item": "OBA check into it at work",
+    "fin": "0000-00-00 00:00:00",
+    "updated": "2022-02-10 01:14:23",
+    "category": null,
+    "usr": "vx",
+    "srtFin": "0"
+  },
+  {
+    "id": "576",
+    "item": "Hang Mirror",
+    "fin": "0000-00-00 00:00:00",
+    "updated": "2022-02-10 02:31:24",
+    "category": "house",
+    "usr": "ce",
+    "srtFin": "0"
+  },
+  {
+    "id": "575",
+    "item": "Gibbs Tues 15 6pm  Pants",
+    "fin": "0000-00-00 00:00:00",
+    "updated": "2022-02-10 02:31:24",
+    "category": "appt",
+    "usr": "ce",
+    "srtFin": "0"
+  },
+  {
+    "id": "544",
+    "item": "Yeah",
+    "fin": "0000-00-00 00:00:00",
+    "updated": "2022-02-10 02:31:24",
+    "category": null,
+    "usr": "cf",
+    "srtFin": "0"
+  },
+  {
+    "id": "585",
+    "item": "a",
+    "fin": "2022-02-10 11:43:07",
+    "updated": "2022-02-10 11:43:07",
+    "category": null,
+    "usr": "vx",
+    "srtFin": "1"
+  }
+]
+
+console.log(data);
+
+let x;
+x = getIdx( data, "id", "544")
+console.log(x);
+
+
+//looking for value in field of an array to return its index
+function getIdx ( arr, fld, val) {
+    var index = data.findIndex(p => p[fld] == val);
+    // console.log(index);
+    return index;
+}
+</script>

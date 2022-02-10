@@ -23,8 +23,7 @@
     </div>
 
     <footer>
-        
-        <div id="cats">Categories go here</div>
+        The Footer!
     </footer>
 
 </body>
@@ -38,26 +37,14 @@
 window.onload = getUser;
 
 document.getElementById("itemNew").addEventListener('keypress', addnew);
-
-let id;
+ 
 function doBtn(e) { 
     id =   e.currentTarget.parentElement.id;
     actn = e.currentTarget.attributes.name.value.substring(3, 10);
     if (actn == 'det'){ 
-
-        x = getIdx ( data, 'id', id);
-        // console.log (data[x])
-
-        //console.log(id);
-        //make array
-        document.getElementById("det-id").value =   data[x].id ;
-        document.getElementById("det-usr").value =  data[x].usr ;
-        document.getElementById("det-item").value = data[x].item ;
-        document.getElementById("det-desc").value = data[x].description ;
-        document.getElementById("det-cat").value =  data[x].category ;
-
         modal.style.display = "block";
 
+        console.log(id);
 
     } else {
         $.ajax({ 
@@ -166,17 +153,11 @@ svgdel = '<svg name="svgdel"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="ht
 //------------------------
 //  Refresh table
 
-
-function getIdx ( arr, fld, val) {
-    var index = data.findIndex(p => p[fld] == val);
-    return index;
-}
-
 function loadTbl() {
     ulOpen=''; ulDone='';
     showOthers = localStorage.getItem("lsShowOthers") || 'false';
     document.getElementById("btnMine").innerHTML = (showOthers=='true') ? 'All' : 'Me';
-
+    console.log(data);
     data.forEach(el => { 
         isFin = (el.fin<'2') ? ['itemopen', svgfin , svgdet, ''] : ['itemdone', svgund , svgdel, ' disabled'] ;
         isDis = (el.fin>'1' || (usr != el.usr)) ? [true,' disabled="disabled"'] : [false,''];
@@ -231,4 +212,5 @@ function doAjax(myCallback) {
 
 </script>
 
+<!-- </body> -->
 </html>
