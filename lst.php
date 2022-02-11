@@ -38,7 +38,7 @@ window.onload = getUser;
 
 
 const cats = [
-  { text: 'All', value: 'All'},
+  { text: 'ToDo', value: 'ToDo'},
   { text: 'Food', value: 'Food',  selected: true},
   { text: 'Rx', value: 'Rx'},
   { text: 'Notes', value: 'Notes'},
@@ -53,9 +53,9 @@ cats.forEach(cat =>
 );
 
 document.getElementById("cats").innerHTML = catBtns;
-document.getElementById("cat-All").classList.add('btnSelected');
+document.getElementById("cat-ToDo").classList.add('btnSelected');
 
-catSel = 'All';
+catSel = 'ToDo';
 function catCl(x){
     catSel = x.value;
     document.querySelectorAll('.catBtns').forEach( function(button) {
@@ -66,6 +66,8 @@ function catCl(x){
         }
     })
     loadTbl();  
+    document.getElementById("itemNew").focus();
+
 }
     
 
@@ -144,7 +146,7 @@ function addnew(e) {
     $.ajax({     
         type: "POST",
         url: "db/lstAct.php",
-        data: `actn=add&id=&item=${e.target.value}&usr=${usr}` ,
+        data: `actn=add&id=&item=${e.target.value}&usr=${usr}&cat=${catSel}` ,
         success: function(output, status, xhr) {
             console.log(xhr.status);
             doAjax(loadTbl); } ,
@@ -223,12 +225,13 @@ function loadTbl() {
         owner = `img/usrPics/head-${el.usr}.png`;
 
         // console.log(el)
-        noShow =    (showOthers=='false' && usr!=el.usr) ;
-        noShow2 =   (catSel!='All' && el.category!=catSel)
+        noShow1 = (showOthers=='false' && usr!=el.usr) ||
+                  (el.category!=catSel) 
+        // noShow3 = (catSel=='ToDo' && el.category>'' )
 
 
         // if (showOthers=='true' || usr==el.usr) {
-        if (!noShow && !noShow2) {
+        if (!noShow1) {
             newRow = `<li class="${isFin[0]}">
                         <img    class="ownerhead" src="${owner}"></img>
                         <input type="text" id="${el.id}" class="item ${isFin[0]} ${isOwn}" value="${el.item}" ${isDis[1]}>
