@@ -105,7 +105,6 @@ footer { bottom: 0; }
 .btnSelected {
     background:  var(--btn-sel);
     color: white;
-    /* cursor:  unset !important; */
 }
 
 
@@ -161,8 +160,6 @@ li {
     text-decoration: var(--lst-col-dim2) line-through 1px;
     font-weight: 400;
 }
-
-
 
 
 

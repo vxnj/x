@@ -38,31 +38,30 @@ window.onload = getUser;
 
 
 const cats = [
-  { text: 'ToDo', value: 'ToDo'},
-  { text: 'Food', value: 'Food',  selected: true},
-  { text: 'Rx', value: 'Rx'},
-  { text: 'Notes', value: 'Notes'},
-  { text: 'Thrift', value: 'Thrift'}
+  { value: 'todo',   text: 'ToDo'},
+  { value: 'food',   text: 'Food'},
+  { value: 'rx',     text: 'Rx'},
+  { value: 'notes',  text: 'Notes'},
+  { value: 'thrift', text: 'Thrift'}
 ]
 
 //init cat btns
 catBtns = '';
 cats.forEach(cat =>
-    catBtns += `<button id="cat-${cat.text}" value="${cat.value}" class="btn catBtns" onclick="catCl(this)"
-        >${cat.value}</button>`
+    catBtns += `<button id="cat-${cat.value}" value="${cat.value}" class="btn catBtns" onclick="catCl(this)"
+        >${cat.text}</button>`
 );
 
 document.getElementById("cats").innerHTML = catBtns;
-document.getElementById("cat-ToDo").classList.add('btnSelected');
+document.getElementById("cat-todo").classList.add('btnSelected');
 
-catSel = 'ToDo';
+catSel = 'todo';
 function catCl(x){
     catSel = x.value;
     document.querySelectorAll('.catBtns').forEach( function(button) {
-        if (x.value == button.value) {
-            button.classList.add('btnSelected');
-        } else {
-            button.classList.remove('btnSelected');
+        if (x.id == button.id) {
+                    button.classList.add('btnSelected');
+        } else {    button.classList.remove('btnSelected');
         }
     })
     loadTbl();  
@@ -70,7 +69,6 @@ function catCl(x){
 
 }
     
-
 
 
 getUser;
@@ -225,12 +223,10 @@ function loadTbl() {
         owner = `img/usrPics/head-${el.usr}.png`;
 
         // console.log(el)
-        noShow1 = (showOthers=='false' && usr!=el.usr) ||
-                  (el.category!=catSel) 
-        // noShow3 = (catSel=='ToDo' && el.category>'' )
+        noShow1 = (showOthers=='false' && usr!=el.usr) || (el.category!=catSel) 
 
+        // console.log(el.category,catSel)
 
-        // if (showOthers=='true' || usr==el.usr) {
         if (!noShow1) {
             newRow = `<li class="${isFin[0]}">
                         <img    class="ownerhead" src="${owner}"></img>
