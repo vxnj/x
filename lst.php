@@ -65,7 +65,7 @@ function catCl(x){
         }
     })
     loadTbl();  
-    document.getElementById("itemNew").focus();
+    // document.getElementById("itemNew").focus();
 
 }
     
