@@ -90,7 +90,7 @@ function doBtn(e) {
             method: "POST",
             url: "db/lstAct.php",
             data: "actn=" + actn +"&id=" + id,
-            success: function(output, status, xhr) {
+            success: function() {
                 doAjax(loadTbl); 
             }
         }); //ajax
@@ -224,7 +224,7 @@ function doAjax(myCallback) {
         success: function(output, status, xhr) {
             data = JSON.parse(output);
             myCallback(JSON.parse(output));
-            loadTbl;
+            
         } 
     })//ajax
 } //doAjax

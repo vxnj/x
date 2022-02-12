@@ -6,7 +6,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" type="image/x-icon" href="img/lst.svg">  
     <link rel="stylesheet" href="/css/_reset.css"/>
-    <link rel="stylesheet" href="/css/lst.css"/>
+    <link rel="stylesheet" href="/css/lst2.css"/>
     <title>Listo!</title>
 </head>
 
