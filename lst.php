@@ -224,6 +224,7 @@ function doAjax(myCallback) {
         success: function(output, status, xhr) {
             data = JSON.parse(output);
             myCallback(JSON.parse(output));
+            loadTbl;
         } 
     })//ajax
 } //doAjax
