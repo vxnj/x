@@ -78,6 +78,7 @@ function getIdx ( arr, fld, val) {
 }
 let id;
 function doBtn(e) { 
+    alert('btn');
     id =   e.currentTarget.parentElement.id;
     actn = e.currentTarget.attributes.name.value.substring(3, 10);
     if (actn == 'det'){ 
