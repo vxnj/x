@@ -75,12 +75,6 @@ $(".catBtns").click(
 );
 
 
-$("path" ).click(
-    function(e) {
-        console.log('asdf');
-    }
-);
-
 getUser;
 
 document.getElementById("itemNew").addEventListener('keypress', addnew);
@@ -217,7 +211,6 @@ function getIdx ( arr, fld, val) {
     var index = data.findIndex(p => p[fld] == val);
     return index;
 }
-
 
 function loadTbl() {
     ulOpen=''; ulDone='';

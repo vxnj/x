@@ -91,7 +91,8 @@ function doBtn(e) {
             url: "db/lstAct.php",
             data: "actn=" + actn +"&id=" + id,
             success: function() {
-                doAjax(loadTbl); 
+                doAjax(loadTbl);
+                chgUsr; 
             }
         }); //ajax
     } //if
