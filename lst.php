@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="icon" type="image/x-icon" href="img/lst.svg">  
     <link rel="stylesheet" href="/css/_reset.css"/>
     <link rel="stylesheet" href="/css/lst.css"/>
@@ -163,6 +163,7 @@ function chgCtg(x) {
 //  Refresh table
 
 function loadTbl() {
+    console.log('loadTbl')
     getLocals();
     ulOpen=''; ulDone='';
 
@@ -216,6 +217,7 @@ window.onload = function() {
 }
 
 function doAjax(myCallback) {
+    console.log('doAjax')
     $.ajax({ 
         method: "POST",
         url: "db/lstRead.php",
