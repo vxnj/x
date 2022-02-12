@@ -91,7 +91,9 @@ function doBtn(e) {
             url: "db/lstAct.php",
             data: "actn=" + actn +"&id=" + id,
             statusCode: {404: function() {alert( "page not found" );}} , 
-            success: function(output, status, xhr) {
+            success: 
+            function(output, status, xhr) {
+                alert('btn scc');
                 doAjax(loadTbl); 
             }
         }); //ajax
@@ -165,7 +167,6 @@ function chgCtg(x) {
 //  Refresh table
 
 function loadTbl() {
-    alert('loadtbl')
     getLocals();
     ulOpen=''; ulDone='';
 
