@@ -78,10 +78,11 @@ function getIdx ( arr, fld, val) {
 }
 let id;
 function doBtn(e) { 
-    alert('btn');
+
     id =   e.currentTarget.parentElement.id;
     actn = e.currentTarget.attributes.name.value.substring(3, 10);
     if (actn == 'det'){ 
+             
         x = getIdx ( data, 'id', id);
         document.getElementById("det-id").value =   data[x].id ;
         document.getElementById("det-usr").value =  data[x].usr ;
@@ -89,7 +90,8 @@ function doBtn(e) {
         modal.style.display = "block";
 
     } else {
-        $.ajax({ 
+       alert('btn');  
+         $.ajax({ 
             method: "POST",
             url: "db/lstAct.php",
             data: "actn=" + actn +"&id=" + id,
