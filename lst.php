@@ -35,10 +35,8 @@
 
 <script>
 
-
-let data = [];
-let usr; let shr; let ctg;
-
+data = [];
+usr =''; shr=''; ctg='';
 
 //init cat btns
 const cats = [
@@ -70,7 +68,6 @@ function addnew(e) {
     e.target.value = '';
 }
 
-
 //btn click
 function getIdx ( arr, fld, val) {
     var index = data.findIndex(p => p[fld] == val);
@@ -78,7 +75,6 @@ function getIdx ( arr, fld, val) {
 }
 let id;
 function doBtn(e) { 
-
     id =   e.currentTarget.parentElement.id;
     actn = e.currentTarget.attributes.name.value.substring(3, 10);
     if (actn == 'det'){ 
@@ -95,7 +91,6 @@ function doBtn(e) {
             method: "POST",
             url: "db/lstAct.php",
             data: "actn=" + actn +"&id=" + id,
-            statusCode: {404: function() {alert( "page not found" );}} , 
             success: function(output, status, xhr) {
                 doAjax(loadTbl); 
             }
