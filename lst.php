@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" type="image/x-icon" href="img/lst.svg">  
     <link rel="stylesheet" href="/css/_reset.css"/>
     <link rel="stylesheet" href="/css/lst.css"/>
@@ -163,7 +163,7 @@ function chgCtg(x) {
 //  Refresh table
 
 function loadTbl() {
-    console.log('loadTbl')
+    console.log('loadtbl')
     getLocals();
     ulOpen=''; ulDone='';
 
@@ -186,9 +186,9 @@ function loadTbl() {
             if (el.fin>'2') { ulDone += newRow }  
         } //if
     }) //foreach    
+
     document.getElementById("itemsOpen").innerHTML = ulOpen;  
     document.getElementById("itemsDone").innerHTML = ulDone;  
-
 
     items = document.querySelectorAll("[name^=svg]");
     for (let i = 0; i < items.length; i++) {
@@ -200,6 +200,7 @@ function loadTbl() {
             items[i].classList.add("btnDisabled");
         }
     }
+
     $(".itemopen").on("focusout keydown",  function(e){ doEdit(e);});    
 
 
