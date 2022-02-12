@@ -92,7 +92,7 @@ function doBtn(e) {
             data: "actn=" + actn +"&id=" + id,
             success: function() {
                 doAjax(loadTbl);
-
+                loadTbl();
             }
         }); //ajax
     } //if
