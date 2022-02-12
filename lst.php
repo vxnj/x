@@ -92,7 +92,7 @@ function doBtn(e) {
             data: "actn=" + actn +"&id=" + id,
             success: function() {
                 doAjax(loadTbl);
-                chgUsr; 
+
             }
         }); //ajax
     } //if
@@ -166,7 +166,7 @@ function chgCtg(x) {
 //  Refresh table
 
 function loadTbl() {
-    console.log('loadtbl')
+    alert('loadtbl')
     getLocals();
     ulOpen=''; ulDone='';
 
