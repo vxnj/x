@@ -197,11 +197,13 @@ function loadTbl() {
         isMine = items[i].parentElement.classList.contains('itemmine');
         if (isMine) {
             items[i].addEventListener('click', doBtn); 
+            items[i].addEventListener('touchstart', doBtn); 
         }else{
             items[i].classList.add("btnDisabled");
         }
     }
     $(".itemopen").on("focusout keydown",  function(e){ doEdit(e);});    
+
 
 } //loadTbl
 
