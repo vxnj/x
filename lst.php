@@ -90,9 +90,9 @@ function doBtn(e) {
             method: "POST",
             url: "db/lstAct.php",
             data: "actn=" + actn +"&id=" + id,
-            success: function() {
-                doAjax(loadTbl);
-                loadTbl();
+            statusCode: {404: function() {alert( "page not found" );}} , 
+            success: function(output, status, xhr) {
+                doAjax(loadTbl); 
             }
         }); //ajax
     } //if
@@ -103,7 +103,6 @@ function doBtn(e) {
 let f;
 function doEdit(e)  {  
     if (e.type == 'keydown' && e.code != 'Enter') { return }
-    f=e;
     id =      e.target.id; 
     newVal =  e.target.value;
     change = (e.target.value !== e.target.defaultValue)
