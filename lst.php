@@ -147,6 +147,7 @@ function chgUsr(newusr) {
 
 function chgShr() {
     shr = (localStorage.getItem("lsShr") == 'true') ? 'false' : 'true' ;
+    localStorage.setItem("lsShr", shr);
     loadTbl();
 }
 
