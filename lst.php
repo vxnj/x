@@ -65,8 +65,7 @@ function addnew(e) {
         data: `actn=add&id=&item=${e.target.value}&usr=${usr}&cat=${ctg}` ,
         success: function(output, status, xhr) {
             console.log(xhr.status, ' addnew');
-            doAjax(loadTbl); } ,
-        error: function (xhr, status, thrownError) {console.log(xhr.status, ' fail addnew');}
+            doAjax(loadTbl); }
     }) //ajax
     e.target.value = '';
 }
@@ -79,7 +78,6 @@ function getIdx ( arr, fld, val) {
 }
 let id;
 function doBtn(e) { 
-    console.log(e, e.clientY )
     id =   e.currentTarget.parentElement.id;
     actn = e.currentTarget.attributes.name.value.substring(3, 10);
     if (actn == 'det'){ 
@@ -139,23 +137,20 @@ function getLocals() {
     shr = localStorage.getItem('lsShr') || 'false';
 }       
 
-function chgUsr(usr) {
-
-    localStorage.setItem("lsUsr", usr);
-    document.getElementById("currentUser").src = `img/usrPics/head-${usr}.png`;
+function chgUsr(newusr) {
+    localStorage.setItem("lsUsr", newusr);
+    document.getElementById("currentUser").src = `img/usrPics/head-${newusr}.png`;
+    usr = localStorage.getItem("lsUsr");
+    doAjax(loadTbl);
     document.getElementById('userSettings').style.display = 'none';     
-    loadTbl();
 }
 
 function chgShr() {
-    console.log(shr, localStorage.getItem("lsShr"))
     shr = (localStorage.getItem("lsShr") == 'true') ? 'false' : 'true' ;
-    localStorage.setItem("lsShr", shr); 
     loadTbl();
 }
 
 function chgCtg(x) {
-    console.log(x.value);
     localStorage.setItem("lsCtg", x.value); 
     document.querySelectorAll('.catBtns').forEach( function(button) {
         if (x.id == button.id) {
@@ -166,15 +161,11 @@ function chgCtg(x) {
     loadTbl();
 }
 
-
 //------------------------
 //  Refresh table
 
 function loadTbl() {
-    
     getLocals();
-    console.log(usr, ctg, shr);
-
     ulOpen=''; ulDone='';
     
     document.getElementById("btnShr").innerHTML = (shr=='true') ? 'All' : 'Me';
@@ -209,34 +200,29 @@ function loadTbl() {
             items[i].classList.add("btnDisabled");
         }
     }
-
-     $(".itemopen").on("focusout keydown",  function(e){ doEdit(e);});    
+    $(".itemopen").on("focusout keydown",  function(e){ doEdit(e);});    
 
 } //loadTbl
 
-;
-
 $( "#btnShr"   ).click(function(e) { chgShr(); })
 $( ".catBtns"  ).click(function(e) { chgCtg(e.currentTarget); })
-$( ".userhead" ).click(function(e) { chgUsr(e.currentTarget.id); })
-
+$( ".userhead" ).click(function(e) { usr = e.currentTarget.id; chgUsr(e.currentTarget.id); })
 
 
 window.onload = function() {
     getLocals();
-    chgUsr(usr);
     $('#cat-todo').click();
-    doAjax(loadTbl);
+    chgUsr(usr);
 }
 
 function doAjax(myCallback) {
     $.ajax({ 
         method: "POST",
         url: "db/lstRead.php",
-        data: `&usr=${usr}`,
+        data: '&usr=' + localStorage.getItem('lsUsr'),
         success: function(output, status, xhr) {
-            data = JSON.parse(output)
-            myCallback(JSON.parse(output));
+            data = JSON.parse(output);
+            myCallback(data);
         } 
     })//ajax
 } //doAjax
