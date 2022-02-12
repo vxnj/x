@@ -20,23 +20,12 @@ switch ($actn) {
     default:     $sql = ''; break;
 }
 
-if ($actn != 'qry') {
-    $stmt = $conn->prepare($sql);
-    if      ($actn=='upd')  { $stmt->bind_param('si', $item, $id); }
-    elseif  ($actn=='add')  { $stmt->bind_param('sss', $item, $usr, $cat); }
-    elseif  ($actn!='qry')  { $stmt->bind_param('i',  $id); }
-    $stmt->execute();
-    $result = $stmt->get_result();
+$stmt = $conn->prepare($sql);
+if      ($actn=='upd')  { $stmt->bind_param('si', $item, $id); }
+elseif  ($actn=='add')  { $stmt->bind_param('sss', $item, $usr, $cat); }
+elseif  ($actn!='qry')  { $stmt->bind_param('i',  $id); }
+$stmt->execute();
+$result = $stmt->get_result();
 
-} else {
-    $result = $conn->query($qry);
-    while($row = $result->fetch_assoc()) {;
-        $result_array[] = $row;
-
-    } //while  	
     
-    echo json_encode($result_array);
-}
-
-    return $result_array;
 ?>

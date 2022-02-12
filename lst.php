@@ -36,7 +36,7 @@
 <script>
 
 data = [];
-usr =''; shr=''; ctg='';
+usr =''; shr=''; ctg='';id='';
 
 //init cat btns
 const cats = [
@@ -63,7 +63,8 @@ function addnew(e) {
         data: `actn=add&id=&item=${e.target.value}&usr=${usr}&cat=${ctg}` ,
         success: function(output, status, xhr) {
             console.log(xhr.status, ' addnew');
-            doAjax(loadTbl); }
+            doAjax(loadTbl); 
+        }
     }) //ajax
     e.target.value = '';
 }
@@ -73,7 +74,7 @@ function getIdx ( arr, fld, val) {
     var index = data.findIndex(p => p[fld] == val);
     return index;
 }
-let id;
+
 function doBtn(e) { 
     id =   e.currentTarget.parentElement.id;
     actn = e.currentTarget.attributes.name.value.substring(3, 10);
@@ -90,12 +91,7 @@ function doBtn(e) {
             method: "POST",
             url: "db/lstAct.php",
             data: "actn=" + actn +"&id=" + id,
-            statusCode: {404: function() {alert( "page not found" );}} , 
-            success: 
-            function(output, status, xhr) {
-                alert('btn scc');
-                doAjax(loadTbl); 
-            }
+            success: function(output, status, xhr) { doAjax(loadTbl);     }
         }); //ajax
     } //if
     
@@ -226,7 +222,6 @@ function doAjax(myCallback) {
         data: `&usr=${usr}`,
         success: function(output, status, xhr) {
             data = JSON.parse(output)
-            console.log(data[2].id);
             myCallback(JSON.parse(output));
 
         } 
