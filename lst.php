@@ -63,9 +63,14 @@ function addnew(e) {
         data: `actn=add&id=&item=${e.target.value}&usr=${usr}&cat=${ctg}` ,
         success: function(output, status, xhr) {
             console.log(xhr.status, ' addnew');
-            doAjax(loadTbl); 
+            $( document ).ready(function() {
+                console.log( "ready!" );
+                doAjax(loadTbl); 
+            });
         }
     }) //ajax
+    
+
     e.target.value = '';
 }
 
@@ -79,24 +84,18 @@ function doBtn(e) {
     id =   e.currentTarget.parentElement.id;
     actn = e.currentTarget.attributes.name.value.substring(3, 10);
     if (actn == 'det'){ 
-             
         x = getIdx ( data, 'id', id);
-        document.getElementById("det-id").value =   data[x].id ;
-        document.getElementById("det-usr").value =  data[x].usr ;
-        document.getElementById("det-cat").value =  data[x].category ;
-        modal.style.display = "block";
-
+        console.log(data[x])
     } else { 
         $.ajax({ 
             method: "POST",
             url: "db/lstAct.php",
             data: "actn=" + actn +"&id=" + id,
-            success: function(output, status, xhr) { doAjax(loadTbl);     }
+            success: function(output, status, xhr) { doAjax(loadTbl); }
         }); //ajax
     } //if
     
 } //doBtn
-
 
 let f;
 function doEdit(e)  {  
@@ -203,7 +202,6 @@ function loadTbl() {
 
     $(".itemopen").on("focusout keydown",  function(e){ doEdit(e);});    
 
-
 } //loadTbl
 
 $( "#btnShr"   ).click(function(e) { chgShr(); })
@@ -226,7 +224,6 @@ function doAjax(myCallback) {
         success: function(output, status, xhr) {
             data = JSON.parse(output)
             myCallback(JSON.parse(output));
-            $(document).ready(function(){ loadTbl;})
         } 
     })//ajax
 } //doAjax
