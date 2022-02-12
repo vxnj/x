@@ -105,6 +105,7 @@ function doBtn(e) {
             statusCode: {404: function() {alert( "page not found" );}} , 
             success: function(output, status, xhr) {
                 doAjax(loadTbl); 
+                loadTbl
             }
         }); //ajax
     } //if
