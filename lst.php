@@ -167,7 +167,7 @@ function chgCtg(x) {
 function loadTbl() {
     getLocals();
     ulOpen=''; ulDone='';
-    alert('ld tbl')
+
     document.getElementById("btnShr").innerHTML = (shr=='true') ? 'All' : 'Me';
     
     data.forEach(el => { 
@@ -205,7 +205,7 @@ function loadTbl() {
 } //loadTbl
 
 $( "#btnShr"   ).click(function(e) { chgShr(); })
-$( ".catBtns"  ).click(function(e) { chgCtg(e.currentTarget); })
+$( ".catBtns"  ).on('click touchstart', function(e) { chgCtg(e.currentTarget); })
 $( ".userhead" ).click(function(e) { usr = e.currentTarget.id; chgUsr(e.currentTarget.id); })
 
 
