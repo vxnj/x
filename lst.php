@@ -89,13 +89,16 @@ function doBtn(e) {
         document.getElementById("det-cat").value =  data[x].category ;
         modal.style.display = "block";
 
-    } else {
-       alert('btn');  
-         $.ajax({ 
+    } else { 
+        console.log(e.target)
+        $.ajax({ 
             method: "POST",
             url: "db/lstAct.php",
             data: "actn=" + actn +"&id=" + id,
-            success: function(output, status, xhr) { doAjax(loadTbl); }
+            statusCode: {404: function() {alert( "page not found" );}} , 
+            success: function(output, status, xhr) {
+                doAjax(loadTbl); 
+            }
         }); //ajax
     } //if
     
@@ -226,7 +229,7 @@ function doAjax(myCallback) {
         data: '&usr=' + localStorage.getItem('lsUsr'),
         success: function(output, status, xhr) {
             data = JSON.parse(output);
-            myCallback(data);
+            myCallback(JSON.parse(output));
         } 
     })//ajax
 } //doAjax
