@@ -220,11 +220,12 @@ function doAjax(myCallback) {
     $.ajax({ 
         method: "POST",
         url: "db/lstRead.php",
-        data: '&usr=' + localStorage.getItem('lsUsr'),
+        data: `&usr=${usr}`,
         success: function(output, status, xhr) {
-            data = JSON.parse(output);
+            data = JSON.parse(output)
+            console.log(data[2].id);
             myCallback(JSON.parse(output));
-            
+
         } 
     })//ajax
 } //doAjax
