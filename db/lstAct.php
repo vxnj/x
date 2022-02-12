@@ -21,11 +21,10 @@ switch ($actn) {
 }
 
 $stmt = $conn->prepare($sql);
-if      ($actn=='upd')  { $stmt->bind_param('si', $item, $id); }
+if      ($actn=='upd')  { $stmt->bind_param('s', $item, $id); }
 elseif  ($actn=='add')  { $stmt->bind_param('sss', $item, $usr, $cat); }
 elseif  ($actn!='qry')  { $stmt->bind_param('i',  $id); }
 $stmt->execute();
 $result = $stmt->get_result();
 
-    
 ?>
