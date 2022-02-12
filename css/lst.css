@@ -11,7 +11,7 @@
     --head-cf:      hsla(214, 51%, 71%);
     --head-ce:      hsla( 30, 84%, 68%);
 
-    --header-bg:    rgb(40, 40, 40);
+    --header-bg:    rgba(59, 59, 59, 0.514);
     --header-ht:    45px;
 
     --bar-left:     50px;    
@@ -95,7 +95,7 @@ footer { bottom: 0; }
     font-family: fntMain;
     font-weight: 600;
     cursor: pointer;
-    border-radius: 20%;
+    border-radius: 30%;
     height: 35px;
     min-width: 40px;
     padding: 0 10px;

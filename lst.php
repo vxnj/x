@@ -24,6 +24,7 @@
 
     <footer>
         <div id="cats"><button id="testme"  onclick="loadTbl2()" style="display:inline-block">Test</button></div>
+
     </footer>
 
 </body>
@@ -42,16 +43,16 @@ const cats = [
   { value: 'food',   text: 'Food'},
   { value: 'rx',     text: 'Rx'},
   { value: 'notes',  text: 'Notes'},
-  { value: 'thrift', text: 'Thrift'}
+  { value: 'thrift', text: 'Thrift'},
+  { value: 'long', text: 'Long'}
 ]
 
 //init cat btns
 catBtns = '';
 cats.forEach(cat =>
-    catBtns += `<button id="cat-${cat.value}" value="${cat.value}" class="btn catBtns" onclick="catCl(this)"
+    catBtns += `<button id="cat-${cat.value}" value="${cat.value}" class="btn catBtns" 
         >${cat.text}</button>`
 );
-
 document.getElementById("cats").innerHTML = catBtns;
 document.getElementById("cat-todo").classList.add('btnSelected');
 
@@ -65,20 +66,21 @@ function catCl(x){
         }
     })
     loadTbl();  
-    // document.getElementById("itemNew").focus();
-
 }
-    
 
+$(".catBtns").click(
+    function(e) {
+        console.log(e.currentTarget.clientHeight);catCl(e.currentTarget);
+    }
+);
 
 getUser;
-
-
 
 document.getElementById("itemNew").addEventListener('keypress', addnew);
 
 let id;
 function doBtn(e) { 
+    console.log(e, e.clientY  )
     id =   e.currentTarget.parentElement.id;
     actn = e.currentTarget.attributes.name.value.substring(3, 10);
     if (actn == 'det'){ 
@@ -94,7 +96,6 @@ function doBtn(e) {
 
         modal.style.display = "block";
 
-
     } else {
         $.ajax({ 
             method: "POST",
@@ -109,7 +110,7 @@ function doBtn(e) {
     
 } //doBtn
 
-f='';
+let f;
 function doEditK(e) { if (e.code == 'Enter') { doEdit(e);} };
 function doEdit(e)  {  
     f=e;
