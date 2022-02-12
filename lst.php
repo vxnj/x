@@ -165,6 +165,7 @@ function chgCtg(x) {
 //  Refresh table
 
 function loadTbl() {
+    console.log('loadtbl')
     getLocals();
     ulOpen=''; ulDone='';
 
