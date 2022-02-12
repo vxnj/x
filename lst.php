@@ -68,6 +68,7 @@ function catCl(x){
     loadTbl();  
 }
 
+//adds click function for items in a class
 $(".catBtns").click(
     function(e) {
         console.log(e.currentTarget.clientHeight);catCl(e.currentTarget);
