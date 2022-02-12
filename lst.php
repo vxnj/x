@@ -86,7 +86,6 @@ function doBtn(e) {
         modal.style.display = "block";
 
     } else { 
-        console.log(e.target)
         $.ajax({ 
             method: "POST",
             url: "db/lstAct.php",
@@ -108,7 +107,6 @@ function doEdit(e)  {
     newVal =  e.target.value;
     change = (e.target.value !== e.target.defaultValue)
     if(change) {
-        console.log('ajax edit!!');
         $.ajax({  
             type: "POST",
             url: "db/lstAct.php",
@@ -169,7 +167,7 @@ function chgCtg(x) {
 function loadTbl() {
     getLocals();
     ulOpen=''; ulDone='';
-    
+    alert('ld tbl')
     document.getElementById("btnShr").innerHTML = (shr=='true') ? 'All' : 'Me';
     
     data.forEach(el => { 
