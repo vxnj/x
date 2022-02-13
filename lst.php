@@ -194,6 +194,7 @@ function loadTbl() {
     $( "#currentUser" ).attr('src', `img/usrPics/head-${usr}.png`);
 
 
+
 } //loadTbl
 
 
@@ -201,6 +202,21 @@ $( "#itemNew" ).keypress(function(e)    { if (e.key != 'Enter' || e.target.value
 $( "#btnShr" ).click(function(e)        { chgShr(); })
 $( ".catBtns" ).on('click', function(e) { chgCtg(e.currentTarget); })
 $( ".userhead" ).click(function(e)      { chgUsr(e.currentTarget.id); })
+
+
+$(document).on('keydown onclick',  
+    function(e) { 
+        if (e.key == 'Escape' || e.target.id != 'currentUser') { 
+            $('#userSettings').css("display","none");
+        }
+    
+    }
+)
+
+$( "*" ).click(function(e) { 
+    if (e.target.id != 'currentUser') { $('#userSettings').css("display","none"); }
+
+})
 
 
 window.onload = function() {
