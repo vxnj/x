@@ -40,8 +40,6 @@
 
 <script>
 
-// $("#usrset").load("/lstHeads.html #userSettings")
-
 
 data = []; id='';
 usr =''; shr=''; ctg='';
@@ -131,7 +129,7 @@ function getLocals() {
 }       
 function chgUsr(newusr) {
     localStorage.setItem("lsUsr", newusr);
-    $( "#currentUser" ).attr('src', `img/usrPics/head-${newusr}.png`);
+    // $( "#currentUser" ).attr('src', `img/usrPics/head-${newusr}.png`);
     usr = localStorage.getItem("lsUsr");
     doAjax(loadTbl);
 }
@@ -193,6 +191,8 @@ function loadTbl() {
         }
     }
     $( '#userSettings').css("display","none");     
+    $( "#currentUser" ).attr('src', `img/usrPics/head-${usr}.png`);
+
 
 } //loadTbl
 

@@ -173,6 +173,7 @@ li {
     padding: 5px;   
 }
 
+/* 
 #userSettings {
     display: none ;
     justify-content: center;
@@ -182,6 +183,21 @@ li {
     background: rgba(0, 0, 0, 0.9);
     top: 0; left: 0;
     z-index: 100;
+} */
+
+#userSettings {
+position: fixed;
+/* width: 350px; */
+/* height: 100%; */
+background: rgba(0, 0, 0, 0.9);
+top: 10px;
+left: 50px;
+z-index: 100;
+padding: 10px;
+border: rgb(48, 49, 49) solid 1px;
+border-bottom-left-radius: 40px;
+border-bottom-right-radius: 40px;
+border-top-right-radius: 40px;
 }
 
 .userOption {
