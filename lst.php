@@ -47,29 +47,24 @@ const cats = [
   { value: 'long',   text: 'Long'}
 ]
 catBtns = '';
-cats.forEach(cat =>
-    catBtns += `<button id="cat-${cat.value}" value="${cat.value}" class="btn catBtns">${cat.text}</button>`
-);
+cats.forEach(cat => catBtns += `<button id="cat-${cat.value}" value="${cat.value}" class="btn catBtns">${cat.text}</button>`);
 $( "#cats" ).html(catBtns);
 
-//addnew
+function getIdx ( arr, fld, val) {
+    var index = data.findIndex(p => p[fld] == val);
+    return index;
+}
+
 function addnew(e) {
     if (e.key != 'Enter' || e.target.value == '') { return; }
     $.ajax({     
         type: "POST",
         url: "db/lstAct.php",
         data: `actn=add&id=&item=${e.target.value}&usr=${usr}&cat=${ctg}` ,
-        success: function() { doAjax(loadTbl);  }
+        success: function() { doAjax(loadTbl) ;}
     })//ajax
     e.target.value = '';
-
 } //addnew
-
-
-function getIdx ( arr, fld, val) {
-    var index = data.findIndex(p => p[fld] == val);
-    return index;
-}
 
 function doBtn(e) { 
     id =   e.currentTarget.parentElement.id;
@@ -113,7 +108,6 @@ function doEdit(e)  {
     } //if
 } //doEdit
 
-
 function userSettings() {
     pick = document.getElementById('userSettings');
     pick.style.display = (pick.style.display =='none') ? 'block' : 'none';
@@ -128,7 +122,6 @@ function getLocals() {
     ctg = localStorage.getItem('lsCtg') || 'todo';
     shr = localStorage.getItem('lsShr') || 'false';
 }       
-
 function chgUsr(newusr) {
     localStorage.setItem("lsUsr", newusr);
     // document.getElementById("currentUser").src = `img/usrPics/head-${newusr}.png`;
@@ -185,7 +178,7 @@ function loadTbl() {
     $("#itemsDone").html ( ulDone );  
     $(".itemopen").on("focusout keydown",  function(e){ doEdit(e);});    
 
-    items = document.querySelectorAll("[name^=svg]");
+    items = $("[name^=svg]");
     for (let i = 0; i < items.length; i++) {
         isMine = items[i].parentElement.classList.contains('itemmine');
         if (isMine) {
