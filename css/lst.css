@@ -21,6 +21,7 @@
     --btn-col:      hsl(226, 50%, 40%);
     --btn-hov:      hsl(226, 75%, 32%);
 
+    --save-col:     #65dd6bc9;
 }
 
 @font-face {
@@ -113,7 +114,6 @@ footer { bottom: 0; }
     opacity: .4 !important;
     cursor:  unset !important;
 }
-
 
 #btnShr {
     height: 35px;

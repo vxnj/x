@@ -22,7 +22,7 @@ switch ($actn) {
 
 $stmt = $conn->prepare($sql);
 if          ($actn=='add')  { $stmt->bind_param('sss', $item, $usr, $cat); }
-elseif      ($actn=='upd')  { $stmt->bind_param('s',   $item, $id); }
+elseif      ($actn=='upd')  { $stmt->bind_param('si',  $item, $id); }
 else                        { $stmt->bind_param('i',   $id); }
 $stmt->execute();
 // $result = $stmt->get_result();

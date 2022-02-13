@@ -53,16 +53,16 @@ cats.forEach(cat =>
 $( "#cats" ).html(catBtns);
 
 //addnew
-
 function addnew(e) {
     if (e.key != 'Enter' || e.target.value == '') { return; }
     $.ajax({     
         type: "POST",
         url: "db/lstAct.php",
         data: `actn=add&id=&item=${e.target.value}&usr=${usr}&cat=${ctg}` ,
-        success: function() { doAjax(loadTbl); }
-    })  //ajax
+        success: function() { doAjax(loadTbl);  }
+    })//ajax
     e.target.value = '';
+
 } //addnew
 
 
@@ -84,6 +84,8 @@ function doBtn(e) {
             data: "actn=" + actn +"&id=" + id,
             success: function(output, status, xhr) { doAjax(loadTbl); }
         }); //ajax
+
+
     } //if
     
 } //doBtn
@@ -91,19 +93,22 @@ function doBtn(e) {
 let f;
 function doEdit(e)  {  
     if (e.type == 'keydown' && e.code != 'Enter') { return }
-    id =      e.target.id; 
-    newVal =  e.target.value;
-    change = (e.target.value !== e.target.defaultValue)
+    id = e.target.id; 
+    x =  getIdx( data , 'id' , e.target.id);
+    newVal = e.target.value;
+    change = (newVal !== data[x].item)
+    
     if(change) {
         $.ajax({  
             type: "POST",
             url: "db/lstAct.php",
-            data: `actn=upd&id=${id}&item=${newVal}`
+            data: `actn=upd&id=${id}&item=${newVal}`,
+            success: function() { doAjax( function(){console.log('edit saved')}); }
         });
 
         document.getElementById(id).animate(
-            [{ color: '#22bd2a8c' }, { color: 'var(--lst-col-dim0)' }], 
-            { duration: 1400, easing: 'ease-in', iterations: 1}
+            [{ color: 'var(--save-col)' }, { color: 'var(--lst-col-dim0)' }], 
+            { duration: 2000, easing: 'ease-in', iterations: 1}
         )//animate
     } //if
 } //doEdit
@@ -126,10 +131,11 @@ function getLocals() {
 
 function chgUsr(newusr) {
     localStorage.setItem("lsUsr", newusr);
-    document.getElementById("currentUser").src = `img/usrPics/head-${newusr}.png`;
+    // document.getElementById("currentUser").src = `img/usrPics/head-${newusr}.png`;
+    $( "#currentUser" ).attr('src', `img/usrPics/head-${newusr}.png`);
     usr = localStorage.getItem("lsUsr");
     doAjax(loadTbl);
-    document.getElementById('userSettings').style.display = 'none';     
+    $( '#userSettings').css("display","none");     
 }
 function chgShr() {
     shr = (localStorage.getItem("lsShr") == 'true') ? 'false' : 'true' ;
@@ -151,7 +157,6 @@ function chgCtg(x) {
 //  Refresh table
 function loadTbl() {
     if (data.length ==0 ) {return}
-    console.log('loadtbl')
     getLocals();
     ulOpen=''; ulDone='';
 
@@ -172,6 +177,7 @@ function loadTbl() {
                       </li>`
             if (el.fin<'2') { ulOpen += newRow }
             if (el.fin>'2') { ulDone += newRow }  
+
         } //if
     }) //foreach    
 
@@ -202,7 +208,6 @@ window.onload = function() {
 }
 
 function doAjax(myCallback) {
-    console.log('doAjax')
     $.ajax({ 
         method: "POST",
         url: "db/lstRead.php",
