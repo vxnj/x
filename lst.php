@@ -34,9 +34,8 @@
 ?>
 
 <script>
-
-data = [];
-usr =''; shr=''; ctg='';id='';
+data = []; id='';
+usr =''; shr=''; ctg='';
 
 //init cat btns
 const cats = [
@@ -51,30 +50,22 @@ catBtns = '';
 cats.forEach(cat =>
     catBtns += `<button id="cat-${cat.value}" value="${cat.value}" class="btn catBtns">${cat.text}</button>`
 );
-document.getElementById("cats").innerHTML = catBtns;
+$( "#cats" ).html(catBtns);
 
 //addnew
-document.getElementById("itemNew").addEventListener('keypress', addnew);
+
 function addnew(e) {
     if (e.key != 'Enter' || e.target.value == '') { return; }
     $.ajax({     
         type: "POST",
         url: "db/lstAct.php",
         data: `actn=add&id=&item=${e.target.value}&usr=${usr}&cat=${ctg}` ,
-        success: function(output, status, xhr) {
-            console.log(xhr.status, ' addnew');
-            $( document ).ready(function() {
-                console.log( "ready!" );
-                doAjax(loadTbl); 
-            });
-        }
-    }) //ajax
-    
-
+        success: function() { doAjax(loadTbl); }
+    })  //ajax
     e.target.value = '';
-}
+} //addnew
 
-//btn click
+
 function getIdx ( arr, fld, val) {
     var index = data.findIndex(p => p[fld] == val);
     return index;
@@ -140,13 +131,11 @@ function chgUsr(newusr) {
     doAjax(loadTbl);
     document.getElementById('userSettings').style.display = 'none';     
 }
-
 function chgShr() {
     shr = (localStorage.getItem("lsShr") == 'true') ? 'false' : 'true' ;
     localStorage.setItem("lsShr", shr);
     loadTbl();
 }
-
 function chgCtg(x) {
     localStorage.setItem("lsCtg", x.value); 
     document.querySelectorAll('.catBtns').forEach( function(button) {
@@ -160,13 +149,13 @@ function chgCtg(x) {
 
 //------------------------
 //  Refresh table
-
 function loadTbl() {
+    if (data.length ==0 ) {return}
     console.log('loadtbl')
     getLocals();
     ulOpen=''; ulDone='';
 
-    document.getElementById("btnShr").innerHTML = (shr=='true') ? 'All' : 'Me';
+    $("#btnShr").html( (shr=='true') ? 'All' : 'Me' );
     
     data.forEach(el => { 
         isFin = (el.fin<'2') ? ['itemopen', svgfin , svgdet, ''] : ['itemdone', svgund , svgdel, ' disabled'] ;
@@ -186,28 +175,25 @@ function loadTbl() {
         } //if
     }) //foreach    
 
-    document.getElementById("itemsOpen").innerHTML = ulOpen;  
-    document.getElementById("itemsDone").innerHTML = ulDone;  
+    $("#itemsOpen").html ( ulOpen );  
+    $("#itemsDone").html ( ulDone );  
+    $(".itemopen").on("focusout keydown",  function(e){ doEdit(e);});    
 
     items = document.querySelectorAll("[name^=svg]");
     for (let i = 0; i < items.length; i++) {
         isMine = items[i].parentElement.classList.contains('itemmine');
         if (isMine) {
-            items[i].addEventListener('click', doBtn); 
-            items[i].addEventListener('touchstart', doBtn); 
+            $( items[i] ).click ( doBtn ); 
         }else{
             items[i].classList.add("btnDisabled");
         }
     }
-
-    $(".itemopen").on("focusout keydown",  function(e){ doEdit(e);});    
-
 } //loadTbl
 
-$( "#btnShr"   ).click(function(e) { chgShr(); })
-$( ".catBtns"  ).on('click touchstart', function(e) { chgCtg(e.currentTarget); })
-$( ".userhead" ).click(function(e) { usr = e.currentTarget.id; chgUsr(e.currentTarget.id); })
-
+$( "#itemNew" ).keypress(function(e)    { addnew(e);})
+$( "#btnShr" ).click(function(e)        { chgShr(); })
+$( ".catBtns" ).on('click', function(e) { chgCtg(e.currentTarget); })
+$( ".userhead" ).click(function(e)      { chgUsr(e.currentTarget.id); })
 
 window.onload = function() {
     getLocals();
