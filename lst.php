@@ -22,6 +22,11 @@
         <ul id="itemsDone"></ul>
     </div>
 
+    <div id="usrset">
+    <div id="xx">
+    
+    </div>
+
     <footer>
         <div id="cats"></div>
     </footer>
@@ -34,6 +39,10 @@
 ?>
 
 <script>
+
+// $("#usrset").load("/lstHeads.html #userSettings")
+
+
 data = []; id='';
 usr =''; shr=''; ctg='';
 
@@ -56,7 +65,6 @@ function getIdx ( arr, fld, val) {
 }
 
 function addnew(e) {
-    if (e.key != 'Enter' || e.target.value == '') { return; }
     $.ajax({     
         type: "POST",
         url: "db/lstAct.php",
@@ -85,7 +93,6 @@ function doBtn(e) {
     
 } //doBtn
 
-let f;
 function doEdit(e)  {  
     if (e.type == 'keydown' && e.code != 'Enter') { return }
     id = e.target.id; 
@@ -124,11 +131,9 @@ function getLocals() {
 }       
 function chgUsr(newusr) {
     localStorage.setItem("lsUsr", newusr);
-    // document.getElementById("currentUser").src = `img/usrPics/head-${newusr}.png`;
     $( "#currentUser" ).attr('src', `img/usrPics/head-${newusr}.png`);
     usr = localStorage.getItem("lsUsr");
     doAjax(loadTbl);
-    $( '#userSettings').css("display","none");     
 }
 function chgShr() {
     shr = (localStorage.getItem("lsShr") == 'true') ? 'false' : 'true' ;
@@ -187,12 +192,16 @@ function loadTbl() {
             items[i].classList.add("btnDisabled");
         }
     }
+    $( '#userSettings').css("display","none");     
+
 } //loadTbl
 
-$( "#itemNew" ).keypress(function(e)    { addnew(e);})
+
+$( "#itemNew" ).keypress(function(e)    { if (e.key != 'Enter' || e.target.value == '') { return; }; addnew(e);})
 $( "#btnShr" ).click(function(e)        { chgShr(); })
 $( ".catBtns" ).on('click', function(e) { chgCtg(e.currentTarget); })
 $( ".userhead" ).click(function(e)      { chgUsr(e.currentTarget.id); })
+
 
 window.onload = function() {
     getLocals();

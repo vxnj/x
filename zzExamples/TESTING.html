@@ -3,17 +3,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="img/hal.svg">  
+    <link rel="icon" type="image/x-icon" href="/img/hal.svg">  
     <!-- <link rel="stylesheet" href="/css/_reset.css"/>
     <link rel="stylesheet" href="/css/lst.css"/> -->
+    
+    
     <title>TESTING</title>
+
 </head>
 
-    <body>
-        <svg class="svg-icon" viewBox="0 0 20 20"> <path d="M4,4h5v2H6v8h8v-3h2v5H4V4z M11,3h6v6l-2-2l-4,4L9,9l4-4L11,3z"></path></svg>
-    </body>
+<body>
+    <svg style="height:100px" class="svg-icon" viewBox="0 0 20 20"> <path d="M4,4h5v2H6v8h8v-3h2v5H4V4z M11,3h6v6l-2-2l-4,4L9,9l4-4L11,3z"></path></svg>
+
+    <div id="inc1">ss</div>
+    <div id="inc2">sdds</div>
+   
+
+</body>
 
 <script>
+
+// $("#inc1").load("lstDetails.html", function() { console.log( "Load was performed.") });
+
+$("#inc2").load("/lstHeads.html #userSettings") //,  function() { console.log( "Load was performed.") });
+$("#inc2").css('max-height', '30px');
+
+
 
 var data =
 [
