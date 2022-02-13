@@ -1,3 +1,13 @@
+
+function numStd(num, dec, plus) {
+    num = (num) ? num : 0
+    ans = num.toFixed(dec || 0)
+    sign = (plus && ans>0) ? '+':' ';
+    return sign + ans.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+
+
 (function () {
 
     // Source page for reference: https://www.akashmittal.com/javascript-date-format/
@@ -96,3 +106,4 @@
   function date_format(dateVal, formatVal){
     return dateVal.format(formatVal);
   }
+

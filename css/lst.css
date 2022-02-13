@@ -1,6 +1,6 @@
 :root{
     --lst-fsize:    16px;
-    --lst-fname:    fntMain;
+    --lst-fname:    NonoSans;
     --lst-col-dim0: rgb(180, 180, 180);
     --lst-col-dim1: rgb(117, 117, 117);
     --lst-col-dim2: rgb(80, 80, 80);
@@ -22,10 +22,12 @@
     --btn-hov:      hsl(226, 75%, 32%);
 
     --save-col:     #65dd6bc9;
+
+    
 }
 
 @font-face {
-    font-family: fntMain;
+    font-family: NonoSans;
     src: url("../fonts/NotoSans-Regular.ttf");
   } 
 
@@ -71,7 +73,7 @@ footer { bottom: 0; }
 .item {
     outline: none;
     position: absolute;
-    font-family: fntMain; 
+    font-family: var(--lst-fname); 
     font-size:   var(--lst-fsize);
     width: calc(100% - var(--bar-left) - var(--bar-right));
     left: var(--bar-left);
@@ -93,7 +95,7 @@ footer { bottom: 0; }
     border: none;
     background: var(--btn-col);
     color: rgb(197, 197, 197);
-    font-family: fntMain;
+    font-family: var(--lst-fname);
     font-weight: 600;
     cursor: pointer;
     border-radius: 30%;

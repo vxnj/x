@@ -116,6 +116,17 @@ x = getIdx( data, "id", "544")
 console.log(x);
 
 
+
+function getKey(site) {
+    $.getJSON("../k.json", function(json) {
+        vx = (json[site].key);
+        console.log(vx);
+        return vx;
+    })
+}
+
+
+
 //looking for value in field of an array to return its index
 function getIdx ( arr, fld, val) {
     var index = data.findIndex(p => p[fld] == val);

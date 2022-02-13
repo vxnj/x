@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/_main.css" />
 <link rel="stylesheet" href="css/sol.css" />
 
-<script src="js/funcs.js"></script>
+<!-- <script src="js/funcs.js"></script> -->
 <script src="js/fDate.js"></script>
 
 <!-- <meta http-equiv="refresh" content="5" > -->
@@ -19,9 +19,20 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 
-//let key;
-//$.getJSON("k.json", function(json) {console.log(json.sol.key); key = json.sol.key;})
-//key = getKey('sol');
+// Get Url Parameter
+function gup (name) {
+    name = RegExp ('[?&]' + name.replace (/([[\]])/, '\\$1') + '=([^&#]*)');
+    return (window.location.href.match (name) || ['', ''])[1];
+}
+
+   
+function showpop(secs, id) {
+        document.getElementById(id).style.display = "block"
+        if (secs>0) { setTimeout(function(){document.getElementById(id).style.display = "none";}, secs*1000 || 3000); }
+    }
+
+
+
 key = "da5f0d9ce3486ef93fd7ffb24235c9e3"
 
 // Set reload timings ======================================================
@@ -214,7 +225,8 @@ function getWea(data) {
       }
    tblhr += "</tbody></table>";
 
-   function doAlert(){
+
+    function doAlert(){
         if(data.hasOwnProperty('alerts')) {
             alert = document.getElementById("alert3");
             alert.innerHTML = data.alerts[0].event; 
@@ -256,9 +268,10 @@ function getWea(data) {
  }
 
 document.addEventListener("click", (e) => {
-    if(e.srcElement.id != 'pop-moon' && e.srcElement.id != 'moonbox') { 
+    if(e.srcElement.id != 'pop-moon' && e.srcElement.id != 'moonbox' && e.srcElement.id != 'Moon'  ) { 
         document.getElementById('pop-moon').style.display='none'
     };
+    console.log(e.srcElement.id);
 })
 
 window.onload = init;
