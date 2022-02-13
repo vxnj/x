@@ -25,6 +25,6 @@ if          ($actn=='add')  { $stmt->bind_param('sss', $item, $usr, $cat); }
 elseif      ($actn=='upd')  { $stmt->bind_param('s',   $item, $id); }
 else                        { $stmt->bind_param('i',   $id); }
 $stmt->execute();
-$result = $stmt->get_result();
+// $result = $stmt->get_result();
 
 ?>
