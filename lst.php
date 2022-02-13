@@ -33,16 +33,15 @@
 
 </body>
 
-<?php
-    include "lstDetails.html";
-    include "lstHeads.html" 
-?>
+<?php include "lstHeads.html" ?>
 
 <script>
 
 
 data = []; id='';
 usr =''; shr=''; ctg='';
+
+lastLoad = '';
 
 //init cat btns
 const cats = [
@@ -193,10 +192,9 @@ function loadTbl() {
     $( '#userSettings').css("display","none");     
     $( "#currentUser" ).attr('src', `img/usrPics/head-${usr}.png`);
 
-
+    lastLoad = (new Date());
 
 } //loadTbl
-
 
 $( "#itemNew" ).keypress(function(e)    { if (e.key != 'Enter' || e.target.value == '') { return; }; addnew(e);})
 $( "#btnShr" ).click(function(e)        { chgShr(); })
@@ -204,19 +202,22 @@ $( ".catBtns" ).on('click', function(e) { chgCtg(e.currentTarget); })
 $( ".userhead" ).click(function(e)      { chgUsr(e.currentTarget.id); })
 
 
+// setInterval(reloadit, 5000);
+// function reloadit(){
+//     console.log(lastLoad)
+// }
+
+
 $(document).on('keydown onclick',  
     function(e) { 
         if (e.key == 'Escape' || e.target.id != 'currentUser') { 
             $('#userSettings').css("display","none");
-        }
-    
+        }    
     }
 )
 
-$( "*" ).click(function(e) { 
-    if (e.target.id != 'currentUser') { $('#userSettings').css("display","none"); }
-
-})
+// hide userheads when other clicks
+$( "*" ).click(function(e) { if (e.target.id != 'currentUser') { $('#userSettings').css("display","none"); } })
 
 
 window.onload = function() {
