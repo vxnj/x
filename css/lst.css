@@ -1,39 +1,38 @@
 :root{
-    --lst-fsize:    16px;
-    --lst-fname:    NonoSans;
-    --lst-col-dim0: rgb(180, 180, 180);
-    --lst-col-dim1: rgb(117, 117, 117);
-    --lst-col-dim2: rgb(80, 80, 80);
-    --lst-col-bor:  rgb(40, 40, 40);
-
     --head0:        hsla(303, 30%, 62%);
     --head-vx:      hsla(303, 30%, 62%);
     --head-cf:      hsla(214, 51%, 71%);
     --head-ce:      hsla( 30, 84%, 68%);
 
-    --header-bg:    rgba(59, 59, 59, 0.514);
+    --lst-fsize:    16px;
+    --lst-fname:    NotoSans;
     --header-ht:    45px;
-
     --bar-left:     50px;    
     --bar-right:    80px;
 
+    --col-dim0:     hsl(0, 0%, 70%);
+    --col-dim1:     hsl(0, 0%, 50%);
+    --col-dim2:     hsl(0, 0%, 30%);
+    --col-hdr:      hsl(0, 0%, 15%);
+    --col-bkg:      hsl(0, 0%,  0%);
+
+    --col-save:     #4dcc53d2;
+
+    --btn-txt:      white;
     --btn-sel:      hsl(226, 100%, 32%);
     --btn-col:      hsl(226, 50%, 40%);
     --btn-hov:      hsl(226, 75%, 32%);
 
-    --save-col:     #65dd6bc9;
-
-    
 }
 
 @font-face {
-    font-family: NonoSans;
+    font-family: NotoSans;
     src: url("../fonts/NotoSans-Regular.ttf");
   } 
 
 
 /* layout ----------------------*/
-body { background-color: black; }
+body { background-color: var(--col-bkg); }
 
 header, footer, #itemList {
     width:      100%;
@@ -43,7 +42,7 @@ header, footer, #itemList {
 header, footer {
     position: absolute;
     padding:    5px;
-    background: var(--header-bg) !important;
+    background: var(--col-hdr) !important;
     z-index: 10;
     height: var(--header-ht);
 }
@@ -67,8 +66,8 @@ footer { bottom: 0; }
 
 
 #itemNew  { 
-    color: var(--lst-col-dim0);
-    background: black ;}
+    color: var(--col-dim0);
+    background: var(--col-bkg) ;}
 
 .item {
     outline: none;
@@ -80,7 +79,7 @@ footer { bottom: 0; }
     right: var(--bar-right);
     padding: 2px;
     margin-top: 4px;
-    color: var(--lst-col-dim1); 
+    color: var(--col-dim1); 
     background: transparent;
     border: none;
     overflow: clip;
@@ -90,11 +89,11 @@ footer { bottom: 0; }
 }
 
 
-.btn:hover{background: var(--btn-hov); color:white;}
+.btn:hover{background: var(--btn-hov); color:var(-btn-txt);}
 .btn{
     border: none;
     background: var(--btn-col);
-    color: rgb(197, 197, 197);
+    color: var(--btn-txt);
     font-family: var(--lst-fname);
     font-weight: 600;
     cursor: pointer;
@@ -107,7 +106,7 @@ footer { bottom: 0; }
 
 .btnSelected {
     background:  var(--btn-sel);
-    color: white;
+    color: var(-btn-txt);
 }
 
 
@@ -123,6 +122,18 @@ footer { bottom: 0; }
     float:  right;
     margin-right: 0;
 }
+
+#btnThm {
+    height: 19px;
+    width:  19px;
+    float:  right;
+    margin: 8px 5px 0 0 ;
+    border-radius: 50%;
+    border: 0px;
+    background-color: var(--col-dim1);
+}
+
+
 
 .ownerhead {
     opacity: 0.6;
@@ -140,73 +151,47 @@ footer { bottom: 0; }
 }
 
 li { 
-    border-bottom: solid 1px var(--lst-col-bor);
+    border-bottom: solid 1px var(--col-hdr);
     height: 35px;
     padding: 0 5px;
 }
 
-#itemsDone {border-top: solid 6px var(--header-bg);}
+#itemsDone {border-top: solid 6px var(--col-hdr);}
 #itemsDone::before {
     content: '';
     width: calc(100% - 10px) !important;
     left: 5px;
     height: 2px;
     margin-top: -4px;
-    background: #000000;
+    background: var(--col-bkg);
     position: absolute;
 }
 
-.itemmine:not(.itemdone){ color: var(--lst-col-dim0); }
+.itemmine:not(.itemdone){ color: var(--col-dim0); }
 .itemdone {
-    color: var(--lst-col-dim2);
-    text-decoration: var(--lst-col-dim2) line-through 1px;
+    color: var(--col-dim2);
+    text-decoration: var(--col-dim2) line-through 1px;
     font-weight: 400;
 }
-
-
 
 .userhead {
     width:  90px;
     height: 90px;
-    border: 3px rgb(101, 100, 105);
+    border: 3px var(hdr);
     border-bottom-style: solid;
     padding: 5px;   
 }
 
-/* 
-#userSettings {
-    display: none ;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    top: 0; left: 0;
-    z-index: 100;
-} */
-
 #userSettings {
 position: fixed;
-/* width: 350px; */
-/* height: 100%; */
-background: rgba(0, 0, 0, 0.9);
+background: var(--col-bkg);
 top: 10px;
 left: 50px;
 z-index: 100;
 padding: 10px;
-border: rgb(48, 49, 49) solid 1px;
+border: var(--col-hdr) solid 1px;
 border-bottom-left-radius: 40px;
 border-bottom-right-radius: 40px;
 border-top-right-radius: 40px;
 box-shadow: 0px 3px 5em var(--btn-col);
 }
-
-.userOption {
-    font-size: var(--lst-fsize);
-    color: var(--lst-col-dim0);
-} 
-
-
-/* for testing 
- :not(body) {margin: 0 !important;
-        padding:0 !important;} */

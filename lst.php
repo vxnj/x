@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js></script>
     <link rel="icon" type="image/x-icon" href="img/lst.svg">  
     <link rel="stylesheet" href="/css/_reset.css"/>
     <link rel="stylesheet" href="/css/lst.css"/>
@@ -15,6 +16,8 @@
         <img    id="currentUser" onclick="userSettings()" src=""></img>
         <input  id="itemNew" class="item" type="text"placeholder="add item ..." autofocus>
         <button id="btnShr" class="btn"  ></button>
+        <button id="btnThm" class="btnx" ></button>
+
     </header>
 
     <div id="itemList">
@@ -22,8 +25,6 @@
         <ul id="itemsDone"></ul>
     </div>
 
-    <div id="usrset">
-    <div id="xx">
     
     </div>
 
@@ -37,10 +38,8 @@
 
 <script>
 
-
 data = []; id='';
-usr =''; shr=''; ctg='';
-
+usr =''; shr=''; ctg=''; thm='';
 lastLoad = '';
 
 //init cat btns
@@ -106,7 +105,7 @@ function doEdit(e)  {
         });
 
         document.getElementById(id).animate(
-            [{ color: 'var(--save-col)' }, { color: 'var(--lst-col-dim0)' }], 
+            [{ color: 'var(--col-save)' }, { color: 'var(--lst-col-dim0)' }], 
             { duration: 2000, easing: 'ease-in', iterations: 1}
         )//animate
     } //if
@@ -125,10 +124,10 @@ function getLocals() {
     usr = localStorage.getItem("lsUsr") || 'vx';
     ctg = localStorage.getItem('lsCtg') || 'todo';
     shr = localStorage.getItem('lsShr') || 'false';
+    thm = localStorage.getItem('lsThm') || 'dark';
 }       
 function chgUsr(newusr) {
     localStorage.setItem("lsUsr", newusr);
-    // $( "#currentUser" ).attr('src', `img/usrPics/head-${newusr}.png`);
     usr = localStorage.getItem("lsUsr");
     doAjax(loadTbl);
 }
@@ -137,6 +136,7 @@ function chgShr() {
     localStorage.setItem("lsShr", shr);
     loadTbl();
 }
+
 function chgCtg(x) {
     localStorage.setItem("lsCtg", x.value); 
     document.querySelectorAll('.catBtns').forEach( function(button) {
@@ -147,6 +147,26 @@ function chgCtg(x) {
     })
     loadTbl();
 }
+
+function chgThm(tog) {
+    thm = localStorage.getItem("lsThm");
+    if (tog) { 
+        thm = (thm == 'dark') ? 'lite' : 'dark';
+        localStorage.setItem("lsThm", thm);
+    }
+
+    if (thm == 'dark') {
+        newcols = [ '70%', '50%', '30%', '15%', '0%']; 
+    } else {
+        newcols = [ '0%', '30%', '50%', '70%', '90%'];
+    }
+    document.documentElement.style.setProperty('--col-dim0',`hsl(0,0%,${newcols[0]})`);
+    document.documentElement.style.setProperty('--col-dim1',`hsl(0,0%,${newcols[1]})`);
+    document.documentElement.style.setProperty('--col-dim2',`hsl(0,0%,${newcols[2]})`);
+    document.documentElement.style.setProperty('--col-hdr', `hsl(0,0%,${newcols[3]})`);
+    document.documentElement.style.setProperty('--col-bkg', `hsl(0,0%,${newcols[4]})`);
+}
+
 
 //------------------------
 //  Refresh table
@@ -196,10 +216,11 @@ function loadTbl() {
 
 } //loadTbl
 
-$( "#itemNew" ).keypress(function(e)    { if (e.key != 'Enter' || e.target.value == '') { return; }; addnew(e);})
-$( "#btnShr" ).click(function(e)        { chgShr(); })
-$( ".catBtns" ).on('click', function(e) { chgCtg(e.currentTarget); })
-$( ".userhead" ).click(function(e)      { chgUsr(e.currentTarget.id); })
+$( "#itemNew" ).keypress(function(e) { if (e.key != 'Enter' || e.target.value == '') { return; }; addnew(e);})
+$( ".catBtns" ).click(function(e)    { chgCtg(e.currentTarget); })
+$( ".userhead").click(function(e)    { chgUsr(e.currentTarget.id); })
+$( "#btnShr"  ).click(function(e)    { chgShr(); })
+$( "#btnThm"  ).click(function(e)    { chgThm(true); })
 
 
 // setInterval(reloadit, 5000);
@@ -224,6 +245,7 @@ window.onload = function() {
     getLocals();
     $('#cat-todo').click();
     chgUsr(usr);
+    chgThm(false)
 }
 
 function doAjax(myCallback) {

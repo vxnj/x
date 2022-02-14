@@ -31,11 +31,19 @@ instance = new dtsel.DTS('input[name="dateTimePicker"]',  {
   showTime: true
 });
 
+instance = new dtsel.DTS('input[name="dateTimePicker"]');
+
+instance = new dtsel.DTS('input[name="date_field"]',  {
+    direction: 'BOTTOM',
+    dateFormat: "yyyy-mm-dd",
+    showTime: false,
+    timeFormat: "HH:MM:SS"
+});
 
 // $("#inc1").load("lstDetails.html", function() { console.log( "Load was performed.") });
 
-// $("#inc2").load("/lstHeads.html #userSettings") //,  function() { console.log( "Load was performed.") });
-// $("#inc2").css('max-height', '30px');
+$("#inc2").load("/lstHeads.html #userSettings") //,  function() { console.log( "Load was performed.") });
+$("#inc2").css('max-height', '30px');
 
 
 

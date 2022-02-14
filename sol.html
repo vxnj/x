@@ -295,6 +295,8 @@ function themer () {
       case "pink": val = ['var(--pink-def)','var(--pink-day)','var(--pink-cur)','var(--pink-bkg)','url("img/weather/SkyPink.jpg")']; break;
       case "bayj": val = ['var(--bayj-def)','var(--bayj-day)','var(--bayj-cur)','var(--bayj-bkg)','url("img/weather/SkyBeige.jpg")']; break;
     }
+    
+
     document.documentElement.style.setProperty('--live-def',val[0]);
     document.documentElement.style.setProperty('--live-day',val[1]);
     document.documentElement.style.setProperty('--live-cur',val[2]);
