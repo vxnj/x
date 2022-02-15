@@ -20,6 +20,7 @@
         <img    id="currentUser" onclick="userSettings()" src=""></img>
         <input  id="itemNew" class="item" type="text"placeholder="add item ..." autofocus>
         <button id="btnShr" class="btn btnSelected"  ></button>
+        <button id="btnX" style="background: transparent; border:none; outline: none"></button>
     </header>
 
     <div id="itemList">
@@ -136,9 +137,10 @@ function chgShr() {
                     bs.classList.add   ('btnSelected');
         } else {    bs.classList.remove('btnSelected');
     }
-    bs.blur(); //removes focus
+    $("#btnX").focus();
+    // bs.blur(); //removes focus
     loadTbl();
-}
+}           
 
 function chgCtg(x) {
     localStorage.setItem("lsCtg", x.value); 
@@ -147,7 +149,8 @@ function chgCtg(x) {
                     button.classList.add   ('btnSelected');
         } else {    button.classList.remove('btnSelected');
         }
-        button.blur() // removes focus
+        $("#btnX").focus();
+        // button.blur() // removes focus
     })
     loadTbl();
 }
