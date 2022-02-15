@@ -16,7 +16,7 @@
         <div style="padding-bottom: 5px"> 
             <span    id="cats"></span>   
             <button id="btnShr" class="btn btnSelected" ></button>
-
+            <button id="btnThm" class="btnx" ></button>
         </div>
         <img    id="currentUser" onclick="userSettings()" src=""></img>
         <input  id="itemNew" class="item" type="text"placeholder="add item ..." autofocus>
