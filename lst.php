@@ -142,7 +142,7 @@ function chgCtg(x) {
         } else {    button.classList.remove('btnSelected');
         }
     })
-    $('#itemNew').focus()
+    // $('#itemNew').focus()
     loadTbl();
     // document.getElementById("mytext").focus();
 }
