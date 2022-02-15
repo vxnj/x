@@ -86,7 +86,7 @@ footer { bottom: 0; }
 }
 
 
-.btn:hover  {background: var(--btn-hov); color:var(--btn-txt);}
+xx.btn:hover  {background: var(--btn-hov); color:var(--btn-txt);}
 .btn{
     border: var(--btn-col) solid 1px;
     background: transparent;
@@ -100,7 +100,7 @@ footer { bottom: 0; }
     padding: 0 10px;
     margin: 0 3px;
 }
-.btnSelected, .btn:active , .btn:focus {
+.btnSelected, .btn:active , xx.btn:focus {
     background:  var(--btn-sel);
     color:       var(--btn-txt);
     /* float: left; */
@@ -129,6 +129,7 @@ footer { bottom: 0; }
     border: 0px;
     background-color: var(--col-dim1);
     cursor: pointer;
+    outline: none;
 }
 
 .ownerhead {

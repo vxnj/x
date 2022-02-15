@@ -20,7 +20,6 @@
         <img    id="currentUser" onclick="userSettings()" src=""></img>
         <input  id="itemNew" class="item" type="text"placeholder="add item ..." autofocus>
         <button id="btnShr" class="btn btnSelected"  ></button>
-        <button id="btnX" style="background: transparent; border:none; outline: none"></button>
     </header>
 
     <div id="itemList">
@@ -129,16 +128,19 @@ function chgUsr(newusr) {
     usr = localStorage.getItem("lsUsr");
     doAjax(loadTbl);
 }
-function chgShr() {
-    shr = (localStorage.getItem("lsShr") == 'true') ? 'false' : 'true' ;
-    localStorage.setItem("lsShr", shr);
+function chgShr(tog) {
+    shr = localStorage.getItem("lsShr");
+    if (tog) {
+        shr = (shr== 'true') ? 'false' : 'true' ;
+        localStorage.setItem("lsShr", shr);
+    }
+    
     bs = document.getElementById("btnShr");
     if (shr != 'true') {
                     bs.classList.add   ('btnSelected');
         } else {    bs.classList.remove('btnSelected');
     }
-    $("#btnX").focus();
-    // bs.blur(); //removes focus
+    // $("#btnThm").focus();
     loadTbl();
 }           
 
@@ -149,10 +151,10 @@ function chgCtg(x) {
                     button.classList.add   ('btnSelected');
         } else {    button.classList.remove('btnSelected');
         }
-        $("#btnX").focus();
-        // button.blur() // removes focus
     })
+    // $("#btnThm").focus();
     loadTbl();
+
 }
 
 function chgThm(tog) {
@@ -161,7 +163,6 @@ function chgThm(tog) {
         thm = (thm == 'dark') ? 'lite' : 'dark';
         localStorage.setItem("lsThm", thm);
     }
-
     if (thm == 'dark') {
         newcols = [ '70%', '50%', '30%', '15%', '0%']; 
     } else {
@@ -174,8 +175,7 @@ function chgThm(tog) {
     document.documentElement.style.setProperty('--col-bkg', `hsl(0,0%,${newcols[4]})`);
 }
 
-
-//------------------------
+//-----------------------
 //  Refresh table
 function loadTbl() {
     if (data.length ==0 ) {return}
@@ -226,7 +226,7 @@ function loadTbl() {
 $( "#itemNew" ).keypress(function(e) { if (e.key != 'Enter' || e.target.value == '') { return; }; addnew(e);})
 $( ".catBtns" ).click(function(e)    { chgCtg(e.currentTarget); })
 $( ".userhead").click(function(e)    { chgUsr(e.currentTarget.id); })
-$( "#btnShr"  ).click(function(e)    { chgShr(); })
+$( "#btnShr"  ).click(function(e)    { chgShr(true); })
 $( "#btnThm"  ).click(function(e)    { chgThm(true); })
 
 $(' #userSettings').css('top', $('#currentUser').position().top )
@@ -238,8 +238,7 @@ $(' #userSettings').css('top', $('#currentUser').position().top )
 // }
 
 
-$(document).on('keydown onclick',  
-    function(e) { 
+$(document).on('keydown onclick', function(e) { 
         if (e.key == 'Escape' || e.target.id != 'currentUser') { 
             $('#userSettings').css("display","none");
         }    
@@ -256,7 +255,7 @@ window.onload = function() {
     $('#cat-todo').click();
     chgUsr(usr);
     chgThm(false)
-    
+    chgShr()
     x =  $('header').css('height') + ' - ' + $('footer').css('height')
 
     $('#itemList').css('top', $('header').css('height') )
