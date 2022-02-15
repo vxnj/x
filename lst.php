@@ -20,7 +20,6 @@
         <img    id="currentUser" onclick="userSettings()" src=""></img>
         <input  id="itemNew" class="item" type="text"placeholder="add item ..." autofocus>
         <button id="btnShr" class="btn btnSelected"  ></button>
-
     </header>
 
     <div id="itemList">
@@ -143,7 +142,9 @@ function chgCtg(x) {
         } else {    button.classList.remove('btnSelected');
         }
     })
+    $('#itemNew').focus()
     loadTbl();
+    // document.getElementById("mytext").focus();
 }
 
 function chgThm(tog) {
@@ -220,7 +221,7 @@ $( ".userhead").click(function(e)    { chgUsr(e.currentTarget.id); })
 $( "#btnShr"  ).click(function(e)    { chgShr(); })
 $( "#btnThm"  ).click(function(e)    { chgThm(true); })
 
-$(' #userSettings').css('top', $('#currentUser').position().top )
+// $(' #userSettings').css('top', $('#currentUser').position().top )
 
 
 // setInterval(reloadit, 5000);
