@@ -86,7 +86,7 @@ footer { bottom: 0; }
 }
 
 
-.btn:hover{background: var(--btn-hov); color:var(--btn-txt);}
+.btn:hover  {background: var(--btn-hov); color:var(--btn-txt);}
 .btn{
     border: var(--btn-col) solid 1px;
     background: transparent;
@@ -99,10 +99,8 @@ footer { bottom: 0; }
     min-width: 40px;
     padding: 0 10px;
     margin: 0 3px;
-
 }
-
-.btnSelected {
+.btnSelected, .btn:active {
     background:  var(--btn-sel);
     color:       var(--btn-txt);
     /* float: left; */
