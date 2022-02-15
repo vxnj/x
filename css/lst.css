@@ -86,7 +86,6 @@ footer { bottom: 0; }
 }
 
 
-xx.btn:hover  {background: var(--btn-hov); color:var(--btn-txt);}
 .btn{
     border: var(--btn-col) solid 1px;
     background: transparent;
@@ -97,10 +96,10 @@ xx.btn:hover  {background: var(--btn-hov); color:var(--btn-txt);}
     border-radius: 30%;
     height: 35px;
     min-width: 40px;
-    padding: 0 10px;
+    padding: 0 5px;
     margin: 0 3px;
 }
-.btnSelected, .btn:active , xx.btn:focus {
+.btnSelected {
     background:  var(--btn-sel);
     color:       var(--btn-txt);
     /* float: left; */
@@ -119,6 +118,7 @@ xx.btn:hover  {background: var(--btn-hov); color:var(--btn-txt);}
     float:  right;
     margin-right: 0;
 }
+
 
 #btnThm {
     height: 19px;
