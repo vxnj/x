@@ -6,7 +6,7 @@
 
     --lst-fsize:    16px;
     --lst-fname:    NotoSans;
-    --header-ht:    45px;
+    --header-ht:    85px;
     --bar-left:     50px;    
     --bar-right:    80px;
 
@@ -21,7 +21,7 @@
     --btn-txt:      white;
     --btn-sel:      hsl(226, 100%, 32%);
     --btn-col:      hsl(226, 50%, 40%);
-    --btn-hov:      hsl(226, 75%, 32%);
+    --btn-hov:      hsl(226, 50%, 40%);
 
 }
 
@@ -29,7 +29,6 @@
     font-family: NotoSans;
     src: url("../fonts/NotoSans-Regular.ttf");
   } 
-
 
 /* layout ----------------------*/
 body { background-color: var(--col-bkg); }
@@ -44,11 +43,10 @@ header, footer {
     padding:    5px;
     background: var(--col-hdr) !important;
     z-index: 10;
-    height: var(--header-ht);
+    /* height: var(--header-ht); */
 }
 footer { bottom: 0; }
 /* layout ----------------------*/
-
 
 #currentUser {
     width: 35px;
@@ -58,12 +56,11 @@ footer { bottom: 0; }
 
 
 #itemList {
-    top: var(--header-ht);
+    top: calc( var(--header-ht));
     position: relative;
-    height: calc(100% - 2 * var(--header-ht));
+    height: calc(100% - var(--header-ht));
     overflow: auto;
 }
-
 
 #itemNew  { 
     color: var(--col-dim0);
@@ -89,24 +86,26 @@ footer { bottom: 0; }
 }
 
 
-.btn:hover{background: var(--btn-hov); color:var(-btn-txt);}
+.btn:hover{background: var(--btn-hov); color:var(--btn-txt);}
 .btn{
-    border: none;
-    background: var(--btn-col);
-    color: var(--btn-txt);
+    border: var(--btn-col) solid 1px;
+    background: transparent;
+    color: var(--col-dim1);
     font-family: var(--lst-fname);
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     border-radius: 30%;
     height: 35px;
     min-width: 40px;
     padding: 0 10px;
     margin: 0 3px;
+
 }
 
 .btnSelected {
     background:  var(--btn-sel);
-    color: var(-btn-txt);
+    color:       var(--btn-txt);
+    /* float: left; */
 }
 
 

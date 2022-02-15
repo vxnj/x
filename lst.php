@@ -13,10 +13,13 @@
 
 <body>
     <header>
+        <div style="padding-bottom: 5px"> 
+            <span    id="cats"></span>   
+            <button id="btnThm" class="btnx" ></button>
+        </div>
         <img    id="currentUser" onclick="userSettings()" src=""></img>
         <input  id="itemNew" class="item" type="text"placeholder="add item ..." autofocus>
-        <button id="btnShr" class="btn"  ></button>
-        <button id="btnThm" class="btnx" ></button>
+        <button id="btnShr" class="btn btnSelected"  ></button>
 
     </header>
 
@@ -25,12 +28,7 @@
         <ul id="itemsDone"></ul>
     </div>
 
-    
-    </div>
-
-    <footer>
-        <div id="cats"></div>
-    </footer>
+<!-- <footer></footer> -->
 
 </body>
 
@@ -222,6 +220,8 @@ $( ".userhead").click(function(e)    { chgUsr(e.currentTarget.id); })
 $( "#btnShr"  ).click(function(e)    { chgShr(); })
 $( "#btnThm"  ).click(function(e)    { chgThm(true); })
 
+$(' #userSettings').css('top', $('#currentUser').position().top )
+
 
 // setInterval(reloadit, 5000);
 // function reloadit(){
@@ -241,11 +241,17 @@ $(document).on('keydown onclick',
 $( "*" ).click(function(e) { if (e.target.id != 'currentUser') { $('#userSettings').css("display","none"); } })
 
 
+x = 0;
 window.onload = function() {
     getLocals();
     $('#cat-todo').click();
     chgUsr(usr);
     chgThm(false)
+    
+    x =  $('header').css('height') + ' - ' + $('footer').css('height')
+
+    $('#itemList').css('top', $('header').css('height') )
+    console.log(x)
 }
 
 function doAjax(myCallback) {
