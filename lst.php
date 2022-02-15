@@ -131,6 +131,12 @@ function chgUsr(newusr) {
 function chgShr() {
     shr = (localStorage.getItem("lsShr") == 'true') ? 'false' : 'true' ;
     localStorage.setItem("lsShr", shr);
+    bs = document.getElementById("btnShr");
+    if (shr != 'true') {
+                    bs.classList.add   ('btnSelected');
+        } else {    bs.classList.remove('btnSelected');
+    }
+    bs.blur(); //removes focus
     loadTbl();
 }
 
@@ -141,10 +147,9 @@ function chgCtg(x) {
                     button.classList.add   ('btnSelected');
         } else {    button.classList.remove('btnSelected');
         }
+        button.blur() // removes focus
     })
-    // $('#itemNew').focus()
     loadTbl();
-    // document.getElementById("mytext").focus();
 }
 
 function chgThm(tog) {
@@ -221,7 +226,7 @@ $( ".userhead").click(function(e)    { chgUsr(e.currentTarget.id); })
 $( "#btnShr"  ).click(function(e)    { chgShr(); })
 $( "#btnThm"  ).click(function(e)    { chgThm(true); })
 
-// $(' #userSettings').css('top', $('#currentUser').position().top )
+$(' #userSettings').css('top', $('#currentUser').position().top )
 
 
 // setInterval(reloadit, 5000);

@@ -100,7 +100,7 @@ footer { bottom: 0; }
     padding: 0 10px;
     margin: 0 3px;
 }
-.btnSelected, .btn:active {
+.btnSelected, .btn:active , .btn:focus {
     background:  var(--btn-sel);
     color:       var(--btn-txt);
     /* float: left; */
