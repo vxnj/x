@@ -58,6 +58,8 @@ function getIdx ( arr, fld, val) {
 }
 
 function addnew(e) {
+    console.log(e.target.value)
+    console.log(    `actn=add&id=&item=${e.target.value}&usr=${usr}&cat=${ctg}` )
     $.ajax({     
         type: "POST",
         url: "db/lstAct.php",
@@ -74,7 +76,6 @@ function doBtn(e) {
         x = getIdx ( data, 'id', id);
         console.log ($(this).position().top);
 
-        
     } else { 
         $.ajax({ 
             method: "POST",
@@ -233,13 +234,6 @@ $( "#btnThm"  ).click(function(e)    { chgThm(true); })
 
 $(' #userSettings').css('top', $('#currentUser').position().top )
 
-
-// setInterval(reloadit, 5000);
-// function reloadit(){
-//     console.log(lastLoad)
-// }
-
-
 $(document).on('keydown onclick', function(e) { 
         if (e.key == 'Escape' || e.target.id != 'currentUser') { 
             $('#userSettings').css("display","none");
@@ -249,7 +243,6 @@ $(document).on('keydown onclick', function(e) {
 
 // hide userheads when other clicks
 $( "*" ).click(function(e) { if (e.target.id != 'currentUser') { $('#userSettings').css("display","none"); } })
-
 
 x = 0;
 window.onload = function() {

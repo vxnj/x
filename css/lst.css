@@ -42,7 +42,7 @@ header, footer {
     padding:    5px;
     background: var(--col-hdr) !important;
     z-index: 10;
-    /* height: var(--header-ht); */
+    height: var(--header-ht);
 }
 footer { bottom: 0; }
 /* layout ----------------------*/
