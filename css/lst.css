@@ -131,9 +131,8 @@ footer { bottom: 0; }
     border-radius: 50%;
     border: 0px;
     background-color: var(--col-dim1);
+    cursor: pointer;
 }
-
-
 
 .ownerhead {
     opacity: 0.6;
@@ -177,21 +176,21 @@ li {
 .userhead {
     width:  90px;
     height: 90px;
-    border: 3px var(hdr);
+    border: 3px var(--col-dim1);
     border-bottom-style: solid;
     padding: 5px;   
 }
 
 #userSettings {
-position: fixed;
-background: var(--col-bkg);
-top: 10px;
-left: 50px;
-z-index: 100;
-padding: 10px;
-border: var(--col-hdr) solid 1px;
-border-bottom-left-radius: 40px;
-border-bottom-right-radius: 40px;
-border-top-right-radius: 40px;
-box-shadow: 0px 3px 5em var(--btn-col);
+    position: fixed;
+    background: var(--col-bkg);
+    top: 10px;
+    left: 50px;
+    z-index: 100;
+    padding: 10px;
+    border: var(--col-hdr) solid 1px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+    box-shadow: 0px 3px 5em var(--btn-col);
 }

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<head>
+
+
+ <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -8,12 +10,36 @@
     <link rel="stylesheet" href="/css/dtsel.css"/>
     <script src="/js/dtsel.js"></script>
     
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.68/dist/themes/dark.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.68/dist/shoelace.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.68/dist/components/tab-panel/tab-panel.js"></script>
     <title>TESTING</title>
+
 
 </head>
 
-<body>
+<style>
+    body {background-color: black;}
+
+</style>
+
+<html class="sl-theme-dark">
+ <body class="sl-theme-dark">
+    <!-- <sl-include src="https://shoelace.style/assets/examples/include.html"></sl-include> -->
+    <sl-button>Click me</sl-button>
+    <sl-tab-group class="sl-theme-dark">
+        <sl-tab slot="nav" panel="general">General</sl-tab>
+        <sl-tab slot="nav" panel="custom">Custom</sl-tab>
+        <sl-tab slot="nav" panel="advanced">Advanced</sl-tab>
+        <sl-tab slot="nav" panel="disabled" disabled>Disabled</sl-tab>
+      
+        <sl-tab-panel class="sl-theme-dark" name="general">This is the general tab panel.</sl-tab-panel>
+        <sl-tab-panel class="sl-theme-dark" name="custom">This is the custom tab panel.</sl-tab-panel>
+        <sl-tab-panel class="sl-theme-dark" name="advanced">This is the advanced tab panel.</sl-tab-panel>
+        <sl-tab-panel class="sl-theme-dark" name="disabled">This is a disabled tab panel.</sl-tab-panel>
+      </sl-tab-group>
+
+      
     <div class="date-selector-wrapper"></div>
 
     <svg style="height:100px" class="svg-icon" viewBox="0 0 20 20"> <path d="M4,4h5v2H6v8h8v-3h2v5H4V4z M11,3h6v6l-2-2l-4,4L9,9l4-4L11,3z"></path></svg>
@@ -21,11 +47,15 @@
     <div id="inc1">ss</div>
     <div id="inc2">sdds</div>
    
-    <input name="dateTimePicker" />
+    <input name="dateTimePicker">
 
 </body>
+</html>
+
+
 
 <script>
+
 
 instance = new dtsel.DTS('input[name="dateTimePicker"]',  {
   showTime: true
@@ -166,3 +196,4 @@ function getIdx ( arr, fld, val) {
     return index;
 }
 </script>
+

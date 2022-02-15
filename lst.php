@@ -105,7 +105,7 @@ function doEdit(e)  {
         });
 
         document.getElementById(id).animate(
-            [{ color: 'var(--col-save)' }, { color: 'var(--lst-col-dim0)' }], 
+            [{ color: 'var(--col-save)' }, { color: 'var(--col-dim0)' }], 
             { duration: 2000, easing: 'ease-in', iterations: 1}
         )//animate
     } //if
