@@ -72,7 +72,9 @@ function doBtn(e) {
     actn = e.currentTarget.attributes.name.value.substring(3, 10);
     if (actn == 'det'){ 
         x = getIdx ( data, 'id', id);
-        console.log(data[x])
+        console.log ($(this).position().top);
+
+        
     } else { 
         $.ajax({ 
             method: "POST",

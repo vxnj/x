@@ -18,11 +18,10 @@
 
     --col-save:     #4dcc53d2;
 
-    --btn-txt:      white;
-    --btn-sel:      hsl(226, 100%, 32%);
-    --btn-col:      hsl(226, 50%, 40%);
-    --btn-hov:      hsl(226, 50%, 40%);
-
+    --btn-txt:           hsl(226,  35%, 30%, .8);
+    --btn-txt-selected:  white;
+    --btn-bkg-selected:  hsl(226, 100%, 30%, .6);
+   
 }
 
 @font-face {
@@ -86,7 +85,7 @@ footer { bottom: 0; }
 }
 
 .btn{
-    border: var(--btn-col) solid 1px;
+    border: var(--btn-txt) solid 1px;
     background: transparent;
     color: var(--col-dim1);
     font-family: var(--lst-fname);
@@ -99,8 +98,8 @@ footer { bottom: 0; }
     margin: 0 3px;
 }
 .btnSelected {
-    background:  var(--btn-sel);
-    color:       var(--btn-txt);
+    background:  var(--btn-bkg-selected);
+    color:       var(--btn-txt-selected);
     /* float: left; */
 }
 
@@ -189,5 +188,5 @@ li {
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
     border-top-right-radius: 40px;
-    box-shadow: 0px 3px 5em var(--btn-col);
+    box-shadow: 0px 3px 5em var(--btn-txt);
 }
