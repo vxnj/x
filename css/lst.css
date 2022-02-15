@@ -14,7 +14,7 @@
     --col-dim1:     hsl(0, 0%, 50%);
     --col-dim2:     hsl(0, 0%, 30%);
     --col-hdr:      hsl(0, 0%, 15%);
-    --col-bkg:      hsl(0, 0%,  0%);
+    --col-bkg:      rgba(0, 0, 0, 0.39);
 
     --col-save:     #4dcc53d2;
 
