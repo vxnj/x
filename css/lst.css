@@ -30,7 +30,7 @@
   } 
 
 /* layout ----------------------*/
-body { background-color: var(--col-bkg); }
+body { background-color: black; }
 
 header, footer, #itemList {
     width:      100%;
@@ -63,7 +63,10 @@ footer { bottom: 0; }
 
 #itemNew  { 
     color: var(--col-dim0);
-    background: var(--col-bkg) ;}
+    background: var(--col-bkg) ;
+    /* background: var(--col-hdr);
+    border: 1px var(--btn-txt) solid; */
+}
 
 .item {
     outline: none;
@@ -172,17 +175,31 @@ li {
 .userhead {
     width:  90px;
     height: 90px;
-    border: 3px var(--col-dim1);
-    border-bottom-style: solid;
+    border: 1px solid var(--btn-txt);
     padding: 5px;   
 }
 
-#userSettings {
+#pickUsr {
     position: fixed;
     background: var(--col-bkg);
     top: 10px;
     left: 50px;
     z-index: 100;
+    padding: 10px;
+    border: var(--col-hdr) solid 1px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+    box-shadow: 0px 3px 5em var(--btn-txt);
+}
+
+
+#pickCtg {
+    position: fixed;
+    background: var(--col-bkg);
+    top: 10px;
+    left: 50px;
+    z-index: 200;
     padding: 10px;
     border: var(--col-hdr) solid 1px;
     border-bottom-left-radius: 40px;

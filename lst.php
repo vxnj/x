@@ -18,14 +18,14 @@
             <button id="btnShr" class="btn btnSelected" ></button>
             <button id="btnThm" class="btnx" ></button>
         </div>
-        <img    id="currentUser" onclick="userSettings()" src=""></img>
+        <img    id="currentUser" src=""></img>
         <input  id="itemNew" class="item" type="text"placeholder="add item ..." autofocus>
     </header>
-
     <div id="itemList">
         <ul id="itemsOpen"></ul>
         <ul id="itemsDone"></ul>
     </div>
+    
 
 <!-- <footer></footer> -->
 
@@ -75,6 +75,8 @@ function doBtn(e) {
     if (actn == 'det'){ 
         x = getIdx ( data, 'id', id);
         console.log ($(this).position().top);
+        $('#pickCtg').css("top",$(this).position().top);
+        // $('#pickCtg').css("display","block");
 
     } else { 
         $.ajax({ 
@@ -111,12 +113,6 @@ function doEdit(e)  {
     } //if
 } //doEdit
 
-function userSettings() {
-    pick = document.getElementById('userSettings');
-    pick.style.display = (pick.style.display =='none') ? 'block' : 'none';
-    if (pick.style.display == 'none') {pick.focus();}
-}
-
 //------------------------
 //  Local Storage stuff
 
@@ -146,7 +142,6 @@ function chgShr(tog) {
     // $("#btnThm").focus();
     loadTbl();
 }           
-
 function chgCtg(x) {
     localStorage.setItem("lsCtg", x.value); 
     document.querySelectorAll('.catBtns').forEach( function(button) {
@@ -159,7 +154,6 @@ function chgCtg(x) {
     loadTbl();
 
 }
-
 function chgThm(tog) {
     thm = localStorage.getItem("lsThm");
     if (tog) { 
@@ -176,6 +170,9 @@ function chgThm(tog) {
     document.documentElement.style.setProperty('--col-dim2',`hsl(0,0%,${newcols[2]})`);
     document.documentElement.style.setProperty('--col-hdr', `hsl(0,0%,${newcols[3]})`);
     document.documentElement.style.setProperty('--col-bkg', `hsl(0,0%,${newcols[4]})`);
+    
+    $('body').css('background-color', 'var(--col-bkg)');
+
 }
 
 //-----------------------
@@ -210,6 +207,7 @@ function loadTbl() {
     $("#itemsDone").html ( ulDone );  
     $(".itemopen").on("focusout keydown",  function(e){ doEdit(e);});    
 
+
     items = $("[name^=svg]");
     for (let i = 0; i < items.length; i++) {
         isMine = items[i].parentElement.classList.contains('itemmine');
@@ -219,12 +217,14 @@ function loadTbl() {
             items[i].classList.add("btnDisabled");
         }
     }
-    $( '#userSettings').css("display","none");     
+
+    $( '#pickUsr').css("display","none");     
     $( "#currentUser" ).attr('src', `img/usrPics/head-${usr}.png`);
 
     lastLoad = (new Date());
 
 } //loadTbl
+
 
 $( "#itemNew" ).keypress(function(e) { if (e.key != 'Enter' || e.target.value == '') { return; }; addnew(e);})
 $( ".catBtns" ).click(function(e)    { chgCtg(e.currentTarget); })
@@ -232,29 +232,17 @@ $( ".userhead").click(function(e)    { chgUsr(e.currentTarget.id); })
 $( "#btnShr"  ).click(function(e)    { chgShr(true); })
 $( "#btnThm"  ).click(function(e)    { chgThm(true); })
 
-$(' #userSettings').css('top', $('#currentUser').position().top )
+$( "#currentUser" ).click(function(e){ $('#pickUsr').css('display', 'block') })
+$(document).click(function(e) { if (e.target.id != 'currentUser') { $('#pickUsr').css("display","none") ; } })
 
-$(document).on('keydown onclick', function(e) { 
-        if (e.key == 'Escape' || e.target.id != 'currentUser') { 
-            $('#userSettings').css("display","none");
-        }    
-    }
-)
+$(' #pickUsr' ).css('top', $('#currentUser').position().top )
 
-// hide userheads when other clicks
-$( "*" ).click(function(e) { if (e.target.id != 'currentUser') { $('#userSettings').css("display","none"); } })
-
-x = 0;
 window.onload = function() {
     getLocals();
     $('#cat-todo').click();
     chgUsr(usr);
     chgThm(false)
     chgShr()
-    x =  $('header').css('height') + ' - ' + $('footer').css('height')
-
-    $('#itemList').css('top', $('header').css('height') )
-    console.log(x)
 }
 
 function doAjax(myCallback) {
