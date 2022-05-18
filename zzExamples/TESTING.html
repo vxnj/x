@@ -66,12 +66,28 @@
    
     <input name="dateTimePicker">
 
+
+    <script type="module" src="node_modules/elix/define/Dialog.js"></script>
+    <elix-dialog>
+        Hi there text
+    </elix-dialog>
+
+    <button id="openButton" onclick="elix-dialog.open()">
+        Open dialog
+      </button>
+
 </body>
 </html>
 
 
 
 <script>
+
+
+
+import Dialog from 'elix/define/Dialog.js';
+const dialog = new Dialog(); // or
+const dialog = document.createElement('elix-dialog');
 
 
 instance = new dtsel.DTS('input[name="dateTimePicker"]',  {
