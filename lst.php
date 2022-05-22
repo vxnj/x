@@ -42,11 +42,11 @@ lastLoad = '';
 //init cat btns
 const cats = [
   { value: 'todo',   text: 'ToDo'},
-  { value: 'food',   text: 'NowDo'},
+  { value: 'food',   text: 'Now'},
 //   { value: 'rx',     text: 'Rx'},
 //   { value: 'notes',  text: 'Notes'},
   { value: 'thrift', text: 'Thrift'},
-  { value: 'long',   text: 'Long'}
+  { value: 'long',   text: 'Later'}
 ]
 catBtns = '';
 cats.forEach(cat => catBtns += `<button id="cat-${cat.value}" value="${cat.value}" class="btn catBtns">${cat.text}</button>`);
