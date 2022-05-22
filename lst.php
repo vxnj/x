@@ -42,9 +42,9 @@ lastLoad = '';
 //init cat btns
 const cats = [
   { value: 'todo',   text: 'ToDo'},
-  { value: 'food',   text: 'Food'},
-  { value: 'rx',     text: 'Rx'},
-  { value: 'notes',  text: 'Notes'},
+  { value: 'food',   text: 'NowDo'},
+//   { value: 'rx',     text: 'Rx'},
+//   { value: 'notes',  text: 'Notes'},
   { value: 'thrift', text: 'Thrift'},
   { value: 'long',   text: 'Long'}
 ]
