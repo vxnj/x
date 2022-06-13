@@ -43,7 +43,7 @@ const DESCS = [
 tixIndex= [];
 idx = DESCS.filter(obj => obj.fut != null);
 idx.forEach(element => tixIndex.push(element.symbol, element.fut));
-tix = ['^RUT','KRE','HSBC','AAPL','GOOG','META','AMZN','ARKK','TSLA','QQQ','SPY','BTC-USD','ETH-USD','CL=F','GC=F','^TNX'];
+tix = ['^RUT','KRE','HSBC','AAPL','GOOG','META','AMZN','ARKK','TSLA','TWTR','QQQ','SPY','BTC-USD','ETH-USD','CL=F','GC=F','^TNX'];
 tixAll = ([...new Set([...tixIndex ,...tix])]); 
 
 async function fetchQ() {
