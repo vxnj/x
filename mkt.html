@@ -102,7 +102,6 @@ async function doUpd() {
       qNote = (rq.marketState=='POST' && i<0) ? numStd(rq.postMarketChange,2,true): ''; // post$chg
     }
 
-    
     function chgCol(pct) {
         if (pct === undefined) return;
         hslColor = pct > 0 ? '100,70%,20%' : '0,70%,20%';
@@ -137,7 +136,7 @@ async function doUpd() {
 }
 
 doUpd();
-setInterval(doUpd, 2 * 60000);
+setInterval(doUpd, .25 * 60000);
 </script>
 
 <body>
