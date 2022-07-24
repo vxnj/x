@@ -32,7 +32,6 @@ function showpop(secs, id) {
     }
 
 
-
 key = "da5f0d9ce3486ef93fd7ffb24235c9e3"
 
 // Set reload timings ======================================================
@@ -156,11 +155,11 @@ function callwea() {
   xhr.send();
 }
 
-tblhd= '<table class="table" id="mytbl"><thead><tr>'
-      + '<th>Time</th>'
-      + '<th>Temp</th>'
-      + '<th>Hmd</th>'
-      + '<th><span id="WeaHd">Weather</span><span id="alert3" class="alerts" onclick="popAlert()">+</span><a id="alert2" class="alerts"></a></th>'
+tblhd= '<table class="table" id="mytbl"><thead><tr class="day">'
+      + '<th id="hdTdy">Today</th>'
+      + '<th id="hdTmp">Temp</th>'
+      + '<th id="hdHmd">Hmd</th>'
+      + '<th><span id="hdWea">Weather</span><span id="alert3" class="alerts" onclick="popAlert()">+</span><a id="alert2" class="alerts"></a></th>'
     +'</tr></thead>';
   
 
@@ -172,6 +171,7 @@ function getWea(data) {
       shift = zpOffset - myOffset;
       dateVal = new Date((data.current.dt + shift) *1000);
       dtnow = date_format(dateVal, 'g:i');
+      dynow = date_format(dateVal, 'D');
       hrnow = date_format(dateVal, 'H');
       tblhr = ""
 
@@ -179,6 +179,10 @@ function getWea(data) {
         + 100*numStd(data.hourly[0].pop, 1) + '%</span>':'';
 
         vDesc = data.current.weather[0].description
+        vHdTdy = dynow; 
+        vHdTmp = parseInt(.5 + data.daily[0].temp.max)+ "-" +parseInt(.5 + data.daily[0].temp.min) + "°";
+        vHdHmd = data.daily[0].humidity + "%";
+
 
       tblhr += "<tr>" 
             + "  <td>" + dtnow + "</td>"
@@ -209,6 +213,7 @@ function getWea(data) {
             + "</tr>";
       }
  
+      
       for (let j = 1; j < 7; j++) {
         xd = new Date((data.daily[j].dt+ shift)*1000);
         dthr = date_format(xd, 'D');
@@ -232,7 +237,7 @@ function getWea(data) {
             alert.innerHTML = data.alerts[0].event; 
             alert.style.display = 'inline-block';
             alert.style.cursor = 'pointer';
-            document.getElementById("WeaHd").style.display = 'none';
+            document.getElementById("hdWea").style.display = 'none';
             vhref = "<a href = 'https://forecast.weather.gov/MapClick.php?lat=" + lat + "&lon=" + lon + "'>NOAA</a>" ;
             
             adesc = data.alerts[0].description
@@ -245,6 +250,7 @@ function getWea(data) {
             //document.getElementById('alerts').style.display = 'none';
     }
    }
+ 
    
    dateVal = new Date((data.daily[0].sunrise+ shift) *1000);
    srise = date_format(dateVal, 'g:ia');
@@ -255,14 +261,22 @@ function getWea(data) {
    mrise =  date_format(dateVal, 'g:ia');
    dateVal = new Date((data.daily[0].moonset + shift) *1000);
    mset =  date_format(dateVal, 'g:ia');
+
+
    
    document.getElementById("tblhr").innerHTML = "";
    document.getElementById("tblhr").innerHTML = tblhd + tblhr;   
    doAlert();
 
-   document.getElementById("sunbox" ).innerHTML = '<img src="img/weather/Clear.svg" alt="Sunrise" class="weaicon"/>' + " " + srise  + " - " + sset;
+   document.getElementById("sunbox").innerHTML = '<img src="img/weather/Clear.svg" alt="Sunrise" class="weaicon"/>' + " " + srise  + " - " + sset;
    
-   moonpic = getmoon(data.daily[0].moon_phase)
+   
+   document.getElementById("hdTdy").innerHTML = vHdTdy
+   document.getElementById("hdTmp").innerHTML = vHdTmp;
+   document.getElementById("hdHmd").innerHTML = vHdHmd;
+
+
+   moonpic = getmoon(data.daily[0].moon_phase);
    document.getElementById("moonbox").innerHTML = moonpic.retFull + mrise  + " - " + mset + " " + moonpic.moon;
 
  }
