@@ -31,7 +31,6 @@ function showpop(secs, id) {
         if (secs>0) { setTimeout(function(){document.getElementById(id).style.display = "none";}, secs*1000 || 3000); }
     }
 
-
 key = "da5f0d9ce3486ef93fd7ffb24235c9e3"
 
 // Set reload timings ======================================================
@@ -155,7 +154,7 @@ function callwea() {
   xhr.send();
 }
 
-tblhd= '<table class="table" id="mytbl"><thead><tr class="day">'
+tblhd= '<table class="table tblWide" id="mytbl"><thead><tr class="day">'
       + '<th id="hdTdy">Today</th>'
       + '<th id="hdTmp">Temp</th>'
       + '<th id="hdHmd">Hmd</th>'
@@ -268,7 +267,7 @@ function getWea(data) {
    document.getElementById("tblhr").innerHTML = tblhd + tblhr;   
    doAlert();
 
-   document.getElementById("sunbox").innerHTML = '<a style="text-decoration: none !important" href="https://www.swpc.noaa.gov/communities/space-weather-enthusiasts" target="blank"><img src="img/weather/Clear.svg" alt="Sunrise" class="weaicon"/>' + " " + srise  + " - " + sset + "</a>";
+   document.getElementById("sunbox").innerHTML = '<a style="text-decoration: none !important" href="https://www.swpc.noaa.gov/products/predicted-sunspot-number-and-radio-flux" target="blank"><img src="img/weather/Clear.svg" alt="Sunrise" class="weaicon"/>' + " " + srise  + " - " + sset + "</a>";
    
    document.getElementById("hdTdy").innerHTML = vHdTdy
    document.getElementById("hdTmp").innerHTML = vHdTmp;
@@ -378,7 +377,7 @@ function getmoon(phase) {
 </head>
 <body>
 
-<table style="width:100%">
+<table class="tblWide">
   <tbody>
   <tr>
     <td><div id="zipcd" onclick="chgzip()"></div></td>
@@ -397,7 +396,7 @@ function getmoon(phase) {
 
 <div id="tblhr"></div>
 
-<table class="riseset">
+<table class="riseset tblWide">
   <tbody>
   <tr>
   <td id="sunbox" ></td>

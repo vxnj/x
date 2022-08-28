@@ -79,6 +79,11 @@ table  { border-color: var(--live-bor) !important;
     max-width: 500px !important;
 }
 
+
+.tblWide {
+    max-width: 500px !important; 
+}
+
 td, th {
     line-height: .85 !important; 
     padding-left: 0 !important;
@@ -104,6 +109,13 @@ a   {
     text-align: left;
     font-family:  fntNums, Tahoma, Geneva, Verdana, sans-serif !important;
 }
+
+.tblWide {
+    width: 100%; 
+    max-width: 500px !important;
+    min-width: 330px !important;    
+}
+
 
 .tblX tr , .tblX td , .tblX th  { 
     border-width: 1px 0  !important; 
