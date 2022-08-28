@@ -15,3 +15,9 @@
     text-align: right !important;
     font-size: 15px !important;
  } 
+
+.padtop {
+    padding-top: 4px !important;
+    font-size: smaller;
+
+}

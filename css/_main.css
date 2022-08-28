@@ -47,7 +47,7 @@ table  { border-color: var(--live-bor) !important;
         font-family: fntMain, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
         color: var(--live-def) !important;
         margin-top: 5px !important;
-        margin-bottom: 5px !important;   
+        margin-bottom: 5px !important;
     }
 
 @font-face {
@@ -108,7 +108,7 @@ a   {
 .tblX tr , .tblX td , .tblX th  { 
     border-width: 1px 0  !important; 
     border-style: solid !important; 
-    line-height: 20px !important;
+    line-height: 19px !important;
     font-size: 15px;
     border-collapse: collapse !important;
     padding: 2px !important;
