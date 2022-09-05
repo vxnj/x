@@ -36,6 +36,7 @@ const DESCS = [
   {'symbol':'^RUT',  'name':'Russell',fut:'RTY=F'},
   {'symbol':'KRE',   'name':'Regional Banks ETF'},
   {'symbol':'^TNX',  'name':'10yr Treasury' },
+  {'symbol':'^IRX',  'name':'13wk Treasury' },
   {'symbol':'GC=F',  'name':'Gold Futures' },
   {'symbol':'CL=F',  'name':'Oil Futures' }
 ]
@@ -43,7 +44,7 @@ const DESCS = [
 tixIndex= [];
 idx = DESCS.filter(obj => obj.fut != null);
 idx.forEach(element => tixIndex.push(element.symbol, element.fut));
-tix = ['^RUT','KRE','HSBC','AAPL','GOOG','META','AMZN','ARKK','TSLA','TWTR','QQQ','SPY','BTC-USD','ETH-USD','CL=F','GC=F','^TNX'];
+tix = ['^RUT','KRE','HSBC','AAPL','GOOG','META','AMZN','ARKK','TSLA','TWTR','QQQ','SPY','BTC-USD','ETH-USD','CL=F','GC=F','^IRX','^TNX'];
 tixAll = ([...new Set([...tixIndex ,...tix])]); 
 
 async function fetchQ() {
