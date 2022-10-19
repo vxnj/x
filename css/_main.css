@@ -141,12 +141,18 @@ a   {
 
 .xbtn {
     text-decoration: none !important;
-    color: #4cc12b !important;
+    color: #2b53c1 !important;
     text-transform: uppercase;
-    background: #79ca794a;
+    background: #2b53c127;
     padding: 1px 4px;
     margin: 3px;
     border-radius: 6px;
     font-size: 11px;
-    border: 1px green solid;
+    border: 1px #2b53c1a6 solid;
+}
+
+.xbtn:hover {
+    background: #2b53c193;
+    color: #899fdb !important;
+    border: 1px #899fdb solid;
 }
