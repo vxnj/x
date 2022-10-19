@@ -137,3 +137,16 @@ a   {
     border: 0px !important;
     background-color: hsla(239, 63%, 25%, 0.555);
 }
+
+
+.xbtn {
+    text-decoration: none !important;
+    color: #4cc12b !important;
+    text-transform: uppercase;
+    background: #79ca794a;
+    padding: 1px 4px;
+    margin: 3px;
+    border-radius: 6px;
+    font-size: 11px;
+    border: 1px green solid;
+}
