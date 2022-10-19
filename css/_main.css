@@ -138,13 +138,14 @@ a   {
     background-color: hsla(239, 63%, 25%, 0.555);
 }
 
+
 .xbtn:hover {
     background: #6988dcb5;
     color: #9aacde !important;
     border: 1px #99aadb solid;
     opacity: 1 !important;
-  }
-  .xbtn {
+}
+.xbtn {
     text-decoration: none !important;
     color: #436ad4 !important;
     text-transform: uppercase;
