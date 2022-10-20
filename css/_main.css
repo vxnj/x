@@ -152,15 +152,15 @@ a   {
     text-decoration: none !important;
     color: var(--live-def) !important;
     text-transform: uppercase;
-    background: #000;
+    background: #5e81e234;
     padding: 1px 4px;
     margin-right: 7px;
     border-radius: 2px;
     font-size: 11px;
-    border: 1px #436ad457 solid;
+    border: 1px #436ad465 solid;
     font-family: Segoe UI;
   }
 
 .xbtn-rt {
-  margin-right:0; float:right; opacity: 1;color:#5e81e26c !important
+  margin-right:0; float:right; background-color: transparent;color:#5a7ddf83 !important
 }
