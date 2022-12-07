@@ -41,7 +41,6 @@ const DESCS = [
   {'symbol':'CL=F',  'name':'Oil Futures' }
 ]
 
-
 tixIndex= [];
 idx = DESCS.filter(obj => obj.fut != null);
 idx.forEach(element => tixIndex.push(element.symbol, element.fut));
@@ -49,7 +48,9 @@ tix = ['^RUT','KRE','HSBC','AAPL','GOOG','META','AMZN','ARKK','TSLA','QQQ','SPY'
 tixAll = ([...new Set([...tixIndex ,...tix])]); 
 
 async function fetchQ() {
-  vPrx = "https://api.allorigins.win/raw?url=";
+//   vPrx = "https://api.allorigins.win/raw?url=";
+  vPrx = "https://corsproxy.io/?";
+
   vUri = 'https://query2.finance.yahoo.com/v7/finance/quote?symbols='
   now = date_format(new Date(), 'g:i:sa');
   console.log(now);
