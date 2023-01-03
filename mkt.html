@@ -33,8 +33,9 @@ const DESCS = [
   {'symbol':'^DJI',  'name':'Dow',    fut:'YM=F' },
   {'symbol':'^IXIC', 'name':'Nasdaq', fut:'NQ=F' },
   {'symbol':'^GSPC', 'name':'S&P 500',fut:'ES=F' },
-  {'symbol':'^RUT',  'name':'Russell',fut:'RTY=F'},
-  {'symbol':'KRE',   'name':'Regional Banks ETF'},
+//   {'symbol':'^RUT',  'name':'Russell',fut:'RTY=F'},
+  {'symbol':'^RUT',  'name':'Russell'},
+  {'symbol':'SPGP',   'name':'S&P 500 GARP ETF'},
   {'symbol':'^TNX',  'name':'10yr Treasury' },
   {'symbol':'^IRX',  'name':'13wk Treasury' },
   {'symbol':'GC=F',  'name':'Gold Futures' },
@@ -44,7 +45,7 @@ const DESCS = [
 tixIndex= [];
 idx = DESCS.filter(obj => obj.fut != null);
 idx.forEach(element => tixIndex.push(element.symbol, element.fut));
-tix = ['^RUT','HSBC','AAPL','GOOG','META','AMZN','ARKK','TSLA','QQQ','SPY','SPGP','BTC-USD','ETH-USD','CL=F','GC=F','^IRX','^TNX'];
+tix = ['SPGP','^RUT','HSBC','AAPL','GOOG','META','AMZN','ARKK','TSLA','QQQ','SPY','BTC-USD','ETH-USD','CL=F','GC=F','^IRX','^TNX'];
 tixAll = ([...new Set([...tixIndex ,...tix])]); 
 
 async function fetchQ() {
