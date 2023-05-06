@@ -52,7 +52,7 @@ async function fetchQ() {
 //   vPrx = "https://api.allorigins.win/raw?url=";
   vPrx = "https://corsproxy.io/?";
 
-  vUri = 'https://query2.finance.yahoo.com/v7/finance/quote?symbols='
+  vUri = 'https://query2.finance.yahoo.com/v6/finance/quote?symbols='
   now = date_format(new Date(), 'g:i:sa');
   console.log(now);
   vUrl = `${vPrx}${vUri}${tixAll}` + ',X' + now
