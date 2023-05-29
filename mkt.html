@@ -52,7 +52,7 @@ async function fetchQ() {
 //   vPrx = "https://api.allorigins.win/raw?url=";
   vPrx = "https://corsproxy.io/?";
 
-  vUri = 'https://query2.finance.yahoo.com/v6/finance/quote?symbols='
+  vUri = 'https://query2.finance.yahoo.com/v7/finance/quote?symbols='
   now = date_format(new Date(), 'g:i:sa');
   console.log(now);
   vUrl = `${vPrx}${vUri}${tixAll}` + ',X' + now
@@ -137,16 +137,20 @@ async function doUpd() {
   }
 
   document.getElementById("app1").innerHTML = thHtml + tbHtml + '</table>';
-  document.getElementById("app2").innerHTML =   '' 
-      + '<a class ="xbtn" href="https://wsj.com" target="blank">wsj<a/>'
-      + '<a class ="xbtn" href="https://www.marketwatch.com/" target="blank">mw<a/>' 
-      + '<a class ="xbtn" href="https://ft.com" target="blank">ft<a/>'
-      + '<a class ="xbtn" href="https://zerohedge.com" target="blank">zh<a/>'
-      + '<a class ="xbtn" href="https://depositaccounts.com/blog" target="blank">da<a/>'
-      + '<a class ="xbtn" href="https://www.doctorofcredit.com/" target="blank">dr<a/>'
-      + '<a class ="xbtn" href="https://tradingeconomics.com/united-states/6-month-bill-yield" target="blank">ust<a/>'
-      + '<a class ="xbtn xbtn-rt" href="' + vUrl + '" target="blank">json<a/>';
+  
+  // document.getElementById("app2").innerHTML =   '' 
+  //     + '<a class ="xbtn" href="https://wsj.com" target="blank">wsj<a/>'
+  //     + '<a class ="xbtn" href="https://www.marketwatch.com/" target="blank">mw<a/>' 
+  //     + '<a class ="xbtn" href="https://ft.com" target="blank">ft<a/>'
+  //     + '<a class ="xbtn" href="https://zerohedge.com" target="blank">zh<a/>'
+  //     + '<a class ="xbtn" href="https://depositaccounts.com/blog" target="blank">da<a/>'
+  //     + '<a class ="xbtn" href="https://www.doctorofcredit.com/" target="blank">dr<a/>'
+  //     + '<a class ="xbtn" href="https://tradingeconomics.com/united-states/6-month-bill-yield" target="blank">ust<a/>'
+  //     + '<a class ="xbtn xbtn-rt" href="' + vUrl + '" target="blank">json<a/>';
+
 }
+
+
 
 doUpd();
 setInterval(doUpd, 30000);
@@ -155,7 +159,17 @@ setInterval(doUpd, 30000);
 <body>
   <p></p>
   <div id="app1"></div>
-  <div id="app2" class="padtop"></div><br>
+  <div id="app2" class="padtop">
+    <a class ="xbtn" href="https://wsj.com" target="blank">wsj<a/>
+      <a class ="xbtn" href="https://www.marketwatch.com/" target="blank">mw<a/>
+      <a class ="xbtn" href="https://ft.com" target="blank">ft<a/>
+      <a class ="xbtn" href="https://zerohedge.com" target="blank">zh<a/>
+      <a class ="xbtn" href="https://depositaccounts.com/blog" target="blank">da<a/>
+      <a class ="xbtn" href="https://www.doctorofcredit.com/" target="blank">dr<a/>
+      <a class ="xbtn" href="https://tradingeconomics.com/united-states/6-month-bill-yield" target="blank">ust<a/>
+      <a class ="xbtn xbtn-rt" href="' + vUrl + '" target="blank">json<a/>
+
+  </div><br>
 </body>
 </html>
     
