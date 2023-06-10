@@ -15,13 +15,10 @@ curl_setopt($c, CURLOPT_COOKIE, $yahoo_headers[$cookie_name]);
 curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
 $crumb = curl_exec($c);
 curl_close($c);
-echo "<BR>Crumb:" . $crumb;
+// echo "<BR>Crumb:" . $crumb;
 
 
 /* 3 - Get quotes with crumb, setting cookie. Using sample tickets*/
-$tickets_list = "AAPL,TSLA,MSFT";
-
-
 $tickets_list = "^RUT,HSBC,AAPL,GOOG,META,AMZN,TSLA,ARKK,QQQ,SPY,JEPI,BTC-USD,ETH-USD,CL=F,GC=F,^IRX,^TNX";
 
 $url_cotacao = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=" . $tickets_list . "&crumb=" . $crumb;
@@ -42,15 +39,13 @@ echo $resJson_decode;
 //     $resultado = "Ticket dont exists in yahoo!";
 // } else {
    
-//     foreach ($resJson_decode->quoteResponse->result as $ticket_result){
-//         echo "<BR>Ticket:" . $ticket_result->symbol;
-//         echo "<BR>Price:" . $ticket_result->regularMarketPrice;
-//         echo "<BR>marketState:" . $ticket_result->marketState;
-//     }
+     foreach ($resJson_decode->quoteResponse->result as $ticket_result){
+         echo "<BR>Ticket:" . $ticket_result->symbol;
+         echo "<BR>Price:" . $ticket_result->regularMarketPrice;
+         echo "<BR>marketState:" . $ticket_result->marketState;
+     }
     
 // }
 
 ?>
 
-
-var jsonData = JSON.parse('<?= $jsonStr; ?>');
