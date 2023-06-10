@@ -45,36 +45,14 @@ const DESCS = [
 tixIndex= [];
 idx = DESCS.filter(obj => obj.fut != null);
 idx.forEach(element => tixIndex.push(element.symbol, element.fut));
-tix = ['^RUT','HSBC','AAPL','GOOG','META','AMZN','TSLA','ARKK','QQQ','SPY','JEPI','BTC-USD','ETH-USD','CL=F','GC=F','^IRX','^TNX'];
-tixAll = ([...new Set([...tixIndex ,...tix])]); 
 
 async function fetchQ() {
-//   vPrx = "https://api.allorigins.win/raw?url=";
-  vPrx = '' // "https://corsproxy.io/?";
-  vCrumb = '&crumb=WOHxrH7iqBt'
-  vUri = 'https://query2.finance.yahoo.com/v7/finance/quote?symbols='
-
-
   now = date_format(new Date(), 'g:i:sa');
   console.log(now);
-  vUrl = `${vPrx}${vUri}${tixAll}${vCrumb}` // + ',X' + now
 
-  response = await fetch("mktdata.php", {
-    method: "GET", 
-    Accept: "application/json", 
-    credentials: "same-origin" })
-
-
-  // response = await fetch(vUrl, {
-  //   method: "GET", 
-  //   Accept: "application/json",
-  //   credentials: "include",
-  //   referrerPolicy: "origin"}
-  //   )
-
+  response = await fetch("mktdata.php")
   .then(response => response.json()) 
   return response 
-
 }
 
 async function doUpd() {
