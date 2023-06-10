@@ -35,7 +35,6 @@ if (!$resJson_decode->quoteResponse->result) {
 } else {
    
     foreach ($resJson_decode->quoteResponse->result as $ticket_result){
-        echo "<BR>Ticket:" . $ticket_result
         echo "<BR>Ticket:" . $ticket_result->symbol;
         echo "<BR>Price:" . $ticket_result->regularMarketPrice;
     }
