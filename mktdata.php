@@ -40,7 +40,7 @@ $resJson_decode = json_decode($data_quote);
          echo "<BR>Price:" . $ticket_result->regularMarketPrice;
          echo "<BR>marketState:" . $ticket_result->marketState;
      }
-    
+     echo $resJson_decode
 // }
 
 ?>
