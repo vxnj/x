@@ -15,10 +15,10 @@ curl_setopt($c, CURLOPT_COOKIE, $yahoo_headers[$cookie_name]);
 curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
 $crumb = curl_exec($c);
 curl_close($c);
-//echo "<BR>Crumb:" . $crumb;
+echo "<BR>Crumb:" . $crumb;
 
 /* 3 - Get quotes with crumb, setting cookie. Using sample tickets*/
-$tickets_list = "AAPL,TSLA,BTC-USC";
+$tickets_list = "AAPL,TSLA,MSFT";
 $url_cotacao = "https://query2.finance.yahoo.com/v7/finance/quote?symbols=" . $tickets_list . "&crumb=" . $crumb;
 $c = curl_init($url_cotacao);
 curl_setopt($c, CURLOPT_VERBOSE, 1);
