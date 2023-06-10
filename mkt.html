@@ -14,8 +14,8 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script> -->
 </head>
 
-
 <script>
+
 let resp;let data = "";let rq; let indx;
 
 function mktSt(st, pre) {
@@ -35,7 +35,6 @@ const DESCS = [
   {'symbol':'^IXIC', 'name':'Nasdaq', fut:'NQ=F' },
   {'symbol':'^GSPC', 'name':'S&P 500',fut:'ES=F' },   
   {'symbol':'^RUT',  'name':'Russell',fut:'RTY=F'},
-//   {'symbol':'^RUT',  'name':'Russell'},
   {'symbol':'^TNX',  'name':'10yr Treasury' },
   {'symbol':'^IRX',  'name':'13wk Treasury' },
   {'symbol':'GC=F',  'name':'Gold Futures' },
@@ -46,35 +45,14 @@ const DESCS = [
 tixIndex= [];
 idx = DESCS.filter(obj => obj.fut != null);
 idx.forEach(element => tixIndex.push(element.symbol, element.fut));
-tix = ['^RUT','HSBC','AAPL','GOOG','META','AMZN','TSLA','ARKK','QQQ','SPY','JEPI','BTC-USD','ETH-USD','CL=F','GC=F','^IRX','^TNX'];
-tixAll = ([...new Set([...tixIndex ,...tix])]); 
 
 async function fetchQ() {
-//   vPrx = "https://api.allorigins.win/raw?url=";
-  vPrx = '' // "https://corsproxy.io/?";
-  vCrumb = '&crumb=WOHxrH7iqBt'
-  vUri = 'https://query2.finance.yahoo.com/v7/finance/quote?symbols='
-
-
   now = date_format(new Date(), 'g:i:sa');
   console.log(now);
-  vUrl = `${vPrx}${vUri}${tixAll}${vCrumb}` // + ',X' + now
 
-
-
-  response = await fetch(vUrl, {
-    method: "GET", 
-    Accept: "application/json",
-    credentials: "include",
-    referrerPolicy: "origin"}
-    )
-
-
-
-
-  .then(response => response.json()) //.then(data => {resp = data;})
+  response = await fetch("mktdata.php")
+  .then(response => response.json()) 
   return response 
-
 }
 
 async function doUpd() {
