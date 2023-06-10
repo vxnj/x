@@ -15,7 +15,7 @@ curl_setopt($c, CURLOPT_COOKIE, $yahoo_headers[$cookie_name]);
 curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
 $crumb = curl_exec($c);
 curl_close($c);
-// echo "<BR>Crumb:" . $crumb;
+echo "<BR>Crumb:" . $crumb;
 
 
 /* 3 - Get quotes with crumb, setting cookie. Using sample tickets*/
