@@ -35,7 +35,7 @@ curl_close($c);
 /* 4 - Get data from yahoo */
 $resJson_decode = json_decode($data_quote);
 
-echo $resJson_decode
+echo $resJson_decode;
 
 
 // if (!$resJson_decode->quoteResponse->result) {
