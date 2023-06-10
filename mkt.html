@@ -109,11 +109,9 @@ async function doUpd() {
     col = chgCol(rq[mShow+'MarketChangePercent'] * pctFac,clsSt); // bg chg% color
     
     addSpan = '<span id="qNote' + rq.symbol + '" class="' +clsSt+ ' qNote">' + qNote  +'</span>' 
-        // +     '<span style="font-size:x-small" onClick="tixAll.splice(' + q + ',1)"> ❌</span>' ;
-   
+    
     yUrl = 'https://finance.yahoo.com/quote/' + rq.symbol
-    // yUrl = 'https://tradingeconomics.com/' + rq.symbol + ':us'
-
+    
     desc = '<a href="' + yUrl  + '" target="blank">' + desc +'<a/>'
 
     row = [desc + addSpan, numStd(rq[mShow+'MarketPrice'],2),numStd(rq[mShow+'MarketChange'],2,true),numStd(rq[mShow+'MarketChangePercent'],1,true)+'%'] 
@@ -130,19 +128,6 @@ async function doUpd() {
   }
 
   document.getElementById("app1").innerHTML = thHtml + tbHtml + '</table>';
-  
-  // document.getElementById("app2").innerHTML =   '' 
-  //     + '<a class ="xbtn" href="https://wsj.com" target="blank">wsj<a/>'
-  //     + '<a class ="xbtn" href="https://www.marketwatch.com/" target="blank">mw<a/>' 
-  //     + '<a class ="xbtn" href="https://ft.com" target="blank">ft<a/>'
-  //     + '<a class ="xbtn" href="https://zerohedge.com" target="blank">zh<a/>'
-  //     + '<a class ="xbtn" href="https://depositaccounts.com/blog" target="blank">da<a/>'
-  //     + '<a class ="xbtn" href="https://www.doctorofcredit.com/" target="blank">dr<a/>'
-  //     + '<a class ="xbtn" href="https://tradingeconomics.com/united-states/6-month-bill-yield" target="blank">ust<a/>'
-  //     + '<a class ="xbtn xbtn-rt" href="' + vUrl + '" target="blank">json<a/>';
-
-}
-
 
 
 doUpd();
