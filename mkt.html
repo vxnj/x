@@ -115,8 +115,7 @@ async function doUpd() {
     desc = '<a href="' + yUrl  + '" target="blank">' + desc +'<a/>'
 
     row = [desc + addSpan, numStd(rq[mShow+'MarketPrice'],2),numStd(rq[mShow+'MarketChange'],2,true),numStd(rq[mShow+'MarketChangePercent'],1,true)+'%'] 
-    // console.log(mShow, row);   
-
+    
     clsHue = '';
     for (r = 0, trHtml = '', len = row.length; r < len; r++ ) {
         clsStAdj = (i<0 || clsSt!='stPre') ? clsSt : 'stOff'; // for highlighting only when showing pre
@@ -128,7 +127,8 @@ async function doUpd() {
   }
 
   document.getElementById("app1").innerHTML = thHtml + tbHtml + '</table>';
-
+  
+}
 
 doUpd();
 setInterval(doUpd, 30000);
@@ -151,4 +151,3 @@ setInterval(doUpd, 30000);
   </div><br>
 </body>
 </html>
-    
