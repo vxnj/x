@@ -33,9 +33,9 @@ $data_quote = curl_exec($c);
 curl_close($c);
 
 /* 4 - Get data from yahoo */
-$resJson_decode = json_decode($data_quote, false);
+echo json_decode($data_quote);
 
-echo $resJson_decode
+
 
 // if (!$resJson_decode->quoteResponse->result) {
 //     $resultado = "Ticket dont exists in yahoo!";
