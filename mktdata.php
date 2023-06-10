@@ -36,9 +36,9 @@ $resJson_decode = json_decode($data_quote);
      $resultado = "Ticket dont exists in yahoo!";
  } else 
      foreach ($resJson_decode->quoteResponse->result as $ticket_result){
-        //  echo "<BR>Ticket:" . $ticket_result->symbol;
-        //  echo "<BR>Price:" . $ticket_result->regularMarketPrice;
-        //  echo "<BR>marketState:" . $ticket_result->marketState;
+         echo "<BR>Ticket:" . $ticket_result->symbol;
+         echo "<BR>Price:" . $ticket_result->regularMarketPrice;
+         echo "<BR>marketState:" . $ticket_result->marketState;
      }
      echo $resJson_decode
 // }
