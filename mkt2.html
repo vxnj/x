@@ -61,7 +61,10 @@ async function fetchQ() {
   console.log(now);
   vUrl = `${vPrx}${vUri}${tixAll}${vCrumb}` // + ',X' + now
 
-  response = await fetch("mktdata.php")
+  response = await fetch("mktdata.php", {
+    method: "GET", 
+    Accept: "application/json",  })
+
 
   // response = await fetch(vUrl, {
   //   method: "GET", 
