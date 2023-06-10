@@ -14,7 +14,6 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script> -->
 </head>
 
-
 <script>
 
 let resp;let data = "";let rq; let indx;
@@ -36,7 +35,6 @@ const DESCS = [
   {'symbol':'^IXIC', 'name':'Nasdaq', fut:'NQ=F' },
   {'symbol':'^GSPC', 'name':'S&P 500',fut:'ES=F' },   
   {'symbol':'^RUT',  'name':'Russell',fut:'RTY=F'},
-//   {'symbol':'^RUT',  'name':'Russell'},
   {'symbol':'^TNX',  'name':'10yr Treasury' },
   {'symbol':'^IRX',  'name':'13wk Treasury' },
   {'symbol':'GC=F',  'name':'Gold Futures' },
@@ -74,8 +72,7 @@ async function fetchQ() {
   //   referrerPolicy: "origin"}
   //   )
 
-
-  .then(response => response.json()) //.then(data => {resp = data;})
+  .then(response => response.json()) 
   return response 
 
 }
