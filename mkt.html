@@ -59,7 +59,17 @@ async function fetchQ() {
   console.log(now);
   vUrl = `${vPrx}${vUri}${tixAll}${vCrumb}` // + ',X' + now
 
-  response = await fetch(vUrl, {method: "GET"})
+
+
+  response = await fetch(vUrl, {
+    method: "GET", 
+    Accept: "application/json",
+    credentials: "include",
+    referrerPolicy: "origin"}
+    )
+
+
+
 
   .then(response => response.json()) //.then(data => {resp = data;})
   return response 
