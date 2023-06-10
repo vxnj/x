@@ -63,7 +63,8 @@ async function fetchQ() {
 
   response = await fetch("mktdata.php", {
     method: "GET", 
-    Accept: "application/json",  })
+    Accept: "application/json", 
+    credentials: "same-origin" })
 
 
   // response = await fetch(vUrl, {

@@ -32,13 +32,9 @@ curl_close($c);
 /* 4 - Get data from yahoo */
 $resJson_decode = json_decode($data_quote);
 
-//echo $resJson_decode;
-
-
  if (!$resJson_decode->quoteResponse->result) {
      $resultado = "Ticket dont exists in yahoo!";
- } else {
-   
+ } else 
      foreach ($resJson_decode->quoteResponse->result as $ticket_result){
          echo "<BR>Ticket:" . $ticket_result->symbol;
          echo "<BR>Price:" . $ticket_result->regularMarketPrice;
