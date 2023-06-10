@@ -54,11 +54,21 @@ async function fetchQ() {
   vCrumb = '&crumb=WOHxrH7iqBt'
   vUri = 'https://query2.finance.yahoo.com/v7/finance/quote?symbols='
 
+ 
+
   now = date_format(new Date(), 'g:i:sa');
   console.log(now);
   vUrl = `${vPrx}${vUri}${tixAll}${vCrumb}` // + ',X' + now
 
-  response = await fetch(vUrl, {"method": "GET"})
+  response = await fetch(vUrl, 
+    {
+      method: "GET",
+      mode: "*cors",
+      headers: {"Access-Control-Allow-Origin:": "*"}
+    } 
+)
+
+
   .then(response => response.json()) //.then(data => {resp = data;})
   return response 
 
