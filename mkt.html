@@ -53,6 +53,7 @@ async function fetchQ() {
   response = await fetch("mktdata.php")
   .then(response => response.json()) 
   return response 
+  console.log (response);
 }
 
 async function doUpd() {
