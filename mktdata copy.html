@@ -1,0 +1,39 @@
+<script>
+
+const API = 'https://query2.finance.yahoo.com'
+
+async function getCredentials() {
+  // get the A3 cookie
+  const { headers } = await fetch('https://fc.yahoo.com')
+  const cookie = headers.get('set-cookie')
+  // now get the crumb
+  const url = new URL('/v1/test/getcrumb', API)
+  const request = new Request(url)
+  request.headers.set('cookie', cookie)
+  const response = await fetch(request)
+  const crumb = await response.text()
+  return { cookie, crumb } 
+}
+
+async function quote(symbols, cookie, crumb) {
+  const url = new URL('v7/finance/quote', API)
+  url.searchParams.set('symbols', symbols.join(','))
+  url.searchParams.set('crumb', crumb)
+  const request = new Request(url)
+  request.headers.set('cookie', cookie)
+  const response = await fetch(request)
+  const {quoteResponse} = await response.json()
+  return quoteResponse?.result || []
+}
+
+// main
+const { cookie, crumb } = await getCredentials()
+const quotes = await quote(['GOOG', 'TSLA'], cookie, crumb)
+if (quotes.length) {
+  for (const quote of quotes) {
+    console.log(`${quote.symbol} price is ${quote.currency} ${quote.regularMarketPrice}`)
+  }
+}
+
+  
+</script>

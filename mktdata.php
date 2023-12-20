@@ -15,7 +15,8 @@ curl_setopt($c, CURLOPT_COOKIE, $yahoo_headers[$cookie_name]);
 curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
 $crumb = curl_exec($c);
 curl_close($c);
-// echo "<BR>Crumb:" . $crumb;
+
+echo "<BR>Crumb:" . $crumb;
 
 /* 3 - Get quotes and return json */
 $ticks = "^DJI,^IXIC,^GSPC,^RUT,HSBC,AAPL,GOOG,META,AMZN,TSLA,ARKK,QQQ,SPY,JEPI,BTC-USD,ETH-USD,CL=F,GC=F,^IRX,^TNX";
@@ -28,7 +29,8 @@ curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
 $data_quote = curl_exec($c);
 curl_close($c);
 
-echo $data_quote
+echo $data_quote;
+echo "11";
 
 ?>
 
