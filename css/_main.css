@@ -33,8 +33,11 @@
 
     --colPre:       hsla(260, 80%, 60%, 0.8);
 
-
 }
+
+[class*="field--open"], [class*="field--high"], [class*="field--low"], [class*="field--pre"] 
+    { display: none;}
+ 
 
 body { background-color: var(--live-bkg) !important;
     margin: 10px !important; }
