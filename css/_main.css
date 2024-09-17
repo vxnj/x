@@ -35,9 +35,6 @@
 
 }
 
-[class*="field--open"], [class*="field--high"], [class*="field--low"], [class*="field--pre"] 
-    { display: none;}
- 
 
 body { background-color: var(--live-bkg) !important;
     margin: 10px !important; }
