@@ -150,8 +150,7 @@ function getAqi(dataq) {
   //console.log("https://www.airnow.gov/?zip=" + paramzip);
 }
 function callwea() {
-  url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=minutely&appid=" + key;
-
+  // url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=minutely&appid=" + key;
   url = "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=minutely&appid=" + key;
 
   document.getElementById('linkjson').href = url
